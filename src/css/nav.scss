@@ -1,0 +1,129 @@
+.navBar {
+    background: $color0;
+    height: 100px;
+    line-height: 100px;
+    position: fixed;
+    text-align: center;
+    top: -100px;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 100;
+
+
+    img {
+        height:48px;
+        vertical-align: middle;
+    }
+
+    .logo {
+        display: inline-block;
+        position: relative;
+        top: -5px;
+        width: 200px;
+
+        img {
+            -moz-filter: brightness(1.2);
+            -o-filter: brightness(1.2);
+            -webkit-filter: brightness(1.2);
+            filter: brightness(1.2);
+
+            -moz-transition: filter .15s ease-in;
+            -o-transition: filter .15s ease-in;
+            -webkit-transition: filter .15s ease-in;
+            transition: filter .15s ease-in;
+
+            &:hover {
+                -moz-filter: brightness(1.4);
+                -o-filter: brightness(1.4);
+                -webkit-filter: brightness(1.4);
+                filter: brightness(1.4);
+
+                -moz-transition: filter .15s ease-in;
+                -o-transition: filter .15s ease-in;
+                -webkit-transition: filter .15s ease-in;
+                transition: filter .15s ease-in;
+            }
+        }
+    }
+
+    .navItemList {
+        display: inline-block;
+        font-size: 30px;
+        margin: 0 160px;
+        text-align: center;
+
+        .navItem {
+            margin: 0 15px;
+        }
+    }
+
+    .navSocialList {
+        display: inline-block;
+        position: relative;
+        top: -5px;
+        width: 200px;
+
+        .navSocial {
+            img {
+                display: inline-block;
+                margin: 0 10px;
+
+                -moz-filter: none;
+                -o-filter: none;
+                -webkit-filter: none;
+                filter: none;
+
+                -moz-transition: filter .15s ease-in;
+                -o-transition: filter .15s ease-in;
+                -webkit-transition: filter .15s ease-in;
+                transition: filter .15s ease-in;
+
+                &:hover {
+                    -moz-filter: brightness(2);
+                    -o-filter: brightness(2);
+                    -webkit-filter: brightness(2);
+                    filter: brightness(2);
+
+                    -moz-transition: filter .15s ease-in;
+                    -o-transition: filter .15s ease-in;
+                    -webkit-transition: filter .15s ease-in;
+                    transition: filter .15s ease-in;
+                }
+            }
+        }
+    }
+
+    a {
+        color: $color4;
+        text-decoration: none;
+
+        -moz-transition: color .2s ease-in;
+        -o-transition: color .2s ease-in;
+        -webkit-transition: color .2s ease-in;
+        transition: color .2s ease-in;
+
+        &:hover {
+            color: $color3;
+
+            -moz-transition: all .15 ease-in;
+            -o-transition: all .15s ease-in;
+            -webkit-transition: all .15s ease-in;
+            transition: all .15s ease-in;
+        }
+    }
+
+    -webkit-animation: slide 0.5s forwards;
+    animation: slide 0.5s forwards;
+
+    @-webkit-keyframes slide {
+        100% {
+            top: 0;
+        }
+    }
+
+    @keyframes slide {
+        100% {
+            top: 0;
+        }
+    }
+}

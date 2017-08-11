@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-class Body extends React.Component {
+class Billboard extends Component {
     render() {
         return (
-            <div className="body">
+            <div className="billboard">
             </div>
         )
     }
 }
 
-module.exports = Body
+module.exports = Billboard

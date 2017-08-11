@@ -20,9 +20,11 @@ function NavSocial(props) {
 class Logo extends React.Component {
     render() {
         return (
-            <a href="/" className="logo">
-                <img src="/logo.jpg" />
-            </a>
+            <div className="logo">
+                <a href="/">
+                    <img src={this.props.imgSrc} />
+                </a>
+            </div>
         )
     }
 }
@@ -65,7 +67,7 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className="navBar">
-                <Logo />
+                <Logo imgSrc={this.props.logoImgSrc}/>
                 <NavItemList items={this.props.navItemsData}/>
                 <NavSocialList socials={this.props.navSocialsData}/>
             </div>

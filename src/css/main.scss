@@ -1,0 +1,29 @@
+$color0: rgb(28, 29, 33);
+$color1: rgb(49, 53, 61);
+$color2: rgb(68, 88, 120);
+$color3: rgb(146, 205, 207);
+$color4: rgb(238, 239, 247);
+
+$borderGray: rgb(230, 230, 230);
+
+@import 'normalize';
+@import 'nav';
+@import 'body';
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.footer {
+    background: $color1;
+    color: $color4;
+    font-size: 19px;
+    height: 90px;
+    width: 100%;
+
+    .copyright {
+        line-height: 90px;
+        text-align: center;
+        vertical-align: middle;
+    }
+}
