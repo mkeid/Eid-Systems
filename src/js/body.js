@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom'
 class PortfolioItem extends Component {
     render() {
         return (
-            <li className="portfolioItem">
+            <li className="portfolio-item">
                 <a href={this.props.url}>
                     <img src={this.props.imgSrc} />
-                    <div className="portfolioItemTitle">{this.props.title}</div>
-                    <div className="portfolioItemType">{this.props.type}</div>
+                    <div className="portfolio-item-title">{this.props.title}</div>
+                    <div className="portfolio-item-type">{this.props.type}</div>
                 </a>
             </li>
         )
@@ -58,8 +58,10 @@ class Body extends Component {
     render() {
         return (
             <div className="body">
-                <div className="title">
-                    <span>{this.props.title}</span>
+                <div className="container">
+                    <div className="title">
+                        <span>{this.props.title}</span>
+                    </div>
                 </div>
                 <Portfolio />
             </div>

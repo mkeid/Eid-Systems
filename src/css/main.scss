@@ -6,12 +6,24 @@ $color4: rgb(238, 239, 247);
 
 $borderGray: rgb(230, 230, 230);
 
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 @import 'normalize';
 @import 'nav';
+@import 'billboard';
 @import 'body';
 
 body {
+    background: $color1;
     font-family: 'Raleway', sans-serif;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
 }
 
 .footer {

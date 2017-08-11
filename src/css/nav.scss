@@ -1,4 +1,4 @@
-.navBar {
+.nav-bar {
     background: $color0;
     height: 100px;
     line-height: 100px;
@@ -46,24 +46,52 @@
         }
     }
 
-    .navItemList {
+    .nav-item-list {
         display: inline-block;
         font-size: 30px;
         margin: 0 160px;
         text-align: center;
 
-        .navItem {
+        .nav-item {
             margin: 0 15px;
+            position: relative;
+
+            &:before {
+                background-color: $color4;
+                content: "";
+                height: 2px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                visibility: hidden;
+                width: 0%;
+
+                -moz-transition: all .2s ease-in;
+                -o-transition: all .2s ease-in;
+                -webkit-transition: all .2s ease-in;
+                transition: all .2s ease-in;
+            }
+
+            &:hover:before {
+                background-color: $color3;
+                visibility: visible;
+                width: 100%;
+
+                -moz-transition: all .2s ease-in;
+                -o-transition: all .2s ease-in;
+                -webkit-transition: all .2s ease-in;
+                transition: all .2s ease-in;
+            }
         }
     }
 
-    .navSocialList {
+    .nav-social-list {
         display: inline-block;
         position: relative;
         top: -5px;
         width: 200px;
 
-        .navSocial {
+        .nav-social {
             img {
                 display: inline-block;
                 margin: 0 10px;
@@ -95,6 +123,7 @@
 
     a {
         color: $color4;
+        cursor: pointer;
         text-decoration: none;
 
         -moz-transition: color .2s ease-in;

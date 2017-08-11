@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 
 function Copyright(props) {
     return (
+
         <div className="copyright">
             © {props.year} {props.name}
         </div>
@@ -11,11 +12,13 @@ function Copyright(props) {
 
 class Footer extends Component {
     render() {
+        const name = 'Mohamed K. Eid'
+        const year = 2017
         return (
             <div className="footer">
                 <Copyright
-                    name={this.props.copyrightName}
-                    year={this.props.copyrightYear}
+                    name={name}
+                    year={year}
                 />
             </div>
         )

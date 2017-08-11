@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import IndexSite from './index-site'
+import AboutSite from './about-site'
+import PortfolioSite from './portfolio-site'
+import ContactSite from './contact-site'
 
 function NavItem(props) {
     return (
-        <a href={props.href} className="navItem">
+        <a href={props.href} className="nav-item">
             {props.title}
         </a>
     )
@@ -11,7 +15,7 @@ function NavItem(props) {
 
 function NavSocial(props) {
     return (
-        <a href={props.href} className="navSocial">
+        <a href={props.href} className="nav-social">
             <img src={props.imgSrc} />
         </a>
     )
@@ -34,12 +38,12 @@ class NavItemList extends React.Component {
         const navItems = this.props.items.map(item =>
             <NavItem
                 key={item}
-                href={item.toLowerCase()}
                 title={item}
+                href={item.toLowerCase()}
             />
         )
         return (
-            <div className="navItemList">
+            <div className="nav-item-list">
                 {navItems}
             </div>
         )
@@ -56,7 +60,7 @@ class NavSocialList extends React.Component {
             />
         )
         return (
-            <div className="navSocialList">
+            <div className="nav-social-list">
                 {navSocials}
             </div>
         )
@@ -65,11 +69,25 @@ class NavSocialList extends React.Component {
 
 class NavBar extends React.Component {
     render() {
+        const logoImgSrc = '/images/logo.png'
+        const navItemsData = ['About', 'Portfolio', 'Contact']
+        const navSocialsData = [
+            {
+                site: 'GitHub',
+                url: 'https://github.com/mohamedkeid',
+                src: '/images/github.png'
+            },
+            {
+                site: 'LinkedIn',
+                url: 'https://www.linkedin.com/in/mkeid/',
+                src: '/images/linkedin.png'
+            }
+        ]
         return (
-            <div className="navBar">
-                <Logo imgSrc={this.props.logoImgSrc}/>
-                <NavItemList items={this.props.navItemsData}/>
-                <NavSocialList socials={this.props.navSocialsData}/>
+            <div className="nav-bar">
+                <Logo imgSrc={logoImgSrc}/>
+                <NavItemList items={navItemsData}/>
+                <NavSocialList socials={navSocialsData}/>
             </div>
         )
     }

@@ -1,0 +1,76 @@
+.billboard {
+    background: white;
+    height: 604px;
+    text-align: center;
+    width: 100%;
+
+    .container {
+        display: inline-block;
+        height: 100%;
+        text-align: center;
+        width: 1040px;
+
+        img {
+            @-webkit-keyframes slide-right {
+                100% { left: 22px; }
+            }
+
+            @keyframes slide-right {
+                100% { left: 22px; }
+            }
+
+            display: inline-block;
+            height: 620px;
+            position: relative;
+            top: -15px;
+            left: -300px;
+
+            -webkit-animation: fadein 2s, slide-right 1s forwards;
+            -moz-animation: fadein 2s, slide-right 1s forwards;
+            -ms-animation: fadein 2s, slide-right 1s forwards;
+            -o-animation: fadein 2s, slide-right 1s forwards;
+            animation: fadein 2s, slide-right 1s forwards;
+        }
+
+        .info-containers {
+        }
+
+        > div {
+            height: 320px;
+            position: absolute;
+            top: 215px;
+            width: 400px;
+
+            span {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .title {
+                font-size: 50px;
+                font-weight: bold;
+            }
+
+            .details {
+                font-size: 30px;
+            }
+        }
+
+        a {
+            color: rgb(54, 142, 160);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .developer-container {
+            text-align: left;
+        }
+
+        .engineer-container {
+            text-align: right;
+            position: absolute;
+            left: 835px;
+            top: 0;
+        }
+    }
+}
