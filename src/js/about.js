@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
-import NavBar from './nav.js'
+import NavBar from './nav'
+import { AboutBillboard } from './billboard'
+import Body from './body'
 
-class AboutSite extends Component {
-    render() {
-        return (
-            <div className="about-site">
-                <NavBar />
-            </div>
-        )
-    }
-}
+
+const AboutSite = () => (
+    <div className="about-site">
+        <AboutBillboard />
+        <Body title="SKILLS">
+
+        </Body>
+    </div>
+)
 
 module.exports = {
     AboutSite

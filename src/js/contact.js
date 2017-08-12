@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
+import Body from './body'
+import { ContactBillboard } from './billboard'
+
 
 class ContactSite extends Component {
     render() {
         return (
-            <div className="contactSite">
+            <div className="contact-site">
+                <ContactBillboard />
+                <Body title="OR">
+
+                </Body>
             </div>
         )
     }

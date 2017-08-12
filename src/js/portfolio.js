@@ -1,19 +1,16 @@
 import React, { Component } from 'react'
+import Body from './body'
 
 
-class PortfolioItem extends Component {
-    render() {
-        return (
-            <li className="portfolio-item">
-                <a href={this.props.url}>
-                    <img src={this.props.imgSrc} />
-                    <div className="portfolio-item-title">{this.props.title}</div>
-                    <div className="portfolio-item-type">{this.props.type}</div>
-                </a>
-            </li>
-        )
-    }
-}
+const PortfolioItem = (props) => (
+    <li className="portfolio-item">
+        <a href={props.url}>
+            <img src={props.imgSrc} />
+            <div className="portfolio-item-title">{props.title}</div>
+            <div className="portfolio-item-type">{props.type}</div>
+        </a>
+    </li>
+)
 
 class Portfolio extends Component {
     render() {
@@ -54,15 +51,13 @@ class Portfolio extends Component {
     }
 }
 
-class PortfolioSite extends Component {
-    render() {
-        return (
-            <div className="portfolio-site">
-                <Body />
-            </div>
-        )
-    }
-}
+const PortfolioSite = () => (
+    <div className="portfolio-site">
+        <Body>
+            <Portfolio />
+        </Body>
+    </div>
+)
 
 module.exports = {
     Portfolio,

@@ -1,6 +1,7 @@
 .billboard {
     background: white;
-    height: 604px;
+    height: 31.5em;
+    padding-top: 6.25em;
     text-align: center;
     width: 100%;
 
@@ -8,22 +9,22 @@
         display: inline-block;
         height: 100%;
         text-align: center;
-        width: 1040px;
+        width: 65.0em;
 
         img {
             @-webkit-keyframes slide-right {
-                100% { left: 22px; }
+                100% { left: 1.375em; }
             }
 
             @keyframes slide-right {
-                100% { left: 22px; }
+                100% { left: 1.375em; }
             }
 
             display: inline-block;
-            height: 620px;
+            height: 38.750em;
             position: relative;
-            top: -15px;
-            left: -300px;
+            top: -7.188em;
+            left: -18.750em;
 
             -webkit-animation: fadein 2s, slide-right 1s forwards;
             -moz-animation: fadein 2s, slide-right 1s forwards;
@@ -33,11 +34,12 @@
         }
 
         .info-containers {
-            height: 320px;
+            cursor: default;
+            height: 20.0em;
             position: absolute;
             opacity: 0;
-            top: 210px;
-            width: 250px;
+            top: 13.125em;
+            width: 18.750em;
 
             -webkit-animation: fadein 2s forwards;
             -moz-animation: fadein 2s forwards;
@@ -52,31 +54,30 @@
 
             span {
                 display: block;
-                margin: 10px 0;
+                margin: .34em 0;
             }
 
             .title {
-                font-size: 50px;
+                font-size: 3.125em;
                 font-weight: bold;
             }
 
             .details {
-                font-size: 30px;
+                font-size: 1.875em;
             }
         }
 
         a {
             color: rgb(54, 142, 160);
             font-weight: bold;
-            padding-top: 8px;
             position: relative;
-            top: 10px;
+            top: 0.625em;
             text-decoration: none;
 
             &:before {
                 background-color: rgb(54, 142, 160);
                 content: "";
-                height: 2px;
+                height: .11em;
                 position: absolute;
                 bottom: 0;
                 left: 0;
@@ -107,7 +108,7 @@
         .engineer-container {
             text-align: right;
             position: absolute;
-            left: 833px;
+            left: 52.063em;
             top: 0;
         }
     }

@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
-import { IndexBillboard } from './billboard.js'
-import Body from './body.js'
+import { IndexBillboard } from './billboard'
+import Body from './body'
+import { Portfolio } from './portfolio'
 
 
-class IndexSite extends Component {
-    render() {
-        return (
-            <div className="index-site">
-                <IndexBillboard />
-                <Body title='SOME OF MY LATEST WORK' />
-            </div>
-        )
-    }
-}
+const IndexSite = () => (
+    <div className="index-site">
+        <IndexBillboard />
+        <Body title='SOME OF MY LATEST WORK'>
+            <Portfolio />
+        </Body>
+    </div>
+)
 
 module.exports = {
     IndexSite

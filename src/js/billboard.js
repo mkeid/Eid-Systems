@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { Link } from 'react-router-dom'
 
 
 const InfoContainer = (props) => (
     <div className={props.type + '-container'}>
         <div className="title">{props.title}</div>
         <div className="details">{props.data}</div>
-        <a href='/about'>Learn more</a>
+        <Link to='/about'>Learn more</Link>
     </div>
 )
 
@@ -59,17 +60,52 @@ class IndexBillboard extends Component {
     }
 }
 
-class Billboard extends Component {
+const AboutContainer = (props) => (
+    <div className="info-containers">
+        <div className='about-container'>
+            <div className="title">{props.title}</div>
+            <div className="details">{props.data}</div>
+        </div>
+    </div>
+)
+
+class AboutBillboard extends Component {
+    render() {
+        const head = "I'm a web developer and software engineer from the Greater New York area."
+        const detail = "I enjoy building things that provide a tangible difference to the world. When I'm not programming, you'll find me bouldering or producing music."
+        const data = (
+            <div>
+                <div className="head">{head}</div>
+                <div className="detail">{detail}</div>
+            </div>
+        )
+        return (
+            <div className="billboard">
+                <div className="container">
+                    <AboutContainer
+                        title="About Me"
+                        data={data}
+                    />
+                </div>
+            </div>
+        )
+    }
+}
+
+class ContactBillboard extends Component {
     render() {
         return (
             <div className="billboard">
-                {this.props.child}
+                <div className="container">
+
+                </div>
             </div>
         )
     }
 }
 
 module.exports = {
-    Billboard,
-    IndexBillboard
+    IndexBillboard,
+    AboutBillboard,
+    ContactBillboard
 }

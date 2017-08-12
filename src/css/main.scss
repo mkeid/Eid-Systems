@@ -12,9 +12,11 @@ $borderGray: rgb(230, 230, 230);
 }
 
 @import 'normalize';
-@import 'nav';
+@import 'about';
 @import 'billboard';
-@import 'body';
+@import 'contact';
+@import 'nav';
+@import 'portfolio';
 
 body {
     background: $color1;
@@ -26,15 +28,42 @@ ul {
     padding: 0;
 }
 
+.body {
+    background: $color4;
+    border-top: 3px solid rgb(230, 230, 240);
+    border-bottom: 5px solid rgb(45, 45, 45);
+    text-align: center;
+    width: 100%;
+
+    .container {
+        .title {
+            border-bottom: 2px solid rgb(220, 220, 220);
+            color: $color1;
+            cursor: default;
+            display: inline-block;
+            font-size: 20px;
+            height: 40px;
+            line-height: 80px;
+            margin-bottom: 40px;
+            width: 1040px;
+
+            span {
+                background: $color4;
+                padding: 0 40px;
+            }
+        }
+    }
+}
+
 .footer {
     background: $color1;
     color: $color4;
-    font-size: 19px;
-    height: 90px;
+    font-size: 1.188em;
+    height: 5.625em;
     width: 100%;
 
     .copyright {
-        line-height: 90px;
+        line-height: 5.625em;
         text-align: center;
         vertical-align: middle;
     }
