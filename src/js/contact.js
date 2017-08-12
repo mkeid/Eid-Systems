@@ -9,4 +9,6 @@ class ContactSite extends Component {
     }
 }
 
-module.exports = ContactSite
+module.exports = {
+    ContactSite
+}

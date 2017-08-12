@@ -18,6 +18,7 @@
     .logo {
         display: inline-block;
         position: relative;
+        left: -20px;
         top: -5px;
         width: 200px;
 
@@ -49,12 +50,13 @@
     .nav-item-list {
         display: inline-block;
         font-size: 30px;
-        margin: 0 160px;
+        margin: 0 166px;
         text-align: center;
 
         .nav-item {
-            margin: 0 15px;
+            margin: 0 18px;
             position: relative;
+            width: 130px;
 
             &:before {
                 background-color: $color4;

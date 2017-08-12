@@ -61,7 +61,8 @@
 
             .portfolio-item-title {
                 color: $color1 !important;
-                font-size: 21px;
+                font-size: 20px;
+                font-weight: bold;
             }
 
             .portfolioItemType {
@@ -80,7 +81,6 @@
     width: 100%;
 
     .container {
-
         .title {
             border-bottom: 2px solid rgb(220, 220, 220);
             display: inline-block;

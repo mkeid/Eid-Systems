@@ -1,20 +1,29 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
+
+const InfoContainer = (props) => (
+    <div className={props.type + '-container'}>
+        <div className="title">{props.title}</div>
+        <div className="details">{props.data}</div>
+        <a href='/about'>Learn more</a>
+    </div>
+)
+
 class InfoContainers extends Component{
     render() {
         return (
             <div className="info-containers">
-                <div className="developer-container">
-                    <div className="title">Web Dev</div>
-                    <div className="details">{this.props.developerData}</div>
-                    <a href='/about'>Learn more</a>
-                </div>
-                <div className="engineer-container">
-                    <div className="title">Engineer</div>
-                    <div className="details">{this.props.engineerData}</div>
-                    <a href='/about'>Learn more</a>
-                </div>
+                <InfoContainer
+                    type='developer'
+                    title='Web Dev'
+                    data={this.props.developerData}
+                />
+                <InfoContainer
+                    type='engineer'
+                    title='Engineer'
+                    data={this.props.engineerData}
+                />
             </div>
         )
     }

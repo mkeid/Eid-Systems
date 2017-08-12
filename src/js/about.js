@@ -11,4 +11,6 @@ class AboutSite extends Component {
     }
 }
 
-module.exports = AboutSite
+module.exports = {
+    AboutSite
+}

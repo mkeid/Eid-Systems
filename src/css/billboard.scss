@@ -33,13 +33,22 @@
         }
 
         .info-containers {
-        }
-
-        > div {
             height: 320px;
             position: absolute;
-            top: 215px;
-            width: 400px;
+            opacity: 0;
+            top: 210px;
+            width: 250px;
+
+            -webkit-animation: fadein 2s forwards;
+            -moz-animation: fadein 2s forwards;
+            -ms-animation: fadein 2s forwards;
+            -o-animation: fadein 2s forwards;
+            animation: fadein 2s forwards;
+
+            -moz-animation-delay: 1s;
+            -o-animation-delay: 1s;
+            -webkit-animation-delay: 1s;
+            animation-delay: 1s;
 
             span {
                 display: block;
@@ -59,7 +68,36 @@
         a {
             color: rgb(54, 142, 160);
             font-weight: bold;
+            padding-top: 8px;
+            position: relative;
+            top: 10px;
             text-decoration: none;
+
+            &:before {
+                background-color: rgb(54, 142, 160);
+                content: "";
+                height: 2px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                visibility: hidden;
+                width: 0%;
+
+                -moz-transition: all .2s ease-in;
+                -o-transition: all .2s ease-in;
+                -webkit-transition: all .2s ease-in;
+                transition: all .2s ease-in;
+            }
+
+            &:hover:before {
+                visibility: visible;
+                width: 100%;
+
+                -moz-transition: all .2s ease-in;
+                -o-transition: all .2s ease-in;
+                -webkit-transition: all .2s ease-in;
+                transition: all .2s ease-in;
+            }
         }
 
         .developer-container {
@@ -69,7 +107,7 @@
         .engineer-container {
             text-align: right;
             position: absolute;
-            left: 835px;
+            left: 833px;
             top: 0;
         }
     }

@@ -1,37 +1,27 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import IndexSite from './index-site'
-import AboutSite from './about-site'
-import PortfolioSite from './portfolio-site'
-import ContactSite from './contact-site'
+import { Link } from 'react-router-dom'
 
-function NavItem(props) {
-    return (
-        <a href={props.href} className="nav-item">
-            {props.title}
-        </a>
-    )
-}
 
-function NavSocial(props) {
-    return (
-        <a href={props.href} className="nav-social">
+const NavItem = (props) => (
+    <Link to={props.href} className="nav-item">
+        {props.title}
+    </Link>
+)
+
+const NavSocial = (props) => (
+    <a href={props.href} className="nav-social">
+        <img src={props.imgSrc} />
+    </a>
+)
+
+const Logo = (props) => (
+    <div className="logo">
+        <Link to="/">
             <img src={props.imgSrc} />
-        </a>
-    )
-}
-
-class Logo extends React.Component {
-    render() {
-        return (
-            <div className="logo">
-                <a href="/">
-                    <img src={this.props.imgSrc} />
-                </a>
-            </div>
-        )
-    }
-}
+        </Link>
+    </div>
+)
 
 class NavItemList extends React.Component {
     render() {
