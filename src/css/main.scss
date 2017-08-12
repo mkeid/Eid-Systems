@@ -11,16 +11,16 @@ $borderGray: rgb(230, 230, 230);
     to   { opacity: 1; }
 }
 
-@import 'normalize';
-@import 'about';
-@import 'billboard';
-@import 'contact';
-@import 'nav';
-@import 'portfolio';
+@import "normalize";
+@import "about";
+@import "billboard";
+@import "contact";
+@import "nav";
+@import "portfolio";
 
 body {
     background: $color1;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
 }
 
 ul {
@@ -30,28 +30,34 @@ ul {
 
 .body {
     background: $color4;
-    border-top: 3px solid rgb(230, 230, 240);
-    border-bottom: 5px solid rgb(45, 45, 45);
+    border-top: .2em solid rgb(230, 230, 240);
+    border-bottom: .3em solid rgb(45, 45, 45);
     text-align: center;
     width: 100%;
 
     .container {
         .title {
-            border-bottom: 2px solid rgb(220, 220, 220);
+            border-bottom: .11em solid rgb(220, 220, 220);
             color: $color1;
             cursor: default;
             display: inline-block;
-            font-size: 20px;
-            height: 40px;
-            line-height: 80px;
-            margin-bottom: 40px;
-            width: 1040px;
+            font-size: 1.25em;
+            height: 2em;
+            line-height: 4em;
+            margin-bottom: 2em;
+            width: 51.8em;
 
             span {
                 background: $color4;
-                padding: 0 40px;
+                padding: 0 2em;
             }
         }
+    }
+}
+
+.not-found-site {
+    .container {
+        background: url("/images/not-found-billboard.jpg");
     }
 }
 

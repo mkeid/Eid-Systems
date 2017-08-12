@@ -39,4 +39,39 @@
             }
         }
     }
+
+    .skills {
+        color: $color2;
+        display: inline-block;
+        text-align: center;
+        width: 65em;
+
+        .skill {
+            margin-bottom: 4em;
+            text-align: left;
+
+            .title {
+                font-size: 2em;
+                font-weight: bold;
+            }
+
+            .description {
+                font-size: 1.2em;
+                line-height: 1.5em;
+            }
+
+            .keywords {
+                .keyword {
+                    background: $color2;
+                    border-radius: 5px;
+                    color: $color4;
+                    cursor: default;
+                    display: inline-block;
+                    font-weight: bold;
+                    margin: 1em 1em 0 0;
+                    padding: .8em;
+                }
+            }
+        }
+    }
 }

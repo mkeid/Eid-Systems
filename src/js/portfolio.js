@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import Body from './body'
+import React, { Component } from "react"
+import Body from "./body"
 
 
 const PortfolioItem = (props) => (
@@ -16,22 +16,22 @@ class Portfolio extends Component {
     render() {
         const portfolioItemsData = [
             {
-                title: 'Feed-Forward Style Transfer',
-                type: 'Computer Vision',
-                imgSrc: '/images/feed-forward-style-transfer.jpg',
-                url: 'https://github.com/mohamedkeid/Feed-Forward-Style-Transfer'
+                title: "Feed-Forward Style Transfer",
+                type: "Computer Vision",
+                imgSrc: "/images/feed-forward-style-transfer.jpg",
+                url: "https://github.com/mohamedkeid/Feed-Forward-Style-Transfer"
             },
             {
-                title: 'Neural Machine Translation',
-                type: 'Natural Language Processing',
-                imgSrc: '/images/neural-machine-translation.jpg',
-                url: 'https://github.com/mohamedkeid/Feed-Forward-Style-Transfer'
+                title: "Neural Machine Translation",
+                type: "Natural Language Processing",
+                imgSrc: "/images/neural-machine-translation.jpg",
+                url: "https://github.com/mohamedkeid/Feed-Forward-Style-Transfer"
             },
             {
-                title: 'Neural Network From Scratch',
-                type: 'Deep Learning',
-                imgSrc: '/images/neural-network-from-scratch.jpg',
-                url: 'https://github.com/mohamedkeid/Feed-Forward-Style-Transfer'
+                title: "Neural Network From Scratch",
+                type: "Deep Learning",
+                imgSrc: "/images/neural-network-from-scratch.jpg",
+                url: "https://github.com/mohamedkeid/Feed-Forward-Style-Transfer"
             },
         ]
         const portfolioItems = portfolioItemsData.map(item =>

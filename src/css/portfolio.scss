@@ -1,9 +1,9 @@
 .portfolio {
     display: inline-block;
     list-style-type: none;
-    padding-bottom: 40px;
+    padding-bottom: 2.5em;
     text-align: left;
-    width: 1040px;
+    width: 65em;
 
     &:hover > .portfolio-item {
         opacity: .5;
@@ -25,17 +25,17 @@
 
     .portfolio-item {
         background: white;
-        border: 2px solid $borderGray;
-        border-top: 1px solid $borderGray;
-        border-bottom: 3px solid rgb(210, 210, 210);
-        border-radius: 5px;
+        border: 0.125em solid $borderGray;
+        border-top: 0.063em solid $borderGray;
+        border-bottom: 0.188em solid rgb(210, 210, 210);
+        border-radius: 0.313e;
         display: inline-block;
-        height: 220px;
-        margin: 0 25px 25px 0;
+        height: 13.75em;
+        margin: 0 1.563em 1.563em 0;
         opacity: 1;
-        padding: 8px;
+        padding: .5em;
         text-align: left;
-        width: 309px;
+        width: 19.313em;
 
         -moz-transition: opacity .15s ease-in;
         -o-transition: opacity .15s ease-in;
@@ -57,21 +57,21 @@
             text-decoration: none;
 
             img {
-                border-radius: 3px;
-                height: 172px;
+                border-radius: 0.188em;
+                height: 10.75em;
                 width: 100%;
-                padding-bottom: 4px;
+                padding-bottom: .25em;
             }
 
             .portfolio-item-title {
                 color: $color1 !important;
-                font-size: 20px;
+                font-size: 1.25em;
                 font-weight: bold;
             }
 
             .portfolio-item-type {
                 color: $color1 !important;
-                font-size: 17px;
+                font-size: 1.063em;
             }
         }
     }
@@ -79,6 +79,6 @@
 
 .portfolio-site {
     .body {
-        padding-top: 164px;
+        padding-top: 10.25em;
     }
 }

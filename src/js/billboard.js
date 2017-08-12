@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
+import React, { Component } from "react"
+import ReactDOM from "react-dom"
+import { Link } from "react-router-dom"
 
 
 const InfoContainer = (props) => (
-    <div className={props.type + '-container'}>
+    <div className={props.type + "-container"}>
         <div className="title">{props.title}</div>
         <div className="details">{props.data}</div>
-        <Link to='/about'>Learn more</Link>
+        <Link to="/about">Learn more</Link>
     </div>
 )
 
@@ -16,14 +16,14 @@ class InfoContainers extends Component{
         return (
             <div className="info-containers">
                 <InfoContainer
-                    type='developer'
-                    title='Web Dev'
-                    data={this.props.developerData}
+                    type="developer"
+                    title={this.props.developerTitle}
+                    data={this.props.developerKeywords}
                 />
                 <InfoContainer
-                    type='engineer'
-                    title='Engineer'
-                    data={this.props.engineerData}
+                    type="engineer"
+                    title={this.props.engineerTitle}
+                    data={this.props.engineerKeywords}
                 />
             </div>
         )
@@ -32,17 +32,13 @@ class InfoContainers extends Component{
 
 class IndexBillboard extends Component {
     render() {
-        let developerData = [
-            'React', 'Redux', 'Node.js', 'MongoDB', 'Rails'
-        ]
-        developerData = developerData.map(data => (
+        const developerData = this.props.data.developer
+        const developerKeywords = developerData.keywords.map(data => (
             <span key={data}>{data}</span>
         ))
 
-        let engineerData = [
-            'Unix/Linux', 'Scikit-learn', 'TensorFlow', 'PyTorch', 'NumPy',
-        ]
-        engineerData = engineerData.map(data => (
+        const engineerData = this.props.data.engineer
+        const engineerKeywords= engineerData.keywords.map(data => (
             <span key={data}>{data}</span>
         ))
 
@@ -50,8 +46,10 @@ class IndexBillboard extends Component {
             <div className="billboard">
                 <div className="container">
                     <InfoContainers
-                        developerData={developerData}
-                        engineerData={engineerData}
+                        developerTitle={developerData.title}
+                        developerKeywords={developerKeywords}
+                        engineerTitle={engineerData.title}
+                        engineerKeywords={engineerKeywords}
                     />
                     <img src="/images/me-art.png" />
                 </div>
@@ -62,7 +60,7 @@ class IndexBillboard extends Component {
 
 const AboutContainer = (props) => (
     <div className="info-containers">
-        <div className='about-container'>
+        <div className="about-container">
             <div className="title">{props.title}</div>
             <div className="details">{props.data}</div>
         </div>
@@ -71,12 +69,11 @@ const AboutContainer = (props) => (
 
 class AboutBillboard extends Component {
     render() {
-        const head = "I'm a web developer and software engineer from the Greater New York area."
-        const detail = "I enjoy building things that provide a tangible difference to the world. When I'm not programming, you'll find me bouldering or producing music."
+        const about = this.props.about
         const data = (
             <div>
-                <div className="head">{head}</div>
-                <div className="detail">{detail}</div>
+                <div className="head">{about.head}</div>
+                <div className="detail">{about.detail}</div>
             </div>
         )
         return (

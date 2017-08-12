@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
+import React, { Component } from "react"
+import ReactDOM from "react-dom"
+import { Link } from "react-router-dom"
 
 
 const NavItem = (props) => (
@@ -44,9 +44,9 @@ class NavSocialList extends React.Component {
     render() {
         const navSocials = this.props.socials.map(social =>
             <NavSocial
-                key={social['site']}
-                href={social['url']}
-                imgSrc={social['src']}
+                key={social["site"]}
+                href={social["url"]}
+                imgSrc={social["src"]}
             />
         )
         return (
@@ -59,18 +59,18 @@ class NavSocialList extends React.Component {
 
 class NavBar extends React.Component {
     render() {
-        const logoImgSrc = '/images/logo.png'
-        const navItemsData = ['About', 'Portfolio', 'Contact']
+        const logoImgSrc = "/images/logo.png"
+        const navItemsData = ["About", "Portfolio", "Contact"]
         const navSocialsData = [
             {
-                site: 'GitHub',
-                url: 'https://github.com/mohamedkeid',
-                src: '/images/github.png'
+                site: "GitHub",
+                url: "https://github.com/mohamedkeid",
+                src: "/images/github.png"
             },
             {
-                site: 'LinkedIn',
-                url: 'https://www.linkedin.com/in/mkeid/',
-                src: '/images/linkedin.png'
+                site: "LinkedIn",
+                url: "https://www.linkedin.com/in/mkeid/",
+                src: "/images/linkedin.png"
             }
         ]
         return (
