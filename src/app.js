@@ -12,25 +12,44 @@ import { about, indexData, skills } from "./js/data"
 import "./css/main.scss"
 
 
-const Main = () => (
+const Main = (props) => (
     <main>
         <Switch>
             <Route
                 exact path="/"
-                render={() => <IndexSite data={indexData} />}
+                render={() => (
+                    <IndexSite
+                        data={indexData}
+                        updateCurrentPage={props.updateCurrentPage}
+                    />
+                )}
             />
             <Route
                 exact path="/about"
-                render={() => <AboutSite about={about} skills={skills} />}
+                render={() => (
+                    <AboutSite
+                        about={about}
+                        skills={skills}
+                        updateCurrentPage={props.updateCurrentPage}
+                    />
+                )}
             />
             <Route
                 exact
                 path="/portfolio"
-                component={PortfolioSite}
+                render={() => (
+                    <PortfolioSite
+                        updateCurrentPage={props.updateCurrentPage}
+                    />
+                )}
             />
             <Route
                 exact path="/contact"
-                component={ContactSite}
+                render={() => (
+                    <ContactSite
+                        updateCurrentPage={props.updateCurrentPage}
+                    />
+                )}
             />
             <Route
                 path="*"
@@ -48,13 +67,39 @@ const NotFound = () => (
     </div>
 )
 
-const App = () => (
-    <div>
-        <NavBar />
-        <Main />
-        <Footer />
-    </div>
-)
+class App extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            currentPage: {
+                about: false,
+                portfolio: false,
+                contact: false
+            }
+        }
+        this.updateCurrentPage = this.updateCurrentPage.bind(this)
+    }
+
+    updateCurrentPage(page) {
+        this.setState({
+            currentPage: {
+                about: page === "about",
+                portfolio: page === "portfolio",
+                contact: page === "contact"
+            }
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <NavBar currentPage={this.state.currentPage} />
+                <Main updateCurrentPage={this.updateCurrentPage} />
+                <Footer />
+            </div>
+        )
+    }
+}
 
 ReactDOM.render(
     <HashRouter>

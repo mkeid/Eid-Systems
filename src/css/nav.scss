@@ -85,6 +85,14 @@
                 transition: all .2s ease-in;
             }
         }
+
+        .selected {
+            color: $color3;
+
+            &:before {
+                visibility: hidden !important;
+            }
+        }
     }
 
     .nav-social-list {

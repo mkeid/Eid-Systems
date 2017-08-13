@@ -23,18 +23,22 @@ body {
     font-family: "Raleway", sans-serif;
 }
 
-input {
+input[type=text] {
     border: .078em solid rgb(200, 200, 200);
     border-radius: .3em;
     font-size: 1.2em;
-    padding: .5em;
+    padding: .3em;
+}
+
+input[type=submit] {
+    border: none;
 }
 
 textarea {
     border: .078em solid rgb(200, 200, 200);
     border-radius: .3em;
-    font-size: 1.1em;
-    padding: .5em;
+    font-size: 1.012em;
+    padding: .3em;
     resize: none;
 }
 

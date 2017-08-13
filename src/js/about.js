@@ -12,6 +12,10 @@ const Skill = (props) => (
 )
 
 class AboutSite extends Component {
+    componentDidMount() {
+        this.props.updateCurrentPage("about")
+    }
+
     render() {
         const skills = this.props.skills.map((skill) => (
             <Skill

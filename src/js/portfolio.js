@@ -51,13 +51,21 @@ class Portfolio extends Component {
     }
 }
 
-const PortfolioSite = () => (
-    <div className="portfolio-site">
-        <Body>
-            <Portfolio />
-        </Body>
-    </div>
-)
+class PortfolioSite extends Component {
+    componentDidMount() {
+        this.props.updateCurrentPage("portfolio")
+    }
+
+    render() {
+        return (
+            <div className="portfolio-site">
+                <Body>
+                    <Portfolio />
+                </Body>
+            </div>
+        )
+    }
+}
 
 module.exports = {
     Portfolio,

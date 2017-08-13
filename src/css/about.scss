@@ -43,12 +43,12 @@
     .skills {
         color: $color2;
         display: inline-block;
-        text-align: center;
+        text-align: left;
         width: 65em;
 
         .skill {
             margin: 1.2em 0 4.5em 0;
-            text-align: left;
+            text-align: justify;
 
             .title {
                 font-size: 2em;
