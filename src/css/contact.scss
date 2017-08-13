@@ -18,6 +18,19 @@
         text-align: left;
         width: 65em;
 
+        .css-1vm9g5e {
+            font-family: "Raleway", sans-serif;
+            font-size: 1em !important;
+        }
+
+        .email-warning {
+            color: red;
+            display: inline-block;
+            margin-left: 1em;
+            position: relative;
+            top: -.04em;
+        }
+
         .head {
             font-size: 2em;
             font-weight: bold;
@@ -52,6 +65,7 @@
             }
 
             .title {
+                display: inline-block;
                 font-size: 1.4em;
                 margin-bottom: .4em;
             }
@@ -59,13 +73,19 @@
 
         .send-button {
             background: rgb(0, 119, 181);
+            border: .1em solid rgb(0, 119, 181);
             border-radius: .3em;
             color: white;
+            cursor: pointer;
             display: inline-block;
             float: right;
             font-size: 1.3em;
             font-weight: bold;
-            padding: .4em 1.3em;
+            padding: .4em 0;
+            position: relative;
+            left: -.35em;
+            text-align: center;
+            width: 5em;
 
             -moz-transition: background .15s ease-in;
             -o-transition: background .15s ease-in;
@@ -79,6 +99,18 @@
                 -o-transition: background .2s ease-in;
                 -webkit-transition: background .2s ease-in;
                 transition: background .2s ease-in;
+            }
+        }
+
+        .sent-confirmation {
+            $green: rgb(60, 170, 90);
+            background: none;
+            border: .1em solid $green;
+            color: $green;
+            cursor: default;
+
+            &:hover {
+                background: none;
             }
         }
     }
