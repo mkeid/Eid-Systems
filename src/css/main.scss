@@ -6,6 +6,21 @@ $color4: rgb(238, 239, 247);
 
 $borderGray: rgb(230, 230, 230);
 
+@font-face {
+    font-family: "Raleway";
+    src:  format ("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), local('Raleway-Regular'), url("../../public/fonts/Raleway.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -70,6 +85,36 @@ ul {
                 background: $color4;
                 padding: 0 2em;
             }
+        }
+    }
+}
+
+.index-site {
+    .body {
+        .see-more {
+            color: rgb(54, 142, 160);
+            display: block;
+            font-weight: bold;
+            margin-bottom: 2.5em;
+            text-decoration: none;
+
+            -moz-transition: color .2s ease-in;
+            -o-transition: color .2s ease-in;
+            -webkit-transition: color .2s ease-in;
+            transition: color .2s ease-in;
+
+            &:hover {
+                color: rgb(84, 172, 190);
+
+                -moz-transition: all .2s ease-in;
+                -o-transition: all .2s ease-in;
+                -webkit-transition: all .2s ease-in;
+                transition: all .2s ease-in;
+            }
+        }
+
+        .portfolio {
+            padding-bottom: .1em;
         }
     }
 }

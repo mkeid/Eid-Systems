@@ -8,7 +8,7 @@ import Footer from "./js/footer.js"
 import { IndexSite } from "./js/index.js"
 import NavBar from "./js/nav"
 import { PortfolioSite } from "./js/portfolio"
-import { about, indexData, skills } from "./js/data"
+import { about, indexData, projects, skills } from "./js/data"
 import "./css/main.scss"
 
 
@@ -20,6 +20,7 @@ const Main = (props) => (
                 render={() => (
                     <IndexSite
                         data={indexData}
+                        projects={projects}
                         updateCurrentPage={props.updateCurrentPage}
                     />
                 )}
@@ -39,6 +40,7 @@ const Main = (props) => (
                 path="/portfolio"
                 render={() => (
                     <PortfolioSite
+                        projects={projects}
                         updateCurrentPage={props.updateCurrentPage}
                     />
                 )}

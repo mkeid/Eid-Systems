@@ -26,6 +26,30 @@ const indexData = {
     }
 }
 
+const projects = [
+    {
+        title: "Feed-Forward Style Transfer",
+        type: "Computer Vision",
+        imgSrc: "/images/feed-forward-style-transfer.jpg",
+        url: "https://github.com/mohamedkeid/Feed-Forward-Style-Transfer",
+        forIndex: true
+    },
+    {
+        title: "Neural Machine Translation",
+        type: "Natural Language Processing",
+        imgSrc: "/images/neural-machine-translation.jpg",
+        url: "https://github.com/mohamedkeid/Feed-Forward-Style-Transfer",
+        forIndex: true
+    },
+    {
+        title: "Neural Network From Scratch",
+        type: "Deep Learning",
+        imgSrc: "/images/neural-network-from-scratch.jpg",
+        url: "https://github.com/mohamedkeid/Feed-Forward-Style-Transfer",
+        forIndex: true
+    },
+]
+
 const skills = [
     {
         title: "Front-end Development",
@@ -91,7 +115,7 @@ const skills = [
         keywords: [
             "Python",
             "Computer Vision",
-            "Natural Language Processing",
+            "NLP",
             "PyTorch",
             "TensorFlow",
             "NumPy",
@@ -103,5 +127,6 @@ const skills = [
 module.exports = {
     about,
     indexData,
+    projects,
     skills
 }
