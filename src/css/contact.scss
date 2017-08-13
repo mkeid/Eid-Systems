@@ -10,4 +10,62 @@
             animation: fadein 2s forwards;
         }
     }
+
+    .email-form {
+        color: $color1;
+        display: inline-block;
+        padding-bottom: 3em;
+        text-align: left;
+        width: 65em;
+
+        .head {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: .4em;
+        }
+
+        .inputs {
+            > div {
+                display: inline-block;
+                width: 30.5em;
+            }
+
+            input {
+                margin-bottom: 1.5em;
+                width: 100%;
+            }
+
+            textarea {
+                height: 7.7em;
+                width: 100%;
+            }
+
+            .left {
+                padding-right: 2em;
+            }
+
+            .right {
+                padding-left: 2em;
+                position: relative;
+                left: -1.17em;
+                top: 1em;
+            }
+
+            .title {
+                font-size: 1.4em;
+                margin-bottom: .6em;
+            }
+        }
+
+        .send-button {
+            background: rgb(0, 119, 181);
+            border-radius: .3em;
+            color: white;
+            display: inline-block;
+            float: right;
+            font-size: 1.4em;
+            font-weight: bold;
+            padding: .4em 1.3em;
+        }
+    }
 }

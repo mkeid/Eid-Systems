@@ -47,7 +47,7 @@
         width: 65em;
 
         .skill {
-            margin-bottom: 4em;
+            margin: 1.2em 0 4.5em 0;
             text-align: left;
 
             .title {
@@ -63,7 +63,7 @@
             .keywords {
                 .keyword {
                     background: $color2;
-                    border-radius: 5px;
+                    border-radius: .3em;
                     color: $color4;
                     cursor: default;
                     display: inline-block;

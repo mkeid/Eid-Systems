@@ -5,6 +5,32 @@
     text-align: center;
     width: 100%;
 
+    .linkedin-link {
+        background: rgb(0, 119, 181);
+        border-radius: .3em;
+        color: white;
+        font-size: 1.3em;
+        font-weight: bold;
+        padding: .6em;
+        position: relative;
+        text-decoration: none;
+        top: 19.9em;
+
+        -moz-transition: background .15s ease-in;
+        -o-transition: background .15s ease-in;
+        -webkit-transition: background .15s ease-in;
+        transition: background .15s ease-in;
+
+        &:hover {
+            background: rgb(20, 139, 201);
+
+            -moz-transition: background .2s ease-in;
+            -o-transition: background .2s ease-in;
+            -webkit-transition: background .2s ease-in;
+            transition: background .2s ease-in;
+        }
+    }
+
     .container {
         display: inline-block;
         height: 100%;
@@ -52,6 +78,40 @@
             -webkit-animation-delay: 1s;
             animation-delay: 1s;
 
+            a {
+                color: rgb(54, 142, 160);
+                font-weight: bold;
+                position: relative;
+                top: 0.625em;
+                text-decoration: none;
+
+                &:before {
+                    background-color: rgb(54, 142, 160);
+                    content: "";
+                    height: .11em;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    visibility: hidden;
+                    width: 0%;
+
+                    -moz-transition: all .2s ease-in;
+                    -o-transition: all .2s ease-in;
+                    -webkit-transition: all .2s ease-in;
+                    transition: all .2s ease-in;
+                }
+
+                &:hover:before {
+                    visibility: visible;
+                    width: 100%;
+
+                    -moz-transition: all .2s ease-in;
+                    -o-transition: all .2s ease-in;
+                    -webkit-transition: all .2s ease-in;
+                    transition: all .2s ease-in;
+                }
+            }
+
             span {
                 display: block;
                 margin: .34em 0;
@@ -64,40 +124,6 @@
 
             .details {
                 font-size: 1.875em;
-            }
-        }
-
-        a {
-            color: rgb(54, 142, 160);
-            font-weight: bold;
-            position: relative;
-            top: 0.625em;
-            text-decoration: none;
-
-            &:before {
-                background-color: rgb(54, 142, 160);
-                content: "";
-                height: .11em;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                visibility: hidden;
-                width: 0%;
-
-                -moz-transition: all .2s ease-in;
-                -o-transition: all .2s ease-in;
-                -webkit-transition: all .2s ease-in;
-                transition: all .2s ease-in;
-            }
-
-            &:hover:before {
-                visibility: visible;
-                width: 100%;
-
-                -moz-transition: all .2s ease-in;
-                -o-transition: all .2s ease-in;
-                -webkit-transition: all .2s ease-in;
-                transition: all .2s ease-in;
             }
         }
 

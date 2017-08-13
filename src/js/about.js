@@ -23,7 +23,7 @@ class AboutSite extends Component {
                     ))
                 }
                 keywords={
-                    skill.keywords.map((keyword) => (
+                    skill.keywords.sort().map((keyword) => (
                         <div className="keyword">{keyword}</div>
                     ))
                 }

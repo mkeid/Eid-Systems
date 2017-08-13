@@ -23,6 +23,21 @@ body {
     font-family: "Raleway", sans-serif;
 }
 
+input {
+    border: .078em solid rgb(200, 200, 200);
+    border-radius: .3em;
+    font-size: 1.2em;
+    padding: .5em;
+}
+
+textarea {
+    border: .078em solid rgb(200, 200, 200);
+    border-radius: .3em;
+    font-size: 1.1em;
+    padding: .5em;
+    resize: none;
+}
+
 ul {
     margin: 0;
     padding: 0;
