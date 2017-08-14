@@ -31,7 +31,7 @@ class NavItemList extends React.Component {
         const navItems = this.props.items.map(item =>
             <NavItem
                 key={item}
-                title={item}
+                title={item.toUpperCase()}
                 href={item.toLowerCase()}
                 selected={this.props.currentPage[item.toLowerCase()]}
             />
@@ -64,7 +64,7 @@ class NavSocialList extends React.Component {
 class NavBar extends React.Component {
     render() {
         const logoImgSrc = "/images/logo.png"
-        const navItemsData = ["About", "Portfolio", "Contact"]
+        const navItemsData = ["About", "Portfolio", "Contact", "Blog"].sort()
         const navSocialsData = [
             {
                 site: "GitHub",
@@ -79,12 +79,14 @@ class NavBar extends React.Component {
         ]
         return (
             <div className="nav-bar">
-                <Logo imgSrc={logoImgSrc} />
-                <NavItemList
-                    items={navItemsData}
-                    currentPage={this.props.currentPage}
-                />
-                <NavSocialList socials={navSocialsData} />
+                <div className="container">
+                    <Logo imgSrc={logoImgSrc} />
+                    <NavItemList
+                        items={navItemsData}
+                        currentPage={this.props.currentPage}
+                    />
+                    <NavSocialList socials={navSocialsData} />
+                </div>
             </div>
         )
     }

@@ -95,7 +95,7 @@ class ContactBillboard extends Component {
             <div className="billboard">
                 <div className="container">
                     <a className="linkedin-link" href="https://www.linkedin.com/in/mkeid/">
-                        Connect With Me
+                        CONNECT
                     </a>
                 </div>
             </div>

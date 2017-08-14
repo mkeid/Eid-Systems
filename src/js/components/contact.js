@@ -153,9 +153,9 @@ class EmailForm extends Component {
                     </div>
                 </div>
                 {this.state.disabled ? (
-                    <div className="send-button sent-confirmation">Sent!</div>
+                    <div className="send-button sent-confirmation">SENT!</div>
                 ) : (
-                    <input type="submit" value="Send" className="send-button" />
+                    <input type="submit" value="SEND" className="send-button" />
                 )}
             </form>
         )

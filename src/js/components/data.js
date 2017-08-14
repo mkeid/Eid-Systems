@@ -36,7 +36,7 @@ const projects = [
     },
     {
         title: "Neural Machine Translation",
-        type: "Natural Language Processing",
+        type: "NLP",
         imgSrc: "/images/projects/neural-machine-translation.jpg",
         url: "https://github.com/mohamedkeid/Neural-Machine-Translation",
         forIndex: true

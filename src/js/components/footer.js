@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 
 const Copyright = (props) => (
     <div className="copyright">
-        © {props.year} {props.name}
+        © Copyright {props.year} | {props.name}
     </div>
 )
 

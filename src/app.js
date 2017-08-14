@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import { HashRouter, Route, Switch } from "react-router-dom"
 
 import { AboutSite } from "./js/components/about"
+import { BlogSite } from "./js/components/blog"
 import { ContactSite } from "./js/components/contact"
 import Footer from "./js/components/footer.js"
 import { IndexSite } from "./js/components/index.js"
@@ -36,11 +37,9 @@ const Main = (props) => (
                 )}
             />
             <Route
-                exact
-                path="/portfolio"
+                exact path="/blog"
                 render={() => (
-                    <PortfolioSite
-                        projects={projects}
+                    <BlogSite
                         updateCurrentPage={props.updateCurrentPage}
                     />
                 )}
@@ -49,6 +48,16 @@ const Main = (props) => (
                 exact path="/contact"
                 render={() => (
                     <ContactSite
+                        updateCurrentPage={props.updateCurrentPage}
+                    />
+                )}
+            />
+            <Route
+                exact
+                path="/portfolio"
+                render={() => (
+                    <PortfolioSite
+                        projects={projects}
                         updateCurrentPage={props.updateCurrentPage}
                     />
                 )}
@@ -86,8 +95,9 @@ class App extends Component {
         this.setState({
             currentPage: {
                 about: page === "about",
-                portfolio: page === "portfolio",
-                contact: page === "contact"
+                blog: page === "blog",
+                contact: page === "contact",
+                portfolio: page === "portfolio"
             }
         })
     }

@@ -74,12 +74,12 @@
         .send-button {
             background: rgb(0, 119, 181);
             border: .1em solid rgb(0, 119, 181);
-            border-radius: .3em;
+            border-radius: .15em;
             color: white;
             cursor: pointer;
             display: inline-block;
             float: right;
-            font-size: 1.3em;
+            font-size: 1.2em;
             font-weight: bold;
             padding: .4em 0;
             position: relative;
@@ -87,10 +87,22 @@
             text-align: center;
             width: 5em;
 
+            -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+            -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+            -o-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+            box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+
             -moz-transition: background .15s ease-in;
             -o-transition: background .15s ease-in;
             -webkit-transition: background .15s ease-in;
             transition: background .15s ease-in;
+
+            &:active {
+                -webkit-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+                -moz-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+                -o-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+                box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+            }
 
             &:hover {
                 background: rgb(20, 139, 201);

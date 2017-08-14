@@ -7,7 +7,7 @@
 
     .linkedin-link {
         background: rgb(0, 119, 181);
-        border-radius: .3em;
+        border-radius: .15em;
         color: white;
         font-size: 1.3em;
         font-weight: bold;
@@ -16,10 +16,21 @@
         text-decoration: none;
         top: 19.9em;
 
+        -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+        -o-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+
         -moz-transition: background .15s ease-in;
         -o-transition: background .15s ease-in;
         -webkit-transition: background .15s ease-in;
         transition: background .15s ease-in;
+
+        &:active {
+            -webkit-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+            -moz-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+            box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+        }
 
         &:hover {
             background: rgb(20, 139, 201);

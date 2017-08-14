@@ -9,17 +9,33 @@
     width: 100%;
     z-index: 100;
 
+    .container {
+        display: inline-block;
+        text-align: center;
+        width: 65em;
+    }
+
     img {
         height:3em;
         vertical-align: middle;
+
+        &:active {
+            -moz-transform: scale(.85);
+            -o-transform: scale(.85);
+            -webkit-transform: scale(.85);
+            transform: scale(.85);
+
+            -moz-transition: transform .55s ease-in;
+            -o-transition: transform .55s ease-in;
+            -webkit-transition: transform .55s ease-in;
+            transition: transform .55s ease-in;
+        }
     }
 
     .logo {
         display: inline-block;
+        float: left;
         position: relative;
-        left: -1.43em;
-        top: -0.313em;
-        width: 12.500em;
 
         img {
             -moz-filter: brightness(1.2);
@@ -33,29 +49,25 @@
             transition: filter .15s ease-in;
 
             &:hover {
-                -moz-filter: brightness(1.4);
-                -o-filter: brightness(1.4);
-                -webkit-filter: brightness(1.4);
-                filter: brightness(1.4);
-
-                -moz-transition: filter .15s ease-in;
-                -o-transition: filter .15s ease-in;
-                -webkit-transition: filter .15s ease-in;
-                transition: filter .15s ease-in;
+                opacity: .9;
             }
         }
     }
 
     .nav-item-list {
         display: inline-block;
-        font-size: 1.875em;
-        margin: 0 5.34em;
+        font-size: 1.475em;
+        position: relative;
+        left: 1.15em;
         text-align: center;
 
         .nav-item {
-            margin: 0 .6em;
+            margin: 0 .8em;
             position: relative;
-            width: 8.125em;
+
+            &:active {
+                opacity: .5;
+            }
 
             &:before {
                 background-color: $color4;
@@ -96,15 +108,17 @@
 
     .nav-social-list {
         display: inline-block;
+        float: right;
         position: relative;
         top: -0.313em;
-        width: 12.500em;
 
         .nav-social {
+            &:first-child {
+                margin: 0 0.625em;
+            }
+
             img {
                 display: inline-block;
-                margin: 0 0.625em;
-
                 -moz-filter: none;
                 -o-filter: none;
                 -webkit-filter: none;
@@ -116,15 +130,7 @@
                 transition: filter .15s ease-in;
 
                 &:hover {
-                    -moz-filter: brightness(2);
-                    -o-filter: brightness(2);
-                    -webkit-filter: brightness(2);
-                    filter: brightness(2);
-
-                    -moz-transition: filter .15s ease-in;
-                    -o-transition: filter .15s ease-in;
-                    -webkit-transition: filter .15s ease-in;
-                    transition: filter .15s ease-in;
+                    opacity: .9;
                 }
             }
         }
