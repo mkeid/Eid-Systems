@@ -48,6 +48,27 @@ const projects = [
         url: "https://github.com/mohamedkeid/Feed-Forward-Style-Transfer",
         forIndex: true
     },
+    {
+        title: "Texture Synthesis",
+        type: "Computer Vision",
+        imgSrc: "",
+        url: "",
+        forIndex: false
+    },
+    {
+        title: "Style Transfer Algorithm",
+        type: "Computer Vision",
+        imgSrc: "",
+        url: "",
+        forIndex: false
+    },
+    {
+        title: "Eid Systems",
+        type: "Web Development",
+        imgSrc: "",
+        url: "",
+        forIndex: false
+    }
 ]
 
 const skills = [

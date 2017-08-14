@@ -6,8 +6,11 @@ const PortfolioItem = (props) => (
     <li className="portfolio-item">
         <a href={props.url}>
             <img src={props.imgSrc} />
-            <div className="portfolio-item-title">{props.title}</div>
-            <div className="portfolio-item-type">{props.type}</div>
+            <div className="portfolio-item-info">
+                <div className="portfolio-item-title">{props.title}</div>
+                <div className="portfolio-item-type">{props.type}</div>
+            </div>
+            <div className="portfolio-arrow">></div>
         </a>
     </li>
 )
