@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
+import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 
 
@@ -63,33 +64,25 @@ class NavSocialList extends React.Component {
 
 class NavBar extends React.Component {
     render() {
-        const logoImgSrc = "/images/logo.png"
-        const navItemsData = ["About", "Portfolio", "Contact", "Blog"].sort()
-        const navSocialsData = [
-            {
-                site: "GitHub",
-                url: "https://github.com/mohamedkeid",
-                src: "/images/github.png"
-            },
-            {
-                site: "LinkedIn",
-                url: "https://www.linkedin.com/in/mkeid/",
-                src: "/images/linkedin.png"
-            }
-        ]
         return (
             <div className="nav-bar">
                 <div className="container">
-                    <Logo imgSrc={logoImgSrc} />
+                    <Logo imgSrc={this.props.logoImgSrc} />
                     <NavItemList
-                        items={navItemsData}
+                        items={this.props.items.sort()}
                         currentPage={this.props.currentPage}
                     />
-                    <NavSocialList socials={navSocialsData} />
+                    <NavSocialList socials={this.props.socials} />
                 </div>
             </div>
         )
     }
 }
 
-module.exports = NavBar
+const mapStateToProps = (state) => ({
+    items: state.nav.items,
+    logoImgSrc: state.nav.logoImgSrc,
+    socials: state.nav.socials
+})
+const NavContainer = connect(mapStateToProps)(NavBar)
+module.exports = NavContainer

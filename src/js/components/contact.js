@@ -1,17 +1,16 @@
-import React, { Component } from 'react'
-import AlertContainer from 'react-alert'
-import axios from 'axios'
-import Body from './body'
-import { ContactBillboard } from './billboard'
+import React, { Component } from "react"
+import AlertContainer from "react-alert"
+import axios from "axios"
+import { Body } from "./reuse"
 
 
 class EmailForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: '',
-            message: '',
-            name: '',
+            email: "",
+            message: "",
+            name: "",
             disabled: false,
             shouldShowWarning: false,
             showWarning: false
@@ -20,10 +19,10 @@ class EmailForm extends Component {
 
         this.alertOptions = {
             offset: 14,
-            position: 'bottom left',
-            theme: 'dark',
+            position: "bottom left",
+            theme: "dark",
             time: 5000,
-            transition: 'fade'
+            transition: "fade"
         }
         this.emailExression = /[\w\d]+@[\w\d]+\.[\w\d]+/
 
@@ -130,7 +129,7 @@ class EmailForm extends Component {
                             <div className="title">Email</div>
                             {this.state.showWarning &&
                                 <div className="email-warning">
-                                    ( Please provide a valid address )
+                                    Invalid Address
                                 </div>
                             }
                             <input type="text"
@@ -158,6 +157,20 @@ class EmailForm extends Component {
                     <input type="submit" value="SEND" className="send-button" />
                 )}
             </form>
+        )
+    }
+}
+
+class ContactBillboard extends Component {
+    render() {
+        return (
+            <div className="billboard">
+                <div className="container">
+                    <a className="linkedin-link" href="https://www.linkedin.com/in/mkeid/">
+                        CONNECT
+                    </a>
+                </div>
+            </div>
         )
     }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-import Body from "./body"
+import { Body } from "./reuse"
+import { connect } from "react-redux"
 
 
 const PortfolioItem = (props) => (
@@ -50,8 +51,17 @@ class PortfolioSite extends Component {
     }
 }
 
+const mapStateToProps = (state) => (
+    {
+        projects: state.projects
+    }
+)
+
+const ProjectsContainer = connect(mapStateToProps)(PortfolioSite)
+
 module.exports = {
     Portfolio,
     PortfolioItem,
-    PortfolioSite
+    PortfolioSite,
+    ProjectsContainer
 }

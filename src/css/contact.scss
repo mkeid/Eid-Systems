@@ -24,11 +24,16 @@
         }
 
         .email-warning {
-            color: red;
+            background: rgb(190, 20,70);
+            border-radius: 1em;
+            color: white;
+            cursor: default;
             display: inline-block;
+            font-weight: bold;
             margin-left: 1em;
+            padding: .1em .6em;
             position: relative;
-            top: -.04em;
+            top: -.12em;
         }
 
         .head {

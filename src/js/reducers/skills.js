@@ -1,112 +1,9 @@
-const about = {
+const AboutReducer = () => ({
     head: "I'm a web developer and software engineer from the Greater New York area.",
     detail: "I enjoy building things that provide a tangible difference to the world. When I'm not programming, you'll find me bouldering or producing music."
-}
+})
 
-const indexData = {
-    developer: {
-        title: "Web Dev",
-        keywords: [
-            "React",
-            "Redux",
-            "Node.js",
-            "MongoDB",
-            "Rails"
-        ]
-    },
-    engineer: {
-        title: "Engineer",
-        keywords: [
-            "Unix/Linux",
-            "Scikit-learn",
-            "TensorFlow",
-            "PyTorch",
-            "NumPy"
-        ]
-    }
-}
-
-const projects = [
-    {
-        title: "Feed-Forward Style Transfer",
-        type: "Computer Vision",
-        imgSrc: "/images/projects/feed-forward-style-transfer.jpg",
-        url: "https://github.com/mohamedkeid/Feed-Forward-Style-Transfer",
-        forIndex: true
-    },
-    {
-        title: "Neural Machine Translation",
-        type: "NLP",
-        imgSrc: "/images/projects/neural-machine-translation.jpg",
-        url: "https://github.com/mohamedkeid/Neural-Machine-Translation",
-        forIndex: true
-    },
-    {
-        title: "Neural Network From Scratch",
-        type: "Deep Learning",
-        imgSrc: "/images/projects/neural-network-from-scratch.jpg",
-        url: "https://github.com/mohamedkeid/Neural-Network-For-Digit-Prediction",
-        forIndex: true
-    },
-    {
-        title: "Texture Synthesis",
-        type: "Computer Vision",
-        imgSrc: "/images/projects/texture-synthesis.jpg",
-        url: "https://github.com/mohamedkeid/Texture-Synthesis",
-        forIndex: false
-    },
-    {
-        title: "Style Transfer Algorithm",
-        type: "Computer Vision",
-        imgSrc: "/images/projects/style-transfer-algorithm.jpg",
-        url: "https://github.com/mohamedkeid/Style-Transfer-Algorithm",
-        forIndex: false
-    },
-    {
-        title: "Eid Systems",
-        type: "Web Development",
-        imgSrc: "/images/projects/eid-systems.jpg",
-        url: "https://github.com/mohamedkeid/Eid-Systems",
-        forIndex: false
-    },
-    {
-        title: "NiteSpot",
-        type: "Web & Mobile Development",
-        imgSrc: "/images/projects/nitespot.jpg",
-        url: "",
-        forIndex: false
-    },
-    {
-        title: "Blew My Mind",
-        type: "Graphic Design",
-        imgSrc: "/images/projects/blew-my-mind.jpg",
-        url: "https://www.behance.net/gallery/55729569/Blew-My-Mind",
-        forIndex: false
-    },
-    {
-        title: "City Tripper",
-        type: "Illustration",
-        imgSrc: "/images/projects/city-tripper.jpg",
-        url: "https://www.behance.net/gallery/55729487/City-Tripper",
-        forIndex: false
-    },
-    {
-        title: "Beside You",
-        type: "Music Production",
-        imgSrc: "https://i1.sndcdn.com/artworks-000146239088-i704jo-t500x500.jpg",
-        url: "https://soundcloud.com/mokeid/besideyou",
-        forIndex: false
-    },
-    {
-        title: "Chrome Spark",
-        type: "Music Production",
-        imgSrc: "https://i1.sndcdn.com/artworks-000143054824-7qym8w-t500x500.jpg",
-        url: "https://soundcloud.com/mokeid/chromespark",
-        forIndex: false
-    }
-]
-
-const skills = [
+const SkillsReducer = () => ([
     {
         title: "Front-end Development",
         description: [
@@ -178,11 +75,9 @@ const skills = [
             "Scikit-learn"
         ]
     }
-]
+])
 
 module.exports = {
-    about,
-    indexData,
-    projects,
-    skills
+    AboutReducer,
+    SkillsReducer
 }
