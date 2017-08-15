@@ -1,11 +1,12 @@
+const webpack = require("webpack")
 const path = require('path')
-const isProduction = JSON.parse(process.env.PROD_ENV || '0');
+const isProduction = JSON.parse(process.env.PROD_ENV || '0')
 
 module.exports = {
     entry: path.resolve(__dirname, 'src') + '/app.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'bundle.js'
     },
     module: {
         loaders: [
@@ -26,21 +27,14 @@ module.exports = {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
                 loader: 'file-loader?name=/fonts/[name].[ext]'
             },
+            {
+                test: /\.(jpg|png|gif)$/,
+                loader: 'file-loader?name=/images/[name].[ext]'
+            },
+
         ]
     },
     plugins: isProduction ? [
-        new webpack.optimize.UglifyJsPlugin({
-            beautify: false,
-            comments: false,
-            compress: {
-                warnings: false,
-                drop_console: true
-            },
-            mangle: {
-                except: ['$'],
-                screw_ie8: true,
-                keep_fnames: false
-            }
-        })
+        new webpack.EnvironmentPlugin(['NODE_ENV'])
     ] : []
 }
