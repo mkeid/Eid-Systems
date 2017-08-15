@@ -96,25 +96,13 @@
                 top: 0.625em;
                 text-decoration: none;
 
-                &:before {
-                    background-color: rgb(54, 142, 160);
-                    content: "";
-                    height: .11em;
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    visibility: hidden;
-                    width: 0%;
+                -moz-transition: color .2s ease-in;
+                -o-transition: color .2s ease-in;
+                -webkit-transition: color .2s ease-in;
+                transition: color .2s ease-in;
 
-                    -moz-transition: all .2s ease-in;
-                    -o-transition: all .2s ease-in;
-                    -webkit-transition: all .2s ease-in;
-                    transition: all .2s ease-in;
-                }
-
-                &:hover:before {
-                    visibility: visible;
-                    width: 100%;
+                &:hover {
+                    color: rgb(84, 172, 190);
 
                     -moz-transition: all .2s ease-in;
                     -o-transition: all .2s ease-in;
