@@ -5,7 +5,6 @@
   "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-
     "build-prod": "npm run build:client; npm run build:server",
     "build:server": "babel server-es2015.js --out-file server.js",
     "build:client": "webpack -p --config webpack.prod.config.js --progress",
@@ -39,8 +38,9 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-cli": "^6.24.1",
+    "body-parser": "^1.17.2",
+    "emailjs": "^1.0.11",
     "express": "^4.15.4",
-    "memory-fs": "^0.4.1",
     "mongodb": "^2.2.31",
     "react": "^15.6.1",
     "react-alert": "^2.2.0",
