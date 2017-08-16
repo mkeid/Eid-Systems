@@ -2,6 +2,10 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 
 
+/**
+* Component making up a single blog post
+* @extends Component
+*/
 class Post extends Component {
     render() {
         //const date = this.props.date.toLocaleDateString('en-US', {
@@ -21,21 +25,20 @@ class Post extends Component {
     }
 }
 
+/**
+* Component used by react router to render the "Blog" page
+* @extends Component
+*/
 class BlogSite extends Component {
     componentDidMount() {
-        this.props.updateCurrentPage("blog")
+        this.props.updateCurrentPage("Blog")
     }
 
     render() {
-        const posts = this.props.posts.map(post =>
-            <Post
-                key={post.title}
-                title={post.title}
-                date={post.date}
-                imgSrc={post.imgSrc}
-                preview={post.preview}
-            />
+        const posts = this.props.posts.map(
+            post => <Post key={post.title} {...post} />
         )
+
         return (
             <div className="blog-site">
                 <div className="container">{posts}</div>
@@ -44,11 +47,8 @@ class BlogSite extends Component {
     }
 }
 
-
-const mapStateToProps = (state) => ({
-    posts: state.posts
-})
+// Init redux container for "Blog" page
+const mapStateToProps = state => ({posts: state.posts})
 const BlogContainer = connect(mapStateToProps)(BlogSite)
-module.exports = {
-    BlogContainer
-}
+
+module.exports = { BlogContainer }

@@ -3,6 +3,9 @@ import { Body } from "./reuse"
 import { connect } from "react-redux"
 
 
+/**
+* A single-project component function
+*/
 const PortfolioItem = (props) => (
     <li className="portfolio-item">
         <a href={props.url}>
@@ -16,49 +19,49 @@ const PortfolioItem = (props) => (
     </li>
 )
 
+
+/**
+* Component list of project components
+* @extends Component
+*/
 class Portfolio extends Component {
     render() {
-        const portfolioItems = this.props.projects.map(item =>
-            <PortfolioItem
-                key={item.title}
-                imgSrc={item.imgSrc}
-                title={item.title}
-                type={item.type}
-                url={item.url}
-            />
+        const portfolioItems = this.props.projects.map(
+            item => <PortfolioItem key={item.title} {...item} />
         )
+
         return (
             <ul className="portfolio">
-                <div className="container">
-                    {portfolioItems}
-                </div>
+                <div className="container">{portfolioItems}</div>
             </ul>
         )
     }
 }
 
+
+/**
+* Component used by react router to render the "Portfolio" page
+* @extends Component
+*/
 class PortfolioSite extends Component {
     componentDidMount() {
-        this.props.updateCurrentPage("portfolio")
+        this.props.updateCurrentPage("Portfolio")
     }
 
     render() {
         return (
             <div className="portfolio-site">
                 <Body>
-                    <Portfolio projects={this.props.projects}/>
+                    <Portfolio projects={this.props.projects} />
                 </Body>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => (
-    {
-        projects: state.projects
-    }
-)
 
+// Init redux container for "Portfolio" page
+const mapStateToProps = state => ({projects: state.projects})
 const ProjectsContainer = connect(mapStateToProps)(PortfolioSite)
 
 module.exports = {

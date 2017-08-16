@@ -27,13 +27,13 @@ const data = {
         socials: [
             {
                 site: "GitHub",
-                url: "https://github.com/mohamedkeid",
-                src: "/images/github.png"
+                href: "https://github.com/mohamedkeid",
+                imgSrc: "/images/github.png"
             },
             {
                 site: "LinkedIn",
-                url: "https://www.linkedin.com/in/mkeid/",
-                src: "/images/linkedin.png"
+                href: "https://www.linkedin.com/in/mkeid/",
+                imgSrc: "/images/linkedin.png"
             }
         ]
     },

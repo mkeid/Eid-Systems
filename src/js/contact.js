@@ -4,6 +4,10 @@ import axios from "axios"
 import { Body } from "./reuse"
 
 
+/**
+* A form component storing input states with API calling functionality
+* @extends Component
+*/
 class EmailForm extends Component {
     constructor(props) {
         super(props)
@@ -17,6 +21,7 @@ class EmailForm extends Component {
         }
         this.baseState = this.state
 
+        // Auxiliary attributes
         this.alertOptions = {
             offset: 14,
             position: "bottom left",
@@ -26,6 +31,7 @@ class EmailForm extends Component {
         }
         this.emailExression = /[\w\d]+@[\w\d]+\.[\w\d]+/
 
+        // Bind this to methods
         this.handleBlurEmail = this.handleBlurEmail.bind(this)
         this.handleChangedEmail = this.handleChangedEmail.bind(this)
         this.handleChangedMessage = this.handleChangedMessage.bind(this)
@@ -36,45 +42,39 @@ class EmailForm extends Component {
         this.showEmailWarningAlert = this.showEmailWarningAlert.bind(this)
     }
 
+    /** After leaving the email field, check the input valdity */
     handleBlurEmail(event) {
-        this.setState({
-            showWarning: this.state.shouldShowWarning
-        })
+        this.setState({showWarning: this.state.shouldShowWarning})
     }
 
+    /** Update email state variable on change and verify it's valdity */
     handleChangedEmail(event) {
         const email = event.target.value
-        this.setState({
-            email: email,
-        })
+        this.setState({email: email})
 
         const validExpression = this.emailExression.exec(email)
         const validEmail = validExpression !== null || !email.length
 
         if (validEmail) {
-            this.setState({
-                shouldShowWarning: false,
-                showWarning: false
-            })
+            this.setState({shouldShowWarning: false, showWarning: false})
         } else {
-            this.setState({
-                shouldShowWarning: true
-            })
+            this.setState({shouldShowWarning: true})
         }
 
-        this.setState({
-            emailIsValid: validEmail
-        })
+        this.setState({emailIsValid: validEmail})
     }
 
+    /** Update message state variable on change */
     handleChangedMessage(event) {
         this.setState({message: event.target.value})
     }
 
+    /** Update name state variable on change */
     handleChangedName(event) {
         this.setState({name: event.target.value})
     }
 
+    /** If the form is appropriate, send an API POST request to send en email */
     handleSubmit(event) {
         event.preventDefault();
 
@@ -89,12 +89,11 @@ class EmailForm extends Component {
         const data = this.state
         axios.post("/email", data).then(response => {
             console.log(response)
-            this.setState({
-                disabled: true
-            })
+            this.setState({disabled: true})
         })
     }
 
+    /** Check to see if the input fields have been filled in */
     inputsNotEmpty() {
         const emailIsEmpty = this.state.email.length === 0
         const messageIsEmpty = this.state.message.length === 0
@@ -102,15 +101,25 @@ class EmailForm extends Component {
         return !(emailIsEmpty || messageIsEmpty || nameIsEmpty)
     }
 
+    /** Alert the user that the email is not valid */
     showEmailWarningAlert() {
         this.msg.error("Invalid email address")
     }
 
+    /** Alert the user that the form has not been entirely filled in */
     showIncompleteFormAlert() {
         this.msg.error("Incomplete form")
     }
 
     render() {
+        // Form submission button components
+        const sendButton = (
+            <input type="submit" value="SEND" className="send-button" />
+        )
+        const sentButton = (
+            <div className="send-button sent-confirmation">SENT!</div>
+        )
+
         return (
             <form onSubmit={this.handleSubmit} className="email-form">
                 <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
@@ -122,8 +131,7 @@ class EmailForm extends Component {
                             <input type="text"
                                 value={this.state.name}
                                 onChange={this.handleChangedName}
-                                disabled={this.state.disabled}
-                            />
+                                disabled={this.state.disabled} />
                         </div>
                         <div className="input">
                             <div className="title">Email</div>
@@ -136,8 +144,7 @@ class EmailForm extends Component {
                                 value={this.state.email}
                                 onBlur={this.handleBlurEmail}
                                 onChange={this.handleChangedEmail}
-                                disabled={this.state.disabled}
-                            />
+                                disabled={this.state.disabled} />
                         </div>
                     </div>
                     <div className="right">
@@ -146,38 +153,39 @@ class EmailForm extends Component {
                             <textarea
                                 value={this.state.message}
                                 onChange={this.handleChangedMessage}
-                                disabled={this.state.disabled}
-                            />
+                                disabled={this.state.disabled} />
                         </div>
                     </div>
                 </div>
-                {this.state.disabled ? (
-                    <div className="send-button sent-confirmation">SENT!</div>
-                ) : (
-                    <input type="submit" value="SEND" className="send-button" />
-                )}
+                {this.state.disabled ? sentButton : sendButton}
             </form>
         )
     }
 }
 
-class ContactBillboard extends Component {
-    render() {
-        return (
-            <div className="billboard">
-                <div className="container">
-                    <a className="linkedin-link" href="https://www.linkedin.com/in/mkeid/">
-                        CONNECT
-                    </a>
-                </div>
-            </div>
-        )
-    }
-}
 
+/**
+* Main head component function at the top of the "Contactt" page
+*/
+const ContactBillboard = () => (
+    <div className="billboard">
+        <div className="container">
+            <a className="linkedin-link"
+                href="https://linkedin.com/in/mkeid/">
+                CONNECT
+            </a>
+        </div>
+    </div>
+)
+
+
+/**
+* Component used by react router to render the "Contact" page
+* @extends Component
+*/
 class ContactSite extends Component {
     componentDidMount() {
-        this.props.updateCurrentPage("contact")
+        this.props.updateCurrentPage("Contact")
     }
 
     render() {
@@ -192,6 +200,5 @@ class ContactSite extends Component {
     }
 }
 
-module.exports = {
-    ContactSite
-}
+
+module.exports = { ContactSite }

@@ -5,6 +5,9 @@ import { Body } from "./reuse"
 import { Portfolio } from './portfolio'
 
 
+/**
+* Component function appearing within the index billboard that lists skills
+*/
 const InfoContainer = (props) => (
     <div className={props.type + "-container"}>
         <div className="title">{props.title}</div>
@@ -13,6 +16,11 @@ const InfoContainer = (props) => (
     </div>
 )
 
+
+/**
+* Set of components that make up the left and right billboard containers
+* @extends Component
+*/
 class InfoContainers extends Component{
     render() {
         return (
@@ -20,29 +28,34 @@ class InfoContainers extends Component{
                 <InfoContainer
                     type="developer"
                     title={this.props.developerTitle}
-                    data={this.props.developerKeywords}
-                />
+                    data={this.props.developerKeywords} />
                 <InfoContainer
                     type="engineer"
                     title={this.props.engineerTitle}
-                    data={this.props.engineerKeywords}
-                />
+                    data={this.props.engineerKeywords} />
             </div>
         )
     }
 }
 
+
+/**
+* Main head compnent at the top of the "Index" page
+* @extends Component
+*/
 class IndexBillboard extends Component {
     render() {
+        // Data for the left-side component
         const developerData = this.props.data.developer
-        const developerKeywords = developerData.keywords.map(data => (
-            <span key={data}>{data}</span>
-        ))
+        const developerKeywords = developerData.keywords.map(
+            data => (<span key={data}>{data}</span>)
+        )
 
+        // Data for the right-side component
         const engineerData = this.props.data.engineer
-        const engineerKeywords= engineerData.keywords.map(data => (
-            <span key={data}>{data}</span>
-        ))
+        const engineerKeywords= engineerData.keywords.map(
+            data => (<span key={data}>{data}</span>)
+        )
 
         return (
             <div className="billboard">
@@ -51,8 +64,7 @@ class IndexBillboard extends Component {
                         developerTitle={developerData.title}
                         developerKeywords={developerKeywords}
                         engineerTitle={engineerData.title}
-                        engineerKeywords={engineerKeywords}
-                    />
+                        engineerKeywords={engineerKeywords} />
                     <img src="/images/me-art.png" />
                 </div>
             </div>
@@ -60,9 +72,14 @@ class IndexBillboard extends Component {
     }
 }
 
+
+/**
+* Component used by react router to render the "Index" page
+* @extends Component
+*/
 class IndexSite extends Component {
     componentDidMount() {
-        this.props.updateCurrentPage("index")
+        this.props.updateCurrentPage("Index")
     }
 
     render() {
@@ -80,16 +97,8 @@ class IndexSite extends Component {
 }
 
 
-function mapStateToProps(state) {
-    return {
-        index: state.index,
-        projects: state.projects
-    }
-}
-
+// Init redux container for "Index" page
+const mapStateToProps = state => ({index: state.index, projects: state.projects})
 const IndexContainer = connect(mapStateToProps)(IndexSite)
 
-module.exports = {
-    IndexSite,
-    IndexContainer
-}
+module.exports = { IndexSite, IndexContainer }

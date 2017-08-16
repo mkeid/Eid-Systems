@@ -8,10 +8,9 @@ import { BrowserRouter, browserHistory } from "react-router-dom"
 import { Provider } from 'react-redux'
 
 // Import local modules
-import allReducers from "./js/reducers/all"
-import { Footer } from "./js/components/reuse"
-import { Main } from "./js/components/sites"
-import NavContainer from "./js/components/nav"
+import { Footer } from "./js/reuse"
+import { Main } from "./js/sites"
+import NavContainer from "./js/nav"
 import { fetchStore, fetchStoreRequest, reducer } from "./js/redux"
 import "./css/main.scss"
 
@@ -31,29 +30,15 @@ store.dispatch(fetchStoreRequest())
 class App extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            currentPage: {
-                about: false,
-                portfolio: false,
-                contact: false
-            }
-        }
+        this.state = {currentPage: "index"}
         this.updateCurrentPage = this.updateCurrentPage.bind(this)
     }
 
     updateCurrentPage(page) {
-        this.setState({
-            currentPage: {
-                about: page === "about",
-                blog: page === "blog",
-                contact: page === "contact",
-                portfolio: page === "portfolio"
-            }
-        })
+        this.setState({currentPage: page})
     }
 
     render() {
-        console.log(this.props)
         return this.props.isLoading ? (<div></div>) :
         (
             <BrowserRouter history={browserHistory}>
@@ -67,8 +52,10 @@ class App extends Component {
     }
 }
 
+// Create a container so the app can hide while fetching data
 const AppContainer = connect(state => state)(App)
 
+// Splice the React app into the DOM
 ReactDOM.render(
     <Provider store={store}>
         <AppContainer />

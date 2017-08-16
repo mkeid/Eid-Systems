@@ -71,13 +71,11 @@
                 }
 
                 img {
-                    border-radius: 0.15em;
+                    border-bottom: .05em solid $borderGray;
                     height: 11.75em;
                     object-fit: cover;
-                    padding-bottom: .25em;
+                    marginbottom: .3em;
                     width: 100%;
-
-                    filter: brightness(.96);
                 }
 
                 .portfolio-item-info {

@@ -26,10 +26,10 @@
         transition: opacity .2s ease-in;
 
         &:active {
-            -moz-transform: scale(.85);
-            -o-transform: scale(.85);
-            -webkit-transform: scale(.85);
-            transform: scale(.85);
+            -moz-transform: scale(.9);
+            -o-transform: scale(.9);
+            -webkit-transform: scale(.9);
+            transform: scale(.9);
 
             -moz-transition: transform .55s ease-in;
             -o-transition: transform .55s ease-in;
