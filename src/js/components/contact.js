@@ -89,9 +89,9 @@ class EmailForm extends Component {
         const data = this.state
         axios.post("/email", data).then(response => {
             console.log(response)
-        })
-        this.setState({
-            disabled: true
+            this.setState({
+                disabled: true
+            })
         })
     }
 

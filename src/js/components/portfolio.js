@@ -29,7 +29,9 @@ class Portfolio extends Component {
         )
         return (
             <ul className="portfolio">
-                {portfolioItems}
+                <div className="container">
+                    {portfolioItems}
+                </div>
             </ul>
         )
     }

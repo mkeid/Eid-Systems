@@ -19,18 +19,45 @@ $borderGray: rgb(230, 230, 230);
     to   { opacity: 1; }
 }
 
-
+a {
+    outline: 0;
+}
 
 body {
     background: $color1;
     font-family: "Raleway", sans-serif;
 }
 
+input[type=text], textarea {;
+    border-color: rgb(200, 200, 200);
+
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+
+    &:focus {
+        border-color: $color1;
+
+        -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+        -o-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+
+        -moz-transition: all .2s ease-in;
+        -o-transition: all .2s ease-in;
+        -webkit-transition: all .2s ease-in;
+        transition: all .2s ease-in;
+    }
+}
+
 input[type=text] {
     background: white;
-    border: .078em solid rgb(200, 200, 200);
+    border: .08em solid rgb(220, 220, 220);
     border-radius: .15em;
+    color: $color1;
     font-size: 1.2em;
+    outline: none;
     padding: .3em;
 }
 
@@ -40,9 +67,11 @@ input[type=submit] {
 
 textarea {
     background: white;
-    border: .078em solid rgb(200, 200, 200);
+    border: .1em solid rgb(220, 220, 220);
     border-radius: .15em;
+    color: $color1;
     font-size: 1.012em;
+    outline: none;
     padding: .3em;
     resize: none;
 }
@@ -60,6 +89,9 @@ ul {
     width: 100%;
 
     .container {
+        display: inline-block;
+        width: 65em;
+
         .title {
             border-bottom: .11em solid rgb(220, 220, 230);
             color: $color1;
@@ -69,7 +101,7 @@ ul {
             height: 2em;
             line-height: 4em;
             margin-bottom: 2em;
-            width: 51.8em;
+            width: 100%;
 
             span {
                 background: $color4;

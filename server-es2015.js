@@ -1,11 +1,12 @@
 const bodyParser = require("body-parser")
-const express = require("express")
+const config = require("./webpack.config.js")
 const emailjs = require("emailjs")
+const express = require("express")
 const path = require("path")
 const webpack = require("webpack")
 const webpackDevMiddleware = require("webpack-dev-middleware")
 const webpackHotMiddleware = require("webpack-hot-middleware")
-const config = require("./webpack.config.js")
+const data = require("./src/data")
 
 // Initialize needed variables
 const app = express()
@@ -19,6 +20,7 @@ const compiler = webpack(config)
 app.use(express.static(path.resolve(__dirname, "public")))
 
 if (isDevelopment) {
+    // Use webpack middleware layers if developing
     app.use(webpackDevMiddleware(compiler, {
         path: config.output.path
     }))
@@ -31,6 +33,10 @@ if (isDevelopment) {
 // Add JSON support
 app.use(bodyParser.json())
 
+// Send application data store
+app.get("/store", (request, response) => response.json(data))
+
+// Send self an email initiated from the contact page
 app.post("/email", function(request, response) {
     const server = emailjs.server.connect({
         host: "localhost"
