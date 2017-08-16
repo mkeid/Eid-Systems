@@ -18,7 +18,6 @@ const fetchStoreRequest = function() {
 
 const fetchStoreSuccess = (payload) => {
     type: "FETCH_STORE_REQUEST_SUCCESS",
-    console.log(payload)
     payload
 }
 
@@ -31,7 +30,6 @@ const reducer = (state, action) => {
         case "FETCH_STORE_REQUEST":
             return Object.assign({}, state, {isLoading: true})
         case "FETCH_STORE_REQUEST_SUCCESS":
-            console.log(action)
             return {
                 index: action.payload.data.index,
                 about: action.payload.data.about,

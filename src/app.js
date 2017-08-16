@@ -4,9 +4,8 @@ import axios from "axios"
 import axiosMiddleware from "redux-axios-middleware";
 import { connect } from "react-redux"
 import { compose, createStore, applyMiddleware } from "redux"
-import { HashRouter } from "react-router-dom"
+import { BrowserRouter, browserHistory } from "react-router-dom"
 import { Provider } from 'react-redux'
-import thunk from 'redux-thunk';
 
 // Import local modules
 import allReducers from "./js/reducers/all"
@@ -57,23 +56,22 @@ class App extends Component {
         console.log(this.props)
         return this.props.isLoading ? (<div></div>) :
         (
-            <div>
-                <NavContainer currentPage={this.state.currentPage} />
-                <Main updateCurrentPage={this.updateCurrentPage} />
-                <Footer />
-            </div>
+            <BrowserRouter history={browserHistory}>
+                <div>
+                    <NavContainer currentPage={this.state.currentPage} />
+                    <Main updateCurrentPage={this.updateCurrentPage} />
+                    <Footer />
+                </div>
+            </BrowserRouter>
         )
     }
 }
 
-const mapStateToProps = (state) => state
-const AppContainer = connect(mapStateToProps)(App)
+const AppContainer = connect(state => state)(App)
 
 ReactDOM.render(
-    <HashRouter>
-        <Provider store={store}>
-            <AppContainer />
-        </Provider>
-    </HashRouter>,
+    <Provider store={store}>
+        <AppContainer />
+    </Provider>,
     document.getElementById("react-root")
 )
