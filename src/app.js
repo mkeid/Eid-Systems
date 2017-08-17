@@ -5,7 +5,7 @@ import axiosMiddleware from "redux-axios-middleware";
 import { connect } from "react-redux"
 import { compose, createStore, applyMiddleware } from "redux"
 import { BrowserRouter, browserHistory } from "react-router-dom"
-import { Provider } from 'react-redux'
+import { Provider } from "react-redux"
 
 // Import local modules
 import { Footer } from "./js/reuse"

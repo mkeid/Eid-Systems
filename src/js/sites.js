@@ -14,20 +14,15 @@ const Main = (props) => (
     <main>
         <Switch>
             <Route exact path="/"
-                render={() => (<IndexContainer {...props} />)}
-            />
+                render={() => (<IndexContainer {...props} />)} />
             <Route exact path="/about"
-                render={() => (<AboutContainer {...props} />)}
-            />
+                render={() => (<AboutContainer {...props} />)} />
             <Route exact path="/blog"
-                render={() => (<BlogContainer {...props} />)}
-            />
+                render={() => (<BlogContainer {...props} />)} />
             <Route exact path="/contact"
-                render={() => (<ContactSite {...props} />)}
-            />
+                render={() => (<ContactSite {...props} />)} />
             <Route exact path="/portfolio"
-                render={() => (<ProjectsContainer {...props} />)}
-            />
+                render={() => (<ProjectsContainer {...props} />)} />
             <Route path="*" component={NotFound} />
         </Switch>
     </main>

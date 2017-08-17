@@ -40,11 +40,13 @@ const fetchStoreError = () => {
 * Primary redux reducer for the site
 */
 const reducer = (state, action) => {
+    console.log(action.payload)
     switch (action.type) {
         case "FETCH_STORE_REQUEST":
             return Object.assign({}, state, {isLoading: true})
         case "FETCH_STORE_REQUEST_SUCCESS":
             return {
+
                 index: action.payload.data.index,
                 about: action.payload.data.about,
                 nav: action.payload.data.nav,

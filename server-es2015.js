@@ -2,6 +2,7 @@ const bodyParser = require("body-parser")
 const config = require("./webpack.config.js")
 const emailjs = require("emailjs")
 const express = require("express")
+const mongoose = require("mongoose")
 const path = require("path")
 const webpack = require("webpack")
 const webpackDevMiddleware = require("webpack-dev-middleware")
@@ -15,6 +16,10 @@ const distDir = path.resolve(__dirname, "dist")
 const indexFile = path.resolve(__dirname, "public", "index.html")
 const isDevelopment = app.get('env') !== "production"
 const compiler = webpack(config)
+const { getComponents, getPosts, getProjects, getSkills } = require("./src/models")
+
+mongoose.connect("mongodb://localhost/eid-systems")
+const db = mongoose.connection
 
 // Open /public to both the development and production servers
 app.use(express.static(path.resolve(__dirname, "public")))
@@ -34,7 +39,31 @@ if (isDevelopment) {
 app.use(bodyParser.json())
 
 // Send application data store
-app.get("/store", (request, response) => response.json(data))
+app.get("/store", function(request, response) {
+    getComponents(function(error, components) {
+        let comps = {}
+        for (let i = 0; i < components.length; i++) {
+            let comp = components[i]
+            comps[comp.name] = Object.assign({}, comp.component)
+        }
+
+        getPosts(function(error, posts) {
+            getProjects(function(error, projects) {
+                getSkills(function(error, skills) {
+                    const payload = Object.assign({},
+                        comps,
+                        {posts: posts},
+                        {projects: projects},
+                        {skills: skills})
+                    response.json(payload)
+                })
+            })
+        })
+    })
+})
+
+
+//(request, response) => response.json(data))
 
 // Send self an email initiated from the contact page
 app.post("/email", function(request, response) {
