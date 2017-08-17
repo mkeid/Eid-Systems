@@ -21,7 +21,11 @@ const client = axios.create({
 })
 
 // Create our store which the entire application references
-const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)))
+const regexp = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
+const isMobile =  regexp.test(navigator.userAgent)
+const initState = {isMobile: isMobile}
+const middleware = applyMiddleware(axiosMiddleware(client))
+const store = createStore(reducer, initState, middleware)
 
 // Fetch our application data from the backend
 store.dispatch(fetchStoreRequest())
@@ -39,7 +43,7 @@ class App extends Component {
     }
 
     render() {
-        return this.props.isLoading ? (<div></div>) :
+        return this.props.isLoading ? (<div />) :
         (
             <BrowserRouter history={browserHistory}>
                 <div>

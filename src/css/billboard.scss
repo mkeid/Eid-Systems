@@ -76,7 +76,7 @@
             position: absolute;
             opacity: 0;
             top: 13.125em;
-            width: 18.750em;
+            width: 65em;
 
             -webkit-animation: fadein 2s forwards;
             -moz-animation: fadein 2s forwards;
@@ -127,14 +127,15 @@
         }
 
         .developer-container {
+            display: inline-block;
+            float: left;
             text-align: left;
         }
 
         .engineer-container {
+            display: inline-block;
+            float: right;
             text-align: right;
-            position: absolute;
-            left: 52.063em;
-            top: 0;
         }
     }
 }

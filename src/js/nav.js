@@ -34,8 +34,7 @@ class NavItemList extends Component {
             <NavItem key={item}
                 title={item.toUpperCase()}
                 href={"/" + item.toLowerCase()}
-                selected={item === this.props.currentPage}
-            />
+                selected={item === this.props.currentPage} />
         )
 
         return (
@@ -78,11 +77,19 @@ class NavSocialList extends Component {
 */
 class NavBar extends Component {
     render() {
-        return (
+        const logo = (<Logo imgSrc={this.props.logoImgSrc} />)
+        const navItemList = (<NavItemList {...this.props} />)
+
+        return this.props.isMobile ? (
+            <div className="mobile-nav-bar">
+                <div className="container">{logo}</div>
+                {navItemList}
+            </div>
+        ) :
+        (
             <div className="nav-bar">
                 <div className="container">
-                    <Logo imgSrc={this.props.logoImgSrc} />
-                    <NavItemList {...this.props} />
+                    {logo} {navItemList}
                     <NavSocialList socials={this.props.socials} />
                 </div>
             </div>
@@ -93,6 +100,7 @@ class NavBar extends Component {
 
 // Init redux container nav bar
 const mapStateToProps = state => ({
+    isMobile: state.isMobile,
     items: state.nav.items,
     logoImgSrc: state.nav.logoImgSrc,
     socials: state.nav.socials
