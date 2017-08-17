@@ -7,7 +7,6 @@ const path = require("path")
 const webpack = require("webpack")
 const webpackDevMiddleware = require("webpack-dev-middleware")
 const webpackHotMiddleware = require("webpack-hot-middleware")
-const data = require("./src/data")
 
 // Initialize needed variables
 const app = express()
@@ -18,6 +17,7 @@ const isDevelopment = app.get('env') !== "production"
 const compiler = webpack(config)
 const { getComponents, getPosts, getProjects, getSkills } = require("./src/models")
 
+// Initiate db connection
 mongoose.connect("mongodb://localhost/eid-systems")
 const db = mongoose.connection
 
@@ -80,6 +80,7 @@ app.post("/email", function(request, response) {
 
     server.send(message, function(error, result) {
         console.log(error || message);
+        response.json({})
     })
 })
 

@@ -66,7 +66,7 @@ const projectSchema = mongoose.Schema({
 })
 const Project = mongoose.model("Project", projectSchema)
 const getProjects = function(callback, limit) {
-    Project.find(callback).limit(limit)
+    Project.find(callback).sort("type").limit(limit)
 }
 
 const skillSchema = mongoose.Schema({
