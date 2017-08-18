@@ -17,11 +17,6 @@ import "./css/main.scss"
 
 // Set up Google Analytics
 ReactGA.initialize("UA-48669228-4")
-const logPageView = function() {
-    window.scrollTo(0, 0)
-    ReactGA.set({page: window.location.pathname})
-    ReactGA.pageview(window.location.pathname)
-}
 
 // Init Axios client used for async API calls
 const client = axios.create({baseURL: "/", responseType: "json"})
@@ -33,12 +28,15 @@ const store = createStore(reducer, middleware)
 // Fetch our application data from the backend
 store.dispatch(fetchStoreRequest())
 
-// Single page application within a router
+/**
+* Single page application component within a router component
+*/
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {currentPage: "index"}
 
+        // Bing this to functions
         this.menuClose = this.menuClose.bind(this)
         this.toggleMenu = this.toggleMenu.bind(this)
         this.updateCurrentPage = this.updateCurrentPage.bind(this)
@@ -49,13 +47,18 @@ class App extends Component {
     }
 
     toggleMenu() {
-        const func = this.props.store.getState().menuOpened ? menuClose : menuOpen
+        const func = this.props.store.getState().menuOpened ?
+            menuClose : menuOpen
         this.props.store.dispatch(func())
     }
 
     updateCurrentPage(page) {
         this.setState({currentPage: page})
         this.props.store.dispatch(menuClose())
+
+        // Google analytics call
+        ReactGA.set({page: window.location.pathname})
+        ReactGA.pageview(window.location.pathname)
     }
 
     render() {
@@ -82,7 +85,7 @@ const AppContainer = connect(state => state)(App)
 // Splice the React app into the DOM
 ReactDOM.render(
     <Provider store={store}>
-        <AppContainer store={store} onUpdate={logPageView} />
+        <AppContainer store={store} />
     </Provider>,
     document.getElementById("react-root")
 )

@@ -62,9 +62,6 @@ app.get("/store", function(request, response) {
     })
 })
 
-
-//(request, response) => response.json(data))
-
 // Send self an email initiated from the contact page
 app.post("/email", function(request, response) {
     const server = emailjs.server.connect({
