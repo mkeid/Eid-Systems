@@ -186,6 +186,7 @@ const ContactBillboard = () => (
 class ContactSite extends Component {
     componentDidMount() {
         this.props.updateCurrentPage("Contact")
+        window.scrollTo(0, 0)
     }
 
     render() {

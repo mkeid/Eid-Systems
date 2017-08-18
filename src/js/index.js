@@ -80,6 +80,7 @@ class IndexBillboard extends Component {
 class IndexSite extends Component {
     componentDidMount() {
         this.props.updateCurrentPage("Index")
+        window.scrollTo(0, 0)
     }
 
     render() {
