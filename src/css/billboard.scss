@@ -60,24 +60,30 @@
 
         img {
             @-webkit-keyframes slide-right {
-                100% { left: 1.375em; }
+                100% { left: 0; }
             }
 
             @keyframes slide-right {
-                100% { left: 1.375em; }
+                100% { left: 0; }
             }
 
             display: inline-block;
-            height: 38.750em;
+            height: 35.1em;
             position: relative;
-            top: -7.188em;
-            left: -18.750em;
+                top: -3.538em;
+                left: -18.750em;
 
             -webkit-animation: fadein 2s, slide-right 1s forwards;
             -moz-animation: fadein 2s, slide-right 1s forwards;
             -ms-animation: fadein 2s, slide-right 1s forwards;
             -o-animation: fadein 2s, slide-right 1s forwards;
             animation: fadein 2s, slide-right 1s forwards;
+
+            @media only screen and (max-width: $mobileWidth) {
+                height: 54em;
+                margin-right: 2.8em;
+                top: -4em;
+            }
         }
 
         .info-containers {
@@ -104,7 +110,7 @@
                 font-size: 1.2em;
                 font-weight: bold;
                 position: relative;
-                top: 0.625em;
+                    top: 0.625em;
                 text-decoration: none;
 
                 -moz-transition: color .2s ease-in;
@@ -159,14 +165,6 @@
             display: inline-block;
             float: right;
             text-align: right;
-        }
-
-        @media only screen and (max-width: $mobileWidth) {
-            img {
-                height: 60em;
-                margin-right: 4em;
-                top: -10em;
-            }
         }
     }
 }
