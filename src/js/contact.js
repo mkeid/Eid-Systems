@@ -114,10 +114,10 @@ class EmailForm extends Component {
     render() {
         // Form submission button components
         const sendButton = (
-            <input type="submit" value="SEND" className="send-button" />
+            <input type="submit" value="Send" className="send-button" />
         )
         const sentButton = (
-            <div className="send-button sent-confirmation">SENT!</div>
+            <div className="send-button sent-confirmation">Sent!</div>
         )
 
         return (
@@ -172,7 +172,7 @@ const ContactBillboard = () => (
         <div className="container">
             <a className="linkedin-link"
                 href="https://linkedin.com/in/mkeid/">
-                CONNECT
+                Connect
             </a>
         </div>
     </div>

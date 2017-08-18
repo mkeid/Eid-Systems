@@ -99,7 +99,7 @@ ul {
         width: 65em;
 
         .title {
-            border-bottom: .11em solid rgb(220, 220, 230);
+            border-bottom: .11em solid rgb(223, 223, 233);
             color: $color1;
             cursor: default;
             display: inline-block;
@@ -128,6 +128,7 @@ ul {
             display: block;
             font-weight: bold;
             margin-bottom: 2.5em;
+            text-align: center;
             text-decoration: none;
 
             -moz-transition: color .2s ease-in;
@@ -145,8 +146,14 @@ ul {
             }
 
             @media only screen and (max-width: $mobileWidth) {
+                background: rgb(54, 142, 160);
+                border-radius: .15em;
+                color: white;
+                display: inline-block;
                 font-size:2.5em;
                 margin-top: 2.1em;
+                padding: .4em;
+                width: 33%;
             }
         }
 

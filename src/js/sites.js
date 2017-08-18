@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom"
 import { AboutContainer } from "./about"
 import { BlogContainer} from "./blog"
 import { ContactSite } from "./contact"
-import { IndexContainer } from "./index.js"
+import { IndexContainer } from "./index"
 import { ProjectsContainer } from "./portfolio"
 
 
@@ -27,7 +27,6 @@ const Main = (props) => (
         </Switch>
     </main>
 )
-
 
 /**
 * 404 page component function

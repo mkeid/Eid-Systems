@@ -38,17 +38,24 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {currentPage: "index"}
+
+        this.menuClose = this.menuClose.bind(this)
+        this.toggleMenu = this.toggleMenu.bind(this)
         this.updateCurrentPage = this.updateCurrentPage.bind(this)
     }
 
+    menuClose() {
+        this.props.store.dispatch(menuClose())
+    }
+
     toggleMenu() {
-        const func = store.getState().menuOpened ? menuClose : menuOpen
-        store.dispatch(func())
+        const func = this.props.store.getState().menuOpened ? menuClose : menuOpen
+        this.props.store.dispatch(func())
     }
 
     updateCurrentPage(page) {
         this.setState({currentPage: page})
-        store.dispatch(menuClose())
+        this.props.store.dispatch(menuClose())
     }
 
     render() {
@@ -56,11 +63,12 @@ class App extends Component {
             <BrowserRouter
                 onUpdate={this.props.onUpdate}
                 history={browserHistory}>
-                <div>
+                <div onClick={this.menuClose}>
                     <NavContainer
                         currentPage={this.state.currentPage}
                         toggleMenu={this.toggleMenu} />
-                    <Main updateCurrentPage={this.updateCurrentPage} />
+                    <Main
+                        updateCurrentPage={this.updateCurrentPage} />
                     <Footer />
                 </div>
             </BrowserRouter>
@@ -74,7 +82,7 @@ const AppContainer = connect(state => state)(App)
 // Splice the React app into the DOM
 ReactDOM.render(
     <Provider store={store}>
-        <AppContainer onUpdate={logPageView} />
+        <AppContainer store={store} onUpdate={logPageView} />
     </Provider>,
     document.getElementById("react-root")
 )

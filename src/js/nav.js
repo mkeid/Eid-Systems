@@ -121,7 +121,7 @@ class NavBar extends Component {
 }
 
 
-// Init redux container nav bar
+// Init nav bar redux container
 const mapStateToProps = state => ({
     menuOpened: state.menuOpened,
     items: state.nav.items,
