@@ -137,10 +137,10 @@
                 left: -.35em;
             text-align: center !important;
 
-            -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-            -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-            -o-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-            box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            -o-box-shadow: none;
+            box-shadow: none;
 
             -moz-transition: background .15s ease-in;
             -o-transition: background .15s ease-in;
@@ -183,8 +183,14 @@
             color: $green;
             cursor: default;
 
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            -o-box-shadow: none;
+            box-shadow: none;
+
             &:hover {
                 background: none;
+                border-color: $green;
             }
         }
     }
