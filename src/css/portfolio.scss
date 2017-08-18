@@ -111,6 +111,29 @@
                     transition: opacity .15s ease-in, left .15s ease-in;
                 }
             }
+
+            @media only screen and (max-width: $mobileWidth) {
+                height: 22em;
+                margin-right: 3% !important;
+                width:48.5% !important;
+
+                &:nth-child(2n) {
+                    margin-right: 0 !important;
+                }
+
+                img {
+                    height: 15em !important;
+                }
+
+                .portfolio-arrow {
+                    display: none !important;
+                }
+
+                .portfolio-item-info {
+                    font-size: 1.8em !important;
+                }
+
+            }
         }
     }
 }
@@ -118,5 +141,9 @@
 .portfolio-site {
     .body {
         padding-top: 9em;
+
+        @media only screen and (max-width: $mobileWidth) {
+            padding-top: 13em;
+        }
     }
 }

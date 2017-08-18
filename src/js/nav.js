@@ -16,6 +16,18 @@ const Logo = (props) => (
 )
 
 
+/**
+* Hamburger component function that sits on the nav bar for redirecting the user
+*/
+const Hamburger = () => (
+    <div className="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+)
+
+
 function NavItem(props) {
     const className = "nav-item" + (props.selected ? " selected" : "")
     return (
@@ -29,6 +41,16 @@ function NavItem(props) {
 * @extends Component
 */
 class NavItemList extends Component {
+    constructor(props) {
+        super(props)
+        this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+    }
+
+    // Toggle menu visibility
+    handleCheckboxChange() {
+        this.props.toggleMenu()
+    }
+
     render() {
         const navItems = this.props.items.sort().map(item =>
             <NavItem key={item}
@@ -38,7 +60,13 @@ class NavItemList extends Component {
         )
 
         return (
-            <div className="nav-item-list" children={navItems} />
+            <div>
+                <input
+                    type="checkbox"
+                    checked={this.props.menuOpened}
+                    onChange={this.handleCheckboxChange} />
+                <div className="nav-item-list" children={navItems} />
+            </div>
         )
     }
 }
@@ -80,17 +108,12 @@ class NavBar extends Component {
         const logo = (<Logo imgSrc={this.props.logoImgSrc} />)
         const navItemList = (<NavItemList {...this.props} />)
 
-        return this.props.isMobile ? (
-            <div className="mobile-nav-bar">
-                <div className="container">{logo}</div>
-                {navItemList}
-            </div>
-        ) :
-        (
+        return (
             <div className="nav-bar">
                 <div className="container">
                     {logo} {navItemList}
                     <NavSocialList socials={this.props.socials} />
+                    <Hamburger />
                 </div>
             </div>
         )
@@ -100,7 +123,7 @@ class NavBar extends Component {
 
 // Init redux container nav bar
 const mapStateToProps = state => ({
-    isMobile: state.isMobile,
+    menuOpened: state.menuOpened,
     items: state.nav.items,
     logoImgSrc: state.nav.logoImgSrc,
     socials: state.nav.socials
