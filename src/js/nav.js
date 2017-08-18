@@ -31,7 +31,9 @@ const Hamburger = () => (
 function NavItem(props) {
     const className = "nav-item" + (props.selected ? " selected" : "")
     return (
-        <Link to={props.href} className={className} children={props.title} />
+        <Link to={props.href}
+            className={className}
+            children={props.title} />
     )
 }
 
@@ -53,19 +55,20 @@ class NavItemList extends Component {
 
     render() {
         const navItems = this.props.items.sort().map(item =>
-            <NavItem key={item}
+            <NavItem zkey={item}
                 title={item.toUpperCase()}
                 href={"/" + item.toLowerCase()}
                 selected={item === this.props.currentPage} />
         )
 
         return (
-            <div>
-                <input
-                    type="checkbox"
+            <div className="nav-item-list-parent">
+                <input type="checkbox"
                     checked={this.props.menuOpened}
                     onChange={this.handleCheckboxChange} />
-                <div className="nav-item-list" children={navItems} />
+                <div
+                    className="nav-item-list"
+                    children={navItems} />
             </div>
         )
     }

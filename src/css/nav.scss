@@ -62,6 +62,7 @@
     .logo {
         display: inline-block;
         float: left;
+        padding-right: 4.25em;
         position: relative;
 
         img {
@@ -79,6 +80,10 @@
                 padding-top: 2.5em;
             }
         }
+    }
+
+    .nav-item-list-parent {
+        display: inline-block;
     }
 
     .nav-item-list {
@@ -167,7 +172,6 @@
         display: inline-block;;
         float: right;
         position: relative;
-        top: -6.5em;
 
         .nav-social {
             &:first-child {

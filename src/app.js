@@ -47,8 +47,7 @@ class App extends Component {
     }
 
     toggleMenu() {
-        const func = this.props.store.getState().menuOpened ?
-            menuClose : menuOpen
+        const func = this.props.menuOpened ? menuClose : menuOpen
         this.props.store.dispatch(func())
     }
 
