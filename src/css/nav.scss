@@ -109,6 +109,11 @@
                 -o-transition: all .2s ease-in;
                 -webkit-transition: all .2s ease-in;
                 transition: all .2s ease-in;
+
+                @media only screen and (max-width: $mobileWidth) {
+                    content: none;
+                    display: none;
+                }
             }
 
             &:hover:before {
@@ -145,7 +150,7 @@
 
             .nav-item {
                 display: block;
-                border-top: .03em solid rgba(255, 255, 255, .1);
+                border-top: .03em solid rgba(240, 240, 255, .1);
                 font-size: 3em;
                 height: 2em;
                 line-height: 2em;
