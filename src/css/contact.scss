@@ -11,6 +11,12 @@
             animation: fadein 2s forwards;
 
             width: 65em;
+
+            @media only screen and (max-width: $mobileWidth) {
+                background-size: 150%;
+                background-position: center;
+                width: 100%;
+            }
         }
     }
 
@@ -24,6 +30,11 @@
         .css-1vm9g5e {
             font-family: "Raleway", sans-serif;
             font-size: 1em !important;
+
+            @media only screen and (max-width: $mobileWidth) {
+                font-size: 4em !important;
+                width: 100% !important;
+            }
         }
 
         .email-warning {
@@ -43,6 +54,11 @@
             font-size: 2em;
             font-weight: bold;
             margin-bottom: .4em;
+
+            @media only screen and (max-width: $mobileWidth) {
+                font-size: 3em;
+                margin-bottom: 1.3em;
+            }
         }
 
         .inputs {
@@ -76,6 +92,33 @@
                 display: inline-block;
                 font-size: 1.4em;
                 margin-bottom: .4em;
+            }
+
+            @media only screen and (max-width: $mobileWidth) {
+                .left, .right {
+                    display: block !important;
+                    font-size: 1.5em;
+                    padding-right: 0;
+                    width: 100%;
+                }
+
+                .right {
+                    left: auto;
+                    top:auto;
+                    margin-bottom: 3em;
+                    padding-left: 0;
+                }
+
+                .title {
+                    font-size: 1.8em;
+                }
+
+                input, textarea {
+                    font-size: 2em;
+                    width: 98%;
+                    margin-right: 0;
+                    padding-right: 0;
+                }
             }
         }
 
@@ -125,6 +168,11 @@
                 -o-transition: all .2s ease-in;
                 -webkit-transition: all .2s ease-in;
                 transition: all .2s ease-in;
+            }
+
+            @media only screen and (max-width: $mobileWidth) {
+                font-size: 2.5em;
+                left: 0;
             }
         }
 

@@ -7,7 +7,7 @@
 
     @media only screen and (max-width: $mobileWidth) {
         height: 50em;
-        margin-top: 10%;
+        margin-top: 4em;
     }
 
     .linkedin-link {
@@ -44,6 +44,10 @@
             -o-transition: background .2s ease-in;
             -webkit-transition: background .2s ease-in;
             transition: background .2s ease-in;
+        }
+
+        @media only screen and (max-width: $mobileWidth) {
+            font-size: 2.1em;
         }
     }
 

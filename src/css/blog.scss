@@ -26,11 +26,19 @@
             font-weight: bold;
             margin-bottom: .5em;
             padding-bottom: .04em;
+
+            @media only screen and (max-width: $mobileWidth) {
+                font-size: 5em !important;
+            }
         }
 
         .date {
             color: $color2;
             margin-bottom: 1.1em;
+
+            @media only screen and (max-width: $mobileWidth) {
+                font-size: 2em;
+            }
         }
 
         .preview {
@@ -38,6 +46,18 @@
             line-height: 2em;
             margin-top: 1em;
             text-align: justify;
+
+            @media only screen and (max-width: $mobileWidth) {
+                font-size: 2.3em !important;
+            }
         }
+        @media only screen and (max-width: $mobileWidth) {
+            padding: 1em;
+            width: 90%;
+        }
+    }
+
+    @media only screen and (max-width: $mobileWidth) {
+        padding-top: 12em;
     }
 }
