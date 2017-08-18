@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 
 
 /**
@@ -14,13 +15,20 @@ class Post extends Component {
             month : 'short',
             year : 'numeric'
         })
+        const dateText = `By Mohamed Eid on ${dateString}`
 
         return (
             <div className="post">
-                <div className="title">{this.props.title}</div>
-                <div className="date">By Mohamed Eid on {dateString}</div>
+                <div className="title" children={this.props.title} />
+                <div className="date">{dateText}</div>
                 <img src={this.props.imgSrc} />
-                <div className="preview">{this.props.preview}</div>
+                <div className="preview" children={this.props.preview} />
+                {this.props.content ? (
+                    <Link
+                        to={`/blog/${this.props.title}`}
+                        className="read-more"
+                        children={"Read more"}/>
+                ) : null}
             </div>
         )
     }

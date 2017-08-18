@@ -10,6 +10,49 @@
         text-align: left;
         width: 45em;
 
+        a {
+            background: $color1 !important;
+            border-radius: $borderRadius;
+            color: white !important;
+            display: inline-block;
+            font-size: 1.1em;
+            margin-top: 1em;
+            padding: .8em;
+            text-align: center;
+            text-decoration: none;
+
+            -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+            -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+            -o-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+            box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+
+            -moz-transition: background .15s ease-in;
+            -o-transition: background .15s ease-in;
+            -webkit-transition: background .15s ease-in;
+            transition: background .15s ease-in;
+
+            &:hover {
+                background: $color2 !important;
+                border-color: $color2 !important;
+
+                -moz-transition: all .2s ease-in;
+                -o-transition: all .2s ease-in;
+                -webkit-transition: all .2s ease-in;
+                transition: all .2s ease-in;
+            }
+
+            &:active {
+                -webkit-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+                -moz-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+                -o-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+                box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+            }
+
+            @media only screen and (max-width: $mobileWidth) {
+                font-size: 2.2em;
+            }
+        }
+
         img {
             border-radius: .15em;
             width: 100%;
@@ -42,6 +85,7 @@
         }
 
         .preview {
+            display: block;
             font-size: 1.1em;
             line-height: 2em;
             margin-top: 1em;
@@ -51,6 +95,7 @@
                 font-size: 2.3em !important;
             }
         }
+
         @media only screen and (max-width: $mobileWidth) {
             padding: 1em;
             width: 90%;
@@ -58,6 +103,6 @@
     }
 
     @media only screen and (max-width: $mobileWidth) {
-        padding-top: 12em;
+        padding: 12em 0 3em 0;
     }
 }
