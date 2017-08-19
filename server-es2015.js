@@ -72,7 +72,11 @@ app.post("/email", function(request, response) {
     })
 
     const message = {
-        text: request.body.message,
+        text: `
+            Name: ${request.body.email}
+            Email: ${request.body.name}
+            Message: ${request.body.message}
+        `,
         from: "server@eid.systems",
         to: "mohamedkeid@gmail.com",
         subject: "Eid Systems Contact"
