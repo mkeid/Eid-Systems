@@ -48,7 +48,11 @@ class IndexBillboard extends Component {
         // Data for the left-side component
         const developerData = this.props.data.developer
         const developerKeywords = developerData.keywords.map(
-            data => (<span key={data}>{data}</span>)
+            data => (
+                <span key={data}>
+                    {data}
+                </span>
+            )
         )
 
         // Data for the right-side component
@@ -90,7 +94,9 @@ class IndexSite extends Component {
                 <IndexBillboard data={this.props.index} />
                 <Body title='SOME OF MY LATEST WORK'>
                     <Portfolio projects={projects}/>
-                    <Link to="/portfolio" className="see-more">See more</Link>
+                    <Link to="/portfolio" className="see-more">
+                        See more
+                    </Link>
                 </Body>
             </div>
         )

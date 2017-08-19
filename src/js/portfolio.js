@@ -11,10 +11,16 @@ const PortfolioItem = (props) => (
         <a href={props.url}>
             <img src={props.imgSrc} />
             <div className="portfolio-item-info">
-                <div className="portfolio-item-title">{props.title}</div>
-                <div className="portfolio-item-type">{props.type}</div>
+                <div className="portfolio-item-title">
+                    {props.title}
+                </div>
+                <div className="portfolio-item-type">
+                    {props.type}
+                </div>
             </div>
-            <div className="portfolio-arrow">></div>
+            <div className="portfolio-arrow">
+                >
+            </div>
         </a>
     </li>
 )
@@ -32,7 +38,9 @@ class Portfolio extends Component {
 
         return (
             <ul className="portfolio">
-                <div className="container">{portfolioItems}</div>
+                <div className="container">
+                    {portfolioItems}
+                </div>
             </ul>
         )
     }

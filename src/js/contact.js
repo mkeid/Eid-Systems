@@ -128,8 +128,7 @@ class EmailForm extends Component {
                     <div className="left">
                         <div className="input">
                             <div className="title">Name</div>
-                            <input type="text"
-                                value={this.state.name}
+                            <input type="text" value={this.state.name}
                                 onChange={this.handleChangedName}
                                 disabled={this.state.disabled} />
                         </div>
@@ -140,8 +139,7 @@ class EmailForm extends Component {
                                     Invalid Address
                                 </div>
                             }
-                            <input type="text"
-                                value={this.state.email}
+                            <input type="text" value={this.state.email}
                                 onBlur={this.handleBlurEmail}
                                 onChange={this.handleChangedEmail}
                                 disabled={this.state.disabled} />
@@ -150,8 +148,7 @@ class EmailForm extends Component {
                     <div className="right">
                         <div className="input">
                             <div className="title">Message</div>
-                            <textarea
-                                value={this.state.message}
+                            <textarea value={this.state.message}
                                 onChange={this.handleChangedMessage}
                                 disabled={this.state.disabled} />
                         </div>
@@ -170,8 +167,7 @@ class EmailForm extends Component {
 const ContactBillboard = () => (
     <div className="billboard">
         <div className="container">
-            <a className="linkedin-link"
-                href="https://linkedin.com/in/mkeid/">
+            <a className="linkedin-link" href="https://linkedin.com/in/mkeid/">
                 Connect
             </a>
         </div>

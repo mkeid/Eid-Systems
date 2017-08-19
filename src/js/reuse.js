@@ -9,7 +9,9 @@ const Body = props => (
         <div className="container">
             {props.title &&
                 <div className="title">
-                    <span>{props.title}</span>
+                    <span>
+                        {props.title}
+                    </span>
                 </div>
             }
         </div>

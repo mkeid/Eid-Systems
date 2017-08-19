@@ -16,18 +16,24 @@ class Post extends Component {
             year : 'numeric'
         })
         const dateText = `By Mohamed Eid on ${dateString}`
+        const postUrl = `/blog/${this.props.title}`
 
         return (
             <div className="post">
-                <div className="title" children={this.props.title} />
-                <div className="date">{dateText}</div>
+                <div className="title">
+                    {this.props.title}
+                </div>
+                <div className="date">
+                    {dateText}
+                </div>
                 <img src={this.props.imgSrc} />
-                <div className="preview" children={this.props.preview} />
+                <div className="preview">
+                    {this.props.preview}
+                </div>
                 {this.props.content ? (
-                    <Link
-                        to={`/blog/${this.props.title}`}
-                        className="read-more"
-                        children={"Read more"}/>
+                    <Link to={postUrl} className="read-more">
+                        Read more
+                    </Link>
                 ) : null}
             </div>
         )
@@ -51,7 +57,9 @@ class BlogSite extends Component {
 
         return (
             <div className="blog-site">
-                <div className="container">{posts}</div>
+                <div className="container">
+                    {posts}
+                </div>
             </div>
         )
     }

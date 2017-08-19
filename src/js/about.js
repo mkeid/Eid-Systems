@@ -12,19 +12,33 @@ class Skill extends Component {
     render() {
         // Split the description array into a list of paragraph components
         const description = this.props.description.map(
-            (paragraph, index) => (<p key={index}>{paragraph}</p>)
+            (paragraph, index) => (
+                <p key={index}>
+                    {paragraph}
+                </p>
+            )
         )
 
         // Create a list of keyword components for each tag
         const keywords = this.props.keywords.sort().map(
-            keyword => (<div key={keyword} className="keyword">{keyword}</div>)
+            keyword => (
+                <div key={keyword} className="keyword">
+                    {keyword}
+                </div>
+            )
         )
 
         return (
             <div className="skill">
-                <div className="title">{this.props.title}</div>
-                <div className="description">{description}</div>
-                <div className="keywords">{keywords}</div>
+                <div className="title">
+                    {this.props.title}
+                </div>
+                <div className="description">
+                    {description}
+                </div>
+                <div className="keywords">
+                    {keywords}
+                </div>
             </div>
         )
     }
@@ -35,8 +49,12 @@ class Skill extends Component {
 const AboutBillboardWindow = (props) => (
     <div className="info-containers">
         <div className="about-container">
-            <div className="title">{props.title}</div>
-            <div className="details">{props.data}</div>
+            <div className="title">
+                {props.title}
+            </div>
+            <div className="details">
+                {props.data}
+            </div>
         </div>
     </div>
 )
@@ -51,8 +69,12 @@ class AboutBillboard extends Component {
         const about = this.props.about
         const data = (
             <div>
-                <div className="head">{about.head}</div>
-                <div className="detail">{about.detail}</div>
+                <div className="head">
+                    {about.head}
+                </div>
+                <div className="detail">
+                    {about.detail}
+                </div>
             </div>
         )
 
@@ -80,14 +102,18 @@ class AboutSite extends Component {
     render() {
         // Create the sections of the about page under skills
         const skills = this.props.skills.map(
-            skill => (<Skill key={skill.title} {...skill} />)
+            skill => (
+                <Skill key={skill.title} {...skill} />
+            )
         )
 
         return (
             <div className="about-site">
                 <AboutBillboard about={this.props.about} />
                 <Body title="SKILLS">
-                    <div className="skills">{skills}</div>
+                    <div className="skills">
+                        {skills}
+                    </div>
                 </Body>
             </div>
         )

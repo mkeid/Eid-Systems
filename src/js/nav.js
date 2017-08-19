@@ -31,9 +31,9 @@ const Hamburger = () => (
 function NavItem(props) {
     const className = "nav-item" + (props.selected ? " selected" : "")
     return (
-        <Link to={props.href}
-            className={className}
-            children={props.title} />
+        <Link to={props.href} className={className}>
+            {props.title}
+        </Link>
     )
 }
 
@@ -55,20 +55,18 @@ class NavItemList extends Component {
 
     render() {
         const navItems = this.props.items.sort().map(item =>
-            <NavItem zkey={item}
-                title={item.toUpperCase()}
+            <NavItem key={item} title={item.toUpperCase()}
                 href={"/" + item.toLowerCase()}
                 selected={item === this.props.currentPage} />
         )
 
         return (
             <div className="nav-item-list-parent">
-                <input type="checkbox"
-                    checked={this.props.menuOpened}
+                <input type="checkbox" checked={this.props.menuOpened}
                     onChange={this.handleCheckboxChange} />
-                <div
-                    className="nav-item-list"
-                    children={navItems} />
+                <div className="nav-item-list">
+                    {navItems}
+                </div>
             </div>
         )
     }
@@ -96,7 +94,9 @@ class NavSocialList extends Component {
         )
 
         return (
-            <div className="nav-social-list" children={navSocials} />
+            <div className="nav-social-list">
+                {navSocials}
+            </div>
         )
     }
 }
@@ -114,7 +114,8 @@ class NavBar extends Component {
         return (
             <div className="nav-bar">
                 <div className="container">
-                    {logo} {navItemList}
+                    {logo}
+                    {navItemList}
                     <NavSocialList socials={this.props.socials} />
                     <Hamburger />
                 </div>
