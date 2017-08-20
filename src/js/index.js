@@ -95,7 +95,7 @@ class IndexSite extends Component {
                 <Body title='SOME OF MY LATEST WORK'>
                     <Portfolio projects={projects}/>
                     <Link to="/portfolio" className="see-more">
-                        See more
+                        See More
                     </Link>
                 </Body>
             </div>

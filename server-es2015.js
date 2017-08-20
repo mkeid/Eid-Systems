@@ -15,7 +15,7 @@ const distDir = path.resolve(__dirname, "dist")
 const indexFile = path.resolve(__dirname, "public", "index.html")
 const isDevelopment = app.get('env') !== "production"
 const compiler = webpack(config)
-const { getComponents, getPosts, getProjects, getSkills } = require("./src/models")
+const { getComponents, getPosts, getProjects, getSkills } = require("./models")
 
 // Initiate db connection
 mongoose.connect("mongodb://localhost/eid-systems")

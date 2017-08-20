@@ -162,17 +162,25 @@ class EmailForm extends Component {
 
 
 /**
-* Main head component function at the top of the "Contactt" page
+* Main head component at the top of the "Contactt" page
 */
-const ContactBillboard = () => (
-    <div className="billboard">
-        <div className="container">
-            <a className="linkedin-link" href="https://linkedin.com/in/mkeid/">
-                Connect
-            </a>
-        </div>
-    </div>
-)
+class ContactBillboard extends Component {
+    shouldComponentUpdate() {
+        return false
+    }
+    
+    render() {
+        return (
+            <div className="billboard">
+                <div className="container">
+                    <a className="linkedin-link" href="https://linkedin.com/in/mkeid/">
+                        Connect
+                    </a>
+                </div>
+            </div>
+        )
+    }
+}
 
 
 /**
@@ -183,6 +191,10 @@ class ContactSite extends Component {
     componentDidMount() {
         this.props.updateCurrentPage("Contact")
         window.scrollTo(0, 0)
+    }
+
+    shouldComponentUpdate() {
+        return false
     }
 
     render() {

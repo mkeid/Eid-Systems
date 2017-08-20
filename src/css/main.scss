@@ -52,10 +52,10 @@ input[type=text], textarea {;
     &:focus {
         border-color: $color1;
 
-        -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-        -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-        -o-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+        -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.10);
+        -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.10);
+        -o-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.10);
+        box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.10);
 
         -moz-transition: all .2s ease-in;
         -o-transition: all .2s ease-in;
@@ -137,13 +137,22 @@ ul {
 .index-site {
     .body {
         .see-more {
+            background: $color4;
+            border: .1em solid rgb(54, 142, 160);
+            border-radius: $borderRadius;
             color: rgb(54, 142, 160);
-            display: block;
+            display: inline-block;
             font-size: 1.2em;
             font-weight: bold;
             margin-bottom: 2.5em;
+            padding: .4em;
             text-align: center;
             text-decoration: none;
+
+            -webkit-box-shadow: 0 .125em .3em 0 rgba(0,0,0,0.10);
+            -moz-box-shadow: 0 .125em .3em 0 rgba(0,0,0,0.10);
+            -o-box-shadow: 0 .125em .3em 0 rgba(0,0,0,0.10);
+            box-shadow: 0 .125em .3em 0 rgba(0,0,0,0.10);
 
             -moz-transition: color .2s ease-in;
             -o-transition: color .2s ease-in;
@@ -151,7 +160,8 @@ ul {
             transition: color .2s ease-in;
 
             &:hover {
-                color: rgb(84, 172, 190);
+                background: rgb(54, 142, 160);
+                color: white;
 
                 -moz-transition: all .2s ease-in;
                 -o-transition: all .2s ease-in;

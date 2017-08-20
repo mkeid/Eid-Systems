@@ -13,9 +13,6 @@
 
         .portfolio-item {
             background: white;
-            border: 0.125em solid $borderGray;
-            border-top: 0.063em solid $borderGray;
-            border-bottom: 0.188em solid rgb(215, 215, 230);
             border-radius: 0.15em;
             display: inline-block;
             margin: 0 2% 1.563em 0;
@@ -26,6 +23,11 @@
             box-sizing: border-box;
             -moz-box-sizing: border-box;
             -webkit-box-sizing: border-box;
+
+            -moz-box-shadow: 0 .13em .13em rgb(220, 220, 220);
+            -o-box-shadow: 0 .13em .13em rgb(220, 220, 220);
+            -webkit-box-shadow: 0 .13em .13em rgb(220, 220, 220);
+            box-shadow: 0 .13em .13em rgb(220, 220, 220);
 
             -moz-transition: opacity .15s ease-in;
             -o-transition: opacity .15s ease-in;
@@ -38,18 +40,21 @@
             -o-animation: fadein 1s;
             animation: fadein 1s;
 
-            -o-transition: border-color .2s ease-in;
-            -moz-transition: border-color .2s ease-in;
-            -webkit-transition: border-color .2s ease-in;
-            transition: border-color .2s ease-in;
+            -o-transition: box-shadow .2s ease-in;
+            -moz-transition: box-shadow .2s ease-in;
+            -webkit-transition: box-shadow .2s ease-in;
+            transition: box-shadow .2s ease-in;
 
             &:hover {
-                border-bottom: 0.188em solid rgb(185, 185, 210);
+                -moz-box-shadow: 0 .13em .13em rgb(200, 200, 200);
+                -o-box-shadow: 0 .13em .13em rgb(200, 200, 200);
+                -webkit-box-shadow: 0 .13em .13em rgb(200, 200, 200);
+                box-shadow: 0 .13em .13em rgb(200, 200, 200);
 
-                -o-transition: border-color .2s ease-in;
-                -moz-transition: border-color .2s ease-in;
-                -webkit-transition: border-color .2s ease-in;
-                transition: border-color .2s ease-in;
+                -o-transition: box-shadow .2s ease-in;
+                -moz-transition: box-shadow .2s ease-in;
+                -webkit-transition: box-shadow .2s ease-in;
+                transition: box-shadow .2s ease-in;
             }
 
             &:nth-child(3n) {
@@ -96,7 +101,7 @@
                 }
 
                 .portfolio-arrow {
-                    color: rgb(180, 180, 220);
+                    color: rgb(210, 210, 210);
                     display: inline-block;
                     font-size: 2em;
                     opacity: 0;

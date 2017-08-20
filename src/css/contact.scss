@@ -123,10 +123,10 @@
         }
 
         .send-button {
-            background: rgb(0, 119, 181);
+            background: $color4;
             border: .1em solid rgb(0, 119, 181);
             border-radius: .15em;
-            color: white;
+            color: rgb(0, 119, 181);
             cursor: pointer;
             display: inline-block;
             float: right;
@@ -137,15 +137,15 @@
                 left: -.31em;
             text-align: center !important;
 
-            -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-            -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-            -o-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-            box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+            -webkit-box-shadow: 0 .125em .3em 0 rgba(0,0,0,0.10);
+            -moz-box-shadow: 0 .125em .3em 0 rgba(0,0,0,0.10);
+            -o-box-shadow: 0 .125em .3em 0 rgba(0,0,0,0.10);
+            box-shadow: 0 .125em .3em 0 rgba(0,0,0,0.10);
 
-            -moz-transition: background .15s ease-in;
-            -o-transition: background .15s ease-in;
-            -webkit-transition: background .15s ease-in;
-            transition: background .15s ease-in;
+            -moz-transition: color .15s ease-in;
+            -o-transition: color .15s ease-in;
+            -webkit-transition: color .15s ease-in;
+            transition: color .15s ease-in;
 
             &:active {
                 -webkit-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
@@ -155,13 +155,13 @@
             }
 
             &:focus {
-                background: rgb(20, 139, 201);
-                border-color: rgb(20, 139, 201);
+                background: rgb(0, 119, 181);
+                color:white;
             }
 
             &:hover {
-                background: rgb(20, 139, 201);
-                border-color: rgb(20, 139, 201);
+                background: rgb(0, 119, 181);
+                color:white;
 
                 -moz-transition: all .2s ease-in;
                 -o-transition: all .2s ease-in;
@@ -170,6 +170,8 @@
             }
 
             @media only screen and (max-width: $mobileWidth) {
+                background: rgb(0, 119, 181);
+                color:white;
                 font-size: 2.3em;
                 left: 0;
                 margin-bottom: 1em;
