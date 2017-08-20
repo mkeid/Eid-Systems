@@ -10,30 +10,60 @@
         text-align: left;
         width: 65em;
 
-        .visible {
-            opacity: 1;
+        .ghost {
+            background: rgba(255, 255, 255, .75) !important;
 
-            -moz-transition: opacity .15s ease-in;
-            -o-transition: opacity .15s ease-in;
-            -webkit-transition: opacity .15s ease-in;
-            transition: opacity .15s ease-in;
+            -o-transition: all .2s ease-in;
+            -moz-transition: all .2s ease-in;
+            -webkit-transition: all .2s ease-in;
+            transition: all .2s ease-in;
 
-            -webkit-animation: fadein 1s forwards;
-            -moz-animation: fadein 1s forwards;
-            -ms-animation: fadein 1s forwards;
-            -o-animation: fadein 1s forwards;
-            animation: fadein 1s forwards;
+            *:not(.portfolio-arrow) {
+                opacity: .8;
+
+                -o-transition: all .2s ease-in;
+                -moz-transition: all .2s ease-in;
+                -webkit-transition: all .2s ease-in;
+                transition: all .2s ease-in;
+            }
         }
 
+        .visible {
+            -webkit-animation: fadein 1s forwards, slideup .5s forwards;
+            -moz-animation: fadein 1s forwards, slideup .5s forwards;
+            -ms-animation: fadein 1s forwards, slideup .5s forwards;
+            -o-animation: fadein 1s forwards, slideup .5s forwards;
+            animation: fadein 1s forwards, slideup .5s forwards;
+        }
+
+        .portfolio-item-container {
+            display: inline-block;
+            padding: 0 2% 1.563em 0;
+            width: 32%;
+
+            &:nth-child(3n) {
+                padding-right: 0;
+            }
+
+            @media only screen and (max-width: $mobileWidth) {
+                padding-right: 3% !important;
+                width:48.5% !important;
+
+                &:nth-child(2n) {
+                    padding-right: 0 !important;
+                }
+            }
+        }
 
         .portfolio-item {
             background: white;
             border-radius: 0.15em;
             display: inline-block;
-            margin: 0 2% 1.563em 0;
+
             opacity: 0;
+            position: relative;
             text-align: left;
-            width: 32%;
+
 
             box-sizing: border-box;
             -moz-box-sizing: border-box;
@@ -44,18 +74,23 @@
             -webkit-box-shadow: 0 .13em .13em rgb(220, 220, 220);
             box-shadow: 0 .13em .13em rgb(220, 220, 220);
 
+            -o-transition: all .2s ease-in;
+            -moz-transition: all .2s ease-in;
+            -webkit-transition: all .2s ease-in;
+            transition: all .2s ease-in;
 
-
-            -o-transition: box-shadow .2s ease-in;
-            -moz-transition: box-shadow .2s ease-in;
-            -webkit-transition: box-shadow .2s ease-in;
-            transition: box-shadow .2s ease-in;
+            * {
+                -o-transition: all .2s ease-in;
+                -moz-transition: all .2s ease-in;
+                -webkit-transition: all .2s ease-in;
+                transition: all .2s ease-in;
+            }
 
             &:hover {
-                -moz-box-shadow: 0 .13em .13em rgb(200, 200, 200);
-                -o-box-shadow: 0 .13em .13em rgb(200, 200, 200);
-                -webkit-box-shadow: 0 .13em .13em rgb(200, 200, 200);
-                box-shadow: 0 .13em .13em rgb(200, 200, 200);
+                -moz-box-shadow: 0 .13em .13em rgb(195, 195, 195);
+                -o-box-shadow: 0 .13em .13em rgb(195, 195, 195);
+                -webkit-box-shadow: 0 .13em .13em rgb(195, 195, 195);
+                box-shadow: 0 .13em .13em rgb(195, 195, 195);
 
                 -o-transition: box-shadow .2s ease-in;
                 -moz-transition: box-shadow .2s ease-in;
@@ -63,9 +98,7 @@
                 transition: box-shadow .2s ease-in;
             }
 
-            &:nth-child(3n) {
-                margin-right: 0;
-            }
+
 
             a {
                 color: inherit;
@@ -125,12 +158,6 @@
 
             @media only screen and (max-width: $mobileWidth) {
                 height: 27.5em;
-                margin-right: 3% !important;
-                width:48.5% !important;
-
-                &:nth-child(2n) {
-                    margin-right: 0 !important;
-                }
 
                 img {
                     height: 20em !important;
