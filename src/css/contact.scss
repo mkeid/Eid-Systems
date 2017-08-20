@@ -10,7 +10,7 @@
             -o-animation: fadein 2s forwards;
             animation: fadein 2s forwards;
 
-            width: 65em;
+            width: 72em;
 
             @media only screen and (max-width: $mobileWidth) {
                 background-size: 150%;
@@ -25,7 +25,7 @@
         display: inline-block;
         padding-bottom: 3em;
         text-align: left;
-        width: 65em;
+        width: 72em;
 
         .css-1vm9g5e {
             font-family: "Raleway", sans-serif;
@@ -64,7 +64,7 @@
         .inputs {
             > div {
                 display: inline-block;
-                width: 30.5em;
+                width: 47%;
             }
 
             input {
@@ -73,19 +73,20 @@
             }
 
             textarea {
-                height: 7.7em;
+                height: 7.6em;
                 width: 100%;
             }
 
             .left {
-                padding-right: 2em;
+                padding-right: 3%;
             }
 
             .right {
-                padding-left: 2em;
+                float: right;
+                padding-left: 3%;
                 position: relative;
                 left: -1.17em;
-                top: .75em;
+                top: -0em;
             }
 
             .title {
@@ -195,6 +196,10 @@
                 background: none;
                 border-color: $green;
             }
+        }
+
+        @media only screen and (max-width: $mobileWidth) {
+            width: $mobileSpace;
         }
     }
 }

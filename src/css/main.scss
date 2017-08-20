@@ -7,6 +7,7 @@ $color4: rgb(238, 239, 247);
 $borderGray: rgb(230, 230, 230);
 $borderRadius: .15em;
 $mobileWidth: 70em;
+$mobileSpace: 95%;
 
 @font-face {
   font-family: 'Raleway';
@@ -113,7 +114,7 @@ ul {
 
         .content {
             display: inline-block;
-            width: 65em;
+            width: 72em;
 
             .title {
                 border-bottom: .11em solid rgb(223, 223, 233);
@@ -134,6 +135,10 @@ ul {
                 @media only screen and (max-width: $mobileWidth) {
                     font-size: 2.3em;
                 }
+            }
+
+            @media only screen and (max-width: $mobileWidth) {
+                width: $mobileSpace;
             }
         }
     }

@@ -2,6 +2,10 @@
 
 This is my personal full stack website developed from the ground up. Node.js, express, and MongoDB were used for the back-end while React and Redux were used for the front-end. The site is mobile accessible via media queries.
 
+## Prerequisites
+
+* [Node.js](https://nodejs.org/en/)(>= v6.11.0)
+
 ## Usage
 
 To build assets using webpack, run the build-prod script using npm.

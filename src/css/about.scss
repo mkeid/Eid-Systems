@@ -60,7 +60,7 @@
         color: $color2;
         display: inline-block;
         text-align: left;
-        width: 65em;
+        width: 72em;
 
         .skill {
             margin: 1.2em 0 4.5em 0;
@@ -92,6 +92,10 @@
             @media only screen and (max-width: $mobileWidth) {
                 font-size: 2em;
             }
+        }
+
+        @media only screen and (max-width: $mobileWidth) {
+            width: $mobileSpace;
         }
     }
 }
