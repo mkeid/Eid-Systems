@@ -11,15 +11,14 @@
         width: 65em;
 
         .ghost {
-            background: rgba(255, 255, 255, .75) !important;
-
+            opacity: 1;
             -o-transition: all .2s ease-in;
             -moz-transition: all .2s ease-in;
             -webkit-transition: all .2s ease-in;
             transition: all .2s ease-in;
 
-            *:not(.portfolio-arrow) {
-                opacity: .8;
+            img, .portfolio-item-info, .portfolio-item-type {
+                opacity: .618;
 
                 -o-transition: all .2s ease-in;
                 -moz-transition: all .2s ease-in;
