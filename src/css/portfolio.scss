@@ -10,13 +10,28 @@
         text-align: left;
         width: 65em;
 
+        .visible {
+            opacity: 1;
+
+            -moz-transition: opacity .15s ease-in;
+            -o-transition: opacity .15s ease-in;
+            -webkit-transition: opacity .15s ease-in;
+            transition: opacity .15s ease-in;
+
+            -webkit-animation: fadein 1s forwards;
+            -moz-animation: fadein 1s forwards;
+            -ms-animation: fadein 1s forwards;
+            -o-animation: fadein 1s forwards;
+            animation: fadein 1s forwards;
+        }
+
 
         .portfolio-item {
             background: white;
             border-radius: 0.15em;
             display: inline-block;
             margin: 0 2% 1.563em 0;
-            opacity: 1;
+            opacity: 0;
             text-align: left;
             width: 32%;
 
@@ -29,16 +44,7 @@
             -webkit-box-shadow: 0 .13em .13em rgb(220, 220, 220);
             box-shadow: 0 .13em .13em rgb(220, 220, 220);
 
-            -moz-transition: opacity .15s ease-in;
-            -o-transition: opacity .15s ease-in;
-            -webkit-transition: opacity .15s ease-in;
-            transition: opacity .15s ease-in;
 
-            -webkit-animation: fadein 1s;
-            -moz-animation: fadein 1s;
-            -ms-animation: fadein 1s;
-            -o-animation: fadein 1s;
-            animation: fadein 1s;
 
             -o-transition: box-shadow .2s ease-in;
             -moz-transition: box-shadow .2s ease-in;

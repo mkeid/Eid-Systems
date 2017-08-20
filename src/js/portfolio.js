@@ -4,26 +4,52 @@ import { connect } from "react-redux"
 
 
 /**
-* A single-project component function
+* A single-project component
 */
-const PortfolioItem = (props) => (
-    <li className="portfolio-item">
-        <a href={props.url}>
-            <img src={props.imgSrc} />
-            <div className="portfolio-item-info">
-                <div className="portfolio-item-title">
-                    {props.title}
-                </div>
-                <div className="portfolio-item-type">
-                    {props.type}
-                </div>
-            </div>
-            <div className="portfolio-arrow">
-                >
-            </div>
-        </a>
-    </li>
-)
+class PortfolioItem extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            delay: props.delay,
+            isVisible: false
+        }
+        this.makeVisible = this.makeVisible.bind(this)
+    }
+
+    componentDidMount() {
+        setTimeout(this.makeVisible, this.state.delay)
+    }
+
+    makeVisible() {
+        this.setState({
+            isVisible: true
+        })
+    }
+
+    render() {
+        const visibleClass = this.state.isVisible ? " visible" : ""
+        const className = "portfolio-item" + visibleClass
+
+        return (
+            <li className={className}>
+                <a href={this.props.url}>
+                    <img src={this.props.imgSrc} />
+                    <div className="portfolio-item-info">
+                        <div className="portfolio-item-title">
+                            {this.props.title}
+                        </div>
+                        <div className="portfolio-item-type">
+                            {this.props.type}
+                        </div>
+                    </div>
+                    <div className="portfolio-arrow">
+                        >
+                    </div>
+                </a>
+            </li>
+        )
+    }
+}
 
 
 /**
@@ -33,7 +59,8 @@ const PortfolioItem = (props) => (
 class Portfolio extends Component {
     render() {
         const portfolioItems = this.props.projects.map(
-            item => <PortfolioItem key={item.title} {...item} />
+            (item, index) =>
+            <PortfolioItem key={item.title} delay={index * 100} {...item} />
         )
 
         return (
