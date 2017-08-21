@@ -1,7 +1,49 @@
 import React, { Component } from "react"
 import NavBar from "./nav"
+import VisibilitySensor from "react-visibility-sensor"
 import { Body } from "./reuse"
 import { connect } from "react-redux"
+
+
+class Keyword extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            isVisible: false
+        }
+
+        // Bind this to function
+        this.show = this.show.bind(this)
+    }
+
+    /** Listen to see if the keyword should be visible */
+    componentDidUpdate() {
+        if (this.props.setIsVisible && !this.state.isVisible) {
+            this.showKeywordTimeout = setTimeout(this.show, this.props.delay)
+        }
+    }
+
+    /** Clear timeout so component doesn't try to set state while unmounted */
+    componentWillUnmount() {
+        this.showKeywordTimeout && clearTimeout(this.showKeywordTimeout)
+    }
+
+    /** Update visibility state so keyword can invoke its animation */
+    show() {
+        this.setState({isVisible: true})
+    }
+
+    render() {
+        const visibleClass = this.state.isVisible ? "visible" : ""
+        const className = `keyword ${visibleClass}`
+
+        return (
+            <div className={className}>
+                {this.props.word}
+            </div>
+        )
+    }
+}
 
 
 /**
@@ -9,6 +51,23 @@ import { connect } from "react-redux"
 * @extends Component
 */
 class Skill extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            keywordsAreVisible: false
+        }
+
+        // Bind this to function
+        this.showKeywords = this.showKeywords.bind(this)
+    }
+
+    /** Set the set of keywords to visible so each word invokes its action */
+    showKeywords(isVisible) {
+        if (!this.state.keywordsAreVisible && isVisible) {
+            this.setState({keywordsAreVisible: true})
+        }
+    }
+
     render() {
         // Split the description array into a list of paragraph components
         const descriptions = this.props.description.map(
@@ -21,10 +80,12 @@ class Skill extends Component {
 
         // Create a list of keyword components for each tag
         const keywords = this.props.keywords.sort().map(
-            keyword => (
-                <div key={keyword} className="keyword">
-                    {keyword}
-                </div>
+            (keyword, index) => (
+                <Keyword
+                    key={keyword}
+                    delay={index * 100}
+                    setIsVisible={this.state.keywordsAreVisible}
+                    word={keyword} />
             )
         )
 
@@ -36,9 +97,12 @@ class Skill extends Component {
                 <div className="description">
                     {descriptions}
                 </div>
-                <div className="keywords">
-                    {keywords}
-                </div>
+                <VisibilitySensor
+                    onChange={this.showKeywords}>
+                    <div className="keywords">
+                        {keywords}
+                    </div>
+                </VisibilitySensor>
             </div>
         )
     }
@@ -98,8 +162,6 @@ class AboutSite extends Component {
         this.props.updateCurrentPage("About")
         window.scrollTo(0, 0)
     }
-
-
 
     render() {
         // Create the sections of the about page under skills

@@ -77,6 +77,14 @@
             }
 
             .keywords {
+                .visible {
+                    -webkit-animation: fadein 1s forwards, slideleft .5s forwards;
+                    -moz-animation: fadein 1s forwards, slideleft .5s forwards;
+                    -ms-animation: fadein 1s forwards, slideleft .5s forwards;
+                    -o-animation: fadein 1s forwards, slideleft .5s forwards;
+                    animation: fadein 1s forwards, slideleft .5s forwards;
+                }
+
                 .keyword {
                     background: $color2;
                     border-radius: .15em;
@@ -85,7 +93,9 @@
                     display: inline-block;
                     font-weight: bold;
                     margin: 1em 1em 0 0;
+                    opacity: 0;
                     padding: .8em;
+                    position: relative;
                 }
             }
 
