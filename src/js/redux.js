@@ -77,7 +77,6 @@ const reducer = (state = initState, action) => {
                 {isLoading: false, hasFailed: true})
 
         case MENU_CLOSE:
-
             return Object.assign({}, state,
                 {menuOpened: false})
 

@@ -20,7 +20,11 @@ class PortfolioItem extends Component {
     }
 
     componentDidMount() {
-        setTimeout(this.makeVisible, this.state.delay)
+        this.appearTimeout = setTimeout(this.makeVisible, this.state.delay)
+    }
+
+    componentWillUnmount() {
+        this.appearTimeout && clearTimeout(this.appearTimeout)
     }
 
     handleMouseEnter() {
@@ -34,9 +38,9 @@ class PortfolioItem extends Component {
     }
 
     render() {
-        const ghostClass = this.props.isGhost ? " ghost" : ""
-        const visibleClass = this.state.isVisible ? " visible" : ""
-        const className = "portfolio-item" + ghostClass + visibleClass
+        const ghostClass = this.props.isGhost ? "ghost" : ""
+        const visibleClass = this.state.isVisible ? "visible" : ""
+        const className = `portfolio-item ${ghostClass} ${visibleClass}`
 
         return (
             <li className="portfolio-item-container"
@@ -75,7 +79,7 @@ class Portfolio extends Component {
             ghostProjects: []
         }
 
-        // Bing this to functions
+        // Bind this to functions
         this.focusOnItem = this.focusOnItem.bind(this)
         this.removeGhosts = this.removeGhosts.bind(this)
     }

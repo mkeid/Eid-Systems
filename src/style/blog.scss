@@ -55,12 +55,18 @@
 
         img {
             border-radius: .15em;
+            position: relative;
             width: 100%;
 
             -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
             -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
             -o-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
             box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
+
+            -webkit-animation: fadein 1s forwards, slideup .3s forwards;
+            -moz-animation: fadein 1s forwards, slideup .3s forwards;
+            -o-animation: fadein 1s forwards, slideup .3s forwards;
+            animation: fadein 1s forwards, slideup .3s forwards;
         }
 
         .title {

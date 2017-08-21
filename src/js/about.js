@@ -11,7 +11,7 @@ import { connect } from "react-redux"
 class Skill extends Component {
     render() {
         // Split the description array into a list of paragraph components
-        const description = this.props.description.map(
+        const descriptions = this.props.description.map(
             (paragraph, index) => (
                 <p key={index}>
                     {paragraph}
@@ -34,7 +34,7 @@ class Skill extends Component {
                     {this.props.title}
                 </div>
                 <div className="description">
-                    {description}
+                    {descriptions}
                 </div>
                 <div className="keywords">
                     {keywords}
@@ -98,6 +98,8 @@ class AboutSite extends Component {
         this.props.updateCurrentPage("About")
         window.scrollTo(0, 0)
     }
+
+
 
     render() {
         // Create the sections of the about page under skills

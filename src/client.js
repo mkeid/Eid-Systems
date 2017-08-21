@@ -13,7 +13,7 @@ import { Footer } from "./js/reuse"
 import { Main } from "./js/sites"
 import NavContainer from "./js/nav"
 import { fetchStoreRequest, menuClose, menuOpen, reducer } from "./js/redux"
-import "./css/main.scss"
+import "./style/main.scss"
 
 // Set up Google Analytics
 ReactGA.initialize("UA-48669228-4")
@@ -43,17 +43,17 @@ class App extends Component {
     }
 
     menuClose() {
-        this.props.store.dispatch(menuClose())
+        this.props.dispatch(menuClose())
     }
 
     toggleMenu() {
         const func = this.props.menuOpened ? menuClose : menuOpen
-        this.props.store.dispatch(func())
+        this.props.dispatch(func())
     }
 
     updateCurrentPage(page) {
         this.setState({currentPage: page})
-        this.props.store.dispatch(menuClose())
+        this.props.dispatch(menuClose())
 
         // Google analytics call
         ReactGA.set({page: window.location.pathname})
@@ -84,7 +84,7 @@ const AppContainer = connect(state => state)(App)
 // Splice the React app into the DOM
 ReactDOM.render(
     <Provider store={store}>
-        <AppContainer store={store} />
+        <AppContainer />
     </Provider>,
     document.getElementById("react-root")
 )

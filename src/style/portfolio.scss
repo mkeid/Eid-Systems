@@ -56,7 +56,8 @@
 
         .portfolio-item {
             background: white;
-            border-radius: 0.15em;
+            border: 1px solid $borderGray;
+            border-radius: $borderRadius;
             display: inline-block;
 
             opacity: 0;
@@ -68,10 +69,10 @@
             -moz-box-sizing: border-box;
             -webkit-box-sizing: border-box;
 
-            -moz-box-shadow: 0 .13em .13em rgb(220, 220, 220);
-            -o-box-shadow: 0 .13em .13em rgb(220, 220, 220);
-            -webkit-box-shadow: 0 .13em .13em rgb(220, 220, 220);
-            box-shadow: 0 .13em .13em rgb(220, 220, 220);
+            -moz-box-shadow: 0 .13em .13em rgb(220, 220, 230);
+            -o-box-shadow: 0 .13em .13em rgb(220, 220, 230);
+            -webkit-box-shadow: 0 .13em .13em rgb(220, 220, 230);
+            box-shadow: 0 .13em .13em rgb(220, 220, 230);
 
             -o-transition: all .2s ease-in;
             -moz-transition: all .2s ease-in;
@@ -86,10 +87,10 @@
             }
 
             &:hover {
-                -moz-box-shadow: 0 .13em .13em rgb(195, 195, 195);
-                -o-box-shadow: 0 .13em .13em rgb(195, 195, 195);
-                -webkit-box-shadow: 0 .13em .13em rgb(195, 195, 195);
-                box-shadow: 0 .13em .13em rgb(195, 195, 195);
+                -moz-box-shadow: 0 .13em .13em rgb(195, 195, 205);
+                -o-box-shadow: 0 .13em .13em rgb(195, 195, 205);
+                -webkit-box-shadow: 0 .13em .13em rgb(195, 195, 205);
+                box-shadow: 0 .13em .13em rgb(195, 195, 205);
 
                 -o-transition: box-shadow .2s ease-in;
                 -moz-transition: box-shadow .2s ease-in;

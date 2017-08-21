@@ -3,7 +3,7 @@ const path = require('path')
 const isProduction = JSON.parse(process.env.PROD_ENV || '0')
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src') + '/app.js',
+    entry: path.resolve(__dirname, 'src') + '/client.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'

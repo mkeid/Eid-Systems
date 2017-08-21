@@ -11,11 +11,11 @@
             background: url('/images/about-billboard.jpg');
             color: white;
 
-            -webkit-animation: fadein 2s forwards;
-            -moz-animation: fadein 2s forwards;
-            -ms-animation: fadein 2s forwards;
-            -o-animation: fadein 2s forwards;
-            animation: fadein 2s forwards;
+            -webkit-animation: fadein 1s forwards;
+            -moz-animation: fadein 1s forwards;
+            -ms-animation: fadein 1s forwards;
+            -o-animation: fadein 1s forwards;
+            animation: fadein 1s forwards;
 
             @media only screen and (max-width: $mobileWidth) {
                 background: none;
@@ -23,11 +23,11 @@
 
 
             .info-containers {
-                -webkit-animation: fadein 2s forwards;
-                -moz-animation: fadein 2s forwards;
-                -ms-animation: fadein 2s forwards;
-                -o-animation: fadein 2s forwards;
-                animation: fadein 2s forwards;
+                -webkit-animation: fadein 1s forwards;
+                -moz-animation: fadein 1s forwards;
+                -ms-animation: fadein 1s forwards;
+                -o-animation: fadein 1s forwards;
+                animation: fadein 1s forwards;
 
                 .about-container {
                     position: relative;

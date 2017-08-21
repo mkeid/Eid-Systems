@@ -4,10 +4,11 @@ $color2: rgb(68, 88, 120);
 $color3: rgb(146, 205, 207);
 $color4: rgb(238, 239, 247);
 
-$borderGray: rgb(230, 230, 230);
+$borderGray: rgb(210, 210, 210);
 $borderRadius: .15em;
 $mobileWidth: 70em;
 $mobileSpace: 95%;
+$red: rgb(190, 20,70);
 
 @font-face {
   font-family: 'Raleway';
@@ -44,7 +45,7 @@ body {
 }
 
 input[type=text], textarea {;
-    border-color: rgb(200, 200, 200);
+    border-color: $borderGray !important;
 
     -moz-transition: all .2s ease-in;
     -o-transition: all .2s ease-in;
@@ -56,7 +57,7 @@ input[type=text], textarea {;
     }
 
     &:focus {
-        border-color: $color1;
+        border-color: $color1 !important;
 
         -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.10);
         -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.10);

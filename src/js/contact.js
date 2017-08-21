@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import AlertContainer from "react-alert"
 import axios from "axios"
+import { Shake } from "reshake"
 import { Body } from "./reuse"
 
 
@@ -16,6 +17,7 @@ class EmailForm extends Component {
             message: "",
             name: "",
             disabled: false,
+            isShaking: false,
             shouldShowWarning: false,
             showWarning: false
         }
@@ -40,38 +42,54 @@ class EmailForm extends Component {
         this.inputsNotEmpty = this.inputsNotEmpty.bind(this)
         this.showIncompleteFormAlert = this.showIncompleteFormAlert.bind(this)
         this.showEmailWarningAlert = this.showEmailWarningAlert.bind(this)
+        this.stopShaking = this.stopShaking.bind(this)
+    }
+
+    /** After an update, stop the send button from shaking if it is */
+    componentDidUpdate() {
+        if (this.state.isShaking) {
+            this.shakeTimeout = setTimeout(this.stopShaking, 500)
+        }
+    }
+
+    /** Clear timeout so component doesn't try to set state while unmounted */
+    componentWillUnmount() {
+        this.shakeTimeout && clearTimeout(this.shakeTimeout)
     }
 
     /** After leaving the email field, check the input valdity */
     handleBlurEmail(event) {
-        this.setState({showWarning: this.state.shouldShowWarning})
+        const showWarning = this.state.shouldShowWarning
+        this.setState({showWarning})
     }
 
     /** Update email state variable on change and verify it's valdity */
     handleChangedEmail(event) {
         const email = event.target.value
-        this.setState({email: email})
+        this.setState({email})
 
         const validExpression = this.emailExression.exec(email)
-        const validEmail = validExpression !== null || !email.length
+        const emailIsValid = validExpression !== null || !email.length
 
-        if (validEmail) {
+        if (emailIsValid) {
             this.setState({shouldShowWarning: false, showWarning: false})
         } else {
             this.setState({shouldShowWarning: true})
         }
 
-        this.setState({emailIsValid: validEmail})
+        this.setState({emailIsValid})
     }
 
     /** Update message state variable on change */
     handleChangedMessage(event) {
-        this.setState({message: event.target.value})
+        const message = event.target.value
+        this.setState({message})
     }
 
     /** Update name state variable on change */
     handleChangedName(event) {
-        this.setState({name: event.target.value})
+        const name = event.target.value
+        this.setState({name})
     }
 
     /** If the form is appropriate, send an API POST request to send en email */
@@ -104,42 +122,71 @@ class EmailForm extends Component {
     /** Alert the user that the email is not valid */
     showEmailWarningAlert() {
         this.msg.error("Invalid email address")
+        this.setState({isShaking: true})
     }
 
     /** Alert the user that the form has not been entirely filled in */
     showIncompleteFormAlert() {
         this.msg.error("Incomplete form")
+        this.setState({isShaking: true})
+    }
+
+    /** Stop the send button from shaking after a form error */
+    stopShaking() {
+        this.setState({isShaking: false})
     }
 
     render() {
         // Form submission button components
-        const sendButton = (
+        const sendButton = this.state.isShaking ? (
+            <Shake h={3} v={5} r={0}
+                dur={42}
+                int={10}
+                max={100}
+                fixed={true}
+                fixedStop={false}
+                freez={false}>
+                <input type="submit" value="Send" className="send-button err" />
+            </Shake>
+        ) : (
             <input type="submit" value="Send" className="send-button" />
         )
         const sentButton = (
-            <div className="send-button sent-confirmation">Sent!</div>
+            <div className="send-button sent-confirmation">
+                Sent!
+            </div>
         )
 
         return (
             <form onSubmit={this.handleSubmit} className="email-form">
                 <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
-                <div className="head">Send me an email</div>
+                <div className="head">
+                    Send me an email
+                </div>
                 <div className="inputs">
                     <div className="left">
                         <div className="input">
-                            <div className="title">Name</div>
-                            <input type="text" value={this.state.name}
+                            <div className="title">
+                                Name
+                            </div>
+                            <input
+                                type="text"
+                                value={this.state.name}
                                 onChange={this.handleChangedName}
                                 disabled={this.state.disabled} />
                         </div>
                         <div className="input">
-                            <div className="title">Email</div>
+                            <div className="title">
+                                Email
+                            </div>
                             {this.state.showWarning &&
                                 <div className="email-warning">
                                     Invalid Address
                                 </div>
                             }
-                            <input type="text" value={this.state.email}
+                            <input
+                                type="text"
+                                value={this.state.email}
                                 onBlur={this.handleBlurEmail}
                                 onChange={this.handleChangedEmail}
                                 disabled={this.state.disabled} />
@@ -147,8 +194,11 @@ class EmailForm extends Component {
                     </div>
                     <div className="right">
                         <div className="input">
-                            <div className="title">Message</div>
-                            <textarea value={this.state.message}
+                            <div className="title">
+                                Message
+                            </div>
+                            <textarea
+                                value={this.state.message}
                                 onChange={this.handleChangedMessage}
                                 disabled={this.state.disabled} />
                         </div>
@@ -168,12 +218,14 @@ class ContactBillboard extends Component {
     shouldComponentUpdate() {
         return false
     }
-    
+
     render() {
         return (
             <div className="billboard">
                 <div className="container">
-                    <a className="linkedin-link" href="https://linkedin.com/in/mkeid/">
+                    <a
+                        className="linkedin-link"
+                        href="https://linkedin.com/in/mkeid/">
                         Connect
                     </a>
                 </div>
