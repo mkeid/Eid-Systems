@@ -16,9 +16,7 @@ class Body extends Component {
                     <div className="content">
                         {this.props.title &&
                             <div className="title">
-                                <span>
-                                    {this.props.title}
-                                </span>
+                                <span>{this.props.title}</span>
                             </div>
                         }
                     </div>

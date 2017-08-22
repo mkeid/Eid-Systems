@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { Body } from "./reuse"
-import { connect } from "react-redux"
 
 
 /**
@@ -144,13 +143,8 @@ class PortfolioSite extends Component {
 }
 
 
-// Init redux container for "Portfolio" page
-const mapStateToProps = state => ({projects: state.projects})
-const ProjectsContainer = connect(mapStateToProps)(PortfolioSite)
-
 module.exports = {
     Portfolio,
     PortfolioItem,
-    PortfolioSite,
-    ProjectsContainer
+    PortfolioSite
 }

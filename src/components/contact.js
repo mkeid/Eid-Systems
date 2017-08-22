@@ -106,7 +106,6 @@ class EmailForm extends Component {
 
         const data = this.state
         axios.post("/email", data).then(response => {
-            console.log(response)
             this.setState({disabled: true})
         })
     }
@@ -152,9 +151,7 @@ class EmailForm extends Component {
             <input type="submit" value="Send" className="send-button" />
         )
         const sentButton = (
-            <div className="send-button sent-confirmation">
-                Sent!
-            </div>
+            <div className="send-button sent-confirmation">Sent!</div>
         )
 
         return (
@@ -166,9 +163,7 @@ class EmailForm extends Component {
                 <div className="inputs">
                     <div className="left">
                         <div className="input">
-                            <div className="title">
-                                Name
-                            </div>
+                            <div className="title">Name</div>
                             <input
                                 type="text"
                                 value={this.state.name}
@@ -176,9 +171,7 @@ class EmailForm extends Component {
                                 disabled={this.state.disabled} />
                         </div>
                         <div className="input">
-                            <div className="title">
-                                Email
-                            </div>
+                            <div className="title">Email</div>
                             {this.state.showWarning &&
                                 <div className="email-warning">
                                     Invalid Address
@@ -194,9 +187,7 @@ class EmailForm extends Component {
                     </div>
                     <div className="right">
                         <div className="input">
-                            <div className="title">
-                                Message
-                            </div>
+                            <div className="title">Message</div>
                             <textarea
                                 value={this.state.message}
                                 onChange={this.handleChangedMessage}
@@ -223,8 +214,7 @@ class ContactBillboard extends Component {
         return (
             <div className="billboard">
                 <div className="container">
-                    <a
-                        className="linkedin-link"
+                    <a className="linkedin-link"
                         href="https://linkedin.com/in/mkeid/">
                         Connect
                     </a>

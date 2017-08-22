@@ -20,16 +20,10 @@ class Post extends Component {
 
         return (
             <div className="post">
-                <div className="title">
-                    {this.props.title}
-                </div>
-                <div className="date">
-                    {dateText}
-                </div>
+                <div className="title">{this.props.title}</div>
+                <div className="date">{dateText}</div>
                 <img src={this.props.imgSrc} />
-                <div className="preview">
-                    {this.props.preview}
-                </div>
+                <div className="preview">{this.props.preview}</div>
                 {this.props.content ? (
                     <Link to={postUrl} className="read-more">
                         Read more
@@ -57,16 +51,11 @@ class BlogSite extends Component {
 
         return (
             <div className="blog-site">
-                <div className="container">
-                    {posts}
-                </div>
+                <div className="container">{posts}</div>
             </div>
         )
     }
 }
 
-// Init redux container for "Blog" page
-const mapStateToProps = state => ({posts: state.posts})
-const BlogContainer = connect(mapStateToProps)(BlogSite)
 
-module.exports = { BlogContainer }
+module.exports = { BlogSite }

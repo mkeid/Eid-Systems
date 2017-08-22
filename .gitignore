@@ -1,3 +1,5 @@
 node_modules/
 dist/
 server.js
+app.js
+*.log

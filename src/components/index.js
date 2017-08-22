@@ -48,11 +48,7 @@ class IndexBillboard extends Component {
         // Data for the left-side component
         const developerData = this.props.data.developer
         const developerKeywords = developerData.keywords.map(
-            data => (
-                <span key={data}>
-                    {data}
-                </span>
-            )
+            data => <span key={data}>{data}</span>
         )
 
         // Data for the right-side component
@@ -104,8 +100,6 @@ class IndexSite extends Component {
 }
 
 
-// Init redux container for "Index" page
-const mapStateToProps = state => ({index: state.index, projects: state.projects})
-const IndexContainer = connect(mapStateToProps)(IndexSite)
 
-module.exports = { IndexSite, IndexContainer }
+
+module.exports = { IndexSite }

@@ -1,10 +1,10 @@
 import React, { Component } from "react"
 import { Route, Switch } from "react-router-dom"
-import { AboutContainer } from "./about"
-import { BlogContainer} from "./blog"
-import { ContactSite } from "./contact"
-import { IndexContainer } from "./index"
-import { ProjectsContainer } from "./portfolio"
+import AboutContainer from "./containers/about"
+import BlogContainer from "./containers/blog"
+import { ContactSite } from "./components/contact"
+import IndexContainer from "./containers/index"
+import ProjectsContainer from "./containers/portfolio"
 
 
 /**

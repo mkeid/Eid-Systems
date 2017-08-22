@@ -32,17 +32,17 @@
                 .about-container {
                     position: relative;
                     text-align: left;
-                    top: -.4em;
+                    top: -3.4em;
                     width: 18.750em;
 
                     .head {
-                        font-size: .81em;
+                        font-size: .9em;
                         line-height: 1.4em;
                         margin-top: 0.625em;
                     }
 
                     .detail {
-                        font-size: .55em;
+                        font-size: .65em;
                         line-height: 1.6em;
                         margin-top: .6em;
                     }
@@ -72,17 +72,21 @@
             }
 
             .description {
-                font-size: 1.2em;
-                line-height: 1.5em;
+                font-size: 1.3em;
+                line-height: 1.8em;
+
+                @media only screen and (max-width: $mobileWidth) {
+                    font-size: 1.3em;
+                }
             }
 
             .keywords {
                 .visible {
-                    -webkit-animation: fadein 1s forwards, slideleft .5s forwards;
-                    -moz-animation: fadein 1s forwards, slideleft .5s forwards;
-                    -ms-animation: fadein 1s forwards, slideleft .5s forwards;
-                    -o-animation: fadein 1s forwards, slideleft .5s forwards;
-                    animation: fadein 1s forwards, slideleft .5s forwards;
+                    -webkit-animation: fadein .5s forwards, slideleft .5s forwards;
+                    -moz-animation: fadein .5s forwards, slideleft .5s forwards;
+                    -ms-animation: fadein .5s forwards, slideleft .5s forwards;
+                    -o-animation: fadein .5s forwards, slideleft .5s forwards;
+                    animation: fadein .5s forwards, slideleft .5s forwards;
                 }
 
                 .keyword {
@@ -106,6 +110,22 @@
 
         @media only screen and (max-width: $mobileWidth) {
             width: $mobileSpace;
+        }
+    }
+}
+
+.about-site {
+    @media only screen and (max-width: $mobileWidth) {
+        .info-containers {
+            top: 31em !important;
+        }
+
+        .details {
+            font-size: 2.6em !important;
+        }
+
+        .head {
+            display: none;
         }
     }
 }

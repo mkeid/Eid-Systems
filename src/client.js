@@ -3,27 +3,29 @@ import ReactDOM from "react-dom"
 import axios from "axios"
 import axiosMiddleware from "redux-axios-middleware";
 import { connect } from "react-redux"
-import { compose, createStore, applyMiddleware } from "redux"
+import { bindActionCreators, createStore, applyMiddleware } from "redux"
 import { BrowserRouter, browserHistory } from "react-router-dom"
 import { Provider } from "react-redux"
 import ReactGA from "react-ga"
 
 // Import local modules
-import { Footer } from "./js/reuse"
-import { Main } from "./js/sites"
-import NavContainer from "./js/nav"
-import { fetchStoreRequest, menuClose, menuOpen, reducer } from "./js/redux"
+import { Footer } from "./components/reuse"
+import { Main } from "./routes"
+import { menuClose, menuOpen } from "./actions/nav"
+import NavContainer from "./containers/nav"
+import { fetchStoreRequest } from "./actions/root"
+import CombinedReducer from "./reducers/root"
 import "./style/main.scss"
 
 // Set up Google Analytics
 ReactGA.initialize("UA-48669228-4")
 
 // Init Axios client used for async API calls
-const client = axios.create({baseURL: "/", responseType: "json"})
+const axiosClient = axios.create({baseURL: "/", responseType: "json"})
 
 // Create our store which the entire application references
-const middleware = applyMiddleware(axiosMiddleware(client))
-const store = createStore(reducer, middleware)
+const middleware = applyMiddleware(axiosMiddleware(axiosClient))
+const store = createStore(CombinedReducer, middleware)
 
 // Fetch our application data from the backend
 store.dispatch(fetchStoreRequest())
@@ -31,29 +33,18 @@ store.dispatch(fetchStoreRequest())
 /**
 * Single page application component within a router component
 */
-class App extends Component {
+class Client extends Component {
     constructor(props) {
         super(props)
         this.state = {currentPage: "index"}
 
-        // Bing this to functions
-        this.menuClose = this.menuClose.bind(this)
-        this.toggleMenu = this.toggleMenu.bind(this)
+        // Bind this to function
         this.updateCurrentPage = this.updateCurrentPage.bind(this)
-    }
-
-    menuClose() {
-        this.props.dispatch(menuClose())
-    }
-
-    toggleMenu() {
-        const func = this.props.menuOpened ? menuClose : menuOpen
-        this.props.dispatch(func())
     }
 
     updateCurrentPage(page) {
         this.setState({currentPage: page})
-        this.props.dispatch(menuClose())
+        this.props.menuClose()
 
         // Google analytics call
         ReactGA.set({page: window.location.pathname})
@@ -61,16 +52,16 @@ class App extends Component {
     }
 
     render() {
-        return this.props.isLoading ? (<div />) : (
+        return this.props.root.isLoading ? (<div />) : (
             <BrowserRouter
                 onUpdate={this.props.onUpdate}
                 history={browserHistory}>
-                <div onClick={this.menuClose}>
+                <div onClick={this.props.menuClose}>
                     <NavContainer
                         currentPage={this.state.currentPage}
-                        toggleMenu={this.toggleMenu} />
-                    <Main
-                        updateCurrentPage={this.updateCurrentPage} />
+                        menuClose={this.props.menuClose}
+                        menuOpen={this.props.menuOpen} />
+                    <Main updateCurrentPage={this.updateCurrentPage} />
                     <Footer />
                 </div>
             </BrowserRouter>
@@ -79,12 +70,15 @@ class App extends Component {
 }
 
 // Create a container so the app can hide while fetching data
-const AppContainer = connect(state => state)(App)
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({menuClose, menuOpen}, dispatch)
+)
+const ClientContainer = connect(state => state, mapDispatchToProps)(Client)
 
 // Splice the React app into the DOM
 ReactDOM.render(
     <Provider store={store}>
-        <AppContainer />
+        <ClientContainer />
     </Provider>,
     document.getElementById("react-root")
 )

@@ -1,6 +1,4 @@
 import React, { Component } from "react"
-import ReactDOM from "react-dom"
-import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 
 
@@ -50,37 +48,33 @@ class NavItemList extends Component {
 
     // Toggle menu visibility
     handleCheckboxChange() {
-        this.props.toggleMenu()
+        if (this.props.menuOpened) {
+            this.props.menuClose()
+        } else {
+            this.props.menuOpen()
+        }
     }
 
     render() {
         const navItems = this.props.items.sort().map(item =>
-            <NavItem key={item} title={item.toUpperCase()}
+            <NavItem
+                key={item}
+                title={item.toUpperCase()}
                 href={"/" + item.toLowerCase()}
                 selected={item === this.props.currentPage} />
         )
 
         return (
             <div className="nav-item-list-parent">
-                <input type="checkbox" checked={this.props.menuOpened}
+                <input
+                    type="checkbox"
+                    checked={this.props.menuOpened}
                     onChange={this.handleCheckboxChange} />
-                <div className="nav-item-list">
-                    {navItems}
-                </div>
+                <div className="nav-item-list">{navItems}</div>
             </div>
         )
     }
 }
-
-
-/**
-* A button component function for sending the user off to a social media link
-*/
-const NavSocial = (props) => (
-    <a href={props.href} className="nav-social">
-        <img src={props.imgSrc} />
-    </a>
-)
 
 
 /**
@@ -90,14 +84,16 @@ const NavSocial = (props) => (
 class NavSocialList extends Component {
     render() {
         const navSocials = this.props.socials.map(
-            social => <NavSocial key={social.site} {...social} />
+            social => (
+                <a key={social.site}
+                    className="nav-social"
+                    href={social.href}>
+                    <img src={social.imgSrc} />
+                </a>
+            )
         )
 
-        return (
-            <div className="nav-social-list">
-                {navSocials}
-            </div>
-        )
+        return <div className="nav-social-list">{navSocials}</div>
     }
 }
 
@@ -125,13 +121,4 @@ class NavBar extends Component {
 }
 
 
-// Init nav bar redux container
-const mapStateToProps = state => ({
-    menuOpened: state.menuOpened,
-    items: state.nav.items,
-    logoImgSrc: state.nav.logoImgSrc,
-    socials: state.nav.socials
-})
-const NavContainer = connect(mapStateToProps)(NavBar)
-
-module.exports = NavContainer
+module.exports = { NavBar }
