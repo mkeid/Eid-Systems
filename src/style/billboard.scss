@@ -10,6 +10,22 @@
         margin-top: 4em;
     }
 
+    canvas {
+        position: absolute;
+        left: 0;
+        top: 6.25em;
+
+        -webkit-animation: fadein 4s;
+        -moz-animation: fadein 4s;
+        -ms-animation: fadein 4s;
+        -o-animation: fadein 4s;
+        animation: fadein 4s;
+
+        @media only screen and (max-width: $mobileWidth) {
+            display: none;
+        }
+    }
+
     .linkedin-link {
         background: rgb(0, 119, 181);
         border-radius: $borderRadius;
@@ -53,10 +69,12 @@
     }
 
     .container {
+        background: white;
         display: inline-block;
         height: 100%;
         text-align: center;
         width: 72.0em;
+        z-index: 1;
 
         img {
             @-webkit-keyframes slide-right {

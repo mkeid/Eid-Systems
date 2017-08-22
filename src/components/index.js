@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
+import Particles from "react-particles-js"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { Body } from "./reuse"
-import { Portfolio } from './portfolio'
+import { Portfolio } from "./portfolio"
+import indexParticlesConfig from "../config/index_particles"
 
 
 /**
@@ -59,6 +61,7 @@ class IndexBillboard extends Component {
 
         return (
             <div className="billboard">
+                <Particles height="31.5em" params={indexParticlesConfig} />
                 <div className="container">
                     <InfoContainers
                         developerTitle={developerData.title}
