@@ -2,32 +2,23 @@
     .billboard {
         background: rgb(0, 141, 187);
 
-        @media only screen and (max-width: $mobileWidth) {
+        @include mobile {
             background: url('/images/about-billboard.jpg');
             background-size: 146%;
         }
 
         .container {
+            @include animation(fadein, 1s, forwards);
+
             background: url('/images/about-billboard.jpg');
             color: white;
 
-            -webkit-animation: fadein 1s forwards;
-            -moz-animation: fadein 1s forwards;
-            -ms-animation: fadein 1s forwards;
-            -o-animation: fadein 1s forwards;
-            animation: fadein 1s forwards;
-
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 background: none;
             }
 
-
             .info-containers {
-                -webkit-animation: fadein 1s forwards;
-                -moz-animation: fadein 1s forwards;
-                -ms-animation: fadein 1s forwards;
-                -o-animation: fadein 1s forwards;
-                animation: fadein 1s forwards;
+                @include animation(fadein, 1s, forwards);
 
                 .about-container {
                     position: relative;
@@ -47,7 +38,7 @@
                         margin-top: .6em;
                     }
 
-                    @media only screen and (max-width: $mobileWidth) {
+                    @include mobile {
                         font-size: 1.7em;
                         top: -9.5em;
                     }
@@ -75,7 +66,7 @@
                 font-size: 1.3em;
                 line-height: 1.8em;
 
-                @media only screen and (max-width: $mobileWidth) {
+                @include mobile {
                     font-size: 1.3em;
                 }
             }
@@ -107,19 +98,19 @@
                 }
             }
 
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 font-size: 2em;
             }
         }
 
-        @media only screen and (max-width: $mobileWidth) {
+        @include mobile {
             width: $mobileSpace;
         }
     }
 }
 
 .about-site {
-    @media only screen and (max-width: $mobileWidth) {
+    @include mobile {
         .info-containers {
             top: 31em !important;
         }

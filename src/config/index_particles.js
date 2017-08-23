@@ -4,7 +4,7 @@ export default {
       "value": 80,
       "density": {
         "enable": true,
-        "value_area": 1815.039575754227
+        "value_area": 1500
       }
     },
     "color": {
@@ -71,11 +71,11 @@ export default {
     "detect_on": "canvas",
     "events": {
       "onhover": {
-        "enable": true,
+        "enable": false,
         "mode": "repulse"
       },
       "onclick": {
-        "enable": true,
+        "enable": false,
         "mode": "push"
       },
       "resize": true

@@ -1,0 +1,66 @@
+@mixin mobile {
+    @media only screen and (max-width: $mobileWidth) {
+        @content;
+    }
+}
+
+@mixin box-sizing($mode) {
+    -moz-box-sizing: $mode;
+    -o-box-sizing: $mode;
+    -webkit-box-sizing: $mode;
+    box-sizing: $mode;
+}
+
+@mixin animation($animation, $time, $mode) {
+    -webkit-animation: $animation $time $mode;
+    -moz-animation: $animation $time $mode;
+    -ms-animation: $animation $time $mode;
+    -o-animation: $animation $time $mode;
+    animation: $animation $time $mode;
+}
+
+@mixin animation-delay($time) {
+    -moz-animation-delay: $time;
+    -o-animation-delay: $time;
+    -webkit-animation-delay: $time;
+    animation-delay: $time;
+}
+
+@mixin box-shadow($hlen, $vlen, $blur, $spread, $color) {
+    -moz-box-shadow: $hlen $vlen $blur $spread $color;
+    -o-box-shadow: $hlen $vlen $blur $spread $color;
+    -webkit-box-shadow: $hlen $vlen $blur $spread $color;
+    box-shadow: $hlen $vlen $blur $spread $color;
+}
+
+@mixin shadow {
+    @include box-shadow(0, .13em, .13em, 0, rgb(220, 220, 220));
+}
+
+@mixin touch-callout($mode) {
+    -moz-touch-callout: $mode;
+    -o-touch-callout: $mode;
+    -webkit-touch-callout: $mode;
+    touch-callout: $mode;
+}
+
+@mixin transform($transformation) {
+    -moz-transform: $transformation;
+    -o-transform: $transformation;
+    -webkit-transform: $transformation;
+    transform: $transformation;
+}
+
+@mixin transition($attribute, $time, $mode) {
+    -moz-transition: $attribute $time $mode;
+    -o-transition: $attribute $time $mode;
+    -webkit-transition: $attribute $time $mode;
+    transition: $attribute $time $mode;
+}
+
+@mixin user-select($mode) {
+    -moz-user-select: $mode;
+    -o-user-select: $mode;
+    -webkit-user-select: $mode;
+    user-select: $mode;
+}

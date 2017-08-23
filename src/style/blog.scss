@@ -11,6 +11,9 @@
         width: 48em;
 
         a {
+            @include shadow;
+            @include transition(background, .15s, ease-in);
+
             background: $color1 !important;
             border-radius: $borderRadius;
             color: white !important;
@@ -20,16 +23,6 @@
             padding: .8em;
             text-align: center;
             text-decoration: none;
-
-            -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-            -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-            -o-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-            box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-
-            -moz-transition: background .15s ease-in;
-            -o-transition: background .15s ease-in;
-            -webkit-transition: background .15s ease-in;
-            transition: background .15s ease-in;
 
             &:hover {
                 background: $color2 !important;
@@ -42,26 +35,20 @@
             }
 
             &:active {
-                -webkit-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
-                -moz-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
-                -o-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
-                box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+                @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, .28));
             }
 
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 font-size: 2.2em;
             }
         }
 
         img {
+            @include shadow;
+
             border-radius: .15em;
             position: relative;
             width: 100%;
-
-            -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-            -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-            -o-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-            box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
 
             -webkit-animation: fadein 1s forwards, slideup .3s forwards;
             -moz-animation: fadein 1s forwards, slideup .3s forwards;
@@ -76,7 +63,7 @@
             margin-bottom: .5em;
             padding-bottom: .04em;
 
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 font-size: 5em !important;
             }
         }
@@ -86,7 +73,7 @@
             font-size: 1.2em;
             margin-bottom: 1.3em;
 
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 font-size: 2em;
             }
         }
@@ -98,18 +85,18 @@
             margin-top: 1em;
             text-align: justify;
 
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 font-size: 2.4em !important;
             }
         }
 
-        @media only screen and (max-width: $mobileWidth) {
+        @include mobile {
             padding: 1em;
             width: 90%;
         }
     }
 
-    @media only screen and (max-width: $mobileWidth) {
+    @include mobile {
         padding: 12em 0 3em 0;
     }
 }

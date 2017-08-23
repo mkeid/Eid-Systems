@@ -5,28 +5,27 @@
     text-align: center;
     width: 100%;
 
-    @media only screen and (max-width: $mobileWidth) {
+    @include mobile {
         height: 50em;
         margin-top: 4em;
     }
 
     canvas {
+        @include animation(fadein, 4s, ease-in);
+
         position: absolute;
         left: 0;
         top: 6.25em;
 
-        -webkit-animation: fadein 4s;
-        -moz-animation: fadein 4s;
-        -ms-animation: fadein 4s;
-        -o-animation: fadein 4s;
-        animation: fadein 4s;
-
-        @media only screen and (max-width: $mobileWidth) {
+        @include mobile {
             display: none;
         }
     }
 
     .linkedin-link {
+        @include shadow;
+        @include transition(background, .15s, ease-in);
+
         background: rgb(0, 119, 181);
         border-radius: $borderRadius;
         color: white;
@@ -37,32 +36,17 @@
         text-decoration: none;
         top: 19.9em;
 
-        -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-        -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-        -o-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.19);
-
-        -moz-transition: background .15s ease-in;
-        -o-transition: background .15s ease-in;
-        -webkit-transition: background .15s ease-in;
-        transition: background .15s ease-in;
 
         &:active {
-            -webkit-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
-            -moz-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
-            box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+            @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, .28));
         }
 
         &:hover {
+            @include transition(background, .2s, ease-in);
             background: rgb(20, 139, 201);
-
-            -moz-transition: background .2s ease-in;
-            -o-transition: background .2s ease-in;
-            -webkit-transition: background .2s ease-in;
-            transition: background .2s ease-in;
         }
 
-        @media only screen and (max-width: $mobileWidth) {
+        @include mobile {
             font-size: 2.1em;
             padding: .8em 3em;
         }
@@ -97,7 +81,7 @@
             -o-animation: fadein 2s, slide-right 1s forwards;
             animation: fadein 2s, slide-right 1s forwards;
 
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 height: 54em;
                 margin-right: 2em;
                 top: -4em;
@@ -106,6 +90,9 @@
         }
 
         .info-containers {
+            @include animation(fadein, 2s, forwards);
+            @include animation-delay(1s);
+
             cursor: default;
             height: 20.0em;
             position: absolute;
@@ -113,18 +100,9 @@
             top: 13.125em;
             width: 72em;
 
-            -webkit-animation: fadein 2s forwards;
-            -moz-animation: fadein 2s forwards;
-            -ms-animation: fadein 2s forwards;
-            -o-animation: fadein 2s forwards;
-            animation: fadein 2s forwards;
-
-            -moz-animation-delay: 1s;
-            -o-animation-delay: 1s;
-            -webkit-animation-delay: 1s;
-            animation-delay: 1s;
-
             a {
+                @include transition(color, .2s, ease-in);
+
                 color: rgb(54, 142, 160);
                 font-size: 1.2em;
                 font-weight: bold;
@@ -132,21 +110,12 @@
                     top: 0.625em;
                 text-decoration: none;
 
-                -moz-transition: color .2s ease-in;
-                -o-transition: color .2s ease-in;
-                -webkit-transition: color .2s ease-in;
-                transition: color .2s ease-in;
-
                 &:hover {
+                    @include transition(all, .2s, ease-in);
                     color: rgb(84, 172, 190);
-
-                    -moz-transition: all .2s ease-in;
-                    -o-transition: all .2s ease-in;
-                    -webkit-transition: all .2s ease-in;
-                    transition: all .2s ease-in;
                 }
 
-                @media only screen and (max-width: $mobileWidth) {
+                @include mobile {
                     display: none;
                 }
             }
@@ -164,12 +133,12 @@
             .details {
                 font-size: 1.875em;
 
-                @media only screen and (max-width: $mobileWidth) {
+                @include mobile {
                     font-size: 2.4em;
                 }
             }
 
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 top: 26em;
                 width: $mobileSpace
             }
@@ -187,7 +156,7 @@
             text-align: right;
         }
 
-        @media only screen and (max-width: $mobileWidth) {
+        @include mobile {
             width: $mobileSpace;
         }
     }

@@ -11,7 +11,7 @@
 
             width: 72em;
 
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 background-size: 150%;
                 background-position: center;
                 width: 100%;
@@ -30,7 +30,7 @@
             font-family: "Raleway", sans-serif;
             font-size: 1em !important;
 
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 font-size: 4em !important;
                 width: 100% !important;
             }
@@ -54,7 +54,7 @@
             font-weight: bold;
             margin-bottom: .4em;
 
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 font-size: 3em;
                 margin-bottom: 1.3em;
             }
@@ -94,7 +94,7 @@
                 margin-bottom: .4em;
             }
 
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 .left, .right {
                     display: block !important;
                     font-size: 1.5em;
@@ -129,6 +129,8 @@
         }
 
         .send-button {
+            @include box-shadow(0, .125em, .3em, 0, rgba(0, 0, 0, .1));
+
             background: $color4;
             border: .1em solid rgb(0, 119, 181);
             border-radius: .15em;
@@ -143,34 +145,23 @@
                 left: -.31em;
             text-align: center !important;
 
-            -webkit-box-shadow: 0 .125em .3em 0 rgba(0,0,0,0.10);
-            -moz-box-shadow: 0 .125em .3em 0 rgba(0,0,0,0.10);
-            -o-box-shadow: 0 .125em .3em 0 rgba(0,0,0,0.10);
-            box-shadow: 0 .125em .3em 0 rgba(0,0,0,0.10);
-
             -moz-transition: color .15s ease-in;
             -o-transition: color .15s ease-in;
             -webkit-transition: color .15s ease-in;
             transition: color .15s ease-in;
 
             &:active {
-                -webkit-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
-                -moz-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
-                -o-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
-                box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.28);
+                @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, .28));
             }
 
             &:hover {
+                @include transition(all, .1s, ease-in);
+
                 background: rgb(0, 119, 181);
                 color:white;
-
-                -moz-transition: all .1s ease-in;
-                -o-transition: all .1s ease-in;
-                -webkit-transition: all .1s ease-in;
-                transition: all .1s ease-in;
             }
 
-            @media only screen and (max-width: $mobileWidth) {
+            @include mobile {
                 background: rgb(0, 119, 181);
                 color:white;
                 font-size: 2.3em;
@@ -181,6 +172,8 @@
         }
 
         .sent-confirmation {
+            @include shadow;
+
             $green: rgb(60, 170, 90);
             background: none;
             border: .1em solid $green;
@@ -199,7 +192,7 @@
             }
         }
 
-        @media only screen and (max-width: $mobileWidth) {
+        @include mobile {
             width: $mobileSpace;
         }
     }
