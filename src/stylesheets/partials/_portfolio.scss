@@ -65,7 +65,7 @@
             }
 
             &:hover {
-                @include box-shadow(0, .13em, .13em, 0, rgb(195, 195, 195));
+                @include box-shadow(0, .13em, .13em, 0, rgb(205, 205, 215));
                 @include transition(box-shadow, .2s, ease-in);
             }
 
@@ -107,7 +107,7 @@
                 }
 
                 .portfolio-arrow {
-                    color: rgb(210, 210, 210);
+                    color: rgb(210, 210, 220);
                     display: inline-block;
                     font-size: 2em;
                     opacity: 0;

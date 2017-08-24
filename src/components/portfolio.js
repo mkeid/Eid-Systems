@@ -14,7 +14,6 @@ class PortfolioItem extends Component {
         }
 
         // Bind this to functions
-        this.handleMouseEnter = this.handleMouseEnter.bind(this)
         this.makeVisible = this.makeVisible.bind(this)
     }
 
@@ -26,10 +25,6 @@ class PortfolioItem extends Component {
         this.appearTimeout && clearTimeout(this.appearTimeout)
     }
 
-    handleMouseEnter() {
-        this.props.focus(this.props.title)
-    }
-
     makeVisible() {
         this.setState({
             isVisible: true
@@ -37,14 +32,11 @@ class PortfolioItem extends Component {
     }
 
     render() {
-        const ghostClass = this.props.isGhost ? "ghost" : ""
         const visibleClass = this.state.isVisible ? "visible" : ""
-        const className = `portfolio-item ${ghostClass} ${visibleClass}`
+        const className = `portfolio-item ${visibleClass}`
 
         return (
-            <li className="portfolio-item-container"
-                onMouseEnter={this.handleMouseEnter}
-                onMouseLeave={this.props.removeGhosts}>
+            <li className="portfolio-item-container">
                 <div className={className}>
                     <a href={this.props.url}>
                         <img src={this.props.imgSrc} />
@@ -74,27 +66,6 @@ class PortfolioItem extends Component {
 class Portfolio extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            ghostProjects: []
-        }
-
-        // Bind this to functions
-        this.focusOnItem = this.focusOnItem.bind(this)
-        this.removeGhosts = this.removeGhosts.bind(this)
-    }
-
-    focusOnItem(focusedProject) {
-        this.setState({
-            ghostProjects: this.props.projects.filter(
-                project => project.title !== focusedProject
-            ).map(project => project.title)
-        })
-    }
-
-    removeGhosts() {
-        this.setState({
-            ghostProjects: []
-        })
     }
 
     render() {
@@ -105,8 +76,6 @@ class Portfolio extends Component {
                 key={item.title}
                 delay={index * appearDelay}
                 focus={this.focusOnItem}
-                isGhost={this.state.ghostProjects.includes(item.title)}
-                removeGhosts={this.removeGhosts}
                 {...item} />
         )
 

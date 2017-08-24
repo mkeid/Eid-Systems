@@ -34,7 +34,7 @@
 }
 
 @mixin shadow {
-    @include box-shadow(0, .13em, .13em, 0, rgb(220, 220, 220));
+    @include box-shadow(0, .13em, .13em, 0, rgb(220, 220, 230));
 }
 
 @mixin touch-callout($mode) {

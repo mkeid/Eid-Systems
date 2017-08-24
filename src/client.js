@@ -15,7 +15,7 @@ import { menuClose, menuOpen } from "./actions/nav"
 import NavContainer from "./containers/nav"
 import { fetchStoreRequest } from "./actions/root"
 import CombinedReducer from "./reducers/root"
-import "./style/root.scss"
+import "./stylesheets/root.scss"
 
 // Set up Google Analytics
 ReactGA.initialize("UA-48669228-4")

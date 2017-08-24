@@ -4,7 +4,7 @@ export default {
       "value": 80,
       "density": {
         "enable": true,
-        "value_area": 1500
+        "value_area": 5000
       }
     },
     "color": {
@@ -26,7 +26,7 @@ export default {
       }
     },
     "opacity": {
-      "value": 0.5,
+      "value": 0.33,
       "random": false,
       "anim": {
         "enable": false,
