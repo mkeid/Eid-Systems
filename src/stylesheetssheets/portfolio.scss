@@ -8,7 +8,7 @@
     .container {
         display: inline-block;
         text-align: left;
-        width: $siteWidth;
+        width: 72em;
 
         .ghost {
             @include transition(all, .2s, ease-in);

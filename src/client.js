@@ -21,13 +21,11 @@ import "./stylesheets/root.scss"
 ReactGA.initialize("UA-48669228-4")
 
 // Init Axios client used for async API calls
-const axiosClient = axios.create({baseURL: "/", responseType: "json"})
+const axiosClient = axios.create({baseURL: "/api/", responseType: "json"})
 
-// Create our store which the entire application references
+// Create our store which the entire application references and fetch init data
 const middleware = applyMiddleware(axiosMiddleware(axiosClient))
 const store = createStore(CombinedReducer, middleware)
-
-// Fetch our application data from the backend
 store.dispatch(fetchStoreRequest())
 
 /**
@@ -53,9 +51,7 @@ class Client extends Component {
 
     render() {
         return this.props.root.isLoading ? (<div />) : (
-            <BrowserRouter
-                onUpdate={this.props.onUpdate}
-                history={browserHistory}>
+            <BrowserRouter history={browserHistory}>
                 <div onClick={this.props.menuClose}>
                     <NavContainer
                         currentPage={this.state.currentPage}
@@ -70,10 +66,7 @@ class Client extends Component {
 }
 
 // Create a container so the app can hide while fetching data
-const mapDispatchToProps = dispatch => (
-    bindActionCreators({menuClose, menuOpen}, dispatch)
-)
-const ClientContainer = connect(state => state, mapDispatchToProps)(Client)
+const ClientContainer = connect(state => state, {menuClose, menuOpen})(Client)
 
 // Splice the React app into the DOM
 ReactDOM.render(

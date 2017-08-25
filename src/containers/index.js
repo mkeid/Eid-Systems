@@ -1,3 +1,4 @@
+import _ from "lodash"
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { IndexSite } from "../components/index"
@@ -5,7 +6,7 @@ import { IndexSite } from "../components/index"
 // Init redux container for "Index" page
 const mapStateToProps = state => ({
     index: state.index,
-    projects: state.projects
+    projects: _.map(state.projects, (value, key) => value)
 })
 const IndexContainer = connect(mapStateToProps)(IndexSite)
 

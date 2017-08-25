@@ -21,7 +21,7 @@
     .container {
         display: inline-block;
         text-align: center;
-        width: 72em;
+        width: $siteWidth;
 
         @include mobile {
             width: 100%;

@@ -39,7 +39,7 @@ if (isDevelopment) {
 app.use(bodyParser.json())
 
 // Send application data store
-app.get("/store", function(request, response) {
+app.get("/api/store", function(request, response) {
     getComponents(function(error, components) {
         let comps = {}
         for (let i = 0; i < components.length; i++) {

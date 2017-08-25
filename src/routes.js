@@ -23,7 +23,7 @@ const Main = (props) => (
                 render={() => (<ContactSite {...props} />)} />
             <Route exact path="/portfolio"
                 render={() => (<ProjectsContainer {...props} />)} />
-            <Route path="*" component={NotFound} />
+            <Route component={NotFound} />
         </Switch>
     </main>
 )

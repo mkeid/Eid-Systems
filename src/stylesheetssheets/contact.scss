@@ -1,0 +1,199 @@
+.contact-site {
+    .billboard {
+        .container {
+            background: url('/images/contact-billboard.jpg');
+            background-size: 100%;
+
+            -webkit-animation: fadein 1s forwards;
+            -moz-animation: fadein 1s forwards;
+            -o-animation: fadein 1s forwards;
+            animation: fadein 1s forwards;
+
+            width: 72em;
+
+            @include mobile {
+                background-size: 150%;
+                background-position: center;
+                width: 100%;
+            }
+        }
+    }
+
+    .email-form {
+        color: $color1;
+        display: inline-block;
+        padding-bottom: 3em;
+        text-align: left;
+        width: 72em;
+
+        .css-1vm9g5e {
+            font-family: "Raleway", sans-serif;
+            font-size: 1em !important;
+
+            @include mobile {
+                font-size: 4em !important;
+                width: 100% !important;
+            }
+        }
+
+        .email-warning {
+            background: $red;
+            border-radius: 1em;
+            color: white;
+            cursor: default;
+            display: inline-block;
+            font-weight: bold;
+            margin-left: 1em;
+            padding: .1em .6em;
+            position: relative;
+            top: -.095em;
+        }
+
+        .head {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: .4em;
+
+            @include mobile {
+                font-size: 3em;
+                margin-bottom: 1.3em;
+            }
+        }
+
+        .inputs {
+            > div {
+                display: inline-block;
+                width: 47%;
+            }
+
+            input {
+                margin-bottom: 1.5em;
+                width: 100%;
+            }
+
+            textarea {
+                height: 7.6em;
+                width: 100%;
+            }
+
+            .left {
+                padding-right: 3%;
+            }
+
+            .right {
+                float: right;
+                padding-left: 3%;
+                position: relative;
+                left: -1.17em;
+                top: -0em;
+            }
+
+            .title {
+                display: inline-block;
+                font-size: 1.4em;
+                margin-bottom: .4em;
+            }
+
+            @include mobile {
+                .left, .right {
+                    display: block !important;
+                    font-size: 1.5em;
+                    padding-right: 0;
+                    width: 100%;
+                }
+
+                .right {
+                    left: auto;
+                    top:auto;
+                    margin-bottom: 3em;
+                    padding-left: 0;
+                }
+
+                .title {
+                    font-size: 1.8em;
+                }
+
+                input, textarea {
+                    font-size: 2em;
+                    width: 98%;
+                    margin-right: 0;
+                    padding-right: 0;
+                }
+            }
+        }
+
+        .err {
+            background: $red !important;
+            border-color: $red !important;
+            color: white !important;
+        }
+
+        .send-button {
+            @include box-shadow(0, .125em, .3em, 0, rgba(0, 0, 0, .1));
+
+            background: $color4;
+            border: .1em solid rgb(0, 119, 181);
+            border-radius: .15em;
+            color: rgb(0, 119, 181);
+            cursor: pointer;
+            display: inline-block;
+            float: right;
+            font-size: 1.4em;
+            outline: none;
+            padding: .4em 1em;
+            position: relative;
+                left: -.31em;
+            text-align: center !important;
+
+            -moz-transition: color .15s ease-in;
+            -o-transition: color .15s ease-in;
+            -webkit-transition: color .15s ease-in;
+            transition: color .15s ease-in;
+
+            &:active {
+                @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, .28));
+            }
+
+            &:hover {
+                @include transition(all, .1s, ease-in);
+
+                background: rgb(0, 119, 181);
+                color:white;
+            }
+
+            @include mobile {
+                background: rgb(0, 119, 181);
+                color:white;
+                font-size: 2.3em;
+                left: 0;
+                margin-bottom: 1em;
+                padding: .8em 3em;
+            }
+        }
+
+        .sent-confirmation {
+            @include shadow;
+
+            $green: rgb(60, 170, 90);
+            background: none;
+            border: .1em solid $green;
+            color: $green;
+            cursor: default;
+
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            -o-box-shadow: none;
+            box-shadow: none;
+
+            &:hover {
+                background: none;
+                border-color: $green;
+                color: $green;
+            }
+        }
+
+        @include mobile {
+            width: $mobileSpace;
+        }
+    }
+}
