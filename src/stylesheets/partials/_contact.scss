@@ -34,7 +34,7 @@
         .warning {
             @include animation(fadein, .5s, forwards);
             background: $red;
-            border-radius: $borderRadius;
+            border-radius: 3em;
             color: white;
             cursor: default;
             display: inline-block;
@@ -44,9 +44,14 @@
             padding: .1em .6em;
             position: relative;
             top: -.095em;
+
+            @include mobile {
+                font-size: 1.3em;
+            }
         }
 
         .head {
+            cursor: default;
             font-size: 2em;
             font-weight: bold;
             margin-bottom: .4em;
@@ -58,6 +63,8 @@
         }
 
         .inputs {
+            cursor: default;
+
             > div {
                 display: inline-block;
                 width: 47%;
@@ -123,6 +130,17 @@
             background: $red !important;
             border-color: $red !important;
             color: white !important;
+            width: 4.6em !important;
+
+            @include mobile-contact-button;
+        }
+
+        .loading {
+            background: rgb(0, 119, 181) !important;
+            cursor: wait !important;
+            width: 4.6em !important;
+
+            @include mobile-contact-button;
         }
 
         .send-button {
@@ -133,14 +151,15 @@
             border-radius: .15em;
             color: rgb(0, 119, 181);
             cursor: pointer;
-            display: inline-block;
+            display: block;
             float: right;
             font-size: 1.4em;
             outline: none;
-            padding: .4em 1em;
+            padding: .4em 0;
             position: relative;
                 left: -.31em;
             text-align: center !important;
+            width: 4.8em;
 
             -moz-transition: color .15s ease-in;
             -o-transition: color .15s ease-in;
@@ -162,9 +181,10 @@
                 background: rgb(0, 119, 181);
                 color:white;
                 font-size: 2.3em;
+                height: 3em;
                 left: 0;
                 margin-bottom: 1em;
-                padding: .8em 3em;
+                width: 8em;
             }
         }
 
@@ -176,6 +196,7 @@
             border: .1em solid $green;
             color: $green;
             cursor: not-allowed;
+            width: 4.6em;
 
             -webkit-box-shadow: none;
             -moz-box-shadow: none;
@@ -191,6 +212,8 @@
                 border-color: $green;
                 color: $green;
             }
+
+            @include mobile-contact-button;
         }
 
         @include mobile {

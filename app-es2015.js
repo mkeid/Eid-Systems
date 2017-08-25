@@ -84,7 +84,11 @@ app.post("/api/contact", function(request, response) {
 
     server.send(message, function(error, result) {
         console.log(error || result);
-        response.json({})
+        response.json({
+            name: request.body.name,
+            email: request.body.email,
+            message: request.body.message
+        })
     })
 })
 

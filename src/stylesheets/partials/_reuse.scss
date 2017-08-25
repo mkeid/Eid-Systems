@@ -65,7 +65,7 @@ ul {
 
 .body {
     background: $color4;
-    border-top: .2em solid rgb(230, 230, 240);
+    border-top: .15em solid rgb(230, 230, 240);
     border-bottom: .3em solid rgb(45, 45, 45);
     text-align: center;
     width: 100%;
@@ -80,7 +80,7 @@ ul {
             width: $siteWidth;
 
             .title {
-                border-bottom: .11em solid rgb(223, 223, 233);
+                border-bottom: .08em solid rgb(213, 213, 223);
                 color: $color1;
                 cursor: default;
                 display: inline-block;

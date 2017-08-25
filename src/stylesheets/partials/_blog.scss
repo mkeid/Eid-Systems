@@ -45,6 +45,7 @@
 
         img {
             @include shadow;
+            @include user-drag(none);
 
             border-radius: .15em;
             position: relative;

@@ -4,8 +4,8 @@ import { connect } from "react-redux"
 import { BlogSite } from "../components/blog"
 
 // Init redux container for "Blog" page
-const mapStateToProps = state => ({
-    posts: _.map(state.posts, (value, key) => value)
+const mapStateToProps = ({ posts }) => ({
+    posts: _.map(posts, (value, key) => value)
 })
 const BlogContainer = connect(mapStateToProps)(BlogSite)
 

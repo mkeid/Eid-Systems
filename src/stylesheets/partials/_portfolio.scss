@@ -51,7 +51,7 @@
             @include shadow;
             @include transition(all, .2s, ease-in);
 
-            background: white;
+            background: rgb(248, 248, 248);
             border: 1px solid $borderGray;
             border-radius: $borderRadius;
             display: inline-block;
@@ -82,6 +82,7 @@
                 }
 
                 img {
+                    @include user-drag(none);
                     border-bottom: .05em solid $borderGray;
                     height: 11.75em;
                     object-fit: cover;
@@ -124,7 +125,7 @@
             }
 
             @include mobile {
-                height: 27.5em;
+                height: 27.65em;
 
                 img {
                     height: 20em !important;

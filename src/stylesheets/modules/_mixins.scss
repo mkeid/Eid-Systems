@@ -33,6 +33,15 @@
     box-shadow: $hlen $vlen $blur $spread $color;
 }
 
+@mixin mobile-contact-button {
+    @include mobile {
+        font-size: 2.3em !important;
+        height: 2em !important;
+        line-height: 2em !important;
+        width: 7.8em !important;
+    }
+}
+
 @mixin shadow {
     @include box-shadow(0, .13em, .13em, 0, rgb(220, 220, 230));
 }
@@ -56,6 +65,14 @@
     -o-transition: $attribute $time $mode;
     -webkit-transition: $attribute $time $mode;
     transition: $attribute $time $mode;
+}
+
+@mixin user-drag($mode) {
+  -webkit-user-drag: $mode;
+  -khtml-user-drag: $mode;
+  -moz-user-drag: $mode;
+  -o-user-drag: $mode;
+  user-drag: $mode;
 }
 
 @mixin user-select($mode) {
