@@ -41,7 +41,6 @@ class Post extends Component {
 class BlogSite extends Component {
     componentDidMount() {
         this.props.updateCurrentPage("Blog")
-        window.scrollTo(0, 0)
     }
 
     render() {

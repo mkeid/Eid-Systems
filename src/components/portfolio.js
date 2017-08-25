@@ -97,7 +97,6 @@ class Portfolio extends Component {
 class PortfolioSite extends Component {
     componentDidMount() {
         this.props.updateCurrentPage("Portfolio")
-        window.scrollTo(0, 0)
     }
 
     render() {

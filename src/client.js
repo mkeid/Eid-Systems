@@ -43,6 +43,7 @@ class Client extends Component {
     updateCurrentPage(page) {
         this.setState({currentPage: page})
         this.props.menuClose()
+        window.scrollTo(0, 0)
 
         // Google analytics call
         ReactGA.set({page: window.location.pathname})

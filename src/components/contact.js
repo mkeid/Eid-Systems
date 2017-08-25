@@ -52,7 +52,10 @@ class EmailForm extends Component {
     handleSendClick() {
         if (!this.props.valid) {
             this.setState({isShaking: true})
-            this.props.dispatch({type: "START_SUBMIT", meta: {form: "EmailForm"}})
+            this.nameInput.focus()
+            this.emailInput.focus()
+            this.messageInput.focus()
+            this.messageInput.blur()
         }
     }
 
@@ -66,6 +69,7 @@ class EmailForm extends Component {
         this.setState({isShaking: false, justStoppedShaking: true})
     }
 
+    /** Return an input element object for redux form's Field component */
     renderTextField(field) {
         return (
             <div className="input">
@@ -76,9 +80,15 @@ class EmailForm extends Component {
                     ) : ""
                 ) : ""}
                 {field.textArea ? (
-                    <textarea {...field.input} />
+                    <textarea {...field.input}
+                        ref={input => {
+                            this[`${field.title.toLowerCase()}Input`] = input}
+                        } />
                 ) : (
-                    <input {...field.input} type="text" />
+                    <input {...field.input} type="text"
+                        ref={input => {
+                            this[`${field.title.toLowerCase()}Input`] = input}
+                        } />
                 )}
             </div>
         )
@@ -135,6 +145,7 @@ class EmailForm extends Component {
     }
 }
 
+/** Validates the contact form input content */
 const emailExression = /[\w\d]+@[\w\d]+\.[\w\d]+/
 const validate = (values) => {
     const errors = {}
@@ -200,7 +211,6 @@ class ContactBillboard extends Component {
 class ContactSite extends Component {
     componentDidMount() {
         this.props.updateCurrentPage("Contact")
-        window.scrollTo(0, 0)
     }
 
     render() {

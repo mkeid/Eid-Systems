@@ -158,7 +158,6 @@ class AboutBillboard extends Component {
 class AboutSite extends Component {
     componentDidMount() {
         this.props.updateCurrentPage("About")
-        window.scrollTo(0, 0)
     }
 
     shouldComponentUpdate() {
