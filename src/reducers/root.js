@@ -1,5 +1,7 @@
 import { combineReducers } from "redux"
+import { reducer as formReducer } from "redux-form"
 import AboutReducer from "./about"
+import ContactReducer from "./contact"
 import IndexReducer from "./index"
 import NavReducer from "./nav"
 import PostsReducer from "./posts"
@@ -31,6 +33,8 @@ const RootReducer = (state = null, action) => {
 const CombinedReducer = combineReducers({
     root: RootReducer,
     about: AboutReducer,
+    contact: ContactReducer,
+    form: formReducer,
     index: IndexReducer,
     nav: NavReducer,
     posts: PostsReducer,

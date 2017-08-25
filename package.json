@@ -45,7 +45,6 @@
     "mongoose": "^4.11.7",
     "node-sass": "^4.5.3",
     "react": "^15.6.1",
-    "react-alert": "^2.2.0",
     "react-dom": "^15.6.1",
     "react-ga": "^2.2.0",
     "react-particles-js": "^1.5.0",
@@ -55,6 +54,7 @@
     "react-visibility-sensor": "^3.10.1",
     "redux": "^3.7.2",
     "redux-axios-middleware": "^4.0.0",
+    "redux-form": "^7.0.3",
     "redux-thunk": "^2.2.0",
     "reshake": "^1.0.7",
     "webpack-hot-middleware": "^2.18.2"

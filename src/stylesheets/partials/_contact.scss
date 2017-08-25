@@ -1,15 +1,10 @@
 .contact-site {
     .billboard {
         .container {
+            @include animation(fadein, 1s, forwards);
             background: url('/images/contact-billboard.jpg');
             background-size: 100%;
-
-            -webkit-animation: fadein 1s forwards;
-            -moz-animation: fadein 1s forwards;
-            -o-animation: fadein 1s forwards;
-            animation: fadein 1s forwards;
-
-            width: 72em;
+            width: $siteWidth;
 
             @include mobile {
                 background-size: 150%;
@@ -24,7 +19,7 @@
         display: inline-block;
         padding-bottom: 3em;
         text-align: left;
-        width: 72em;
+        width: $siteWidth;
 
         .css-1vm9g5e {
             font-family: "Raleway", sans-serif;
@@ -36,12 +31,14 @@
             }
         }
 
-        .email-warning {
+        .warning {
+            @include animation(fadein, .5s, forwards);
             background: $red;
-            border-radius: 1em;
+            border-radius: $borderRadius;
             color: white;
             cursor: default;
             display: inline-block;
+            font-size: 1.1em;
             font-weight: bold;
             margin-left: 1em;
             padding: .1em .6em;
@@ -178,12 +175,16 @@
             background: none;
             border: .1em solid $green;
             color: $green;
-            cursor: default;
+            cursor: not-allowed;
 
             -webkit-box-shadow: none;
             -moz-box-shadow: none;
             -o-box-shadow: none;
             box-shadow: none;
+
+            &:active {
+                @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, 0));
+            }
 
             &:hover {
                 background: none;

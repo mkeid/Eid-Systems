@@ -1,8 +1,10 @@
 import React, { Component } from "react"
-import AlertContainer from "react-alert"
+import { connect } from "react-redux"
 import axios from "axios"
+import { Field, reduxForm } from "redux-form"
 import { Shake } from "reshake"
 import { Body } from "./reuse"
+import { sendEmail } from "../actions/contact"
 
 
 /**
@@ -18,37 +20,26 @@ class EmailForm extends Component {
             name: "",
             disabled: false,
             isShaking: false,
-            shouldShowWarning: false,
-            showWarning: false
+            justStoppedShaking: false
         }
-        this.baseState = this.state
-
-        // Auxiliary attributes
-        this.alertOptions = {
-            offset: 14,
-            position: "bottom left",
-            theme: "dark",
-            time: 5000,
-            transition: "fade"
-        }
-        this.emailExression = /[\w\d]+@[\w\d]+\.[\w\d]+/
 
         // Bind this to methods
-        this.handleBlurEmail = this.handleBlurEmail.bind(this)
-        this.handleChangedEmail = this.handleChangedEmail.bind(this)
-        this.handleChangedMessage = this.handleChangedMessage.bind(this)
-        this.handleChangedName = this.handleChangedName.bind(this)
+        this.handleSendClick = this.handleSendClick.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.inputsNotEmpty = this.inputsNotEmpty.bind(this)
-        this.showIncompleteFormAlert = this.showIncompleteFormAlert.bind(this)
-        this.showEmailWarningAlert = this.showEmailWarningAlert.bind(this)
+        this.renderTextField = this.renderTextField.bind(this)
         this.stopShaking = this.stopShaking.bind(this)
     }
 
     /** After an update, stop the send button from shaking if it is */
     componentDidUpdate() {
+        const { isShaking, justStoppedShaking } = this.state
+        const { submitFailed } = this.props
+
         if (this.state.isShaking) {
             this.shakeTimeout = setTimeout(this.stopShaking, 500)
+        }
+        else if (!isShaking && !justStoppedShaking && submitFailed) {
+            this.setState({isShaking: true})
         }
     }
 
@@ -57,150 +48,127 @@ class EmailForm extends Component {
         this.shakeTimeout && clearTimeout(this.shakeTimeout)
     }
 
-    /** After leaving the email field, check the input valdity */
-    handleBlurEmail(event) {
-        const showWarning = this.state.shouldShowWarning
-        this.setState({showWarning})
-    }
-
-    /** Update email state variable on change and verify it's valdity */
-    handleChangedEmail(event) {
-        const email = event.target.value
-        this.setState({email})
-
-        const validExpression = this.emailExression.exec(email)
-        const emailIsValid = validExpression !== null || !email.length
-
-        if (emailIsValid) {
-            this.setState({shouldShowWarning: false, showWarning: false})
-        } else {
-            this.setState({shouldShowWarning: true})
+    /** Handle click events from the send button */
+    handleSendClick() {
+        if (!this.props.valid) {
+            this.setState({isShaking: true})
+            this.props.dispatch({type: "START_SUBMIT", meta: {form: "EmailForm"}})
         }
-
-        this.setState({emailIsValid})
-    }
-
-    /** Update message state variable on change */
-    handleChangedMessage(event) {
-        const message = event.target.value
-        this.setState({message})
-    }
-
-    /** Update name state variable on change */
-    handleChangedName(event) {
-        const name = event.target.value
-        this.setState({name})
     }
 
     /** If the form is appropriate, send an API POST request to send en email */
-    handleSubmit(event) {
-        event.preventDefault();
-
-        if (!this.inputsNotEmpty()) {
-            this.showIncompleteFormAlert()
-            return;
-        } else if(this.state.showWarning) {
-            this.showEmailWarningAlert()
-            return;
-        }
-
-        const data = this.state
-        axios.post("/email", data).then(response => {
-            this.setState({disabled: true})
-        })
-    }
-
-    /** Check to see if the input fields have been filled in */
-    inputsNotEmpty() {
-        const emailIsEmpty = this.state.email.length === 0
-        const messageIsEmpty = this.state.message.length === 0
-        const nameIsEmpty = this.state.name.length === 0
-        return !(emailIsEmpty || messageIsEmpty || nameIsEmpty)
-    }
-
-    /** Alert the user that the email is not valid */
-    showEmailWarningAlert() {
-        this.msg.error("Invalid email address")
-        this.setState({isShaking: true})
-    }
-
-    /** Alert the user that the form has not been entirely filled in */
-    showIncompleteFormAlert() {
-        this.msg.error("Incomplete form")
-        this.setState({isShaking: true})
+    handleSubmit(data) {
+        this.props.sendEmail(data.name, data.email, data.message)
     }
 
     /** Stop the send button from shaking after a form error */
     stopShaking() {
-        this.setState({isShaking: false})
+        this.setState({isShaking: false, justStoppedShaking: true})
+    }
+
+    renderTextField(field) {
+        return (
+            <div className="input">
+                <div className="title">{field.title}</div>
+                {field.meta.touched ? (
+                    field.meta.error ? (
+                        <div className="warning">{field.meta.error}</div>
+                    ) : ""
+                ) : ""}
+                {field.textArea ? (
+                    <textarea {...field.input} />
+                ) : (
+                    <input {...field.input} type="text" />
+                )}
+            </div>
+        )
     }
 
     render() {
         // Form submission button components
         const sendButton = this.state.isShaking ? (
-            <Shake h={3} v={5} r={0}
-                dur={42}
-                int={10}
-                max={100}
-                fixed={true}
-                fixedStop={false}
-                freez={false}>
+            <Shake
+                h={3} v={5} r={0} dur={42} max={100}
+                fixed={true} fixedStop={false} freez={false}>
                 <input type="submit" value="Send" className="send-button err" />
             </Shake>
         ) : (
-            <input type="submit" value="Send" className="send-button" />
+            <input
+                type="submit"
+                onClick={this.handleSendClick}
+                value="Send"
+                className="send-button" />
         )
         const sentButton = (
             <div className="send-button sent-confirmation">Sent!</div>
         )
 
+        const { handleSubmit } = this.props
         return (
-            <form onSubmit={this.handleSubmit} className="email-form">
-                <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
-                <div className="head">
-                    Send me an email
-                </div>
-                <div className="inputs">
-                    <div className="left">
-                        <div className="input">
-                            <div className="title">Name</div>
-                            <input
-                                type="text"
-                                value={this.state.name}
-                                onChange={this.handleChangedName}
-                                disabled={this.state.disabled} />
+            <fieldset disabled={this.props.contacted ? "disabled" : ""}>
+                <form onSubmit={handleSubmit(this.handleSubmit)}
+                    className="email-form">
+                    <div className="head">Send me an email</div>
+                    <div className="inputs">
+                        <div className="left">
+                            <Field
+                                name="name"
+                                title="Name"
+                                component={this.renderTextField} />
+                            <Field
+                                name="email"
+                                title="Email"
+                                component={this.renderTextField} />
                         </div>
-                        <div className="input">
-                            <div className="title">Email</div>
-                            {this.state.showWarning &&
-                                <div className="email-warning">
-                                    Invalid Address
-                                </div>
-                            }
-                            <input
-                                type="text"
-                                value={this.state.email}
-                                onBlur={this.handleBlurEmail}
-                                onChange={this.handleChangedEmail}
-                                disabled={this.state.disabled} />
+                        <div className="right">
+                            <Field
+                                name="message"
+                                title="Message"
+                                textArea={true}
+                                component={this.renderTextField} />
                         </div>
                     </div>
-                    <div className="right">
-                        <div className="input">
-                            <div className="title">Message</div>
-                            <textarea
-                                value={this.state.message}
-                                onChange={this.handleChangedMessage}
-                                disabled={this.state.disabled} />
-                        </div>
-                    </div>
-                </div>
-                {this.state.disabled ? sentButton : sendButton}
-            </form>
+                    {this.props.contacted ? sentButton : sendButton}
+                </form>
+            </fieldset>
         )
     }
 }
 
+const emailExression = /[\w\d]+@[\w\d]+\.[\w\d]+/
+const validate = (values) => {
+    const errors = {}
+
+    // Validate name input
+    if (!values.name) {
+        errors.name = "Please enter a name!"
+    }
+
+    // Validate email input
+    if (!values.email) {
+        errors.email = "Please enter an email address!"
+    }
+    else if (!emailExression.exec(values.email)) {
+        errors.email = "Please enter a valid email address!"
+    }
+
+    // Validate message input
+    if (!values.message) {
+        errors.message = "Please enter a message!"
+    }
+
+    return errors
+}
+
+const EmailFormContainer = connect(
+    state => ({contacted: state.contact.contacted}),
+    {sendEmail}
+)(EmailForm)
+
+const ReduxEmailForm = reduxForm({
+    form: "EmailForm",
+    validate
+})(EmailFormContainer)
 
 /**
 * Main head component at the top of the "Contactt" page
@@ -235,16 +203,12 @@ class ContactSite extends Component {
         window.scrollTo(0, 0)
     }
 
-    shouldComponentUpdate() {
-        return false
-    }
-
     render() {
         return (
             <div className="contact-site">
                 <ContactBillboard />
                 <Body title="OR">
-                    <EmailForm />
+                    <ReduxEmailForm />
                 </Body>
             </div>
         )

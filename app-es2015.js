@@ -63,7 +63,7 @@ app.get("/api/store", function(request, response) {
 })
 
 // Send self an email initiated from the contact page
-app.post("/email", function(request, response) {
+app.post("/api/contact", function(request, response) {
     const server = emailjs.server.connect({
         user: "mohamedkeideidsystems@gmail.com",
         host: "smtp.gmail.com",

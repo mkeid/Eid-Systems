@@ -14,6 +14,10 @@ body {
     font-size: 90%; // Scale the site
 }
 
+fieldset {
+    border: none;
+}
+
 input[type=text], textarea {;
     @include transition(all, .2s, ease-in);
     border-color: $borderGray !important;
