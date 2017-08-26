@@ -1,16 +1,16 @@
 .about-site {
     .billboard {
-        background: rgb(0, 141, 187);
+        background: url('/images/about-billboard.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
 
         @include mobile {
-            background: url('/images/about-billboard.jpg');
-            background-size: 146%;
+            background-position: center;
         }
 
         .container {
             @include animation(fadein, 1s, forwards);
-
-            background: url('/images/about-billboard.jpg');
+            background: none;
             color: white;
 
             @include mobile {

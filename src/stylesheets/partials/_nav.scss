@@ -190,7 +190,7 @@
         .black-cover {
             display:none;
             @include mobile {
-                @include transition(all, .15s, ease-in);
+                @include transition(all, .15s, linear);
                 background: rgba(0, 0, 0, .66);
                 display: block;
                 height: 150%;
@@ -204,7 +204,7 @@
         }
 
         .nav-item-list-parent {
-            @include transition(left, .15s, ease-in);
+            @include transition(left, .15s, linear);
             background: $color2;
             font-size: 150%;
             position: fixed;
@@ -245,12 +245,12 @@
             z-index: 101;
 
             &:checked ~ .nav-item-list-parent {
-                @include transition(left, .15s, ease-in);
+                @include transition(left, .15s, linear);
                 left: 0;
             }
 
             &:checked ~ .black-cover {
-                @include transition(all, .15s, ease-in);
+                @include transition(all, .15s, linear);
                 left: 0;
                 opacity: 1;
             }
