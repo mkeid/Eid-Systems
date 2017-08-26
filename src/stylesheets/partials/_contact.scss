@@ -1,9 +1,13 @@
 .contact-site {
     .billboard {
+        @include animation(fadein, 1s, forwards);
+        background: url('/images/contact/contact-billboard.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
         .container {
-            @include animation(fadein, 1s, forwards);
-            background: url('/images/contact-billboard.jpg');
-            background-size: 100%;
+            background: none;
             width: $siteWidth;
 
             @include mobile {

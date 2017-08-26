@@ -1,6 +1,7 @@
 .billboard {
     background: white;
     height: 31.5em;
+    margin-top: 2em;
     padding-top: 6.25em;
     text-align: center;
     width: 100%;
@@ -23,7 +24,6 @@
     }
 
     .linkedin-link {
-        @include shadow;
         @include transition(background, .15s, ease-in);
 
         background: rgb(0, 119, 181);
@@ -34,7 +34,7 @@
         padding: .6em;
         position: relative;
         text-decoration: none;
-        top: 19.9em;
+        top: 17em;
 
 
         &:active {

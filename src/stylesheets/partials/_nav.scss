@@ -130,7 +130,6 @@
         display: inline-block;;
         float: right;
         position: relative;
-        left: .3em;
 
         .nav-social {
             &:first-child {
@@ -180,6 +179,8 @@
 
 
 .mobile-menu {
+    display: none;
+
     @include mobile {
         @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, .7));
         display: block;
