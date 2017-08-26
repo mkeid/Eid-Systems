@@ -48,9 +48,7 @@ class PortfolioItem extends Component {
                                 {this.props.type}
                             </div>
                         </div>
-                        <div className="portfolio-arrow">
-                            >
-                        </div>
+                        <div className="portfolio-arrow">></div>
                     </a>
                 </div>
             </li>

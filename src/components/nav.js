@@ -43,16 +43,6 @@ function NavItem(props) {
 class NavItemList extends Component {
     constructor(props) {
         super(props)
-        this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
-    }
-
-    // Toggle menu visibility
-    handleCheckboxChange() {
-        if (this.props.menuOpened) {
-            this.props.menuClose()
-        } else {
-            this.props.menuOpen()
-        }
     }
 
     render() {
@@ -66,10 +56,6 @@ class NavItemList extends Component {
 
         return (
             <div className="nav-item-list-parent">
-                <input
-                    type="checkbox"
-                    checked={this.props.menuOpened}
-                    onChange={this.handleCheckboxChange} />
                 <div className="nav-item-list">{navItems}</div>
             </div>
         )
@@ -103,17 +89,41 @@ class NavSocialList extends Component {
 * @extends Component
 */
 class NavBar extends Component {
+    constructor(props) {
+        super(props)
+        this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+    }
+
+    // Toggle menu visibility
+    handleCheckboxChange() {
+        if (this.props.menuOpened) {
+            this.props.menuClose()
+        } else {
+            this.props.menuOpen()
+        }
+    }
+
     render() {
         const logo = (<Logo imgSrc={this.props.logoImgSrc} />)
         const navItemList = (<NavItemList {...this.props} />)
 
         return (
-            <div className="nav-bar">
-                <div className="container">
-                    {logo}
-                    {navItemList}
-                    <NavSocialList socials={this.props.socials} />
+            <div>
+                <div className="nav-bar">
+                    <div className="container">
+                        {logo}
+                        {navItemList}
+                        <NavSocialList socials={this.props.socials} />
+                    </div>
+                </div>
+                <div className="mobile-menu">
                     <Hamburger />
+                    <input
+                        type="checkbox"
+                        checked={this.props.menuOpened}
+                        onChange={this.handleCheckboxChange} />
+                    {navItemList}
+                    <div className="black-cover" />
                 </div>
             </div>
         )

@@ -78,7 +78,7 @@
                 &:hover > .portfolio-arrow {
                     @include transition(all, .2s, ease-in);
                     opacity: 1;
-                    left: -.4em;
+                    right: .4em;
                 }
 
                 img {
@@ -94,7 +94,7 @@
                     display: inline-block;
                     font-size: 1.09em;
                     padding: .2em 0 .7em .5em;
-                    width: 17em;
+                    width: 100%;
 
                     .portfolio-item-title {
                         color: rgb(70, 70, 70);
@@ -113,14 +113,14 @@
                     font-size: 2em;
                     opacity: 0;
                     float:right;
-                    position: relative;
-                    left: 0em;
-                    top: .33em;
+                    position: absolute;
+                    right: 0em;
+                    bottom: .55em;
 
-                    -moz-transition: opacity .15s ease-in, left .15s ease-in;
-                    -o-transition: opacity .15s ease-in, left .15s ease-in;
-                    -webkit-transition: opacity .15s ease-in, left .15s ease-in;
-                    transition: opacity .15s ease-in, left .15s ease-in;
+                    -moz-transition: opacity .15s ease-in, right .15s ease-in;
+                    -o-transition: opacity .15s ease-in, right .15s ease-in;
+                    -webkit-transition: opacity .15s ease-in, right .15s ease-in;
+                    transition: opacity .15s ease-in, right .15s ease-in;
                 }
             }
 
@@ -136,7 +136,7 @@
                 }
 
                 .portfolio-item-info {
-                    font-size: 1.8em !important;
+                    font-size: 1.85em !important;
                 }
 
             }
@@ -150,7 +150,7 @@
 
 .portfolio-site {
     .body {
-        padding-top: 9em;
+        padding-top: 6.7em;
 
         @include mobile {
             padding-top: 13em;
