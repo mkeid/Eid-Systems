@@ -89,6 +89,7 @@ class Skill extends Component {
             <div className="skill">
                 <div className="title">{this.props.title}</div>
                 <div className="description">
+                    <img src={this.props.imgSrc} />
                     {descriptions}
                 </div>
                 <VisibilitySensor

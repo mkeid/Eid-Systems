@@ -1,12 +1,9 @@
 .about-site {
     .billboard {
-        background: url('/images/about-billboard.svg');
+        background: url('/images/about/about-billboard.svg');
+        background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-
-        @include mobile {
-            background-position: center;
-        }
 
         .container {
             @include animation(fadein, 1s, forwards);
@@ -56,6 +53,12 @@
         .skill {
             margin: 1.2em 0 4.5em 0;
             text-align: justify;
+
+            img {
+                float: right;
+                margin: 0 0 2em 2em;
+                width: 30%
+            }
 
             .title {
                 font-size: 2em;
