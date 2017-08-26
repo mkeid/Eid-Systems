@@ -4,6 +4,7 @@ import AboutContainer from "./containers/about"
 import BlogContainer from "./containers/blog"
 import { ContactSite } from "./components/contact"
 import IndexContainer from "./containers/index"
+import { NotFound } from "./components/reuse"
 import ProjectsContainer from "./containers/portfolio"
 
 
@@ -28,16 +29,7 @@ const Main = (props) => (
     </main>
 )
 
-/**
-* 404 page component function
-*/
-const NotFound = () => (
-    <div className="not-found-site">
-        <div className="billboard">
-            <div className="container"></div>
-        </div>
-    </div>
-)
+
 
 
 module.exports = { Main, NotFound }

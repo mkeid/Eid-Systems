@@ -1,12 +1,12 @@
 .about-site {
     .billboard {
+        @include animation(fadein, 1s, forwards);
         background: url('/images/about/about-billboard.svg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
 
         .container {
-            @include animation(fadein, 1s, forwards);
             background: none;
             color: white;
 
@@ -15,8 +15,6 @@
             }
 
             .info-containers {
-                @include animation(fadein, 1s, forwards);
-
                 .about-container {
                     position: relative;
                     text-align: left;
@@ -57,7 +55,11 @@
             img {
                 float: right;
                 margin: 0 0 2em 2em;
-                width: 30%
+                width: 30%;
+
+                @include mobile {
+                    width: 50%;
+                }
             }
 
             .title {

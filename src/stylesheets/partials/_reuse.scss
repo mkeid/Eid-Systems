@@ -108,8 +108,11 @@ ul {
 }
 
 .not-found-site {
-    .container {
-        background: url("/images/not-found-billboard.jpg");
+    .billboard {
+        background: url("/images/404.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 }
 

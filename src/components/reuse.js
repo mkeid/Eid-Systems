@@ -2,6 +2,16 @@ import React, { Component } from "react"
 
 
 /**
+* 404 page component function
+*/
+const NotFound = () => (
+    <div className="not-found-site">
+        <div className="billboard" />
+    </div>
+)
+
+
+/**
 * A general component function used for rendering sub components under a title
 */
 class Body extends Component {
@@ -47,4 +57,4 @@ class Footer extends Component {
     }
 }
 
-module.exports = { Body, Footer }
+module.exports = { Body, Footer, NotFound }
