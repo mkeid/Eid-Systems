@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Route, Switch } from "react-router-dom"
+import { Redirect, Route, Switch } from "react-router-dom"
 import AboutContainer from "./containers/about"
 import BlogContainer from "./containers/blog"
 import { ContactSite } from "./components/contact"
@@ -24,7 +24,8 @@ const Main = (props) => (
                 render={() => (<ContactSite {...props} />)} />
             <Route exact path="/portfolio"
                 render={() => (<ProjectsContainer {...props} />)} />
-            <Route component={NotFound} />
+            <Route exact path="/404" component={NotFound} />
+            <Redirect to="/404" />
         </Switch>
     </main>
 )
