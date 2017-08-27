@@ -1,7 +1,6 @@
 .portfolio {
     display: block;
     list-style-type: none;
-    padding-bottom: 2.5em;
     text-align: center;
     width: 100%;
 
@@ -9,15 +8,6 @@
         display: inline-block;
         text-align: left;
         width: $siteWidth;
-
-        .ghost {
-            @include transition(all, .2s, ease-in);
-
-            img, .portfolio-item-info, .portfolio-item-type {
-                @include transition(all, .2s, ease-in);
-                opacity: .618;
-            }
-        }
 
         .visible {
             -webkit-animation: fadein 1s forwards, slideup .5s forwards;
@@ -51,8 +41,8 @@
             @include shadow;
             @include transition(all, .2s, ease-in);
 
-            background: rgb(248, 248, 248);
-            border: 1px solid $borderGray;
+            background: rgb(240, 240, 243);
+            border: .1em solid rgb(220, 220, 230);
             border-radius: $borderRadius;
             display: inline-block;
 
@@ -65,7 +55,7 @@
             }
 
             &:hover {
-                @include box-shadow(0, .13em, .13em, 0, rgb(205, 205, 215));
+                @include shadow-hover;
                 @include transition(box-shadow, .2s, ease-in);
             }
 
@@ -83,8 +73,10 @@
 
                 img {
                     @include user-drag(none);
-                    border-bottom: .05em solid $borderGray;
-                    height: 11.75em;
+                    border-bottom: .05em solid rgb(230, 230, 230);
+                    border-top-left-radius: $borderRadius;
+                    border-top-right-radius: $borderRadius;
+                    height: 12.5em;
                     object-fit: cover;
                     marginbottom: .3em;
                     width: 100%;
@@ -108,7 +100,7 @@
                 }
 
                 .portfolio-arrow {
-                    color: rgb(210, 210, 220);
+                    color: rgb(200, 200, 210);
                     display: inline-block;
                     font-size: 2em;
                     opacity: 0;
@@ -150,10 +142,14 @@
 
 .portfolio-site {
     .body {
-        padding-top: 6.7em;
+        padding-top: 6.5em;
 
         @include mobile {
-            padding-top: 13em;
+            padding-top: 11em;
         }
+    }
+
+    .portfolio {
+        padding: 2em 0;
     }
 }

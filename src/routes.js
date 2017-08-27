@@ -1,36 +1,13 @@
-import React, { Component } from "react"
-import { Redirect, Route, Switch } from "react-router-dom"
-import AboutContainer from "./containers/about"
-import BlogContainer from "./containers/blog"
-import { ContactSite } from "./components/contact"
-import IndexContainer from "./containers/index"
-import { NotFound } from "./components/reuse"
-import ProjectsContainer from "./containers/portfolio"
+const express = require("express")
+const PostsController = require("./controllers/posts")
+const ProjectsController = require("./controllers/projects")
+const SkillsController = require("./controllers/skills")
+
+const router = express.Router()
+
+router.route("/posts").get(PostsController.getPosts)
+router.route("/projects").get(ProjectsController.getProjects)
+router.route("/skills").get(SkillsController.getSkills)
 
 
-/**
-* Main site component function comprised of a multitude of site through routing
-*/
-const Main = (props) => (
-    <main>
-        <Switch>
-            <Route exact path="/"
-                render={() => (<IndexContainer {...props} />)} />
-            <Route exact path="/about"
-                render={() => (<AboutContainer {...props} />)} />
-            <Route exact path="/blog"
-                render={() => (<BlogContainer {...props} />)} />
-            <Route exact path="/contact"
-                render={() => (<ContactSite {...props} />)} />
-            <Route exact path="/portfolio"
-                render={() => (<ProjectsContainer {...props} />)} />
-            <Route exact path="/404" component={NotFound} />
-            <Redirect to="/404" />
-        </Switch>
-    </main>
-)
-
-
-
-
-module.exports = { Main, NotFound }
+export default router

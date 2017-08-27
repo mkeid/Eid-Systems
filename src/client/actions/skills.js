@@ -2,6 +2,8 @@ const CREATE_SKILL_REQUEST = "CREATE_SKILL_REQUEST"
 const CREATE_SKILL_REQUEST_SUCCESS = "CREATE_SKILL_REQUEST_SUCCESS"
 const DELETE_SKILL_REQUEST = "DELETE_SKILL_REQUEST"
 const DELETE_SKILL_REQUEST_SUCCESS = "DELETE_SKILL_REQUEST_SUCCESS"
+const FETCH_SKILLS_REQUEST = "FETCH_SKILLS_REQUEST"
+const FETCH_SKILLS_REQUEST_SUCCESS = "FETCH_SKILLS_REQUEST_SUCCESS"
 const UPDATE_SKILL_REQUEST = "UPDATE_SKILL_REQUEST"
 const UPDATE_SKILL_REQUEST_SUCCESS = "UPDATE_SKILL_REQUEST_SUCCESS"
 
@@ -32,6 +34,17 @@ const deleteSkill = (skill) => ({
 
 
 /**
+* Async actopm creator that retrieves the entire list of skills
+*/
+const fetchSkills = () => ({
+    type: FETCH_SKILLS_REQUEST,
+    payload: {
+        url: "/skills"
+    }
+})
+
+
+/**
 * Async action creator that updates a particular skill object
 */
 const updateSkill = (skill) => ({
@@ -49,9 +62,12 @@ module.exports = {
     CREATE_SKILL_REQUEST_SUCCESS,
     DELETE_SKILL_REQUEST,
     DELETE_SKILL_REQUEST_SUCCESS,
+    FETCH_SKILLS_REQUEST,
+    FETCH_SKILLS_REQUEST_SUCCESS,
     UPDATE_SKILL_REQUEST,
     UPDATE_SKILL_REQUEST_SUCCESS,
     createSkill,
     deleteSkill,
+    fetchSkills,
     updateSkill
 }

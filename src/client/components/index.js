@@ -68,7 +68,7 @@ class IndexBillboard extends Component {
                         developerKeywords={developerKeywords}
                         engineerTitle={engineerData.title}
                         engineerKeywords={engineerKeywords} />
-                    <img src="/images/me-art.png" />
+                    <img src="/images/index/me-art.png" />
                 </div>
             </div>
         )

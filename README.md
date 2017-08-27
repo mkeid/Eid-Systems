@@ -1,5 +1,7 @@
 # [Eid Systems](http://www.eid.systems)
 
+<img src="public/images/about/about-billboard.svg" width="100%" />
+
 This is my personal full stack website developed from the ground up. Node.js, Express, and MongoDB were used for the back-end while React and Redux were used for the front-end. The site is mobile accessible via media queries.
 
 #### Implementation Architecture
@@ -14,18 +16,18 @@ The entirety of the application, including the compiled CSS from SASS, is run us
 
 To build assets using webpack, run the build-prod script using npm.
 
-```
+```bash
 npm run build-prod
 ```
 
 To launch a production server, invoke the start-prod script using npm.
 
-```
+```bash
 npm run start-prod
 ```
 
 To start a development server making use of Webpack middleware, run start-dev using npm.
 
-```
+```bash
 npm run start-dev
 ```

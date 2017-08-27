@@ -150,7 +150,7 @@
         .send-button {
             @include box-shadow(0, .125em, .3em, 0, rgba(0, 0, 0, .1));
 
-            background: $color4;
+            background: none;
             border: .1em solid rgb(0, 119, 181);
             border-radius: .15em;
             color: rgb(0, 119, 181);

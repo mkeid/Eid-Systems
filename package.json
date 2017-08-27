@@ -2,14 +2,14 @@
   "name": "eid-systems",
   "version": "1.0.0",
   "description": "Personal website.",
-  "main": "src/client.js",
+  "main": "src/client/client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-prod": "npm run build:client; npm run build:server",
-    "build:server": "babel app-es2015.js --out-file app.js",
+    "build:server": "babel src/app-es2015.js --out-file src/app.js",
     "build:client": "webpack -p --config webpack.prod.config.js --progress",
-    "start-prod": "NODE_ENV=production babel-node app.js",
-    "start-dev": "NODE_ENV=development; npm run build:server; babel-node app.js"
+    "start-prod": "NODE_ENV=production babel-node src/app.js",
+    "start-dev": "NODE_ENV=development; npm run build:server; babel-node src/app.js"
   },
   "repository": {
     "type": "git",

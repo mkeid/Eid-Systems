@@ -9,7 +9,7 @@ a {
 }
 
 body {
-    background: $color1;
+    background: $color0;
     font-family: "Raleway", sans-serif;
     font-size: 90%; // Scale the site
 }
@@ -64,9 +64,8 @@ ul {
 }
 
 .body {
-    background: $color4;
-    border-top: .15em solid rgb(230, 230, 240);
-    border-bottom: .3em solid rgb(45, 45, 45);
+    background: white;
+    padding-bottom: 1.5em;
     text-align: center;
     width: 100%;
 
@@ -77,6 +76,7 @@ ul {
 
         .content {
             display: inline-block;
+            padding: .5em 0;
             width: $siteWidth;
 
             .title {
@@ -91,7 +91,7 @@ ul {
                 width: 100%;
 
                 span {
-                    background: $color4;
+                    background: white;
                     padding: 0 2em;
                 }
 
@@ -117,11 +117,17 @@ ul {
 }
 
 .footer {
-    background: $color1;
+    background: url("/images/reuse/footer.svg");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 101%;
     color: $color4;
     font-size: 1.188em;
-    height: 5.625em;
+    height: 10em;
+    margin-top: -.1em;
+    padding-top: 10em;
     width: 100%;
+    z-index: -1;
 
     .copyright {
         line-height: 5.625em;
@@ -131,5 +137,8 @@ ul {
 
     @include mobile {
         font-size: 2em;
+        height: 5em;
+        padding-top: 4em;
+        position: relative;
     }
 }

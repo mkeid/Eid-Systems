@@ -1,5 +1,5 @@
 const bodyParser = require("body-parser")
-const config = require("./webpack.config.js")
+const config = require("../webpack.config.js")
 const emailjs = require("emailjs")
 const express = require("express")
 const mongoose = require("mongoose")
@@ -11,8 +11,8 @@ const webpackHotMiddleware = require("webpack-hot-middleware")
 // Initialize needed variables
 const app = express()
 const defaultPort = 3000
-const distDir = path.resolve(__dirname, "dist")
-const indexFile = path.resolve(__dirname, "public", "index.html")
+const distDir = path.resolve(__dirname, "../dist")
+const indexFile = path.resolve(__dirname, "../public", "index.html")
 const isDevelopment = app.get('env') !== "production"
 const compiler = webpack(config)
 const { getComponents, getPosts, getProjects, getSkills } = require("./models")
@@ -22,7 +22,7 @@ mongoose.connect("mongodb://localhost/eid-systems")
 const db = mongoose.connection
 
 // Open /public to both the development and production servers
-app.use(express.static(path.resolve(__dirname, "public")))
+app.use(express.static(path.resolve(__dirname, "../public")))
 
 if (isDevelopment) {
     // Use webpack middleware layers if developing
@@ -52,9 +52,9 @@ app.get("/api/store", function(request, response) {
                 getSkills(function(error, skills) {
                     const payload = Object.assign({},
                         comps,
-                        {posts: posts},
-                        {projects: projects},
-                        {skills: skills})
+                        {posts},
+                        {projects},
+                        {skills})
                     response.json(payload)
                 })
             })

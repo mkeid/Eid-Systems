@@ -1,4 +1,5 @@
 const webpack = require("webpack")
+console.log(__dirname)
 const baseConfig = require("./webpack.config.js");
 
 baseConfig.devtool = "cheap-module-source-map";

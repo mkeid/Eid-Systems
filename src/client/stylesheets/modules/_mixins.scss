@@ -43,7 +43,11 @@
 }
 
 @mixin shadow {
-    @include box-shadow(0, .13em, .13em, 0, rgb(220, 220, 230));
+    @include box-shadow(0, .2em, .5em, 0, rgba(225, 225, 230, .5));
+}
+
+@mixin shadow-hover {
+    @include box-shadow(0, .2em, .5em, 0, rgba(215, 215, 220, .5));
 }
 
 @mixin touch-callout($mode) {
