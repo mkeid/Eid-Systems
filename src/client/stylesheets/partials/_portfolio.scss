@@ -44,7 +44,7 @@
             background: rgb(240, 240, 243);
             border: .1em solid rgb(220, 220, 230);
             border-radius: $borderRadius;
-            display: inline-block;
+            display: block;
 
             opacity: 0;
             position: relative;
@@ -78,14 +78,13 @@
                     border-top-right-radius: $borderRadius;
                     height: 12.5em;
                     object-fit: cover;
-                    marginbottom: .3em;
                     width: 100%;
                 }
 
                 .portfolio-item-info {
                     display: inline-block;
                     font-size: 1.09em;
-                    padding: .2em 0 .7em .5em;
+                    padding: .4em 0 .7em .5em;
                     width: 100%;
 
                     .portfolio-item-title {
