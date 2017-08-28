@@ -70,9 +70,9 @@
 
             @include user-drag(none);
             display: inline-block;
-            height: 35.1em;
+            height: 22em;
             position: relative;
-                top: -3.6em;
+                top: 3em;
                 left: -18.750em;
 
             -webkit-animation: fadein 2s, slide-right 1s forwards;
@@ -82,10 +82,9 @@
             animation: fadein 2s, slide-right 1s forwards;
 
             @include mobile {
-                height: 54em;
+                height: 25em;
                 margin-right: 2em;
-                top: -4em;
-                width: 90%;
+                top: 11em;
             }
         }
 
@@ -98,7 +97,7 @@
             height: 20.0em;
             position: absolute;
             opacity: 0;
-            top: 13.125em;
+            top: 11.8em;
             width: $siteWidth;
 
             a {
@@ -140,7 +139,7 @@
             }
 
             @include mobile {
-                top: 26em;
+                top: 21em;
                 width: $mobileSpace
             }
         }

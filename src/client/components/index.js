@@ -61,14 +61,14 @@ class IndexBillboard extends Component {
 
         return (
             <div className="billboard">
-                <Particles height="31.5em" params={indexParticlesConfig} />
+                <Particles height="33.5em" params={indexParticlesConfig} />
                 <div className="container">
                     <InfoContainers
                         developerTitle={developerData.title}
                         developerKeywords={developerKeywords}
                         engineerTitle={engineerData.title}
                         engineerKeywords={engineerKeywords} />
-                    <img src="/images/index/me-art.png" />
+                    <img src="/images/index/me-art.svg" />
                 </div>
             </div>
         )
