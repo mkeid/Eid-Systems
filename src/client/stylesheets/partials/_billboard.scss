@@ -72,7 +72,7 @@
             display: inline-block;
             height: 35.1em;
             position: relative;
-                top: -3.539em;
+                top: -3.6em;
                 left: -18.750em;
 
             -webkit-animation: fadein 2s, slide-right 1s forwards;
@@ -93,6 +93,7 @@
             @include animation(fadein, 2s, forwards);
             @include animation-delay(1s);
 
+            color: $color4;
             cursor: default;
             height: 20.0em;
             position: absolute;
