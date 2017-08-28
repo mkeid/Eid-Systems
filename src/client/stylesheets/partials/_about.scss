@@ -15,6 +15,8 @@
             }
 
             .info-containers {
+                top: 14em;
+
                 .about-container {
                     position: relative;
                     text-align: left;
@@ -35,7 +37,7 @@
 
                     @include mobile {
                         font-size: 1.7em;
-                        top: -9.5em;
+                        top: -10em;
                     }
                 }
             }
@@ -54,11 +56,11 @@
 
             img {
                 float: right;
-                margin: 0 0 2em 2em;
+                margin: 0 0 .75em 2em;
                 width: 30%;
 
                 @include mobile {
-                    width: 50%;
+                    width: 48%;
                 }
             }
 

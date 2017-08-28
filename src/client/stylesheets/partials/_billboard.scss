@@ -90,7 +90,6 @@
 
         .info-containers {
             @include animation(fadein, 2s, forwards);
-            @include animation-delay(1s);
 
             color: $color4;
             cursor: default;
@@ -128,6 +127,10 @@
             .title {
                 font-size: 3.125em;
                 font-weight: bold;
+
+                @include mobile {
+                    font-size: 3.8em;
+                }
             }
 
             .details {

@@ -1,6 +1,12 @@
 .index-site {
     .billboard {
-        background: $color0;
+        background: url("/images/index/index-billboard.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .info-containers {
+            @include animation-delay(1s);
+        }
     }
 
     .body {
