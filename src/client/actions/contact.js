@@ -17,7 +17,7 @@ const sendEmail = (name, email, message) => ({
 })
 
 
-module.exports = {
+export {
     SEND_EMAIL_REQUEST,
     SEND_EMAIL_REQUEST_SUCCESS,
     sendEmail

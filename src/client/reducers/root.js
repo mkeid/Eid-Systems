@@ -19,12 +19,16 @@ import {
 */
 const RootReducer = (state = null, action) => {
     switch (action.type) {
+
         case FETCH_STORE_REQUEST:
             return Object.assign({}, state, {isLoading: true})
+
         case FETCH_STORE_REQUEST_SUCCESS:
             return Object.assign({}, state, {isLoading: false})
+
         case FETCH_STORE_ERROR:
             return Object.assign({}, state, {isLoading: false, hasFailed: true})
+            
         default:
             return state
     }

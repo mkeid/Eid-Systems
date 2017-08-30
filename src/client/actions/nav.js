@@ -18,7 +18,7 @@ const menuOpen = () => ({
 })
 
 
-module.exports = {
+export {
     MENU_CLOSE,
     MENU_OPEN,
     menuClose,

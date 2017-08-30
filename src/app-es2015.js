@@ -1,11 +1,11 @@
 const bodyParser = require("body-parser")
-const config = require("../webpack.config.js")
 const express = require("express")
 const mongoose = require("mongoose")
 const path = require("path")
 const webpack = require("webpack")
 const webpackDevMiddleware = require("webpack-dev-middleware")
 const webpackHotMiddleware = require("webpack-hot-middleware")
+const config = require("../webpack.config.js")
 const router = require("./routes.js")
 
 // Initialize needed variables
@@ -13,7 +13,6 @@ const app = express()
 const defaultPort = 3000
 const distDir = path.resolve(__dirname, "../dist")
 const indexFile = path.resolve(__dirname, "../public", "index.html")
-const isDevelopment = app.get('env') !== "production"
 const compiler = webpack(config)
 
 // Initiate db connection
@@ -22,13 +21,13 @@ mongoose.connect("mongodb://localhost/eid-systems")
 // Open /public to both the development and production servers
 app.use(express.static(path.resolve(__dirname, "../public")))
 
-if (isDevelopment) {
-    // Use webpack middleware layers
+if (app.get('env') === "production") {
+    // Serve built production assets if in production
+    app.use(express.static(distDir))
+} else {
+    // Use webpack middleware layers if in development
     app.use(webpackDevMiddleware(compiler, {path: config.output.path}))
     app.use(webpackHotMiddleware(compiler))
-} else {
-    // Serve built production assets
-    app.use(express.static(distDir))
 }
 
 // Add routing for api with json support

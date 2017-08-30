@@ -65,7 +65,7 @@ const updateSkill = (skill) => ({
 })
 
 
-module.exports = {
+export {
     CREATE_SKILL_REQUEST,
     CREATE_SKILL_REQUEST_SUCCESS,
     DELETE_SKILL_REQUEST,

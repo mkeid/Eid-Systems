@@ -23,35 +23,6 @@
         }
     }
 
-    .linkedin-link {
-        @include transition(background, .15s, ease-in);
-
-        background: rgb(0, 119, 181);
-        border-radius: $borderRadius;
-        color: white;
-        font-size: 1.3em;
-        font-weight: bold;
-        padding: .6em;
-        position: relative;
-        text-decoration: none;
-        top: 20.5em;
-
-
-        &:active {
-            @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, .28));
-        }
-
-        &:hover {
-            @include transition(background, .2s, ease-in);
-            background: rgb(20, 139, 201);
-        }
-
-        @include mobile {
-            font-size: 2.1em;
-            padding: .8em 3em;
-        }
-    }
-
     .container {
         display: inline-block;
         height: 100%;

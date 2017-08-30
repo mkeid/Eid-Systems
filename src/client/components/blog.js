@@ -63,4 +63,4 @@ class BlogSite extends Component {
 }
 
 
-module.exports = { BlogSite }
+export { BlogSite }

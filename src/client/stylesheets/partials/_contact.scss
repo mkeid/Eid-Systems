@@ -18,22 +18,40 @@
         }
     }
 
+    .linkedin-link {
+        @include transition(background, .15s, ease-in);
+
+        background: rgb(0, 119, 181);
+        border-radius: $borderRadius;
+        color: white;
+        font-size: 1.3em;
+        font-weight: bold;
+        padding: .6em;
+        position: relative;
+        text-decoration: none;
+        top: 20.5em;
+
+        &:active {
+            @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, .28));
+        }
+
+        &:hover {
+            @include transition(background, .2s, ease-in);
+            background: rgb(20, 139, 201);
+        }
+
+        @include mobile {
+            font-size: 2.1em;
+            padding: .8em 3em;
+        }
+    }
+
     .email-form {
         color: $color1;
         display: inline-block;
         padding-bottom: 3em;
         text-align: left;
         width: $siteWidth;
-
-        .css-1vm9g5e {
-            font-family: "Raleway", sans-serif;
-            font-size: 1em !important;
-
-            @include mobile {
-                font-size: 4em !important;
-                width: 100% !important;
-            }
-        }
 
         .warning {
             @include animation(fadein, .5s, forwards);
@@ -149,6 +167,7 @@
 
         .send-button {
             @include box-shadow(0, .125em, .3em, 0, rgba(0, 0, 0, .1));
+            @include transition(color, .15s, ease-in);
 
             background: none;
             border: .1em solid rgb(0, 119, 181);
@@ -164,11 +183,6 @@
                 left: -.31em;
             text-align: center !important;
             width: 4.8em;
-
-            -moz-transition: color .15s ease-in;
-            -o-transition: color .15s ease-in;
-            -webkit-transition: color .15s ease-in;
-            transition: color .15s ease-in;
 
             &:active {
                 @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, .28));

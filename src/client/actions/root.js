@@ -31,7 +31,7 @@ const fetchStoreError = () => {
 }
 
 
-module.exports = {
+export {
     FETCH_STORE_REQUEST,
     FETCH_STORE_REQUEST_SUCCESS,
     FETCH_STORE_ERROR,

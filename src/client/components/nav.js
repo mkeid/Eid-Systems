@@ -43,10 +43,11 @@ function NavItem(props) {
 class NavItemList extends Component {
     constructor(props) {
         super(props)
+        this.titles = ["About", "Blog", "Contact", "Portfolio"]
     }
 
     render() {
-        const navItems = this.props.items.sort().map(item =>
+        const navItems = this.titles.map(item =>
             <NavItem
                 key={item}
                 title={item.toUpperCase()}
@@ -131,4 +132,4 @@ class NavBar extends Component {
 }
 
 
-module.exports = { NavBar }
+export { NavBar }

@@ -1,12 +1,16 @@
 const webpack = require("webpack")
 const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 const isProduction = JSON.parse(process.env.PROD_ENV || "0")
 
 module.exports = {
-    entry: path.resolve(__dirname, "src") + "/client/client.js",
+    entry: {
+        bundle: path.resolve(__dirname, "src") + "/client/client.js"
+    },
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js"
+        publicPath: "dist/",
+        filename: "[name].js"
     },
     module: {
         loaders: [
@@ -22,19 +26,12 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loader: "style-loader!css-loader!sass-loader"
-            },
-            {
-                test: /\.(eot|svg|ttf|woff|woff2)$/,
-                loader: "file-loader?name=/fonts/[name].[ext]"
-            },
-            {
-                test: /\.(jpg|png|gif)$/,
-                loader: "file-loader?name=/images/[name].[ext]"
-            },
-
+            }
         ]
     },
-    plugins: isProduction ? [
-        new webpack.EnvironmentPlugin(["NODE_ENV"])
-    ] : []
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        })
+    ]
 }

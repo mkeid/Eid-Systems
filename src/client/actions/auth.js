@@ -33,7 +33,7 @@ const logout = () => ({
 })
 
 
-modules.exports = {
+export {
     LOGIN_REQUEST,
     LOGIN_REQUEST_SUCCESS,
     LOGOUT_REQUEST,

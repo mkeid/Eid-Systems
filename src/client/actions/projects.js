@@ -50,7 +50,7 @@ const updateProject = (project) => ({
 })
 
 
-module.exports = {
+export {
     CREATE_PROJECT_REQUEST,
     CREATE_PROJECT_REQUEST_SUCCESS,
     DELETE_PROJECT_REQUEST,

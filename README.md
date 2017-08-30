@@ -15,13 +15,13 @@ The entirety of the application, including the compiled CSS from SASS, is run us
 To build assets using webpack, run the build-prod script using npm.
 
 ```bash
-npm run build-prod
+npm run build
 ```
 
 To launch a production server, invoke the start-prod script using npm.
 
 ```bash
-npm run start-prod
+npm run start
 ```
 
 To start a development server making use of Webpack middleware, run start-dev using npm.

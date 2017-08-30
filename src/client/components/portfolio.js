@@ -107,7 +107,7 @@ class PortfolioSite extends Component {
 }
 
 
-module.exports = {
+export {
     Portfolio,
     PortfolioItem,
     PortfolioSite

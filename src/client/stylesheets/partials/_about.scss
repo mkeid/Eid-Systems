@@ -2,7 +2,7 @@
     .billboard {
         @include animation(fadein, 1s, forwards);
         background: url('/images/about/about-billboard.svg');
-        background-position: center;
+        background-position: bottom;
         background-repeat: no-repeat;
         background-size: cover;
 

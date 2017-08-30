@@ -49,4 +49,4 @@ class ContactSite extends Component {
 }
 
 
-module.exports = { ContactSite }
+export { ContactSite }

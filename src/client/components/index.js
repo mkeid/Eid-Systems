@@ -104,4 +104,4 @@ class IndexSite extends Component {
 
 
 
-module.exports = { IndexSite }
+export { IndexSite }

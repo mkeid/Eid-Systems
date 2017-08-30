@@ -8,6 +8,7 @@ import {
 
 export default (state = null, action) => {
     switch(action.type) {
+        
         case CREATE_SKILL_REQUEST_SUCCESS:
             return Object.assign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}

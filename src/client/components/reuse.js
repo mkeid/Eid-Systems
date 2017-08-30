@@ -53,4 +53,8 @@ class Footer extends Component {
     }
 }
 
-module.exports = { Body, Footer, NotFound }
+export {
+    Body,
+    Footer,
+    NotFound
+}

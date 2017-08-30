@@ -185,4 +185,4 @@ class AboutSite extends Component {
 }
 
 
-module.exports = { AboutSite }
+export { AboutSite }

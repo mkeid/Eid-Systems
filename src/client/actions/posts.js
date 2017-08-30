@@ -80,7 +80,7 @@ const updatePost = (post) => ({
 })
 
 
-module.exports = {
+export {
     CREATE_POST_REQUEST,
     CREATE_POST_REQUEST_SUCCESS,
     DELETE_POST_REQUEST,
