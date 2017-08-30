@@ -14,9 +14,11 @@ const UPDATE_SKILL_REQUEST_SUCCESS = "UPDATE_SKILL_REQUEST_SUCCESS"
 const createSkill = (skill) => ({
     type: CREATE_SKILL_REQUEST,
     payload: {
-        method: "post",
-        url: "/skills/create",
-        data: skill
+        request: {
+            method: "post",
+            url: "/skills/create",
+            data: skill
+        }
     }
 })
 
@@ -27,8 +29,10 @@ const createSkill = (skill) => ({
 const deleteSkill = (skill) => ({
     type: DELETE_SKILL_REQUEST_SUCCESS,
     payload: {
-        method: "delete",
-        url: `/skills/${skill._id}`
+        request: {
+            method: "delete",
+            url: `/skills/${skill._id}`
+        }
     }
 })
 
@@ -39,7 +43,9 @@ const deleteSkill = (skill) => ({
 const fetchSkills = () => ({
     type: FETCH_SKILLS_REQUEST,
     payload: {
-        url: "/skills"
+        request: {
+            url: "/skills"
+        }
     }
 })
 
@@ -50,9 +56,11 @@ const fetchSkills = () => ({
 const updateSkill = (skill) => ({
     type: UPDATE_SKILL_REQUEST_SUCCESS,
     payload: {
-        method: "put",
-        url: `/skills/${skill._id}`,
-        data: skill
+        request: {
+            method: "put",
+            url: `/skills/${skill._id}`,
+            data: skill
+        }
     }
 })
 

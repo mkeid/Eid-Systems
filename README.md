@@ -1,7 +1,5 @@
 # [Eid Systems](http://www.eid.systems)
 
-<img src="./public/images/about/about-billboard.svg" width="100%" />
-
 This is my personal full stack website developed from the ground up. Node.js, Express, and MongoDB were used for the back-end while React and Redux were used for the front-end. The site is mobile accessible via media queries.
 
 #### Implementation Architecture

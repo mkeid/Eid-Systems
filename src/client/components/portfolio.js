@@ -26,9 +26,7 @@ class PortfolioItem extends Component {
     }
 
     makeVisible() {
-        this.setState({
-            isVisible: true
-        })
+        this.setState({isVisible: true})
     }
 
     render() {

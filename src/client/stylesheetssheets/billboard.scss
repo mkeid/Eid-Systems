@@ -1,7 +1,6 @@
 .billboard {
     background: white;
     height: 31.5em;
-    margin-top: 2em;
     padding-top: 6.25em;
     text-align: center;
     width: 100%;
@@ -24,6 +23,7 @@
     }
 
     .linkedin-link {
+        @include shadow;
         @include transition(background, .15s, ease-in);
 
         background: rgb(0, 119, 181);
@@ -34,7 +34,7 @@
         padding: .6em;
         position: relative;
         text-decoration: none;
-        top: 20.5em;
+        top: 19.9em;
 
 
         &:active {
@@ -53,10 +53,11 @@
     }
 
     .container {
+        background: white;
         display: inline-block;
         height: 100%;
         text-align: center;
-        width: $siteWidth;
+        width: 72.0em;
         z-index: 1;
 
         img {
@@ -68,11 +69,10 @@
                 100% { left: 0; }
             }
 
-            @include user-drag(none);
             display: inline-block;
-            height: 22em;
+            height: 35.1em;
             position: relative;
-                top: 3em;
+                top: -3.538em;
                 left: -18.750em;
 
             -webkit-animation: fadein 2s, slide-right 1s forwards;
@@ -82,28 +82,29 @@
             animation: fadein 2s, slide-right 1s forwards;
 
             @include mobile {
-                height: 25em;
+                height: 54em;
                 margin-right: 2em;
-                top: 11em;
+                top: -4em;
+                width: 90%;
             }
         }
 
         .info-containers {
             @include animation(fadein, 2s, forwards);
+            @include animation-delay(1s);
 
-            color: $color4;
             cursor: default;
             height: 20.0em;
             position: absolute;
             opacity: 0;
-            top: 11.8em;
-            width: $siteWidth;
+            top: 13.125em;
+            width: 72em;
 
             a {
                 @include transition(color, .2s, ease-in);
 
-                color: rgb(84, 172, 190);
-                font-size: 1.3em;
+                color: rgb(54, 142, 160);
+                font-size: 1.2em;
                 font-weight: bold;
                 position: relative;
                     top: 0.625em;
@@ -111,7 +112,7 @@
 
                 &:hover {
                     @include transition(all, .2s, ease-in);
-                    color: $color3;
+                    color: rgb(84, 172, 190);
                 }
 
                 @include mobile {
@@ -127,22 +128,18 @@
             .title {
                 font-size: 3.125em;
                 font-weight: bold;
-
-                @include mobile {
-                    font-size: 3.8em;
-                }
             }
 
             .details {
                 font-size: 1.875em;
 
                 @include mobile {
-                    font-size: 2.8em;
+                    font-size: 2.4em;
                 }
             }
 
             @include mobile {
-                top: 21em;
+                top: 26em;
                 width: $mobileSpace
             }
         }

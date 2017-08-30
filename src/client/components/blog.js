@@ -43,6 +43,12 @@ class BlogSite extends Component {
         this.props.updateCurrentPage("Blog")
     }
 
+    componentWillMount() {
+        if (!this.props.posts.length) {
+            this.props.fetchPosts()
+        }
+    }
+
     render() {
         const posts = this.props.posts.map(
             post => <Post key={post.title} {...post} />

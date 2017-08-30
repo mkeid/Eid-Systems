@@ -15,10 +15,6 @@ const NotFound = () => (
 * A general component function used for rendering sub components under a title
 */
 class Body extends Component {
-    shouldComponentUpdate() {
-        return false
-    }
-
     render() {
         return (
             <div className="body">

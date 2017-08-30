@@ -161,8 +161,10 @@ class AboutSite extends Component {
         this.props.updateCurrentPage("About")
     }
 
-    shouldComponentUpdate() {
-        return false
+    componentWillMount() {
+        if (!this.props.skills.length) {
+            this.props.fetchSkills()
+        }
     }
 
     render() {

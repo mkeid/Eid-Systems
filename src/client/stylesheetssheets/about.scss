@@ -1,13 +1,16 @@
 .about-site {
     .billboard {
-        @include animation(fadein, 1s, forwards);
-        background: url('/images/about/about-billboard.svg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        background: rgb(0, 141, 187);
+
+        @include mobile {
+            background: url('/images/about-billboard.jpg');
+            background-size: 146%;
+        }
 
         .container {
-            background: none;
+            @include animation(fadein, 1s, forwards);
+
+            background: url('/images/about-billboard.jpg');
             color: white;
 
             @include mobile {
@@ -15,12 +18,13 @@
             }
 
             .info-containers {
-                top: 14em;
+                @include animation(fadein, 1s, forwards);
 
                 .about-container {
                     position: relative;
                     text-align: left;
-                    width: 30em;
+                    top: -3.4em;
+                    width: 18.750em;
 
                     .head {
                         font-size: .9em;
@@ -36,7 +40,7 @@
 
                     @include mobile {
                         font-size: 1.7em;
-                        top: -10em;
+                        top: -9.5em;
                     }
                 }
             }
@@ -47,21 +51,11 @@
         color: $color2;
         display: inline-block;
         text-align: left;
-        width: $siteWidth;
+        width: 72em;
 
         .skill {
             margin: 1.2em 0 4.5em 0;
             text-align: justify;
-
-            img {
-                float: right;
-                margin: 0 0 .75em 2em;
-                width: 30%;
-
-                @include mobile {
-                    width: 48%;
-                }
-            }
 
             .title {
                 font-size: 2em;

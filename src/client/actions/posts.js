@@ -4,8 +4,8 @@ const DELETE_POST_REQUEST = "DELETE_POST_REQUEST"
 const DELETE_POST_REQUEST_SUCCESS = "DELETE_POST_REQUEST_SUCCESS"
 const FETCH_POST_REQUEST = "FETCH_POST_REQUEST"
 const FETCH_POST_REQUEST_SUCCESS = "FETCH_POST_REQUEST_SUCCESS"
-const FETCH_POST_REQUEST = "FETCH_POSTS_REQUEST"
-const FETCH_POST_REQUEST_SUCCESS = "FETCH_POSTS_REQUEST_SUCCESS"
+const FETCH_POSTS_REQUEST = "FETCH_POSTS_REQUEST"
+const FETCH_POSTS_REQUEST_SUCCESS = "FETCH_POSTS_REQUEST_SUCCESS"
 const UPDATE_POST_REQUEST = "UPDATE_POST_REQUEST"
 const UPDATE_POST_REQUEST_SUCCESS = "UPDATE_POST_REQUEST_SUCCESS"
 
@@ -14,7 +14,7 @@ const UPDATE_POST_REQUEST_SUCCESS = "UPDATE_POST_REQUEST_SUCCESS"
 * Asyc action creator that creates a new post object
 */
 const createPost = (post) => ({
-    type: CREATE_PROJECT_REQUEST,
+    type: CREATE_POST_REQUEST,
     payload: {
         request: {
             method: "post",
@@ -29,7 +29,7 @@ const createPost = (post) => ({
 * Async action creator that deletes an existing post object
 */
 const deletePost = (post) => ({
-    type: DELETE_PROJECT_REQUEST,
+    type: DELETE_POST_REQUEST,
     payload: {
         request: {
             method: "delete",
@@ -56,7 +56,7 @@ const fetchPost = postID => ({
 * Async action creator that returns a list of posts
 */
 const fetchPosts = () => ({
-    type: FETCH_POST_REQUEST,
+    type: FETCH_POSTS_REQUEST,
     payload: {
         request: {
             url: "/posts"
@@ -82,9 +82,9 @@ const updatePost = (post) => ({
 
 module.exports = {
     CREATE_POST_REQUEST,
-    CREATE_PROJECT_REQUEST_SUCCESS,
+    CREATE_POST_REQUEST_SUCCESS,
     DELETE_POST_REQUEST,
-    DELETE_POST_REQUEST_SUCCESS
+    DELETE_POST_REQUEST_SUCCESS,
     FETCH_POST_REQUEST,
     FETCH_POST_REQUEST_SUCCESS,
     FETCH_POSTS_REQUEST,
