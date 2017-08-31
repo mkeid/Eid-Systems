@@ -19,7 +19,6 @@ module.exports = {
 
     },
 
-    // TODO: implement function
     // Returns all documents from the posts collection
     getPosts: function(request, response) {
         (function(callback, limit) {

@@ -10,7 +10,7 @@ import ReactGA from "react-ga"
 
 // Import local modules
 import { Footer } from "./components/reuse"
-import { Main } from "./routes"
+import { Sites } from "./components/sites"
 import { menuClose, menuOpen } from "./actions/nav"
 import NavContainer from "./containers/nav"
 import { fetchStoreRequest } from "./actions/root"
@@ -58,7 +58,7 @@ class Client extends Component {
                         currentPage={this.state.currentPage}
                         menuClose={this.props.menuClose}
                         menuOpen={this.props.menuOpen} />
-                    <Main updateCurrentPage={this.updateCurrentPage} />
+                    <Sites updateCurrentPage={this.updateCurrentPage} />
                     <Footer />
                 </div>
             </BrowserRouter>

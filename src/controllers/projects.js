@@ -13,7 +13,6 @@ module.exports = {
 
     },
 
-    // TODO: implement function
     // Returns all documents from the projects collection
     getProjects: function(request, response) {
         (function(callback, limit) {

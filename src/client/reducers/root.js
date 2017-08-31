@@ -28,7 +28,8 @@ const RootReducer = (state = null, action) => {
 
         case FETCH_STORE_ERROR:
             return Object.assign({}, state, {isLoading: false, hasFailed: true})
-            
+
+        // Only update state when the action type is specified
         default:
             return state
     }

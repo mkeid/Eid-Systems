@@ -25,6 +25,7 @@ export default (state = null, action) => {
         case FETCH_STORE_REQUEST_SUCCESS:
             return _.mapKeys(action.payload.data.projects, "_id")
 
+        // Only update state when the action type is specified
         default:
             return state;
     }

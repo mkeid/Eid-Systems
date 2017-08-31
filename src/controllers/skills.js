@@ -13,7 +13,6 @@ module.exports = {
 
     },
 
-    // TODO: implement function
     // Returns all documents in the skills collection
     getSkills: function(request, response) {
         (function(callback, limit) {

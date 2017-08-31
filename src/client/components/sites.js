@@ -1,17 +1,17 @@
 import React, { Component } from "react"
 import { Redirect, Route, Switch } from "react-router-dom"
-import AboutContainer from "./containers/about"
-import BlogContainer from "./containers/blog"
-import { ContactSite } from "./components/contact"
-import IndexContainer from "./containers/index"
-import { NotFound } from "./components/reuse"
-import ProjectsContainer from "./containers/portfolio"
+import AboutContainer from "../containers/about"
+import BlogContainer from "../containers/blog"
+import { ContactSite } from "./contact"
+import IndexContainer from "../containers/index"
+import { NotFound } from "./reuse"
+import ProjectsContainer from "../containers/portfolio"
 
 
 /**
-* Main site component function comprised of a multitude of site through routing
+* Site conglomeration component comprised of a multitude of site through routing
 */
-const Main = (props) => (
+const Sites = (props) => (
     <main>
         <Switch>
             <Route exact path="/"
@@ -33,4 +33,7 @@ const Main = (props) => (
 
 
 
-module.exports = { Main, NotFound }
+module.exports = {
+    Sites,
+    NotFound
+}

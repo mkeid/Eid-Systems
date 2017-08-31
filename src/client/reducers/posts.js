@@ -9,7 +9,7 @@ import {
 
 export default (state = null, action) => {
     switch(action.type) {
-        
+
         case CREATE_POST_REQUEST_SUCCESS:
             return Object.assign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}
@@ -31,6 +31,7 @@ export default (state = null, action) => {
                 {[action.payload.data["_id"]]: action.payload.data}
             )
 
+        // Only update state when the action type is specified
         default:
             return state;
     }
