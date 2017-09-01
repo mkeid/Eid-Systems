@@ -1,12 +1,12 @@
 import { combineReducers } from "redux"
 import { reducer as formReducer } from "redux-form"
-import AboutReducer from "./about"
-import ContactReducer from "./contact"
-import IndexReducer from "./index"
-import NavReducer from "./nav"
-import PostsReducer from "./posts"
-import ProjectsReducer from "./projects"
-import SkillsReducer from "./skills"
+import AboutReducer from "./about_reducer"
+import ContactReducer from "./contact_reducer"
+import IndexReducer from "./index_reducer"
+import NavReducer from "./nav_reducer"
+import PostsReducer from "./posts_reducer"
+import ProjectsReducer from "./projects_reducer"
+import SkillsReducer from "./skills_reducer"
 import {
     FETCH_STORE_REQUEST,
     FETCH_STORE_REQUEST_SUCCESS,

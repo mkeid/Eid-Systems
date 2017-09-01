@@ -1,10 +1,12 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { NavBar } from "../components/nav"
+import NavBar from "../components/ui/nav_bar"
+
+
+const mapStateToProps = ({ nav }) => nav
 
 // Init nav bar redux container
-const mapStateToProps = ({ nav }) => nav
-const NavContainer = connect(mapStateToProps)(NavBar)
+const NavBarContainer = connect(mapStateToProps)(NavBar)
 
 // Promote NavBar from a component to a container
-export default NavContainer
+export default NavBarContainer

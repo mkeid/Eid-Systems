@@ -1,32 +1,33 @@
 import _ from "lodash"
 import {
-    CREATE_POST_REQUEST_SUCCESS,
-    DELETE_POST_REQUEST_SUCCESS,
-    FETCH_POST_REQUEST_SUCCESS,
-    FETCH_POSTS_REQUEST_SUCCESS,
-    UPDATE_POST_REQUEST_SUCCESS
+    POSTS_CREATE_REQUEST_SUCCESS,
+    POSTS_DESTROY_REQUEST_SUCCESS,
+    POSTS_SHOW_REQUEST_SUCCESS,
+    POSTS_LIST_REQUEST_SUCCESS,
+    POSTS_UPDATE_REQUEST_SUCCESS
 } from "../actions/posts"
 
 export default (state = null, action) => {
     switch(action.type) {
 
-        case CREATE_POST_REQUEST_SUCCESS:
+        case POSTS_CREATE_REQUEST_SUCCESS:
             return Object.assign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}
             )
 
-        case DELETE_POST_REQUEST_SUCCESS:
+        case POSTS_DESTROY_REQUEST_SUCCESS:
             return _.omit(state, action.payload.data["_id"])
 
-        case FETCH_POST_REQUEST_SUCCESS:
+        case POSTS_SHOW_REQUEST_SUCCESS:
             return Object.assign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}
             )
 
-        case FETCH_POSTS_REQUEST_SUCCESS:
-            return _.mapKeys(action.payload.data.posts, "_id")
+        case POSTS_LIST_REQUEST_SUCCESS:
+            const posts = action.payload.data.posts
+            return _.mapKeys(posts, "_id")
 
-        case UPDATE_POST_REQUEST_SUCCESS:
+        case POSTS_UPDATE_REQUEST_SUCCESS:
             return Object.assign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}
             )

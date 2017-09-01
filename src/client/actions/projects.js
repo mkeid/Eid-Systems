@@ -1,16 +1,18 @@
-const CREATE_PROJECT_REQUEST = "CREATE_PROJECT_REQUEST"
-const CREATE_PROJECT_REQUEST_SUCCESS = "CREATE_PROJECT_REQUEST_SUCCESS"
-const DELETE_PROJECT_REQUEST = "DELETE_PROJECT_REQUEST"
-const DELETE_PROJECT_REQUEST_SUCCESS = "DELETE_PROJECT_REQUEST_SUCCESS"
-const UPDATE_PROJECT_REQUEST = "UPDATE_PROJECT_REQUEST"
-const UPDATE_PROJECT_REQUEST_SUCCESS = "UPDATE_PROJECT_REQUEST_SUCCESS"
+const PROJECTS_CREATE_REQUEST = "PROJECTS_CREATE_REQUEST"
+const PROJECTS_CREATE_REQUEST_SUCCESS = "PROJECTS_CREATE_REQUEST_SUCCESS"
+const PROJECTS_DESTROY_REQUEST = "PROJECTS_DESTROY_REQUEST"
+const PROJECTS_DESTROY_REQUEST_SUCCESS = "PROJECTS_DESTROY_REQUEST_SUCCESS"
+const PROJECTS_LIST_REQUEST = "PROJECTS_LIST_REQUEST"
+const PROJECTS_LIST_REQUEST_SUCCESS = "PROJECTS_LIST_REQUEST_SUCCESS"
+const PROJECTS_UPDATE_REQUEST = "PROJECTS_UPDATE_REQUEST"
+const PROJECTS_UPDATE_REQUEST_SUCCESS = "PROJECTS_UPDATE_REQUEST_SUCCESS"
 
 
 /**
 * Async action creator that creates a new project object
 */
 const createProject = (project) => ({
-    type: CREATE_PROJECT_REQUEST,
+    type: PROJECTS_CREATE_REQUEST,
     payload: {
         request: {
             method: "post",
@@ -25,7 +27,7 @@ const createProject = (project) => ({
 * Async action creator that deletes a particular project object
 */
 const deleteProject = (project) => ({
-    type: DELETE_PROJECT_REQUEST,
+    type: PROJECTS_DESTROY_REQUEST,
     payload: {
         request: {
             method: "delete",
@@ -34,12 +36,23 @@ const deleteProject = (project) => ({
     }
 })
 
+/**
+* Async action creator that returns a list of projects
+*/
+const fetchProjects = () => ({
+    type: PROJECTS_LIST_REQUEST,
+    payload: {
+        request: {
+            url: "/projects"
+        }
+    }
+})
 
 /**
 * Async action creator that updates a specified project object
 */
 const updateProject = (project) => ({
-    type: UPDATE_PROJECT_REQUEST,
+    type: PROJECTS_UPDATE_REQUEST,
     payload: {
         request: {
             method: "put",
@@ -51,13 +64,16 @@ const updateProject = (project) => ({
 
 
 export {
-    CREATE_PROJECT_REQUEST,
-    CREATE_PROJECT_REQUEST_SUCCESS,
-    DELETE_PROJECT_REQUEST,
-    DELETE_PROJECT_REQUEST_SUCCESS,
-    UPDATE_PROJECT_REQUEST,
-    UPDATE_PROJECT_REQUEST_SUCCESS,
+    PROJECTS_CREATE_REQUEST,
+    PROJECTS_CREATE_REQUEST_SUCCESS,
+    PROJECTS_DESTROY_REQUEST,
+    PROJECTS_DESTROY_REQUEST_SUCCESS,
+    PROJECTS_LIST_REQUEST,
+    PROJECTS_LIST_REQUEST_SUCCESS,
+    PROJECTS_UPDATE_REQUEST,
+    PROJECTS_UPDATE_REQUEST_SUCCESS,
     createProject,
     deleteProject,
+    fetchProjects,
     updateProject
 }

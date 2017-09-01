@@ -1,10 +1,8 @@
 import React, { Component } from "react"
 import Particles from "react-particles-js"
-import { connect } from "react-redux"
 import { Link } from "react-router-dom"
-import { Body } from "./reuse"
-import { Portfolio } from "./portfolio"
-import indexParticlesConfig from "../config/index_particles"
+import Portfolio from "../../containers/portfolio_container"
+import indexParticlesConfig from "../../config/index_particles"
 
 
 /**
@@ -17,7 +15,6 @@ const InfoContainer = (props) => (
         <Link to="/about">Learn more</Link>
     </div>
 )
-
 
 /**
 * Set of components that make up the left and right billboard containers
@@ -39,7 +36,6 @@ class InfoContainers extends Component{
         )
     }
 }
-
 
 /**
 * Main head compnent at the top of the "Index" page
@@ -75,33 +71,4 @@ class IndexBillboard extends Component {
     }
 }
 
-
-/**
-* Component used by react router to render the "Index" page
-* @extends Component
-*/
-class IndexSite extends Component {
-    componentDidMount() {
-        this.props.updateCurrentPage("Index")
-    }
-
-    render() {
-        const projects = this.props.projects.filter(project => project.forIndex)
-        return (
-            <div className="index-site">
-                <IndexBillboard data={this.props.index} />
-                <Body title='SOME OF MY LATEST WORK'>
-                    <Portfolio projects={projects}/>
-                    <Link to="/portfolio" className="see-more">
-                        See More
-                    </Link>
-                </Body>
-            </div>
-        )
-    }
-}
-
-
-
-
-export { IndexSite }
+export default IndexBillboard

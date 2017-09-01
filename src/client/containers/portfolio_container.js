@@ -1,13 +1,19 @@
 import _ from "lodash"
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { PortfolioSite } from "../components/portfolio"
+import { fetchProjects } from "../actions/projects"
+import Portfolio from "../components/portfolio/portfolio"
 
-// Init redux container for "Portfolio" page
+
 const mapStateToProps = ({ projects }) => ({
     projects: _.map(projects, (value, key) => value)
 })
-const PortfolioContainer = connect(mapStateToProps)(PortfolioSite)
+
+// Init redux container for "Portfolio" page
+const PortfolioContainer = connect(
+    mapStateToProps,
+    { fetchProjects }
+)(Portfolio)
 
 // Promote PortfolioSite from a component to a container
 export default PortfolioContainer

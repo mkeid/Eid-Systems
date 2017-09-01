@@ -9,12 +9,12 @@ import { Provider } from "react-redux"
 import ReactGA from "react-ga"
 
 // Import local modules
-import { Footer } from "./components/reuse"
-import { Sites } from "./components/sites"
+import Footer from "./components/ui/footer"
+import Sites from "./components/sites"
 import { menuClose, menuOpen } from "./actions/nav"
-import NavContainer from "./containers/nav"
+import NavBarContainer from "./containers/nav_bar_container"
 import { fetchStoreRequest } from "./actions/root"
-import CombinedReducer from "./reducers/root"
+import CombinedReducer from "./reducers/combined_reducer"
 import "./stylesheets/root.scss"
 
 // Set up Google Analytics
@@ -54,7 +54,7 @@ class Client extends Component {
         return this.props.root.isLoading ? (<div />) : (
             <BrowserRouter history={browserHistory}>
                 <div onClick={this.props.menuClose}>
-                    <NavContainer
+                    <NavBarContainer
                         currentPage={this.state.currentPage}
                         menuClose={this.props.menuClose}
                         menuOpen={this.props.menuOpen} />

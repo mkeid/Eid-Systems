@@ -47,11 +47,24 @@
         color: $color2;
         display: inline-block;
         text-align: left;
-        width: $siteWidth;
+        width: 100%;
 
         .skill {
-            margin: 1.2em 0 4.5em 0;
-            text-align: justify;
+            text-align: center;
+
+            &:not(:first-child) {
+                padding-top: 3em;
+            }
+
+            &:nth-child(2n) {
+                background: rgb(245, 245, 245);
+            }
+
+            .container {
+                margin: 1.2em 0 4.5em 0;
+                text-align: justify;
+                width: $siteWidth;
+            }
 
             img {
                 float: right;

@@ -13,16 +13,11 @@ const router = express.Router()
 // Send application data store
 router.route("/store").get(function(request, response) {
     getComponents(function(error, components) {
-        let comps = {}
-        for (let i = 0; i < components.length; i++) {
-            let comp = components[i]
-            comps[comp.name] = Object.assign({}, comp.component)
-        }
-
-        getProjects(function(error, projects) {
-            const payload = Object.assign({}, comps, {projects})
-            response.json(payload)
-        })
+        const comps = components.reduce((previous, comp) => {
+            previous[comp.name] = comp.component
+            return previous
+        }, {})
+        response.json(comps)
     })
 })
 
@@ -56,7 +51,15 @@ router.route("/contact").post(function(request, response) {
     })
 })
 
-router.route("/posts").get(PostsController.getPosts)
-router.route("/skills").get(SkillsController.getSkills)
+router.route("/posts").get(PostsController.list)
+router.route("/posts/:post_id").get(PostsController.show)
+router.route("/posts/:post_id").delete(PostsController.destroy)
+
+router.route("/projects").get(ProjectsController.list)
+router.route("/projects/:project_id").delete(ProjectsController.destroy)
+
+
+router.route("/skills").get(SkillsController.list)
+router.route("/skills/:skill_id").get(SkillsController.destroy)
 
 module.exports = router

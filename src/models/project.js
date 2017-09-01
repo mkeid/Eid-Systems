@@ -23,10 +23,4 @@ const projectSchema = mongoose.Schema({
     }
 })
 
-const Project = mongoose.model("Project", projectSchema)
-
-const getProjects = function(callback, limit) {
-    Project.find(callback).sort("type").limit(limit)
-}
-
-module.exports = { getProjects }
+module.exports = mongoose.model("Project", projectSchema)

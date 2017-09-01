@@ -3,20 +3,20 @@ const Project = require("../models/project")
 module.exports = {
     // TODO: implement function
     // Creates a new project document with the specified attributes
-    createProject: function(request, response) {
+    create: function(request, response) {
 
     },
 
     // TODO: implement function
     // Deletes a specified project document
-    deleteProject: function(request, response) {
+    destroy: function(request, response) {
 
     },
 
     // Returns all documents from the projects collection
-    getProjects: function(request, response) {
+    list: function(request, response) {
         (function(callback, limit) {
-            Project.find(callback).limit(limit)
+            Project.find(callback).sort("type").limit(limit)
         })
         (function(error, projects) {
             response.json({projects})
@@ -25,7 +25,7 @@ module.exports = {
 
     // TODO: implement function
     // Updates a project document with the specified attributes
-    updateProject: function(request, response) {
+    update: function(request, response) {
 
     }
 }

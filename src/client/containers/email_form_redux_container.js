@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 import { reduxForm } from "redux-form"
 import { sendEmail } from "../actions/contact"
-import EmailForm from "../components/email_form"
+import EmailForm from "../components/contact/email_form"
 
 
 // Validate the contact form input content */

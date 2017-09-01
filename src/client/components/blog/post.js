@@ -1,7 +1,5 @@
 import React, { Component } from "react"
-import { connect } from "react-redux"
 import { Link } from "react-router-dom"
-
 
 /**
 * Component making up a single blog post
@@ -34,33 +32,4 @@ class Post extends Component {
     }
 }
 
-/**
-* Component used by react router to render the "Blog" page
-* @extends Component
-*/
-class BlogSite extends Component {
-    componentDidMount() {
-        this.props.updateCurrentPage("Blog")
-    }
-
-    componentWillMount() {
-        if (!this.props.posts.length) {
-            this.props.fetchPosts()
-        }
-    }
-
-    render() {
-        const posts = this.props.posts.map(
-            post => <Post key={post.title} {...post} />
-        )
-
-        return (
-            <div className="blog-site">
-                <div className="container">{posts}</div>
-            </div>
-        )
-    }
-}
-
-
-export { BlogSite }
+export default Post

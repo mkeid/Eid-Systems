@@ -1,16 +1,5 @@
 import React, { Component } from "react"
 
-
-/**
-* 404 page component function
-*/
-const NotFound = () => (
-    <div className="not-found-site">
-        <div className="billboard" />
-    </div>
-)
-
-
 /**
 * A general component function used for rendering sub components under a title
 */
@@ -33,28 +22,4 @@ class Body extends Component {
     }
 }
 
-
-/**
-* The footer component at the bottom of the entire site
-*/
-class Footer extends Component {
-    shouldComponentUpdate() {
-        return false
-    }
-
-    render() {
-        return (
-            <div className="footer">
-                <div className="copyright">
-                    © Copyright 2017 | Mohamed K. Eid
-                </div>
-            </div>
-        )
-    }
-}
-
-export {
-    Body,
-    Footer,
-    NotFound
-}
+export default Body
