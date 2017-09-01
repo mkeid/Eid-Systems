@@ -62,7 +62,7 @@
             padding-bottom: .1em;
 
             @include mobile {
-                .portfolio-item-container {
+                .project-container {
                     &:nth-child(3) {
                         display: none;
                     }
