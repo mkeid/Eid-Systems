@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const billboardSchema = mongoose.Schema({
+const siteSchema = mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -11,10 +11,4 @@ const billboardSchema = mongoose.Schema({
     }
 })
 
-const Site = mongoose.model("Site", billboardSchema)
-
-const getSites = function(callback, limit) {
-    Site.find(callback).limit(limit)
-}
-
-module.exports = { getSites }
+module.exports = mongoose.model("Site", siteSchema)

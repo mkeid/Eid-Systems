@@ -188,9 +188,13 @@
                 @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, .28));
             }
 
+            &:focus {
+                background: rgb(0, 119, 181);
+                color: white;
+            }
+
             &:hover {
                 @include transition(all, .1s, ease-in);
-
                 background: rgb(0, 119, 181);
                 color:white;
             }
