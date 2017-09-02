@@ -4,16 +4,18 @@ import React, { Component } from "react"
 * Main head component at the top of the "Contactt" page
 */
 class ContactBillboard extends Component {
-    shouldComponentUpdate() {
-        return false
-    }
-
     render() {
+        const link = this.props.links.find(link => link.title === "LinkedIn")
+
+        if (!link) {
+            return null
+        }
+
         return (
             <div className="billboard">
                 <div className="container">
                     <a className="linkedin-link"
-                        href="https://linkedin.com/in/mkeid/">
+                        href={link["href"]}>
                         Connect
                     </a>
                 </div>

@@ -1,7 +1,6 @@
 const MENU_CLOSE = "MENU_CLOSE"
 const MENU_OPEN = "MENU_OPEN"
 
-
 /**
 * Action that hides the nav menu
 */
@@ -16,7 +15,6 @@ const menuClose = () => ({
 const menuOpen = () => ({
     type: MENU_OPEN
 })
-
 
 export {
     MENU_CLOSE,

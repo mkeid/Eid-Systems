@@ -5,7 +5,7 @@ import {
     POSTS_SHOW_REQUEST_SUCCESS,
     POSTS_LIST_REQUEST_SUCCESS,
     POSTS_UPDATE_REQUEST_SUCCESS
-} from "../actions/posts"
+} from "../actions/post_actions"
 
 export default (state = null, action) => {
     switch(action.type) {

@@ -1,8 +1,7 @@
 import { connect } from "react-redux"
 import { reduxForm } from "redux-form"
-import { sendEmail } from "../actions/contact"
+import { sendEmail } from "../actions/contact_actions"
 import EmailForm from "../components/contact/email_form"
-
 
 // Validate the contact form input content */
 const emailExression = /[\w\d]+@[\w\d]+\.[\w\d]+/
@@ -26,7 +25,6 @@ const validate = (values) => {
 
     return errors
 }
-
 
 // Wire up the email contact form with redux to propoagate state
 const mapStateToProps = state => ({

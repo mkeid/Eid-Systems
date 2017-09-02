@@ -1,10 +1,10 @@
 import _ from "lodash"
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { fetchPosts } from "../actions/posts"
+import { fetchPosts } from "../actions/post_actions"
 import BlogSite from "../components/blog/blog_site"
 
-
+// Wire up the blog site component with redux to propoagate state
 const mapStateToProps = ({ posts }) => ({
     posts: _.map(posts, (value, key) => value)
 })

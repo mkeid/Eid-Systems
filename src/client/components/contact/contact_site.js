@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import EmailFormReduxContainer from "../../containers/email_form_redux_container"
-import ContactBillboard from "./contact_billboard"
+import ContactBillboardContainer from "../../containers/contact_billboard_container"
 import Body from "../ui/body"
 
 /**
@@ -15,7 +15,7 @@ class ContactSite extends Component {
     render() {
         return (
             <div className="contact-site">
-                <ContactBillboard />
+                <ContactBillboardContainer />
                 <Body title="OR">
                     <EmailFormReduxContainer />
                 </Body>

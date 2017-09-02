@@ -1,4 +1,4 @@
-const Project = require("../models/project")
+const ProjectModel = require("../models/project_model")
 
 module.exports = {
     // TODO: implement function
@@ -16,7 +16,7 @@ module.exports = {
     // Returns all documents from the projects collection
     list: function(request, response) {
         (function(callback, limit) {
-            Project.find(callback).sort("type").limit(limit)
+            ProjectModel.find(callback).sort("type").limit(limit)
         })
         (function(error, projects) {
             response.json({projects})

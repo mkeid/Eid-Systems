@@ -11,7 +11,7 @@ import ReactGA from "react-ga"
 // Import local modules
 import Footer from "./components/ui/footer"
 import Sites from "./components/sites"
-import { menuClose, menuOpen } from "./actions/nav"
+import { menuClose, menuOpen } from "./actions/nav_bar_actions"
 import NavBarContainer from "./containers/nav_bar_container"
 import { fetchStoreRequest } from "./actions/root"
 import CombinedReducer from "./reducers/combined_reducer"

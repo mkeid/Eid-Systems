@@ -6,12 +6,12 @@ import React, { Component } from "react"
 */
 class NavSocialList extends Component {
     render() {
-        const navSocials = this.props.socials.map(
-            social => (
-                <a key={social.site}
+        const navSocials = this.props.links.map(
+            link => (
+                <a key={link.title}
                     className="nav-social"
-                    href={social.href}>
-                    <img src={social.imgSrc} />
+                    href={link.href}>
+                    <img src={link.imgSrc} />
                 </a>
             )
         )

@@ -3,6 +3,7 @@ import { reducer as formReducer } from "redux-form"
 import AboutReducer from "./about_reducer"
 import ContactReducer from "./contact_reducer"
 import IndexReducer from "./index_reducer"
+import LinksReducer from "./links_reducer"
 import NavReducer from "./nav_reducer"
 import PostsReducer from "./posts_reducer"
 import ProjectsReducer from "./projects_reducer"
@@ -41,6 +42,7 @@ const CombinedReducer = combineReducers({
     contact: ContactReducer,
     form: formReducer,
     index: IndexReducer,
+    links: LinksReducer,
     nav: NavReducer,
     posts: PostsReducer,
     projects: ProjectsReducer,

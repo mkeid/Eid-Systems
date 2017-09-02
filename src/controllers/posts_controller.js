@@ -1,4 +1,4 @@
-const Post = require("../models/post")
+const PostModel = require("../models/post_model")
 
 module.exports = {
     // TODO: implement function
@@ -16,7 +16,7 @@ module.exports = {
     // Returns all documents from the posts collection
     list: function(request, response) {
         (function(callback, limit) {
-            Post.find(callback).limit(limit)
+            PostModel.find(callback).limit(limit)
         })
         (function(error, posts) {
             response.json({posts})

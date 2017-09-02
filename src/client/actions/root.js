@@ -9,7 +9,7 @@ const FETCH_STORE_ERROR = "FETCH_STORE_ERROR"
 const fetchStoreRequest = () => ({
     type: FETCH_STORE_REQUEST,
     payload: {
-        request: {url: "/store"}
+        request: {url: "/sites"}
     }
 })
 

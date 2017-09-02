@@ -4,7 +4,7 @@ import {
     PROJECTS_DESTROY_REQUEST_SUCCESS,
     PROJECTS_LIST_REQUEST_SUCCESS,
     PROJECTS_UPDATE_REQUEST_SUCCESS
-} from "../actions/projects"
+} from "../actions/project_actions"
 
 export default (state = null, action) => {
     switch(action.type) {

@@ -35,6 +35,12 @@ class NavBar extends Component {
         this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     }
 
+    componentWillMount() {
+        if (!this.props.links.length) {
+            this.props.fetchLinks()
+        }
+    }
+
     // Toggle menu visibility
     handleCheckboxChange() {
         if (this.props.menuOpened) {
@@ -45,7 +51,7 @@ class NavBar extends Component {
     }
 
     render() {
-        const logo = (<Logo imgSrc={this.props.logoImgSrc} />)
+        const logo = (<Logo imgSrc="/images/logo.svg" />)
         const navItemList = (<NavItemList {...this.props} />)
 
         return (
@@ -54,7 +60,7 @@ class NavBar extends Component {
                     <div className="container">
                         {logo}
                         {navItemList}
-                        <NavSocialList socials={this.props.socials} />
+                        <NavSocialList links={this.props.links} />
                     </div>
                 </div>
                 <div className="mobile-menu">

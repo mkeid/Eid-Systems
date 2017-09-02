@@ -4,7 +4,7 @@ import {
     SKILLS_DESTROY_REQUEST_SUCCESS,
     SKILLS_LIST_REQUEST_SUCCESS,
     UPDATE_SKILL_REQUEST_SUCCESS
-} from "../actions/skills"
+} from "../actions/skill_actions"
 
 export default (state = null, action) => {
     switch(action.type) {

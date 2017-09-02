@@ -1,4 +1,4 @@
-const Skill = require("../models/skill")
+const SkillModel = require("../models/skill_model")
 
 module.exports = {
     // TODO: implement function
@@ -16,7 +16,7 @@ module.exports = {
     // Returns all documents in the skills collection
     list: function(request, response) {
         (function(callback, limit) {
-            Skill.find(callback).limit(limit)
+            SkillModel.find(callback).limit(limit)
         })
         (function(error, skills) {
             response.json({skills})

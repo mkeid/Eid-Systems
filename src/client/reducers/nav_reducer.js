@@ -1,7 +1,7 @@
 import { FETCH_STORE_REQUEST_SUCCESS } from "../actions/root"
-import { MENU_CLOSE, MENU_OPEN } from "../actions/nav"
+import { MENU_CLOSE, MENU_OPEN } from "../actions/nav_bar_actions"
 
-const initState = {menuOpened: false}
+const initState = { menuOpened: false }
 export default (state = initState, action) => {
     switch(action.type) {
         // Update the current state with data retrieved regarding the nav bar
