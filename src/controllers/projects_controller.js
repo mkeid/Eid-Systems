@@ -19,7 +19,7 @@ module.exports = {
             ProjectModel.find(callback).sort("type").limit(limit)
         })
         ((error, projects) => {
-            response.json({projects})
+            response.json(projects)
         })
     },
 

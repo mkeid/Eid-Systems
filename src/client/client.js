@@ -13,7 +13,7 @@ import Footer from "./components/ui/footer"
 import Sites from "./components/sites"
 import { menuClose, menuOpen } from "./actions/nav_bar_actions"
 import NavBarContainer from "./containers/nav_bar_container"
-import { fetchStoreRequest } from "./actions/root"
+import { fetchSites } from "./actions/site_actions"
 import CombinedReducer from "./reducers/combined_reducer"
 import "./stylesheets/root.scss"
 
@@ -26,7 +26,7 @@ const axiosClient = axios.create({baseURL: "/api/", responseType: "json"})
 // Create our store which the entire application references and fetch init data
 const middleware = applyMiddleware(axiosMiddleware(axiosClient))
 const store = createStore(CombinedReducer, middleware)
-store.dispatch(fetchStoreRequest())
+store.dispatch(fetchSites())
 
 /**
 * Single page application component within a router component
@@ -51,7 +51,7 @@ class Client extends Component {
     }
 
     render() {
-        return !this.props.index ? (<div />) : (
+        return this.props.sites.isLoading ? (<div />) : (
             <BrowserRouter history={browserHistory}>
                 <div onClick={this.props.menuClose}>
                     <NavBarContainer

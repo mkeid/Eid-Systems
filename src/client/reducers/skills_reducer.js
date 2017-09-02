@@ -7,7 +7,7 @@ import {
 } from "../actions/skill_actions"
 
 export default (state = null, action) => {
-    switch(action.type) {
+    switch (action.type) {
         // Add a newly created skill item from the payload to the list skills
         case SKILLS_CREATE_REQUEST_SUCCESS:
             return Object.assign({}, state,

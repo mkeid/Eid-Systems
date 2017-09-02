@@ -1,7 +1,7 @@
 import { SEND_EMAIL_REQUEST_SUCCESS } from "../actions/contact_actions"
 
 export default (state = {contacted: false}, action) => {
-    switch(action.type) {
+    switch (action.type) {
         // Update state to inform the user of the successful email submission
         case SEND_EMAIL_REQUEST_SUCCESS:
             return {

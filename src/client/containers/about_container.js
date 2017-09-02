@@ -5,8 +5,8 @@ import { fetchSkills } from "../actions/skill_actions"
 import AboutSite from "../components/about/about_site"
 
 // Wire up the about site component with redux to propoagate state
-const mapStateToProps = ({ about, skills }) => ({
-    about,
+const mapStateToProps = ({ sites, skills }) => ({
+    about: sites.about,
     skills: _.map(skills, (value, key) => value)
 })
 

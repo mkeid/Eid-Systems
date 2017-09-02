@@ -4,8 +4,8 @@ import { connect } from "react-redux"
 import IndexSite from "../components/index/index_site"
 
 // Wire up the index site component with redux to propoagate state
-const mapStateToProps = ({ index, projects }) => ({
-    index,
+const mapStateToProps = ({ sites, projects }) => ({
+    index: sites.index,
     projects: _.map(projects, (value, key) => value)
 })
 

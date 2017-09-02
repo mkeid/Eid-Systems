@@ -7,7 +7,7 @@ import {
 } from "../actions/project_actions"
 
 export default (state = null, action) => {
-    switch(action.type) {
+    switch (action.type) {
 
         case PROJECTS_CREATE_REQUEST_SUCCESS:
             return Object.assign({}, state,
@@ -23,7 +23,7 @@ export default (state = null, action) => {
             )
 
         case PROJECTS_LIST_REQUEST_SUCCESS:
-            return _.mapKeys(action.payload.data.projects, "_id")
+            return _.mapKeys(action.payload.data, "_id")
 
         // Only update state when the action type is specified
         default:

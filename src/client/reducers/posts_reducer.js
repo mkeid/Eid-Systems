@@ -8,7 +8,7 @@ import {
 } from "../actions/post_actions"
 
 export default (state = null, action) => {
-    switch(action.type) {
+    switch (action.type) {
 
         case POSTS_CREATE_REQUEST_SUCCESS:
             return Object.assign({}, state,
