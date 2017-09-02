@@ -2,7 +2,7 @@ import _ from "lodash"
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { fetchPosts } from "../actions/post_actions"
-import BlogSite from "../components/blog/blog_site"
+import BlogIndex from "../components/blog/blog_index"
 
 // Wire up the blog site component with redux to propoagate state
 const mapStateToProps = ({ posts }) => ({
@@ -13,7 +13,7 @@ const mapStateToProps = ({ posts }) => ({
 const BlogContainer = connect(
     mapStateToProps,
     { fetchPosts }
-)(BlogSite)
+)(BlogIndex)
 
-// Promote BlogSite from a component to a container
+// Promote BlogIndex from a component to a container
 export default BlogContainer

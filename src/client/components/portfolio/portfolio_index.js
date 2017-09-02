@@ -6,14 +6,14 @@ import PortfolioContainer from "../../containers/portfolio_container"
 * Component used by react router to render the "Portfolio" page
 * @extends Component
 */
-class PortfolioSite extends Component {
+class PortfolioIndex extends Component {
     componentDidMount() {
         this.props.updateCurrentPage("Portfolio")
     }
 
     render() {
         return (
-            <div className="portfolio-site">
+            <div className="portfolio-index">
                 <Body>
                     <PortfolioContainer
                         projects={this.props.projects} />
@@ -23,4 +23,4 @@ class PortfolioSite extends Component {
     }
 }
 
-export default PortfolioSite
+export default PortfolioIndex

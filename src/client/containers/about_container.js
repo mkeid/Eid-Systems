@@ -2,7 +2,7 @@ import _ from "lodash"
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { fetchSkills } from "../actions/skill_actions"
-import AboutSite from "../components/about/about_site"
+import AboutIndex from "../components/about/about_index"
 
 // Wire up the about site component with redux to propoagate state
 const mapStateToProps = ({ sites, skills }) => ({
@@ -14,7 +14,7 @@ const mapStateToProps = ({ sites, skills }) => ({
 const AboutContainer = connect(
     mapStateToProps,
     { fetchSkills }
-)(AboutSite)
+)(AboutIndex)
 
 // Promote AboutSite from a component to a container
 export default AboutContainer

@@ -5,7 +5,7 @@ import Post from "./post"
 * Component used by react router to render the "Blog" page
 * @extends Component
 */
-class BlogSite extends Component {
+class BlogIndex extends Component {
     componentDidMount() {
         this.props.updateCurrentPage("Blog")
     }
@@ -22,11 +22,11 @@ class BlogSite extends Component {
         )
 
         return (
-            <div className="blog-site">
+            <div className="blog-index">
                 <div className="container">{posts}</div>
             </div>
         )
     }
 }
 
-export default BlogSite
+export default BlogIndex

@@ -7,14 +7,14 @@ import Body from "../ui/body"
 * Component used by react router to render the "Contact" page
 * @extends Component
 */
-class ContactSite extends Component {
+class ContactIndex extends Component {
     componentDidMount() {
         this.props.updateCurrentPage("Contact")
     }
 
     render() {
         return (
-            <div className="contact-site">
+            <div className="contact-index">
                 <ContactBillboardContainer />
                 <Body title="OR">
                     <EmailFormReduxContainer />
@@ -24,4 +24,4 @@ class ContactSite extends Component {
     }
 }
 
-export default ContactSite
+export default ContactIndex

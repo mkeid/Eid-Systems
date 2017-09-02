@@ -7,7 +7,7 @@ import Skill from "./skill"
 * Component used by react router to render the "About" page
 * @extends Component
 */
-class AboutSite extends Component {
+class AboutIndex extends Component {
     componentDidMount() {
         this.props.updateCurrentPage("About")
     }
@@ -25,7 +25,7 @@ class AboutSite extends Component {
         )
 
         return (
-            <div className="about-site">
+            <div className="about-index">
                 <AboutBillboard about={this.props.about} />
                 <Body title="SKILLS">
                     <div className="skills">{skills}</div>
@@ -35,4 +35,4 @@ class AboutSite extends Component {
     }
 }
 
-export default AboutSite
+export default AboutIndex
