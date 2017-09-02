@@ -64,11 +64,11 @@ class NavBar extends Component {
                     </div>
                 </div>
                 <div className="mobile-menu">
-                    <Hamburger />
                     <input
                         type="checkbox"
                         checked={this.props.menuOpened}
                         onChange={this.handleCheckboxChange} />
+                    <Hamburger />
                     {navItemList}
                     <div className="black-cover" />
                 </div>

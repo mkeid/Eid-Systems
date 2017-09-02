@@ -8,6 +8,11 @@
     to   { opacity: .33; }
 }
 
+@-webkit-keyframes rotate-rt {
+    0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
 @keyframes slideleft {
     from { left: 3em; }
     to { left: 0; }

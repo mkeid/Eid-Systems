@@ -4,8 +4,9 @@ import NavBar from "../components/ui/nav_bar"
 import { fetchLinks } from "../actions/link_actions"
 
 // Wire up the nav bar component with redux to propoagate state
-const mapStateToProps = ({ links }) => ({
-    links: _.map(links, (value, key) => value)
+const mapStateToProps = ({ links, nav}) => ({
+    links: _.map(links, (value, key) => value),
+    menuOpened: nav.menuOpened
 })
 
 // Init nav bar redux container

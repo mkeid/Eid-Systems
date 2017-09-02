@@ -8,7 +8,6 @@ const menuClose = () => ({
     type: MENU_CLOSE
 })
 
-
 /**
 * Action that makes the nav menu visible
 */

@@ -51,7 +51,7 @@ class Client extends Component {
     }
 
     render() {
-        return this.props.root.isLoading ? (<div />) : (
+        return !this.props.index ? (<div />) : (
             <BrowserRouter history={browserHistory}>
                 <div onClick={this.props.menuClose}>
                     <NavBarContainer
@@ -67,7 +67,7 @@ class Client extends Component {
 }
 
 // Create a container so the app can hide while fetching data
-const ClientContainer = connect(state => state, {menuClose, menuOpen})(Client)
+const ClientContainer = connect(state => state, { menuClose, menuOpen })(Client)
 
 // Splice the React app into the DOM
 ReactDOM.render(
