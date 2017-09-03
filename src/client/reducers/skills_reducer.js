@@ -22,7 +22,7 @@ export default (state = null, action) => {
         case SKILLS_LIST_REQUEST_SUCCESS:
             return _.mapKeys(action.payload.data.skills, "_id")
 
-        // Updates a specific skill from the payload retrieved from the payload
+        // Updates a specific skill from the payload retrieved from payload
         case UPDATE_SKILL_REQUEST_SUCCESS:
             return Object.assign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}

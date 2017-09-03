@@ -37,7 +37,7 @@ export {
     LOGIN_REQUEST,
     LOGIN_REQUEST_SUCCESS,
     LOGOUT_REQUEST,
-    LOGOUT_REQUEST_SUCCESS
+    LOGOUT_REQUEST_SUCCESS,
     login,
     logout
 }

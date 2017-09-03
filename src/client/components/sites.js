@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Redirect, Route, Switch } from "react-router-dom"
 import AboutContainer from "../containers/about_container"
-import AdminContainer from "../containers/admin_container"
+import AdminContainer from "../containers/admin/admin_container"
 import AuthIndex from "./auth/auth_index"
 import BlogContainer from "../containers/blog_container"
 import ContactIndex from "./contact/contact_index"

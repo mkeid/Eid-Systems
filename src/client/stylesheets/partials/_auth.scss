@@ -1,0 +1,12 @@
+.auth-index {
+    .container {
+        width: $siteWidth;
+
+        .login-form {
+            background: rgb(240, 240, 240);
+            border: .11em solid $borderGray;
+            border-radius: $borderRadius;
+            width: 30em;
+        }
+    }
+}

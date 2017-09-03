@@ -1,6 +1,8 @@
 import React, { Component } from "react"
-import EmailFormReduxContainer from "../../containers/email_form_redux_container"
-import ContactBillboardContainer from "../../containers/contact_billboard_container"
+import EmailFormContainer from
+    "../../containers/email_form_container"
+import ContactBillboardContainer from
+    "../../containers/contact_billboard_container"
 import Body from "../ui/body"
 
 /**
@@ -17,7 +19,7 @@ class ContactIndex extends Component {
             <div className="contact-index">
                 <ContactBillboardContainer />
                 <Body title="OR">
-                    <EmailFormReduxContainer />
+                    <EmailFormContainer />
                 </Body>
             </div>
         )

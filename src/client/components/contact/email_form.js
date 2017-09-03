@@ -97,19 +97,23 @@ class EmailForm extends Component {
     /** Return an input element object for redux form's Field component */
     renderTextField(field) {
         const fieldAttribute = `${field.title.toLowerCase()}Input`
+        const element = React.createElement(
+            field.element,
+            Object.assign(
+                field.input,
+                {ref: input => {this[fieldAttribute] = input}},
+                {type: "text"}
+            )
+        )
+        const warning = field.meta.touched && field.meta.error ? (
+            <div className="warning">{field.meta.error}</div>
+        ) : null
+
         return (
             <div className="input">
                 <div className="title">{field.title}</div>
-                {field.meta.touched && field.meta.error ? (
-                    <div className="warning">{field.meta.error}</div>
-                ) : null}
-                {field.textArea ? (
-                    <textarea {...field.input}
-                        ref={input => {this[fieldAttribute] = input}} />
-                ) : (
-                    <input {...field.input} type="text"
-                        ref={input => {this[fieldAttribute] = input}} />
-                )}
+                {warning}
+                {element}
             </div>
         )
     }
@@ -124,25 +128,29 @@ class EmailForm extends Component {
 
         return (
             <fieldset disabled={this.props.contacted ? "disabled" : ""}>
-                <form onSubmit={this.props.handleSubmit(this.handleSubmit)}
-                    className="email-form">
-                    <div className="head">Send me an email</div>
+                <form className="email-form"
+                    onSubmit={this.props.handleSubmit(this.handleSubmit)}>
+                    <div className="head">
+                        Send me an email
+                    </div>
                     <div className="inputs">
                         <div className="left">
                             <Field
                                 name="name"
                                 title="Name"
+                                element="input"
                                 component={this.renderTextField} />
                             <Field
                                 name="email"
                                 title="Email"
+                                element="input"
                                 component={this.renderTextField} />
                         </div>
                         <div className="right">
                             <Field
                                 name="message"
                                 title="Message"
-                                textArea={true}
+                                element="textArea"
                                 component={this.renderTextField} />
                         </div>
                     </div>

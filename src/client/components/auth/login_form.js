@@ -1,4 +1,5 @@
-import React, { Component }
+import React, { Component } from "react"
+import { Field } from "redux-form"
 
 class LoginForm extends Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class LoginForm extends Component {
     render() {
         return (
             <form className="login-form">
-
+                <div className="title">Login</div>
             </form>
         )
     }

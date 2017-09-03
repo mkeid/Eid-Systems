@@ -2,7 +2,7 @@ import { connect } from "react-redux"
 import ContactBillboard from "../components/contact/contact_billboard"
 
 // Wire up the contact billboard with redux to propoagate state
-const mapStateToProps = ({ links }) => ({ links }) => ({
+const mapStateToProps = ({ links }) => ({
     links: _.map(links, (value, key) => value)
 })
 

@@ -16,6 +16,26 @@ import SkillList from "./skills/skill_list"
 const AdminPages = props => (
     <div className="admin-pages">
         <Switch>
+            <Route exact path="/posts"
+                render={() => (<PostList {...props.posts} />)} />
+            <Route exact path="/posts/new"
+                render={() => (<PostCreator />)} />
+            <Route exact path="/posts/edit/:post_id"
+                render={() => (<PostEditor {...props.posts} />)} />
+
+            <Route exact path="/projects"
+                render={() => (<ProjectList {...props.projects} />)} />
+            <Route exact path="/projects/new"
+                render={() => (<ProjectCreator />)} />
+            <Route exact path="/projects/edit/:project_id"
+                render={() => (<ProjectEditor {...props.projects} />)} />
+
+            <Route exact path="/skills"
+                render={() => (<SkillList {...props.skills} />)} />
+            <Route exact path="/skills/new"
+                render={() => (<SkillCreator />)} />
+            <Route exact path="/skills/edit/:skill_id"
+                render={() => (<SkillEditor {...props.skills} />)} />
         </Switch>
     </div>
 )

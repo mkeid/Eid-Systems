@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import AdminMenu from "./admin_menu"
 import AdminPages from "./admin_pages"
+import requireAuth from "../auth/require_auth"
 
 class AdminIndex extends Component {
     render() {
@@ -15,4 +16,4 @@ class AdminIndex extends Component {
     }
 }
 
-export default AdminIndex
+export default requireAuth(AdminIndex)
