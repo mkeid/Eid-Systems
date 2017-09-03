@@ -1,0 +1,41 @@
+.primary-button {
+    @include box-shadow(0, .125em, .3em, 0, rgba(0, 0, 0, .1));
+    @include transition(color, .15s, ease-in);
+
+    background: none;
+    border: .1em solid rgb(0, 119, 181) !important;
+    border-radius: .15em;
+    color: rgb(0, 119, 181);
+    cursor: pointer;
+    display: block;
+    font-size: 1.4em;
+    outline: none;
+    padding: .4em 0;
+    text-align: center !important;
+    width: 4.8em;
+
+    &:active {
+        @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, .28));
+    }
+
+    &:focus {
+        background: rgb(0, 119, 181);
+        color: white;
+    }
+
+    &:hover {
+        @include transition(all, .1s, ease-in);
+        background: rgb(0, 119, 181);
+        color:white;
+    }
+
+    @include mobile {
+        background: rgb(0, 119, 181);
+        color:white;
+        font-size: 2.3em;
+        height: 3em;
+        left: 0;
+        margin-bottom: 1em;
+        width: 8em;
+    }
+}

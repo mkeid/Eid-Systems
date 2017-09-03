@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Field } from "redux-form"
 import { ScaleLoader } from 'react-spinners';
 import { Shake } from "reshake"
-
+import renderTextField from "../ui/render_text_field"
 
 /**
 * A form component storing input states with API calling functionality
@@ -20,7 +20,6 @@ class EmailForm extends Component {
         this.handleSendClick = this.handleSendClick.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.renderSendButton = this.renderSendButton.bind(this)
-        this.renderTextField = this.renderTextField.bind(this)
         this.stopShaking = this.stopShaking.bind(this)
     }
 
@@ -74,7 +73,7 @@ class EmailForm extends Component {
         return (
             <Shake h={3} v={5} r={0} dur={42} max={100}
                 fixed={true} fixedStop={false} freez={false}>
-                <div className="send-button err">Send</div>
+                <div className="primary-button err">Send</div>
             </Shake>
         )
     }
@@ -88,33 +87,9 @@ class EmailForm extends Component {
         ) : (
             <input
                 type="submit"
-                className="send-button"
+                className="primary-button"
                 onClick={this.handleSendClick}
                 value="Send" />
-        )
-    }
-
-    /** Return an input element object for redux form's Field component */
-    renderTextField(field) {
-        const fieldAttribute = `${field.title.toLowerCase()}Input`
-        const element = React.createElement(
-            field.element,
-            Object.assign(
-                field.input,
-                {ref: input => {this[fieldAttribute] = input}},
-                {type: "text"}
-            )
-        )
-        const warning = field.meta.touched && field.meta.error ? (
-            <div className="warning">{field.meta.error}</div>
-        ) : null
-
-        return (
-            <div className="input">
-                <div className="title">{field.title}</div>
-                {warning}
-                {element}
-            </div>
         )
     }
 
@@ -139,19 +114,21 @@ class EmailForm extends Component {
                                 name="name"
                                 title="Name"
                                 element="input"
-                                component={this.renderTextField} />
+                                type="text"
+                                component={renderTextField.bind(this)} />
                             <Field
                                 name="email"
                                 title="Email"
                                 element="input"
-                                component={this.renderTextField} />
+                                type="text"
+                                component={renderTextField.bind(this)} />
                         </div>
                         <div className="right">
                             <Field
                                 name="message"
                                 title="Message"
                                 element="textArea"
-                                component={this.renderTextField} />
+                                component={renderTextField.bind(this)} />
                         </div>
                     </div>
                     {this.props.contacted ? sentButton : sendButton}

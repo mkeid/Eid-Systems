@@ -1,0 +1,152 @@
+form {
+    color: $color1;
+    display: inline-block;
+    padding-bottom: 3em;
+    text-align: left;
+    width: $siteWidth;
+
+    .primary-button {
+        float: right;
+    }
+
+    .warning {
+        @include animation(fadein, .5s, forwards);
+        background: $red;
+        border-radius: 3em;
+        color: white;
+        cursor: default;
+        display: inline-block;
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-left: 1em;
+        padding: .1em .6em;
+        position: relative;
+        top: -.095em;
+
+        @include mobile {
+            font-size: 1.3em;
+        }
+    }
+
+    .head {
+        cursor: default;
+        font-size: 2em;
+        font-weight: bold;
+        margin-bottom: .4em;
+
+        @include mobile {
+            font-size: 3em;
+            margin-bottom: 1.3em;
+        }
+    }
+
+    .inputs {
+        cursor: default;
+
+        input {
+            margin-bottom: 1.5em;
+            width: 100%;
+        }
+
+        textarea {
+            height: 8.5em;
+            width: 100%;
+        }
+
+        .left {
+            display: inline-block;
+            padding-right: 3%;
+            width: 47%;
+        }
+
+        .right {
+            display: inline-block;
+            float: right;
+            padding-left: 3%;
+            position: relative;
+            top: 0em;
+            width: 47%;
+        }
+
+        .title {
+            display: inline-block;
+            font-size: 1.4em;
+            margin-bottom: .4em;
+        }
+
+        @include mobile {
+            .left, .right {
+                display: block !important;
+                font-size: 1.5em;
+                padding-right: 0;
+                width: 100%;
+            }
+
+            .right {
+                left: auto;
+                top:auto;
+                margin-bottom: 3em;
+                padding-left: 0;
+            }
+
+            .title {
+                font-size: 1.8em;
+            }
+
+            input, textarea {
+                font-size: 2em;
+                margin-right: 0;
+                padding-right: 0;
+            }
+        }
+    }
+
+    .err {
+        background: $red !important;
+        border-color: $red !important;
+        color: white !important;
+        width: 4.6em !important;
+
+        @include mobile-contact-button;
+    }
+
+    .loading {
+        background: rgb(0, 119, 181) !important;
+        cursor: wait !important;
+        width: 4.6em !important;
+
+        @include mobile-contact-button;
+    }
+
+    .sent-confirmation {
+        @include shadow;
+
+        $green: rgb(60, 170, 90);
+        background: none;
+        border: .1em solid $green;
+        color: $green;
+        cursor: not-allowed;
+        width: 4.6em;
+
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        -o-box-shadow: none;
+        box-shadow: none;
+
+        &:active {
+            @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, 0));
+        }
+
+        &:hover {
+            background: none;
+            border-color: $green;
+            color: $green;
+        }
+
+        @include mobile-contact-button;
+    }
+
+    @include mobile {
+        width: $mobileSpace;
+    }
+}

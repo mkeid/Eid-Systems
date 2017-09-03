@@ -1,12 +1,30 @@
 .auth-index {
-    .container {
-        width: $siteWidth;
+    background: white;
+    padding-top:6.5em;
+    text-align: center;
+    width: 100%;
 
-        .login-form {
-            background: rgb(240, 240, 240);
-            border: .11em solid $borderGray;
-            border-radius: $borderRadius;
-            width: 30em;
-        }
+    .container {
+        display: inline-block;
+        height: 25em;
+        padding: 2em 0;
+        text-align: center;
+        width: $siteWidth;
+    }
+}
+
+.login-form {
+    display: inline-block;
+    text-align: left;
+    width: 30em;
+
+    .head {
+        margin-bottom: 1em;
+    }
+
+    .primary-button {
+        float: right;
+        margin-top: .5em;
+        width: 5em;
     }
 }

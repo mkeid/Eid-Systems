@@ -6,13 +6,12 @@ import { login } from "../actions/auth_actions"
 const validate = values => {
     const errors = {}
 
-    if (!values.username) {
-        errors.username = ""
-    }
-
-    if (!values.password) {
-        errors.password = ""
-    }
+    const fieldNames = ["username", "password"]
+    fieldNames.forEach(fieldName => {
+        if (!values[fieldName]) {
+            errors[fieldName] = `Please enter a ${fieldName}!`
+        }
+    })
 
     return errors
 }
