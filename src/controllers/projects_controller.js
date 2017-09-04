@@ -2,12 +2,8 @@ const ProjectModel = require("../models/project_model")
 
 module.exports = {
     // Creates a new project document with the specified attributes
-    create(request, response, error) {
-        if (error) {
-            return next(error)
-        }
-
-        ProjectModel.find(request.body), (findError, existingProject) => {
+    create(request, response, next) {
+        ProjectModel.findOne(request.body, (findError, existingProject) => {
             if (findError) { return next(findError) }
 
             const project = new ProjectModel(request.body)
@@ -19,18 +15,11 @@ module.exports = {
     },
 
     // Deletes a specified project document
-    destroy(request, response, error) {
-        if (error) {
-            return next(error)
-        }
+    destroy(request, response, next) {
     },
 
     // Returns all documents from the projects collection
-    list(request, response, error) {
-        if (error) {
-            return next(error)
-        }
-
+    list(request, response, next) {
         ((callback, limit) => {
             ProjectModel.find(callback).sort("type").limit(limit)
         })
@@ -40,9 +29,6 @@ module.exports = {
     },
 
     // Updates a project document with the specified attributes
-    update(request, response, error) {
-        if (error) {
-            return next(error)
-        }
+    update(request, response, next) {
     }
 }

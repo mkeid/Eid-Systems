@@ -1,14 +1,10 @@
 module.exports = {
-    login(request, response, error) {
-        if (error) { return next(error) }
-
+    login(request, response, next) {
         ((callback, limit) => {
         })()
     },
 
-    logout(request, response, error) {
-        if (error) { return next(error) }
-
+    logout(request, response, next) {
         ((callback, limit) => {
         })()
     }

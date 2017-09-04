@@ -2,9 +2,7 @@ const emailjs = require("emailjs")
 
 module.exports = {
     // Send self an email initiated from the contact page
-    sendEmail: function(request, response, error) {
-        if (error) { return next(error) }
-
+    sendEmail: function(request, response, next) {
         const server = emailjs.server.connect({
             user: "mohamedkeideidsystems@gmail.com",
             host: "smtp.gmail.com",

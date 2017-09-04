@@ -2,11 +2,7 @@ const SiteModel = require("../models/site_model")
 
 module.exports = {
     // Returns all documents in the skills collection
-    list(request, response, error) {
-        if (error) {
-            return next(error)
-        }
-        
+    list(request, response, next) {
         ((callback, limit) => {
             SiteModel.find(callback).limit(limit)
         })

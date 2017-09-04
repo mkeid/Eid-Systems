@@ -1,32 +1,25 @@
 const LinkModel = require("../models/link_model")
 
 module.exports = {
-    // TODO: implement function
     // Creates a new link document with specified attributes
-    create(request, response, error) {
-        if (error) { return next(error) }
-
-        LinkModel.find(request.body), (findError, existingLink) => {
+    create(request, response, next) {
+        LinkModel.findOne(request.body, (findError, existingLink) => {
             if (findError) { return next(findError) }
 
             const link = new LinkModel(request.body)
-            link.save((saveRrror) => {
+            link.save(saveRrror => {
                 if (saveError) { return next(saveError) }
                 response.json(link)
             })
         })
     },
 
-    // TODO: implement function
     // Deletes a specified document from the links collection
-    destroy(request, response, error) {
-        if (error) { return next(error) }
+    destroy(request, response, next) {
     },
 
     // Returns all documents from the links collection
-    list(request, response, error) {
-        if (error) { return next(error) }
-
+    list(request, response, next) {
         ((callback, limit) => {
             LinkModel.find(callback).limit(limit)
         })
@@ -35,9 +28,7 @@ module.exports = {
         })
     },
 
-    // TODO: implement function
     // Updates a specified link document
-    update(request, response, error) {
-        if (error) { return next(error) }
+    update(request, response, next) {
     }
 }

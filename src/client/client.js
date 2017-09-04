@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import axios from "axios"
 import axiosMiddleware from "redux-axios-middleware";
-import promiseMiddleware from 'redux-promise-bluebird';
 import { connect } from "react-redux"
 import { bindActionCreators, createStore, applyMiddleware } from "redux"
 import { BrowserRouter, browserHistory } from "react-router-dom"
@@ -25,10 +24,7 @@ ReactGA.initialize("UA-48669228-4")
 const axiosClient = axios.create({baseURL: "/api/", responseType: "json"})
 
 // Create our store which the entire application references and fetch init data
-const middleware = applyMiddleware(
-    promiseMiddleware,
-    axiosMiddleware(axiosClient)
-)
+const middleware = applyMiddleware(axiosMiddleware(axiosClient))
 const store = createStore(CombinedReducer, middleware)
 store.dispatch(fetchSites())
 
