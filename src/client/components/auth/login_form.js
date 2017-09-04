@@ -6,7 +6,10 @@ import renderTextField from "../ui/render_text_field"
 class LoginForm extends Component {
     constructor(props) {
         super(props)
+
+        // Bind this to functions
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.renderTextField = renderTextField.bind(this)
     }
 
     componentDidUpdate() {
@@ -31,13 +34,13 @@ class LoginForm extends Component {
                         title="Username"
                         element="input"
                         type="text"
-                        component={renderTextField.bind(this)} />
+                        component={this.renderTextField} />
                     <Field
                         name="password"
                         title="Password"
                         element="input"
                         type="password"
-                        component={renderTextField.bind(this)} />
+                        component={this.renderTextField} />
                     <input
                         className="primary-button"
                         type="submit"

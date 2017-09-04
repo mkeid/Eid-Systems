@@ -112,6 +112,10 @@
                 visibility: visible;
                 width: 100%;
             }
+
+            &:first-child {
+                display: none;
+            }
         }
 
         .selected {
@@ -131,6 +135,7 @@
         display: inline-block;;
         float: right;
         position: relative;
+            right: -.55em;
 
         .nav-social {
             &:first-child {
@@ -213,7 +218,7 @@
             height: 100%;
             position: fixed;
                 left: -100%;
-                top: 6.75em;
+                top: 6.7em;
             width: 50%;
             z-index: 100;
 
@@ -234,6 +239,10 @@
                 &:first-child {
                     border-width: 0;
                 }
+            }
+
+            .selected {
+                color: $color3;
             }
         }
 
@@ -258,7 +267,7 @@
                 @include transition(all, .15s, linear);
                 left: 0;
                 opacity: 1;
-                pointer-events: all;    
+                pointer-events: all;
             }
 
             &:checked ~ .hamburger {

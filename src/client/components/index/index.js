@@ -10,7 +10,7 @@ import PortfolioContainer from "../../containers/portfolio_container"
 */
 class Index extends Component {
     componentDidMount() {
-        this.props.updateCurrentPage("Index")
+        this.props.updateCurrentPage("Home")
     }
 
     render() {

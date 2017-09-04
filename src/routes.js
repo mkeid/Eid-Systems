@@ -1,4 +1,5 @@
 const express = require("express")
+const AuthController = require("./controllers/auth_controller")
 const ContactController = require("./controllers/contact_controller")
 const LinksController = require("./controllers/links_controller")
 const PostsController = require("./controllers/posts_controller")
@@ -7,6 +8,9 @@ const SitesController = require("./controllers/sites_controller")
 const SkillsController = require("./controllers/skills_controller")
 
 const router = express.Router()
+
+// Auth routing
+router.route("/auth/login").post(AuthController.login)
 
 // Links routing
 router.route("/links").get(LinksController.list)

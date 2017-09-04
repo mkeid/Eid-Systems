@@ -1,7 +1,6 @@
 const LOGIN_REQUEST = "LOGIN_REQUEST"
 const LOGIN_REQUEST_SUCCESS = "LOGIN_REQUEST_SUCCESS"
-const LOGOUT_REQUEST = "LOGOUT_REQUEST"
-const LOGOUT_REQUEST_SUCCESS = "LOGOUT_REQUEST_SUCCESS"
+const LOGOUT = "LOGOUT"
 
 
 /**
@@ -23,21 +22,14 @@ const login = (credentials) => ({
 * Async action creator that removes the session token
 */
 const logout = () => ({
-    type: LOGOUT_REQUEST,
-    payload: {
-        request: {
-            method: "post",
-            url: "/auth/logout"
-        }
-    }
+    type: LOGOUT
 })
 
 
 export {
     LOGIN_REQUEST,
     LOGIN_REQUEST_SUCCESS,
-    LOGOUT_REQUEST,
-    LOGOUT_REQUEST_SUCCESS,
+    LOGOUT,
     login,
     logout
 }

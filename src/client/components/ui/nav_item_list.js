@@ -24,6 +24,14 @@ class NavItemList extends Component {
     }
 
     render() {
+        const homeItem = (
+            <NavItem
+                key="home"
+                title="HOME"
+                href="/"
+                selected={"Home" == this.props.currentPage} />
+        )
+
         const navItems = this.titles.map(item =>
             <NavItem
                 key={item}
@@ -34,7 +42,9 @@ class NavItemList extends Component {
 
         return (
             <div className="nav-item-list-parent">
-                <div className="nav-item-list">{navItems}</div>
+                <div className="nav-item-list">
+                    {[homeItem, ...navItems]}
+                </div>
             </div>
         )
     }
