@@ -37,12 +37,15 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-cli": "^6.24.1",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "emailjs": "^1.0.11",
     "express": "^4.15.4",
     "lodash": "^4.17.4",
     "mongoose": "^4.11.7",
     "node-sass": "^4.5.3",
+    "object-assign": "^4.1.1",
+    "passport": "^0.4.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -57,6 +60,7 @@
     "redux": "^3.7.2",
     "redux-axios-middleware": "^4.0.0",
     "redux-form": "^7.0.3",
+    "redux-promise-bluebird": "^0.1.1",
     "reshake": "^1.0.7",
     "webpack-hot-middleware": "^2.18.2"
   }

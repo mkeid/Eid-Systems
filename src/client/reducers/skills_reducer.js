@@ -1,4 +1,5 @@
 import _ from "lodash"
+import objectAssign from "object-assign"
 import {
     SKILLS_CREATE_REQUEST_SUCCESS,
     SKILLS_DESTROY_REQUEST_SUCCESS,
@@ -10,7 +11,7 @@ export default (state = null, action) => {
     switch (action.type) {
         // Add a newly created skill item from the payload to the list skills
         case SKILLS_CREATE_REQUEST_SUCCESS:
-            return Object.assign({}, state,
+            return objectAssign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}
             )
 
@@ -24,7 +25,7 @@ export default (state = null, action) => {
 
         // Updates a specific skill from the payload retrieved from payload
         case UPDATE_SKILL_REQUEST_SUCCESS:
-            return Object.assign({}, state,
+            return objectAssign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}
             )
 

@@ -1,4 +1,5 @@
 import _ from "lodash"
+import objectAssign from "object-assign"
 import {
     POSTS_CREATE_REQUEST_SUCCESS,
     POSTS_DESTROY_REQUEST_SUCCESS,
@@ -11,7 +12,7 @@ export default (state = null, action) => {
     switch (action.type) {
 
         case POSTS_CREATE_REQUEST_SUCCESS:
-            return Object.assign({}, state,
+            return objectAssign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}
             )
 
@@ -19,7 +20,7 @@ export default (state = null, action) => {
             return _.omit(state, action.payload.data["_id"])
 
         case POSTS_SHOW_REQUEST_SUCCESS:
-            return Object.assign({}, state,
+            return objectAssign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}
             )
 
@@ -28,7 +29,7 @@ export default (state = null, action) => {
             return _.mapKeys(posts, "_id")
 
         case POSTS_UPDATE_REQUEST_SUCCESS:
-            return Object.assign({}, state,
+            return objectAssign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}
             )
 

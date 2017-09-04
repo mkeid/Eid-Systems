@@ -2,7 +2,9 @@ const emailjs = require("emailjs")
 
 module.exports = {
     // Send self an email initiated from the contact page
-    sendEmail: function(request, response) {
+    sendEmail: function(request, response, error) {
+        if (error) { return next(error) }
+
         const server = emailjs.server.connect({
             user: "mohamedkeideidsystems@gmail.com",
             host: "smtp.gmail.com",
@@ -21,8 +23,9 @@ module.exports = {
             subject: "Eid Systems Contact"
         }
 
-        server.send(message, function(error, result) {
-            console.log(error || result);
+        server.send(message, function(sendError, result) {
+            if (sendError) { return next(sendError) }
+
             response.json({
                 name: request.body.name,
                 email: request.body.email,

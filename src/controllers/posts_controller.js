@@ -1,20 +1,31 @@
 const PostModel = require("../models/post_model")
 
 module.exports = {
-    // TODO: implement function
     // Creates a new post document with specified attributes
-    create(request, response) {
+    create(request, response, error) {
+        if (error) { return next(error) }
 
+        PostModel.find(request.body), (findError, existingPost) => {
+            if (findError) { return next(findError) }
+
+            const post = new PostModel(request.body)
+            post.save((saveRrror) => {
+                if (saveError) { return next(saveError) }
+                response.json(post)
+            })
+        })
     },
 
-    // TODO: implement function
     // Deletes a specified document from the posts collection
-    destroy(request, response) {
-
+    destroy(request, response, error) {
+        if (error) { return next(error) }
     },
 
     // Returns all documents from the posts collection
-    list(request, response) {
+    list(request, response, error) {
+        if (error) { return next(error) }
+
+        // IIFE that returns  alist of all post documents
         ((callback, limit) => {
             PostModel.find(callback).limit(limit)
         })
@@ -23,15 +34,13 @@ module.exports = {
         })
     },
 
-    // TODO: implement function
     // Returns a specified document from the posts collection
-    show(request, response) {
-
+    show(request, response, error) {
+        if (error) { return next(error) }
     },
 
-    // TODO: implement function
     // Updates a specified post document
-    update(request, response) {
-
+    update(request, response, error) {
+        if (error) { return next(error) }
     }
 }

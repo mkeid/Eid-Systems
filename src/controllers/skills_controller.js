@@ -1,20 +1,30 @@
 const SkillModel = require("../models/skill_model")
 
 module.exports = {
-    // TODO: implement function
     // Creates a new skill document with the specified attributes
-    create(request, response) {
+    create(request, response, error) {
+        if (error) { return next(error) }
 
+        SkillModel.find(request.body), (findError, existingSkill) => {
+            if (findError) { return next(findError) }
+
+            const skill = new SkillModel(request.body)
+            skill.save((saveRrror) => {
+                if (saveError) { return next(saveError) }
+                response.json(skill)
+            })
+        })
     },
 
-    // TODO: implement function
     // Deletes a specified skill document
-    destroy(request, response) {
-
+    destroy(request, response, error) {
+        if (error) { return next(error) }
     },
 
     // Returns all documents in the skills collection
-    list(request, response) {
+    list(request, response, error) {
+        if (error) { return next(error) }
+
         ((callback, limit) => {
             SkillModel.find(callback).limit(limit)
         })
@@ -23,9 +33,8 @@ module.exports = {
         })
     },
 
-    // TODO: implement function
     // Updates a skill document with the specified attributes
-    update(request, response) {
-
+    update(request, response, error) {
+        if (error) { return next(error) }
     }
 }

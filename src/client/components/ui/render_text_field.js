@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import objectAssign from "object-assign"
 
 /** Return an input element object for redux form's Field component */
 const renderTextField = function(field) {
@@ -10,7 +11,7 @@ const renderTextField = function(field) {
 
     const element = React.createElement(
         field.element,
-        Object.assign(
+        objectAssign(
             field.input,
             {type: field.type},
             {ref: input => {this[fieldAttribute] = input}}
