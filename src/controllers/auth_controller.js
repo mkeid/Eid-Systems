@@ -1,3 +1,5 @@
+import UserModel from "../models/user_model"
+
 module.exports = {
     login(request, response, next) {
         ((callback, limit) => {

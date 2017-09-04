@@ -1,5 +1,4 @@
 import _ from "lodash"
-import objectAssign from "object-assign"
 import {
     PROJECTS_CREATE_REQUEST_SUCCESS,
     PROJECTS_DESTROY_REQUEST_SUCCESS,
@@ -11,7 +10,7 @@ export default (state = null, action) => {
     switch (action.type) {
 
         case PROJECTS_CREATE_REQUEST_SUCCESS:
-            return objectAssign({}, state,
+            return Object.assign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}
             )
 
@@ -19,7 +18,7 @@ export default (state = null, action) => {
             return _.omit(state, action.payload.data)
 
         case PROJECTS_UPDATE_REQUEST_SUCCESS:
-            return objectAssign({}, state,
+            return Object.assign({}, state,
                 {[action.payload.data["_id"]]: action.payload.data}
             )
 

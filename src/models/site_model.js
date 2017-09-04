@@ -3,7 +3,8 @@ const mongoose = require("mongoose")
 const siteSchema = mongoose.Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     data: {
         type: Object,

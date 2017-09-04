@@ -1,3 +1,7 @@
+import detect_ie from "./config/detect_ie"
+detect_ie()
+
+// Import local modules
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import axios from "axios"
@@ -8,7 +12,7 @@ import { BrowserRouter, browserHistory } from "react-router-dom"
 import { Provider } from "react-redux"
 import ReactGA from "react-ga"
 
-// Import local modules
+// Import local files
 import Footer from "./components/ui/footer"
 import Sites from "./components/sites"
 import { menuClose, menuOpen } from "./actions/nav_bar_actions"

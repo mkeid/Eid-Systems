@@ -3,3 +3,4 @@ dist/
 server.js
 app.js
 *.log
+config.js
