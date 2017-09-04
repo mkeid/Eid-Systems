@@ -20,6 +20,7 @@ class EmailForm extends Component {
         this.handleSendClick = this.handleSendClick.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.renderSendButton = this.renderSendButton.bind(this)
+        this.renderTextField = renderTextField.bind(this)
         this.stopShaking = this.stopShaking.bind(this)
     }
 
@@ -36,8 +37,6 @@ class EmailForm extends Component {
     componentDidUpdate() {
         if (this.state.isShaking) {
             this.shakeTimeout = setTimeout(this.stopShaking, 500)
-        } else if (!this.state.isShaking && this.props.submitFailed) {
-            this.setState({isShaking: true})
         }
     }
 
@@ -49,7 +48,7 @@ class EmailForm extends Component {
     /** Handle click events from the send button */
     handleSendClick() {
         if (!this.props.valid) {
-            this.setState({isShaking: true})
+            this.setState({ isShaking: true })
             this.nameInput.focus()
             this.emailInput.focus()
             this.messageInput.focus()
@@ -81,7 +80,7 @@ class EmailForm extends Component {
     /** Render the submit button component */
     renderSendButton() {
         return this.state.makingRequest ? (
-            <div className="send-button loading">
+            <div className="primary-button loading">
                 <ScaleLoader height={12} margin={1} color="white" />
             </div>
         ) : (
@@ -115,20 +114,20 @@ class EmailForm extends Component {
                                 title="Name"
                                 element="input"
                                 type="text"
-                                component={renderTextField.bind(this)} />
+                                component={this.renderTextField} />
                             <Field
                                 name="email"
                                 title="Email"
                                 element="input"
                                 type="text"
-                                component={renderTextField.bind(this)} />
+                                component={this.renderTextField} />
                         </div>
                         <div className="right">
                             <Field
                                 name="message"
                                 title="Message"
                                 element="textArea"
-                                component={renderTextField.bind(this)} />
+                                component={this.renderTextField} />
                         </div>
                     </div>
                     {this.props.contacted ? sentButton : sendButton}

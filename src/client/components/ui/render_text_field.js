@@ -12,18 +12,18 @@ const renderTextField = function(field) {
         field.element,
         Object.assign(
             field.input,
-            {type: field.type},
-            {ref: input => {this[fieldAttribute] = input}}
+            { type: field.type },
+            { ref: input => { this[fieldAttribute] = input } }
         )
     )
 
     return (
         <div className="input">
             <div className="title">
-                {field.title}
+                { field.title }
             </div>
-            {warning}
-            {element}
+            { warning }
+            { element }
         </div>
     )
 }
