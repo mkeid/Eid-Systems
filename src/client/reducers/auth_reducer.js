@@ -6,7 +6,7 @@ import {
 export default (state = null, action) => {
     switch (action.type) {
         case LOGIN_REQUEST_SUCCESS:
-            break
+            return action.payload.data
 
         case LOGOUT:
             return null

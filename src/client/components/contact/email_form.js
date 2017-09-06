@@ -97,7 +97,7 @@ class EmailForm extends Component {
         const sendButton = this.state.isShaking ?
             this.renderShakingButton() : this.renderSendButton()
         const sentButton = (
-            <div className="send-button sent-confirmation">Sent!</div>
+            <div className="primary-button sent-confirmation">Sent!</div>
         )
 
         return (
