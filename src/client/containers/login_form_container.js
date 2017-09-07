@@ -23,9 +23,9 @@ const LoginFormContainer = connect(
     { login }
 )(LoginForm)
 
-const LoginFormReduxContainer = reduxForm({
+const LoginReduxFormContainer = reduxForm({
     form: "LoginForm",
     validate
 })(LoginFormContainer)
 
-export default LoginFormReduxContainer
+export default LoginReduxFormContainer

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 
 class ProjectList extends Component {
     componentWillMount() {
+        this.props.updateAdminPage("Projects")
+
         if (!this.props.projects.length) {
             this.props.fetchProjects()
         }
@@ -35,7 +37,7 @@ class ProjectList extends Component {
                     </Link>
                 </div>
             ))
-            
+
             items = [...items, ...projects]
         }
 

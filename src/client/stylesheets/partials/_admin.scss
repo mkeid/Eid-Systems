@@ -45,17 +45,19 @@
                 margin-right: 1.5em;
                 object-fit: cover;
                 height: 6em;
+                vertical-align: middle;
                 width: 6em;
             }
 
             .content {
                 display: inline-block;
                 font-size: 1em;
-                height: 6em;
+                vertical-align: middle;
             }
 
             .title {
-                font-size: 1.3em;
+                font-size: 1.4em;
+                line-height: 1.8em;
             }
         }
     }
@@ -96,6 +98,7 @@
 
             &:last-child {
                 border-top: .08em solid rgb(230, 230, 230);
+                margin-top: 1em;
             }
 
             a {

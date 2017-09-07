@@ -39,9 +39,9 @@ const EmailFormContainer = connect(
     { sendEmail }
 )(EmailForm)
 
-const ReduxEmailFormContainer = reduxForm({
+const EmailReduxFormContainer = reduxForm({
     form: "EmailForm",
     validate
 })(EmailFormContainer)
 
-export default ReduxEmailFormContainer
+export default EmailReduxFormContainer

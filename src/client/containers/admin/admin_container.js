@@ -1,5 +1,6 @@
 import { connect } from "react-redux"
 import AdminSite from "../../components/admin/admin_site"
+import { updateAdminPage } from "../../actions/admin_actions"
 import { logout } from "../../actions/auth_actions"
 import { fetchPosts } from "../../actions/post_actions"
 import { fetchProjects } from "../../actions/project_actions"
@@ -7,6 +8,7 @@ import { fetchSkills } from "../../actions/skill_actions"
 
 const mapStateToProps = state => ({
     about: state.about,
+    admin: state.admin,
     auth: state.auth,
     index: state.index,
     posts: _.map(state.posts, (value, key) => value),
@@ -21,7 +23,8 @@ const AdminContainer = connect(
         fetchPosts,
         fetchProjects,
         fetchSkills,
-        logout
+        logout,
+        updateAdminPage
     }
 )(AdminSite)
 

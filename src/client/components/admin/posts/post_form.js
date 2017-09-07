@@ -1,13 +1,13 @@
 import React, { Component } from "react"
 
-class PostEditor extends Component {
+class PostForm extends Component {
     render() {
         return (
-            <div className="post-editor">
+            <div className="post-form">
 
             </div>
         )
     }
 }
 
-export default PostEditor
+export default PostForm

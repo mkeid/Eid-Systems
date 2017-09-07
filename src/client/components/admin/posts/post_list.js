@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 
 class PostList extends Component {
     componentWillMount() {
+        this.props.updateAdminPage("Posts")
+        
         if (!this.props.posts.length) {
             this.props.fetchPosts()
         }

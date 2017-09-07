@@ -8,7 +8,9 @@ class AdminSite extends Component {
         return (
             <div className="admin-index">
                 <div className="container">
-                    <AdminMenu logout={this.props.logout} />
+                    <AdminMenu
+                        currentPage={this.props.admin.currentPage}
+                        logout={this.props.logout} />
                     <AdminPages {...this.props} />
                 </div>
             </div>

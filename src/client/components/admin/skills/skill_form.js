@@ -1,13 +1,13 @@
 import React, { Component } from "react"
 
-class SkillEditor extends Component {
+class SkillForm extends Component {
     render() {
         return (
-            <div className="skill-editor">
+            <div className="skill-form">
 
             </div>
         )
     }
 }
 
-export default SkillEditor
+export default SkillForm

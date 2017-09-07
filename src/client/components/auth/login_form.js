@@ -14,7 +14,7 @@ class LoginForm extends Component {
 
     componentDidUpdate() {
         if (this.props.auth.isAuthenticated) {
-            this.context.router.history.push("/admin")
+            this.context.router.history.push("/admin/index")
         }
     }
 

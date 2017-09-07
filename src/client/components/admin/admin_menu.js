@@ -4,24 +4,14 @@ import { Link } from "react-router-dom"
 class AdminMenu extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            currentPage: "Index"
-        }
 
         // Bind this to functions
         this.handleLogout = this.handleLogout.bind(this)
-        this.updateCurrentPage = this.updateCurrentPage.bind(this)
     }
 
     handleLogout(event) {
         event.preventDefault()
         this.props.logout()
-    }
-
-    updateCurrentPage(pageTitle) {
-        this.setState({
-            currentPage: pageTitle
-        })
     }
 
     render() {
@@ -30,9 +20,8 @@ class AdminMenu extends Component {
             <div
                 key={menuItem}
                 className={"menu-item " +
-                    (this.state.currentPage === menuItem ? "selected" : null)
-                }
-                onClick={() => this.updateCurrentPage(menuItem)}>
+                    (this.props.currentPage === menuItem ? "selected" : null)
+                }>
                 <Link to={`/admin/${menuItem.toLowerCase()}`}>
                     {menuItem}
                 </Link>

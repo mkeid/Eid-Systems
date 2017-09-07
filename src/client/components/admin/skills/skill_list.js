@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 
 class SkillList extends Component {
     componentWillMount() {
+        this.props.updateAdminPage("Skills")
+
         if (!this.props.skills.length) {
             this.props.fetchSkills()
         }
