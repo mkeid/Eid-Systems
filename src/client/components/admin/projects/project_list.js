@@ -9,23 +9,41 @@ class ProjectList extends Component {
     }
 
     render() {
-        if (!this.props.projects) {
-            return null
-        }
+        let items = [(
+            <div key="new" className="admin-item">
+                <Link to="/admin/projects/new">
+                    <div className="new-item">
+                        Create New Project
+                    </div>
+                </Link>
+            </div>
+        )]
 
-        const projects = this.props.projects.map(project => (
-            <div key={project.title} className="admin-item project-item">
-                <div className="title">
+        if (this.props.projects) {
+            const projects = this.props.projects.map(project => (
+                <div key={project.title} className="admin-item">
                     <Link to={`/admin/projects/edit/${project._id}`}>
-                        {project.title}
+                        <img src={project.imgSrc} />
+                        <div className="content">
+                            <div className="title">
+                                {project.title}
+                            </div>
+                            <div className="subtitle">
+                                {project.type}
+                            </div>
+                        </div>
                     </Link>
                 </div>
-            </div>
-        ))
+            ))
+            
+            items = [...items, ...projects]
+        }
+
+
 
         return (
             <div className="admin-list">
-                {projects}
+                {items}
             </div>
         )
     }

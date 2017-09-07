@@ -25,7 +25,13 @@ import "./stylesheets/root.scss"
 ReactGA.initialize("UA-48669228-4")
 
 // Init Axios client used for async API calls
-const axiosClient = axios.create({baseURL: "/api/", responseType: "json"})
+const axiosClient = axios.create({
+    baseURL: "/api/",
+    headers: {
+        authorization: localStorage.getItem("token")
+    },
+    responseType: "json"
+})
 
 // Create our store which the entire application references and fetch init data
 const middleware = applyMiddleware(axiosMiddleware(axiosClient))

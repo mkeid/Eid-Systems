@@ -9,21 +9,38 @@ class SkillList extends Component {
     }
 
     render() {
-        if (!this.props.skills.length) {
-            return null
-        }
-
-        const skills = this.props.skills.map(skill => (
-            <div key={skill.title} className="admin-item">
-                <Link to={`/admin/skills/edit/${skill._id}`}>
-                    {skill.title}
+        let items = [(
+            <div key="new" className="admin-item">
+                <Link to={"/admin/skills/new"}>
+                    <div className="new-item">
+                        Create New Skill
+                    </div>
                 </Link>
             </div>
-        ))
+        )]
+
+        if (this.props.skills.length) {
+            const skills = this.props.skills.map(skill => (
+                <div key={skill.title} className="admin-item">
+                    <Link to={`/admin/skills/edit/${skill._id}`}>
+                        <img src={skill.imgSrc} />
+                        <div className="content">
+                            <div className="title">
+                                {skill.title}
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+            ))
+
+            items = [...items, ...skills]
+        }
+
+
 
         return (
             <div className="admin-list">
-                {skills}
+                {items}
             </div>
         )
     }

@@ -9,21 +9,37 @@ class PostList extends Component {
     }
 
     render() {
-        if (!this.props.posts.length) {
-            return null
-        }
-
-        const posts = this.props.posts.map(post => (
-            <div key={post.title} className="admin-item">
-                <Link to={`/admin/posts/edit/${post._id}`}>
-                    {post.title}
+        let items = [(
+            <div key="new" className="admin-item">
+                <Link to={"/admin/posts/new"}>
+                    <div className="new-item">
+                        Create New Post
+                    </div>
                 </Link>
             </div>
-        ))
+        )]
+
+        if (this.props.posts.length) {
+            const posts = this.props.posts.map(post => (
+                <div key={post.title} className="admin-item">
+                    <Link to={`/admin/posts/edit/${post._id}`}>
+                        <img src={post.imgSrc} />
+                        <div className="content">
+                            <div className="title">
+                                {post.title}
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+            ))
+
+            items = [...items, ...posts]
+        }
+
 
         return (
             <div className="admin-list">
-                {posts}
+                {items}
             </div>
         )
     }
