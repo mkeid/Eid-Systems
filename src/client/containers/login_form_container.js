@@ -16,7 +16,7 @@ const validate = values => {
     return errors
 }
 
-const mapStateToProps = ({ isAuthenticated }) => ({ isAuthenticated })
+const mapStateToProps = ({ auth }) => ({ auth })
 
 const LoginFormContainer = connect(
     mapStateToProps,

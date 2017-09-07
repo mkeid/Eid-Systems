@@ -27,7 +27,7 @@ const Sites = props => (
                 render={() => (<IndexContainer {...props} />)} />
             <Route exact path="/about"
                 render={() => (<AboutContainer {...props} />)} />
-            <Route exact path="/admin"
+            <Route path="/admin"
                 render={() => (<AdminContainer {...props} />)} />
             <Route exact path="/auth"
                 render={() => (<AuthIndex {...props} />)} />

@@ -13,7 +13,7 @@ class LoginForm extends Component {
     }
 
     componentDidUpdate() {
-        if (this.props.isAuthenticated) {
+        if (this.props.auth.isAuthenticated) {
             this.context.router.history.push("/admin")
         }
     }
@@ -23,11 +23,20 @@ class LoginForm extends Component {
     }
 
     render() {
+        const warning = this.props.auth.error ? (
+            <div className="warning">
+                {this.props.auth.error}
+            </div>
+        ) : null
+
         return (
             <form
                 className="login-form"
                 onSubmit={this.props.handleSubmit(this.handleSubmit)}>
-                <div className="head">Authentication</div>
+                <div className="head">
+                    Authentication
+                    { warning }
+                </div>
                 <div className="inputs">
                     <Field
                         name="username"

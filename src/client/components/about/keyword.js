@@ -7,9 +7,7 @@ import React, { Component } from "react"
 class Keyword extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            isVisible: false
-        }
+        this.state = { isVisible: false }
 
         // Bind this to function
         this.show = this.show.bind(this)
@@ -29,14 +27,14 @@ class Keyword extends Component {
 
     /** Update visibility state so keyword can invoke its animation */
     show() {
-        this.setState({isVisible: true})
+        this.setState({ isVisible: true })
     }
 
     render() {
         const visibleClass = this.state.isVisible ? "visible" : ""
         const className = `keyword ${visibleClass}`
 
-        return <div className={className}>{this.props.word}</div>
+        return <div className={ className }>{this.props.word}</div>
     }
 }
 

@@ -8,6 +8,6 @@ module.exports = {
 
         // Generate and return a token generated through this user
         const token = AuthModel.generateToken(user)
-        return response.send({ token })
+        return response.send({token})
     }
 }

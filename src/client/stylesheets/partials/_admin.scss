@@ -1,13 +1,74 @@
 .admin-index {
-    .admin-list-items {
-        .admin-item {
+    background: white;
+    padding-top: 6.5em;
+    text-align: center;
 
+    .container {
+        display: inline-block;
+        padding: 2em 0;
+        width: $siteWidth;
+    }
+
+    .admin-list {
+        .admin-item {
+            background: rgb(250, 250, 250);
+            border: .08em solid $borderGray;
+            border-radius: $borderRadius;
+            display: block;
+            padding: .5em;
+            text-align: left;
+
+            &:not(:last-child) {
+                margin-bottom: 1em;
+            }
+
+            &:hover {
+                background: rgb(240, 240, 240);
+            }
+
+            a {
+                color: $color2;
+                display: block;
+                text-decoration: none;
+            }
         }
     }
 
+    .admin-pages {
+        display: inline-block;
+        padding-left: 4%;
+        width: 80%;
+    }
+
     .admin-menu {
-        .admin-menu-item {
-            
+        background: rgb(250, 250, 250);
+        border: .08em solid $borderGray;
+        border-radius: $borderRadius;
+        display: inline-block;
+        text-align: left;
+        vertical-align: top;
+        width: 15%;
+
+        .menu-item {
+            cursor: pointer;
+
+            &:hover {
+                background: rgb(240, 240, 240);
+            }
+
+            &:last-child {
+                border-top: .08em solid rgb(230, 230, 230);
+            }
+
+            a {
+                color: $color2;
+                display: block;
+                font-size: 1.3em;
+                line-height: 2em;
+                padding: 0 .5em;
+                text-decoration: none;
+                vertical-align: middle;
+            }
         }
     }
 }

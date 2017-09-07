@@ -7,7 +7,7 @@ import ReactDOM from "react-dom"
 import axios from "axios"
 import axiosMiddleware from "redux-axios-middleware";
 import { connect } from "react-redux"
-import { bindActionCreators, createStore, applyMiddleware } from "redux"
+import { createStore, applyMiddleware } from "redux"
 import { BrowserRouter, browserHistory } from "react-router-dom"
 import { Provider } from "react-redux"
 import ReactGA from "react-ga"
@@ -38,7 +38,7 @@ store.dispatch(fetchSites())
 class Client extends Component {
     constructor(props) {
         super(props)
-        this.state = {currentPage: "index"}
+        this.state = { currentPage: "index" }
 
         // Bind this to function
         this.updateCurrentPage = this.updateCurrentPage.bind(this)
@@ -50,13 +50,13 @@ class Client extends Component {
         window.scrollTo(0, 0)
 
         // Google analytics call
-        ReactGA.set({page: window.location.pathname})
+        ReactGA.set({ page: window.location.pathname })
         ReactGA.pageview(window.location.pathname)
     }
 
     render() {
-        return this.props.sites.isLoading ? (<div />) : (
-            <BrowserRouter history={browserHistory}>
+        return this.props.sites.isLoading ? null : (
+            <BrowserRouter history={ browserHistory }>
                 <div onClick={this.props.menuClose}>
                     <NavBarContainer
                         currentPage={this.state.currentPage}
@@ -71,11 +71,14 @@ class Client extends Component {
 }
 
 // Create a container so the app can hide while fetching data
-const ClientContainer = connect(state => state, { menuClose, menuOpen })(Client)
+const ClientContainer = connect(
+    state => state,
+    { menuClose, menuOpen }
+)(Client)
 
 // Splice the React app into the DOM
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={ store }>
         <ClientContainer />
     </Provider>,
     document.getElementById("react-root")

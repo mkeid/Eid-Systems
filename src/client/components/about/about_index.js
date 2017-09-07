@@ -21,14 +21,14 @@ class AboutIndex extends Component {
     render() {
         // Create the sections of the about page under skills
         const skills = this.props.skills.map(
-            skill => <Skill key={skill.title} {...skill} />
+            skill => <Skill key={skill.title} { ...skill } />
         )
 
         return (
             <div className="about-index">
                 <AboutBillboard about={this.props.about} />
                 <Body title="SKILLS">
-                    <div className="skills">{skills}</div>
+                    <div className="skills">{ skills }</div>
                 </Body>
             </div>
         )

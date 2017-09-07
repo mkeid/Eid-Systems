@@ -34,6 +34,12 @@ form {
         font-weight: bold;
         margin-bottom: .4em;
 
+        .warning {
+            font-size: .6em;
+            position: relative;
+            top: -.25em;
+        }
+
         @include mobile {
             font-size: 3em;
             margin-bottom: 1.3em;
@@ -123,7 +129,7 @@ form {
 
         $green: rgb(60, 170, 90);
         background: none;
-        border: .1em solid $green;
+        border: .1em solid $green !important;
         color: $green;
         cursor: not-allowed;
         width: 4.6em;
