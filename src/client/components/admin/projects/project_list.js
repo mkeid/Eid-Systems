@@ -1,13 +1,11 @@
+import _ from "lodash"
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
 class ProjectList extends Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.updateAdminPage("Projects")
-
-        if (!this.props.projects.length) {
-            this.props.fetchProjects()
-        }
+        this.props.fetchProjects()
     }
 
     render() {
@@ -22,7 +20,8 @@ class ProjectList extends Component {
         )]
 
         if (this.props.projects) {
-            const projects = this.props.projects.map(project => (
+            let projects = _.map(this.props.projects, (value, key) => value)
+            projects = projects.map(project => (
                 <div key={project.title} className="admin-item">
                     <Link to={`/admin/projects/edit/${project._id}`}>
                         <img src={project.imgSrc} />

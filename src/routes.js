@@ -28,6 +28,7 @@ router.route("/posts/:post_id").delete(requireAuth, PostsController.destroy)
 
 // Projects routing
 router.route("/projects").get(ProjectsController.list)
+router.route("/projects/:project_id").get(ProjectsController.show)
 router.route("/projects/:project_id").delete(requireAuth, ProjectsController.destroy)
 
 // Sites routing
@@ -35,7 +36,8 @@ router.route("/sites").get(SitesController.list)
 
 // Skills routing
 router.route("/skills").get(SkillsController.list)
-router.route("/skills/:skill_id").get(requireAuth, SkillsController.destroy)
+router.route("/skills/:skill_id").get(SkillsController.show)
+router.route("/skills/:skill_id").delete(requireAuth, SkillsController.destroy)
 
 // Contact routing
 router.route("/contact").post(ContactController.sendEmail)

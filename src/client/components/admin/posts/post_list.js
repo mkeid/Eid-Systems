@@ -1,13 +1,11 @@
+import _ from "lodash"
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
 class PostList extends Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.updateAdminPage("Posts")
-        
-        if (!this.props.posts.length) {
-            this.props.fetchPosts()
-        }
+        this.props.fetchPosts()
     }
 
     render() {
@@ -21,8 +19,9 @@ class PostList extends Component {
             </div>
         )]
 
-        if (this.props.posts.length) {
-            const posts = this.props.posts.map(post => (
+        if (this.props.posts) {
+            let posts = _.map(this.props.posts, (value, key) => value)
+            posts = posts.map(post => (
                 <div key={post.title} className="admin-item">
                     <Link to={`/admin/posts/edit/${post._id}`}>
                         <img src={post.imgSrc} />

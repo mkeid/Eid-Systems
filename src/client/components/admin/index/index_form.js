@@ -8,7 +8,9 @@ class IndexForm extends Component {
     render() {
         return (
             <form>
-                <div className="head">Edit Index Page</div>
+                <div className="head">
+                    Edit Index Page
+                </div>
             </form>
         )
     }

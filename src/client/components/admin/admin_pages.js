@@ -46,11 +46,15 @@ const AdminPages = props => (
                     createPost={props.createPost}/>
             )} />
 
-            <Route exact path="/admin/posts/edit/:post_id" render={() => (
-                <PostForm
-                    {...props.posts}
-                    updatePost={props.updatePost} />
-            )} />
+            <Route exact path="/admin/posts/edit/:post_id"
+                render={routeProps => (
+                    <PostForm
+                        posts={props.posts}
+                        showPost={props.showPost}
+                        updatePost={props.updatePost}
+                        {...routeProps}/>
+                )}
+            />
 
             // Project routes
 
@@ -66,11 +70,14 @@ const AdminPages = props => (
                     createProject={props.createProject} />
             )} />
 
-            <Route exact path="/admin/projects/edit/:project_id" render={() => (
-                <ProjectForm
-                    {...props.projects}
-                    updateProject={props.updateProject} />
-            )} />
+            <Route exact path="/admin/projects/edit/:project_id"
+                render={routeProps => (
+                    <ProjectForm
+                        projects={props.projects}
+                        showProject={props.showProject}
+                        updateProject={props.updateProject}
+                        {...routeProps} />
+                )} />
 
             // Skill routes
 
@@ -86,11 +93,15 @@ const AdminPages = props => (
                     createSkill={props.createSkill} />
             )} />
 
-            <Route exact path="/admin/skills/edit/:skill_id" render={() => (
-                <SkillForm
-                    {...props.skills}
-                    updateSkill={props.updateSkill} />
-            )} />
+            <Route exact path="/admin/skills/edit/:skill_id"
+                render={routeProps => (
+                    <SkillForm
+                        skills={props.skills}
+                        showSkill={props.showSkill}
+                        updateSkill={props.updateSkill}
+                        {...routeProps} />
+                )}
+            />
         </Switch>
     </div>
 )

@@ -8,7 +8,9 @@ class AboutForm extends Component {
     render() {
         return (
             <form>
-                <div className="head">Edit About Page</div>
+                <div className="head">
+                    Edit About Page
+                </div>
             </form>
         )
     }

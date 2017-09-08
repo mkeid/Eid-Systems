@@ -4,6 +4,8 @@ const SKILLS_DESTROY_REQUEST = "SKILLS_DESTROY_REQUEST"
 const SKILLS_DESTROY_REQUEST_SUCCESS = "SKILLS_DESTROY_REQUEST_SUCCESS"
 const SKILLS_LIST_REQUEST = "SKILLS_LIST_REQUEST"
 const SKILLS_LIST_REQUEST_SUCCESS = "SKILLS_LIST_REQUEST_SUCCESS"
+const SKILLS_SHOW_REQUEST = "SKILLS_SHOW_REQUEST"
+const SKILLS_SHOW_REQUEST_SUCCESS = "SKILLS_SHOW_REQUEST_SUCCESS"
 const SKILLS_UPDATE_REQUEST = "SKILLS_UPDATE_REQUEST"
 const SKILLS_UPDATE_REQUEST_SUCCESS = "SKILLS_UPDATE_REQUEST_SUCCESS"
 
@@ -51,6 +53,19 @@ const fetchSkills = () => ({
 
 
 /**
+* Async action creator that returns a specified skill object
+*/
+const showSkill = skillId => ({
+    type: SKILLS_SHOW_REQUEST,
+    payload: {
+        request: {
+            url: `/skills/${skillId}`
+        }
+    }
+})
+
+
+/**
 * Async action creator that updates a particular skill object
 */
 const updateSkill = (skill) => ({
@@ -72,10 +87,13 @@ export {
     SKILLS_DESTROY_REQUEST_SUCCESS,
     SKILLS_LIST_REQUEST,
     SKILLS_LIST_REQUEST_SUCCESS,
+    SKILLS_SHOW_REQUEST,
+    SKILLS_SHOW_REQUEST_SUCCESS,
     SKILLS_UPDATE_REQUEST,
     SKILLS_UPDATE_REQUEST_SUCCESS,
     createSkill,
     deleteSkill,
     fetchSkills,
+    showSkill,
     updateSkill
 }

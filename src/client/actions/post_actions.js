@@ -40,19 +40,6 @@ const deletePost = (post) => ({
 
 
 /**
-* Async action creator that returns a specified post object
-*/
-const fetchPost = postID => ({
-    type: POSTS_SHOW_REQUEST,
-    payload: {
-        request: {
-            url: `/posts/${postID}`
-        }
-    }
-})
-
-
-/**
 * Async action creator that returns a list of posts
 */
 const fetchPosts = () => ({
@@ -60,6 +47,19 @@ const fetchPosts = () => ({
     payload: {
         request: {
             url: "/posts"
+        }
+    }
+})
+
+
+/**
+* Async action creator that returns a specified post object
+*/
+const showPost = postId => ({
+    type: POSTS_SHOW_REQUEST,
+    payload: {
+        request: {
+            url: `/posts/${postId}`
         }
     }
 })
@@ -91,7 +91,7 @@ export {
     POSTS_LIST_REQUEST_SUCCESS,
     createPost,
     deletePost,
-    fetchPost,
     fetchPosts,
+    showPost,
     updatePost
 }

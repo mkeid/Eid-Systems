@@ -1,13 +1,11 @@
+import _ from "lodash"
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
 class SkillList extends Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.updateAdminPage("Skills")
-
-        if (!this.props.skills.length) {
-            this.props.fetchSkills()
-        }
+        this.props.fetchSkills()
     }
 
     render() {
@@ -21,8 +19,9 @@ class SkillList extends Component {
             </div>
         )]
 
-        if (this.props.skills.length) {
-            const skills = this.props.skills.map(skill => (
+        if (this.props.skills) {
+            let skills = _.map(this.props.skills, (value, key) => value)
+            skills = skills.map(skill => (
                 <div key={skill.title} className="admin-item">
                     <Link to={`/admin/skills/edit/${skill._id}`}>
                         <img src={skill.imgSrc} />

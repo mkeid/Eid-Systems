@@ -4,6 +4,8 @@ const PROJECTS_DESTROY_REQUEST = "PROJECTS_DESTROY_REQUEST"
 const PROJECTS_DESTROY_REQUEST_SUCCESS = "PROJECTS_DESTROY_REQUEST_SUCCESS"
 const PROJECTS_LIST_REQUEST = "PROJECTS_LIST_REQUEST"
 const PROJECTS_LIST_REQUEST_SUCCESS = "PROJECTS_LIST_REQUEST_SUCCESS"
+const PROJECTS_SHOW_REQUEST = "PROJECTS_SHOW_REQUEST"
+const PROJECTS_SHOW_REQUEST_SUCCESS = "PROJECTS_SHOW_REQUEST_SUCCESS"
 const PROJECTS_UPDATE_REQUEST = "PROJECTS_UPDATE_REQUEST"
 const PROJECTS_UPDATE_REQUEST_SUCCESS = "PROJECTS_UPDATE_REQUEST_SUCCESS"
 
@@ -48,6 +50,20 @@ const fetchProjects = () => ({
     }
 })
 
+
+/**
+* Async action creator that returns a specified project object
+*/
+const showProject = projectId => ({
+    type: PROJECTS_SHOW_REQUEST,
+    payload: {
+        request: {
+            url: `/projects/${projectId}`
+        }
+    }
+})
+
+
 /**
 * Async action creator that updates a specified project object
 */
@@ -75,5 +91,6 @@ export {
     createProject,
     deleteProject,
     fetchProjects,
+    showProject,
     updateProject
 }

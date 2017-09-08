@@ -3,15 +3,17 @@ const PostModel = require("../models/post_model")
 module.exports = {
     // Creates a new post document with specified attributes
     create(request, response, next) {
-        PostModel.findOne(request.body, (findError, existingPost) => {
-            if (findError) { return next(findError) }
+        PostModel.findOne(request.body,
+            (findError, existingPost) => {
+                if (findError) { return next(findError) }
 
-            const post = new PostModel(request.body)
-            post.save((saveRrror) => {
-                if (saveError) { return next(saveError) }
-                response.json(post)
-            })
-        })
+                const post = new PostModel(request.body)
+                post.save((saveRrror) => {
+                    if (saveError) { return next(saveError) }
+                    response.json(post)
+                })
+            }
+        )
     },
 
     // Deletes a specified document from the posts collection
@@ -20,17 +22,20 @@ module.exports = {
 
     // Returns all documents from the posts collection
     list(request, response, next) {
-        // IIFE that returns  alist of all post documents
-        ((callback, limit) => {
-            PostModel.find(callback).limit(limit)
-        })
-        ((error, posts) => {
+        const callback = (error, posts) => {
             response.json({posts})
-        })
+        }
+
+        PostModel.find(callback)
     },
 
     // Returns a specified document from the posts collection
     show(request, response, next) {
+        PostModel.findOne({"_id": request.params["post_id"]},
+            (error, post) => {
+                response.json({post})
+            }
+        )
     },
 
     // Updates a specified post document
