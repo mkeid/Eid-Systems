@@ -4,6 +4,7 @@ import { Shake } from "reshake"
 import { LoadingButton, SubmitButton, SuccessButton } from "../ui/buttons"
 import renderTextField from "../ui/render_text_field"
 
+
 /**
 * A form component storing input states with API calling functionality
 * @extends Component
@@ -131,5 +132,6 @@ class EmailForm extends Component {
         )
     }
 }
+
 
 export default EmailForm

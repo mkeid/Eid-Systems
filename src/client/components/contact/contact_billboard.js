@@ -1,7 +1,9 @@
 import React, { Component } from "react"
 
+
 /**
 * Main head component at the top of the "Contactt" page
+* @extends Component
 */
 class ContactBillboard extends Component {
     render() {

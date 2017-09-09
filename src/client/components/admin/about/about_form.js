@@ -5,6 +5,7 @@ import renderTextField from "../../ui/render_text_field"
 
 
 /*
+* Form component for updating information in the "about" page
 * @extends Component
 */
 class AboutForm extends Component {
@@ -17,6 +18,7 @@ class AboutForm extends Component {
         this.renderTextField = renderTextField.bind(this)
     }
 
+    /** Dispatch redux action to update page status and possibly init form */
     componentDidMount() {
         this.props.updateAdminPage("About")
 

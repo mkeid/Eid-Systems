@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Post from "./post"
 
+
 /**
 * Component used by react router to render the "Blog" page
 * @extends Component
@@ -10,6 +11,7 @@ class BlogIndex extends Component {
         this.props.updateCurrentPage("Blog")
     }
 
+    /** If a list of posts doesn't exist, fetch it */
     componentWillMount() {
         if (!this.props.posts.length) {
             this.props.fetchPosts()
@@ -28,5 +30,6 @@ class BlogIndex extends Component {
         )
     }
 }
+
 
 export default BlogIndex

@@ -1,7 +1,11 @@
 import React, { Component } from "react"
-import LoginFormContainer from
-    "../../containers/login_form_container"
+import LoginFormContainer from "../../containers/login_form_container"
 
+
+/*
+* Component that renders a page encompassing a login form 
+* @extends Component
+*/
 class AuthIndex extends Component {
     constructor(props) {
         super(props)
@@ -21,5 +25,6 @@ class AuthIndex extends Component {
         )
     }
 }
+
 
 export default AuthIndex

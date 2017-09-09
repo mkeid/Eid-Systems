@@ -1,7 +1,7 @@
 const SiteModel = require("../models/site_model")
 
 module.exports = {
-    // Returns all documents in the skills collection
+    /** Returns all documents in the skills collection */
     list(request, response, next) {
         SiteModel.find(
             (error, siteDocs) => {
@@ -14,6 +14,7 @@ module.exports = {
         )
     },
 
+    /** Returns a specified site document */
     show(request, response, next) {
         SiteModel.find({title: request.params.title},
             (error, site) => response.json({site})

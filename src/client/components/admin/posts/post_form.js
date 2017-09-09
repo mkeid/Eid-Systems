@@ -5,6 +5,7 @@ import renderTextField from "../../ui/render_text_field"
 
 
 /*
+* Form component for creating new posts and updating existing ones
 * @extends Component
 */
 class PostForm extends Component {
@@ -18,6 +19,7 @@ class PostForm extends Component {
         this.renderTextField = renderTextField.bind(this)
     }
 
+    /** If page object was found in store, init the redux form else fetch it */
     checkPost() {
         if (!this.state.post && this.props.match) {
             const postId = this.props.match.params["post_id"]
@@ -32,17 +34,18 @@ class PostForm extends Component {
         }
     }
 
+    /** Dispatch redux action to update page status and possibly init form */
     componentDidMount() {
         this.props.updateAdminPage("Posts")
         this.checkPost()
     }
 
+    /** Check if page object is in the redux store on update */
     componentDidUpdate() {
         this.checkPost()
     }
 
     handleSubmit() {
-
     }
 
     render() {

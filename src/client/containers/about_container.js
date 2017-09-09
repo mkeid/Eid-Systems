@@ -4,17 +4,15 @@ import { connect } from "react-redux"
 import { fetchSkills } from "../actions/skill_actions"
 import AboutIndex from "../components/about/about_index"
 
-// Wire up the about site component with redux to propoagate state
+// Wire up the about site component with redux to propagate state
 const mapStateToProps = ({ sites, skills }) => ({
     about: sites.about,
     skills: _.map(skills, (value, key) => value)
 })
 
-// Init redux container for "About" page
 const AboutContainer = connect(
     mapStateToProps,
     { fetchSkills }
 )(AboutIndex)
 
-// Promote AboutSite from a component to a container
 export default AboutContainer

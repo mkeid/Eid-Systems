@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 
+
 /**
 * A component comprised of social media component links
 * @extends Component
@@ -19,5 +20,6 @@ class NavSocialList extends Component {
         return <div className="nav-social-list">{navSocials}</div>
     }
 }
+
 
 export default NavSocialList

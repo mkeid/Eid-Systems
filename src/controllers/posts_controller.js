@@ -1,7 +1,7 @@
 const PostModel = require("../models/post_model")
 
 module.exports = {
-    // Creates a new post document with specified attributes
+    /** Creates a new post document with specified attributes */
     create(request, response, next) {
         PostModel.findOne(request.body,
             (findError, existingPost) => {
@@ -16,11 +16,11 @@ module.exports = {
         )
     },
 
-    // Deletes a specified document from the posts collection
+    /** Deletes a specified document from the posts collection */
     destroy(request, response, next) {
     },
 
-    // Returns all documents from the posts collection
+    /** Returns all documents from the posts collection */
     list(request, response, next) {
         PostModel.find(
             (error, posts) => {
@@ -29,7 +29,7 @@ module.exports = {
         )
     },
 
-    // Returns a specified document from the posts collection
+    /** Returns a specified document from the posts collection */
     show(request, response, next) {
         PostModel.findOne({"_id": request.params["post_id"]},
             (error, post) => {
@@ -38,7 +38,7 @@ module.exports = {
         )
     },
 
-    // Updates a specified post document
+    /** Updates a specified post document */
     update(request, response, next) {
     }
 }

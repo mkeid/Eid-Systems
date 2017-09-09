@@ -1,7 +1,7 @@
 const ProjectModel = require("../models/project_model")
 
 module.exports = {
-    // Creates a new project document with the specified attributes
+    /** Creates a new project document with the specified attributes */
     create(request, response, next) {
         ProjectModel.findOne(request.body,
             (findError, existingProject) => {
@@ -16,11 +16,11 @@ module.exports = {
         )
     },
 
-    // Deletes a specified project document
+    /** Deletes a specified project document */
     destroy(request, response, next) {
     },
 
-    // Returns all documents from the projects collection
+    /** Returns all documents from the projects collection */
     list(request, response, next) {
         ProjectModel.find(
             (error, projects) => {
@@ -29,7 +29,7 @@ module.exports = {
         ).sort("type")
     },
 
-    // Returns a specified document from the projects collection
+    /** Returns a specified document from the projects collection */
     show(request, response, next) {
         ProjectModel.findOne({"_id": request.params["project_id"]},
             (error, project) => {
@@ -38,7 +38,7 @@ module.exports = {
         )
     },
 
-    // Updates a project document with the specified attributes
+    /** Updates a project document with the specified attributes */
     update(request, response, next) {
     }
 }

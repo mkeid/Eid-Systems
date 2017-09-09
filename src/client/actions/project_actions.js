@@ -38,6 +38,7 @@ const deleteProject = (project) => ({
     }
 })
 
+
 /**
 * Async action creator that returns a list of projects
 */

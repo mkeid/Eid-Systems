@@ -7,6 +7,7 @@ import { fetchProjects, showProject } from "../../actions/project_actions"
 import { showSite, updateSite } from "../../actions/site_actions"
 import { fetchSkills, showSkill } from "../../actions/skill_actions"
 
+// Wire up the admin site component with redux to propagate state
 const mapStateToProps = state => state
 const mapDispatchToProps = ({
     fetchPosts,
@@ -24,11 +25,9 @@ const mapDispatchToProps = ({
     updateAdminPage
 })
 
-// Init redux container for "Admin" page
 const AdminContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(AdminSite)
 
-// Promote AdminIndex from a component to a container
 export default AdminContainer

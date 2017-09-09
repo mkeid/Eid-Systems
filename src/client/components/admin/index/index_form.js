@@ -5,6 +5,7 @@ import renderTextField from "../../ui/render_text_field"
 
 
 /*
+* Form component for updating information in the "home" or "index" page
 * @extends Component
 */
 class IndexForm extends Component {
@@ -17,6 +18,7 @@ class IndexForm extends Component {
         this.renderTextField = renderTextField.bind(this)
     }
 
+    /** Dispatch redux action to update page status and possibly init form */
     componentDidMount() {
         this.props.updateAdminPage("Index")
 
@@ -28,6 +30,7 @@ class IndexForm extends Component {
         }
     }
 
+    /** If the page object was found in the store, init the redux form */
     componentDidUpdate() {
         const index = this.props.index
         if (index) {
@@ -36,7 +39,6 @@ class IndexForm extends Component {
     }
 
     handleSubmit() {
-
     }
 
     render() {

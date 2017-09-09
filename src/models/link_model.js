@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 
+
 const linkSchema = mongoose.Schema({
     title: {
         type: String,
@@ -15,5 +16,6 @@ const linkSchema = mongoose.Schema({
         required: true
     },
 })
+
 
 module.exports = mongoose.model("Link", linkSchema)

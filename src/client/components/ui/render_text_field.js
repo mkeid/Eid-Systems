@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 
+
 /** Return an input element object for redux form's Field component */
 const renderTextField = function(field) {
     const warning = field.meta.touched && field.meta.error ? (
@@ -26,5 +27,6 @@ const renderTextField = function(field) {
         </div>
     )
 }
+
 
 export default renderTextField

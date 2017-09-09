@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import NavItemList from "./nav_item_list"
 import NavSocialList from "./nav_social_list"
 
+
 /**
 * Logo component function that sits on the nav bar for redirecting the user home
 */
@@ -14,6 +15,7 @@ const Logo = (props) => (
     </div>
 )
 
+
 /**
 * Hamburger component function that sits on the nav bar for redirecting the user
 */
@@ -24,6 +26,7 @@ const Hamburger = () => (
         <span></span>
     </div>
 )
+
 
 /**
 * Component that sits at the top of the site used for routing the user
@@ -76,5 +79,6 @@ class NavBar extends Component {
         )
     }
 }
+
 
 export default NavBar

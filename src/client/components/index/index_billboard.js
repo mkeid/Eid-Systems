@@ -16,6 +16,7 @@ const InfoContainer = (props) => (
     </div>
 )
 
+
 /**
 * Set of components that make up the left and right billboard containers
 * @extends Component
@@ -36,6 +37,7 @@ class InfoContainers extends Component{
         )
     }
 }
+
 
 /**
 * Main head compnent at the top of the "Index" page
@@ -70,5 +72,6 @@ class IndexBillboard extends Component {
         )
     }
 }
+
 
 export default IndexBillboard

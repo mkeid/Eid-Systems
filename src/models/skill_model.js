@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 
+
 const skillSchema = mongoose.Schema({
     title: {
         type: String,
@@ -15,5 +16,6 @@ const skillSchema = mongoose.Schema({
         default: []
     }
 })
+
 
 module.exports = mongoose.model("Skill", skillSchema)

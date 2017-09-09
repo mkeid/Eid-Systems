@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import VisibilitySensor from "react-visibility-sensor"
 import Keyword from "./keyword"
 
+
 /**
 * A Component making up an individual section in the about page
 * @extends Component
@@ -60,5 +61,6 @@ class Skill extends Component {
         )
     }
 }
+
 
 export default Skill

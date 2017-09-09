@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 
+
 const siteSchema = mongoose.Schema({
     title: {
         type: String,
@@ -11,5 +12,6 @@ const siteSchema = mongoose.Schema({
         required: true
     }
 })
+
 
 module.exports = mongoose.model("Site", siteSchema)

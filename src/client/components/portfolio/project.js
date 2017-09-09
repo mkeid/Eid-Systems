@@ -2,6 +2,7 @@ import React, { Component } from "react"
 
 /**
 * A single-project component
+* @extends Component
 */
 class Project extends Component {
     constructor(props) {
@@ -51,5 +52,6 @@ class Project extends Component {
         )
     }
 }
+
 
 export default Project

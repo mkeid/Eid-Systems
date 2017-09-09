@@ -5,6 +5,7 @@ import renderTextField from "../../ui/render_text_field"
 
 
 /*
+* Form component for creating new projects and updating existing ones
 * @extends Component
 */
 class ProjectForm extends Component {
@@ -18,6 +19,7 @@ class ProjectForm extends Component {
         this.renderTextField = renderTextField.bind(this)
     }
 
+    /** If page object was found in store, init the redux form else fetch it */
     checkProject() {
         if (!this.state.project && this.props.match) {
             const projectId = this.props.match.params["project_id"]
@@ -32,17 +34,18 @@ class ProjectForm extends Component {
         }
     }
 
+    /** Dispatch redux action to update page status and possibly init form */
     componentDidMount() {
         this.props.updateAdminPage("Projects")
         this.checkProject()
     }
 
+    /** Check if page object is in the redux store on update */
     componentDidUpdate() {
         this.checkProject()
     }
 
     handleSubmit() {
-
     }
 
     render() {

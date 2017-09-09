@@ -3,6 +3,7 @@ import { reduxForm } from "redux-form"
 import LoginForm from "../components/auth/login_form"
 import { login } from "../actions/auth_actions"
 
+// Validate the login form input content */
 const validate = values => {
     const errors = {}
 

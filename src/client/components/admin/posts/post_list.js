@@ -4,9 +4,11 @@ import { Link } from "react-router-dom"
 
 
 /*
+* Component that renders list of posts where each item links to an edit form
 * @extends Component
 */
 class PostList extends Component {
+    /** Dispatch redux action to update page status and fetch latest posts */
     componentDidMount() {
         this.props.updateAdminPage("Posts")
         this.props.fetchPosts()
@@ -23,6 +25,7 @@ class PostList extends Component {
             </div>
         )]
 
+        // If a list of posts exists in the redux store, append them to items
         if (this.props.posts) {
             let posts = _.map(this.props.posts, (value, key) => value)
             posts = posts.map(post => (

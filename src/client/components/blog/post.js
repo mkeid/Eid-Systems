@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
+
 /**
 * Component making up a single blog post
 * @extends Component
@@ -31,5 +32,6 @@ class Post extends Component {
         )
     }
 }
+
 
 export default Post

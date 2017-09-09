@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 
+
 /**
 * Component within the billboard used to center the contents
 * @extends Component
@@ -24,6 +25,7 @@ class AboutBillboardWindow extends Component {
     }
 }
 
+
 /**
 * Main head component at the top of the "About" page
 * @extends Component
@@ -46,5 +48,6 @@ class AboutBillboard extends Component {
         )
     }
 }
+
 
 export default AboutBillboard

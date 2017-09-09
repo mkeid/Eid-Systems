@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 
+
 /**
 * A Component making up an individual keyword in a set of skills
 * @extends Component
@@ -37,5 +38,6 @@ class Keyword extends Component {
         return <div className={ className }>{this.props.word}</div>
     }
 }
+
 
 export default Keyword

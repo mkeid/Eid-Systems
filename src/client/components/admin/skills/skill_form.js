@@ -5,6 +5,7 @@ import renderTextField from "../../ui/render_text_field"
 
 
 /**
+* Form component for creating new skills and updating existing ones
 * @extends Component
 */
 class SkillForm extends Component {
@@ -18,6 +19,7 @@ class SkillForm extends Component {
         this.renderTextField = renderTextField.bind(this)
     }
 
+    /** If page object was found in store, init the redux form else fetch it */
     checkSkill() {
         if (!this.state.skill && this.props.match) {
             const skillId = this.props.match.params["skill_id"]
@@ -32,17 +34,18 @@ class SkillForm extends Component {
         }
     }
 
+    /** Dispatch redux action to update page status and possibly init form */
     componentDidMount() {
         this.props.updateAdminPage("Skills")
         this.checkSkill()
     }
 
+    /** Check if page object is in the redux store on update */
     componentDidUpdate() {
         this.checkSkill()
     }
 
     handleSubmit() {
-
     }
 
     render() {

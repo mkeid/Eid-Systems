@@ -3,6 +3,11 @@ import AdminMenu from "./admin_menu"
 import AdminPages from "./admin_pages"
 import requireAuth from "../auth/require_auth"
 
+
+/*
+* Component that renders the parent element encompassing the various admin pages
+* @extends Component
+*/
 class AdminSite extends Component {
     render() {
         return (
@@ -17,5 +22,6 @@ class AdminSite extends Component {
         )
     }
 }
+
 
 export default requireAuth(AdminSite)

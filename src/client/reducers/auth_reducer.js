@@ -10,14 +10,17 @@ const initState = {
 
 export default (state = initState, action) => {
     switch (action.type) {
+        // A user failed to login
         case LOGIN_REQUEST_FAIL:
             return {error: "Invalid credentials!"}
 
+        // A user provided the correct credentials
         case LOGIN_REQUEST_SUCCESS:
             const { token } = action.payload.data
             localStorage.setItem("token", token)
             return {isAuthenticated: true}
 
+        // A user has dispatched to logout
         case LOGOUT:
             localStorage.removeItem("token")
             return {isAuthenticated: false}

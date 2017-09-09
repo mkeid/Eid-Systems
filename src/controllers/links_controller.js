@@ -1,7 +1,7 @@
 const LinkModel = require("../models/link_model")
 
 module.exports = {
-    // Creates a new link document with specified attributes
+    /** Creates a new link document with specified attributes */
     create(request, response, next) {
         LinkModel.findOne(request.body,
             (findError, existingLink) => {
@@ -16,7 +16,7 @@ module.exports = {
         )
     },
 
-    // Deletes a specified document from the links collection
+    /** Deletes a specified document from the links collection */
     destroy(request, response, next) {
     },
 
@@ -29,7 +29,7 @@ module.exports = {
         )
     },
 
-    // Updates a specified link document
+    /** Updates a specified link document */
     update(request, response, next) {
     }
 }

@@ -3,15 +3,18 @@ import AboutBillboard from "./about_billboard"
 import Body from "../ui/body"
 import Skill from "./skill"
 
+
 /**
 * Component used by react router to render the "About" page
 * @extends Component
 */
 class AboutIndex extends Component {
+    /** Dispatch redux action to update status of current page */
     componentDidMount() {
         this.props.updateCurrentPage("About")
     }
 
+    /** Fetch the list of skills from the backend if missing from data store */
     componentWillMount() {
         if (!this.props.skills.length) {
             this.props.fetchSkills()
@@ -34,5 +37,6 @@ class AboutIndex extends Component {
         )
     }
 }
+
 
 export default AboutIndex

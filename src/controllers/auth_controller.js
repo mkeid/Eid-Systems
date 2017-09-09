@@ -1,7 +1,7 @@
 const AuthModel = require("../models/auth_model")
 
 module.exports = {
-    // Attempt to authenticate a user and provide a session token
+    /** Attempt to authenticate a user and provide a session token */
     login(request, response, next) {
         // Passport passes the user object from "next" into request
         const user = request.user

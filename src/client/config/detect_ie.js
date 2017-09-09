@@ -1,4 +1,5 @@
 import browser from "detect-browser"
+
 export default () => {
     if (browser && browser.name === 'ie') {
         const head = "Internet Explorer Detected!\n"

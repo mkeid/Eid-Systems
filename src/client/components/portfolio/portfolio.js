@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Project from "./project"
 
+
 /**
 * Component list of project components
 * @extends Component
@@ -10,6 +11,7 @@ class Portfolio extends Component {
         super(props)
     }
 
+    /** If a list of projects doesn't exist, fetch it */
     componentWillMount() {
         if (!this.props.projects.length) {
             this.props.fetchProjects()
@@ -39,5 +41,6 @@ class Portfolio extends Component {
         )
     }
 }
+
 
 export default Portfolio

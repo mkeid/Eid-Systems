@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
+
 /**
 * A single nav item component representing a title / link to another page
 */
@@ -12,6 +13,7 @@ function NavItem(props) {
         </Link>
     )
 }
+
 
 /**
 * A component set of title components that are used for navigation by the bar
@@ -49,5 +51,6 @@ class NavItemList extends Component {
         )
     }
 }
+
 
 export default NavItemList

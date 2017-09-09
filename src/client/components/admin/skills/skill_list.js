@@ -4,9 +4,11 @@ import { Link } from "react-router-dom"
 
 
 /*
+* Component that renders list of skills where each item links to an edit form
 * @extends Component
 */
 class SkillList extends Component {
+    /** Dispatch redux action to update page status and fetch latest skills */
     componentDidMount() {
         this.props.updateAdminPage("Skills")
         this.props.fetchSkills()
@@ -23,6 +25,7 @@ class SkillList extends Component {
             </div>
         )]
 
+        // If a list of skills exists in the redux store, append them to items
         if (this.props.skills) {
             let skills = _.map(this.props.skills, (value, key) => value)
             skills = skills.map(skill => (

@@ -3,7 +3,7 @@ import { LINKS_LIST_REQUEST_SUCCESS } from "../actions/link_actions"
 
 export default (state = null, action) => {
     switch (action.type) {
-
+        // Retrieved a list of link documents
         case LINKS_LIST_REQUEST_SUCCESS:
             const links = action.payload.data.links
             return _.mapKeys(links, "_id")
