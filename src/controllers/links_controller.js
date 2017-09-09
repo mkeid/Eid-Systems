@@ -24,7 +24,7 @@ module.exports = {
     list(request, response, next) {
         LinkModel.find(
             (error, links) => {
-                response.json(links)
+                response.json({links})
             }
         )
     },

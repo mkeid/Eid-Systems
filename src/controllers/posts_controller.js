@@ -10,7 +10,7 @@ module.exports = {
                 const post = new PostModel(request.body)
                 post.save((saveRrror) => {
                     if (saveError) { return next(saveError) }
-                    response.json(post)
+                    response.json({post})
                 })
             }
         )
@@ -22,11 +22,11 @@ module.exports = {
 
     // Returns all documents from the posts collection
     list(request, response, next) {
-        const callback = (error, posts) => {
-            response.json({posts})
-        }
-
-        PostModel.find(callback)
+        PostModel.find(
+            (error, posts) => {
+                response.json({posts})
+            }
+        )
     },
 
     // Returns a specified document from the posts collection

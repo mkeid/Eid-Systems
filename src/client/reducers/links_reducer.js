@@ -5,7 +5,7 @@ export default (state = null, action) => {
     switch (action.type) {
 
         case LINKS_LIST_REQUEST_SUCCESS:
-            const links = action.payload.data
+            const links = action.payload.data.links
             return _.mapKeys(links, "_id")
 
         // Only update state when the action type is specified

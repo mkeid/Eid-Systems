@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Field } from "redux-form"
-import { ScaleLoader } from 'react-spinners';
 import { Shake } from "reshake"
+import { LoadingButton, SubmitButton, SuccessButton } from "../ui/buttons"
 import renderTextField from "../ui/render_text_field"
 
 /**
@@ -79,26 +79,21 @@ class EmailForm extends Component {
 
     /** Render the submit button component */
     renderSendButton() {
-        return this.state.makingRequest ? (
-            <div className="primary-button loading">
-                <ScaleLoader height={12} margin={1} color="white" />
-            </div>
-        ) : (
-            <input
-                type="submit"
-                className="primary-button"
-                onClick={this.handleSendClick}
-                value="Send" />
+        const loadingButton = <LoadingButton />
+        const sendButton = (
+            <SubmitButton
+                value="Send"
+                onClick={this.handleSendClick} />
         )
+
+        return this.state.makingRequest ? loadingButton : sendButton
     }
 
     render() {
         // Form submission button components
         const sendButton = this.state.isShaking ?
             this.renderShakingButton() : this.renderSendButton()
-        const sentButton = (
-            <div className="primary-button sent-confirmation">Sent!</div>
-        )
+        const sentButton = <SuccessButton value="Sent!" />
 
         return (
             <fieldset disabled={this.props.contacted ? "disabled" : ""}>

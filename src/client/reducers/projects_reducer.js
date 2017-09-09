@@ -11,8 +11,9 @@ export default (state = {}, action) => {
     switch (action.type) {
 
         case PROJECTS_CREATE_REQUEST_SUCCESS:
+            const createdProject = action.payload.data.project
             return Object.assign({}, state,
-                {[action.payload.data["_id"]]: action.payload.data}
+                {[createdProject["_id"]]: createdProject}
             )
 
         case PROJECTS_DESTROY_REQUEST_SUCCESS:
@@ -38,7 +39,8 @@ export default (state = {}, action) => {
             )
 
         case PROJECTS_LIST_REQUEST_SUCCESS:
-            return _.mapKeys(action.payload.data, "_id")
+            const listProjects = action.payload.data.projects
+            return _.mapKeys(listProjects, "_id")
 
         // Only update state when the action type is specified
         default:

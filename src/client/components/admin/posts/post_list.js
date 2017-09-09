@@ -2,6 +2,10 @@ import _ from "lodash"
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
+
+/*
+* @extends Component
+*/
 class PostList extends Component {
     componentDidMount() {
         this.props.updateAdminPage("Posts")

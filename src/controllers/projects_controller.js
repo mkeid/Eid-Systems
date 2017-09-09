@@ -10,7 +10,7 @@ module.exports = {
                 const project = new ProjectModel(request.body)
                 project.save((saveRrror) => {
                     if (saveError) { return next(saveError) }
-                    response.json(project)
+                    response.json({project})
                 })
             }
         )
@@ -22,11 +22,11 @@ module.exports = {
 
     // Returns all documents from the projects collection
     list(request, response, next) {
-        const callback = (error, projects) => {
-            response.json(projects)
-        }
-
-        ProjectModel.find(callback).sort("type")
+        ProjectModel.find(
+            (error, projects) => {
+                response.json({projects})
+            }
+        ).sort("type")
     },
 
     // Returns a specified document from the projects collection

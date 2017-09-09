@@ -4,100 +4,112 @@ import { Redirect, Route, Switch } from "react-router-dom"
 import AboutFormContainer from "../../containers/admin/about_form_container"
 import IndexFormContainer from "../../containers/admin/index_form_container"
 
-import PostCreator from "./posts/post_creator"
-import PostForm from "./posts/post_form"
+import PostFormContainer from "../../containers/admin/post_form_container"
 import PostList from "./posts/post_list"
 
-import ProjectCreator from "./projects/project_creator"
-import ProjectForm from "./projects/project_form"
+import ProjectFormContainer from "../../containers/admin/project_form_container"
 import ProjectList from "./projects/project_list"
 
-import SkillCreator from "./skills/skill_creator"
-import SkillForm from "./skills/skill_form"
+import SkillFormContainer from "../../containers/admin/skill_form_container"
 import SkillList from "./skills/skill_list"
 
 const AdminPages = props => (
     <div className="admin-pages">
         <Switch>
             // Site routes
-            <Route exact path="/admin/about" render={() => (
-                <AboutFormContainer
-                    updateAdminPage={props.updateAdminPage}
-                    about={props.about} />
-            )} />
+            <Route exact path="/admin/about"
+                render={() => (
+                    <AboutFormContainer
+                        about={props.sites.about}
+                        showSite={props.showSite}
+                        updateAdminPage={props.updateAdminPage} />
+                )} />
 
-            <Route exact path="/admin/index" render={() => (
-                <IndexFormContainer
-                    updateAdminPage={props.updateAdminPage}
-                    index={props.index} />
-            )} />
+            <Route exact path="/admin/index"
+                render={() => (
+                    <IndexFormContainer
+                        index={props.sites.index}
+                        showSite={props.showSite}
+                        updateAdminPage={props.updateAdminPage} />
+                )} />
 
             // Post routes
 
-            <Route exact path="/admin/posts" render={() => (
-                <PostList
-                    updateAdminPage={props.updateAdminPage}
-                    posts={props.posts}
-                    fetchPosts={props.fetchPosts} />
-            )} />
+            <Route exact path="/admin/posts"
+                render={() => (
+                    <PostList
+                        fetchPosts={props.fetchPosts}
+                        posts={props.posts}
+                        updateAdminPage={props.updateAdminPage} />
+                )} />
 
-            <Route exact path="/admin/posts/new" render={() => (
-                <PostCreator
-                    createPost={props.createPost}/>
-            )} />
+            <Route exact path="/admin/posts/new"
+                render={() => (
+                    <PostFormContainer
+                        createPost={props.createPost}
+                        updateAdminPage={props.updateAdminPage} />
+                )} />
 
             <Route exact path="/admin/posts/edit/:post_id"
                 render={routeProps => (
-                    <PostForm
+                    <PostFormContainer
                         posts={props.posts}
                         showPost={props.showPost}
+                        updateAdminPage={props.updateAdminPage}
                         updatePost={props.updatePost}
-                        {...routeProps}/>
-                )}
-            />
+                        {...routeProps} />
+                )} />
 
             // Project routes
 
-            <Route exact path="/admin/projects" render={() => (
-                <ProjectList
-                    updateAdminPage={props.updateAdminPage}
-                    projects={props.projects}
-                    fetchProjects={props.fetchProjects} />
-            )} />
+            <Route exact path="/admin/projects"
+                render={() => (
+                    <ProjectList
+                        fetchProjects={props.fetchProjects}
+                        projects={props.projects}
+                        updateAdminPage={props.updateAdminPage} />
+                )} />
 
-            <Route exact path="/admin/projects/new" render={() => (
-                <ProjectCreator
-                    createProject={props.createProject} />
-            )} />
+            <Route exact path="/admin/projects/new"
+                render={() => (
+                    <ProjectFormContainer
+                        createProject={props.createProject}
+                        updateAdminPage={props.updateAdminPage} />
+                )} />
 
             <Route exact path="/admin/projects/edit/:project_id"
                 render={routeProps => (
-                    <ProjectForm
+                    <ProjectFormContainer
                         projects={props.projects}
                         showProject={props.showProject}
+                        updateAdminPage={props.updateAdminPage}
                         updateProject={props.updateProject}
                         {...routeProps} />
                 )} />
 
             // Skill routes
 
-            <Route exact path="/admin/skills" render={() => (
-                <SkillList
-                    updateAdminPage={props.updateAdminPage}
-                    skills={props.skills}
-                    fetchSkills={props.fetchSkills} />
-            )} />
+            <Route exact path="/admin/skills"
+                render={() => (
+                    <SkillList
+                        updateAdminPage={props.updateAdminPage}
+                        skills={props.skills}
+                        fetchSkills={props.fetchSkills} />
+                )} />
 
-            <Route exact path="/admin/skills/new" render={() => (
-                <SkillCreator
-                    createSkill={props.createSkill} />
-            )} />
+            <Route exact path="/admin/skills/new"
+                render={() => (
+                    <SkillFormContainer
+                        createSkill={props.createSkill}
+                        updateAdminPage={props.updateAdminPage} />
+                )} />
 
             <Route exact path="/admin/skills/edit/:skill_id"
                 render={routeProps => (
-                    <SkillForm
+                    <SkillFormContainer
                         skills={props.skills}
                         showSkill={props.showSkill}
+                        updateAdminPage={props.updateAdminPage}
                         updateSkill={props.updateSkill}
                         {...routeProps} />
                 )}

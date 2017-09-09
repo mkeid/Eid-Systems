@@ -33,6 +33,7 @@ router.route("/projects/:project_id").delete(requireAuth, ProjectsController.des
 
 // Sites routing
 router.route("/sites").get(SitesController.list)
+router.route("/sites/:title").get(SitesController.show)
 
 // Skills routing
 router.route("/skills").get(SkillsController.list)

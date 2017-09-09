@@ -124,34 +124,6 @@ form {
         @include mobile-contact-button;
     }
 
-    .sent-confirmation {
-        @include shadow;
-
-        $green: rgb(60, 170, 90);
-        background: none;
-        border: .1em solid $green !important;
-        color: $green;
-        cursor: not-allowed;
-        width: 4.6em;
-
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        -o-box-shadow: none;
-        box-shadow: none;
-
-        &:active {
-            @include box-shadow(0, 2px, 13px, 0, rgba(0, 0, 0, 0));
-        }
-
-        &:hover {
-            background: none;
-            border-color: $green;
-            color: $green;
-        }
-
-        @include mobile-contact-button;
-    }
-
     @include mobile {
         width: $mobileSpace;
     }

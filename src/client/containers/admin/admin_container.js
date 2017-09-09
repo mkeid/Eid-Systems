@@ -4,6 +4,7 @@ import { updateAdminPage } from "../../actions/admin_actions"
 import { logout } from "../../actions/auth_actions"
 import { fetchPosts, showPost } from "../../actions/post_actions"
 import { fetchProjects, showProject } from "../../actions/project_actions"
+import { showSite, updateSite } from "../../actions/site_actions"
 import { fetchSkills, showSkill } from "../../actions/skill_actions"
 
 const mapStateToProps = state => state
@@ -16,6 +17,8 @@ const mapDispatchToProps = ({
 
     fetchSkills,
     showSkill,
+
+    showSite,
 
     logout,
     updateAdminPage

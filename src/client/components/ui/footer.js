@@ -2,6 +2,7 @@ import React, { Component } from "react"
 
 /**
 * The footer component at the bottom of the entire site
+* @extends Component
 */
 class Footer extends Component {
     shouldComponentUpdate() {
