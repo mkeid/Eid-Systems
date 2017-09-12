@@ -45,7 +45,14 @@ class PostForm extends Component {
         this.checkPost()
     }
 
-    handleSubmit() {
+    handleSubmit(data) {
+        // If the form is modifying an existing post, update. Else create it
+        const formPost = this.state.post
+        if (formPost) {
+            this.props.updatePost(formPost._id, {post: data})
+        } else {
+            this.props.createPost({post: data})
+        }
     }
 
     render() {

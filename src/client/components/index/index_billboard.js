@@ -26,13 +26,13 @@ class InfoContainers extends Component{
         return (
             <div className="info-containers">
                 <InfoContainer
-                    type="developer"
-                    title={this.props.developerTitle}
-                    data={this.props.developerKeywords} />
+                    type="left"
+                    title={this.props.leftTitle}
+                    data={this.props.leftKeywords} />
                 <InfoContainer
-                    type="engineer"
-                    title={this.props.engineerTitle}
-                    data={this.props.engineerKeywords} />
+                    type="right"
+                    title={this.props.rightTitle}
+                    data={this.props.rightKeywords} />
             </div>
         )
     }
@@ -46,14 +46,14 @@ class InfoContainers extends Component{
 class IndexBillboard extends Component {
     render() {
         // Data for the left-side component
-        const developerData = this.props.data.developer
-        const developerKeywords = developerData.keywords.map(
+        const leftData = this.props.data.left
+        const leftKeywords = leftData.keywords.map(
             data => <span key={data}>{data}</span>
         )
 
         // Data for the right-side component
-        const engineerData = this.props.data.engineer
-        const engineerKeywords= engineerData.keywords.map(
+        const rightData = this.props.data.right
+        const rightKeywords= rightData.keywords.map(
             data => (<span key={data}>{data}</span>)
         )
 
@@ -62,10 +62,10 @@ class IndexBillboard extends Component {
                 <Particles height="33.5em" params={indexParticlesConfig} />
                 <div className="container">
                     <InfoContainers
-                        developerTitle={developerData.title}
-                        developerKeywords={developerKeywords}
-                        engineerTitle={engineerData.title}
-                        engineerKeywords={engineerKeywords} />
+                        leftTitle={leftData.title}
+                        leftKeywords={leftKeywords}
+                        rightTitle={rightData.title}
+                        rightKeywords={rightKeywords} />
                     <img src="/images/index/me-art.svg" />
                 </div>
             </div>

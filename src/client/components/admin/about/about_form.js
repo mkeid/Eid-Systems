@@ -32,8 +32,8 @@ class AboutForm extends Component {
         }
     }
 
-    handleSubmit() {
-
+    handleSubmit(data) {
+        this.props.updateSite("about", {data})
     }
 
     render() {

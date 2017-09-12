@@ -5,11 +5,16 @@ module.exports = {
     create(request, response, next) {
         PostModel.findOne(request.body,
             (findError, existingPost) => {
-                if (findError) { return next(findError) }
+                if (findError) {
+                    return next(findError)
+                }
 
                 const post = new PostModel(request.body)
                 post.save((saveRrror) => {
-                    if (saveError) { return next(saveError) }
+                    if (saveError) {
+                        return next(saveError)
+                    }
+
                     response.json({post})
                 })
             }
@@ -31,7 +36,7 @@ module.exports = {
 
     /** Returns a specified document from the posts collection */
     show(request, response, next) {
-        PostModel.findOne({"_id": request.params["post_id"]},
+        PostModel.findOne({_id: request.params["post_id"]},
             (error, post) => {
                 response.json({post})
             }
@@ -40,5 +45,18 @@ module.exports = {
 
     /** Updates a specified post document */
     update(request, response, next) {
+        PostModel.updateOne({_id: request.params["post_id"]}, request.body,
+            (error, raw) => {
+                if (error) {
+                    next(error)
+                }
+
+                PostModel.findOne({_id: request.params["post_id"]},
+                    (error, post) => {
+                        response.json({post})
+                    }
+                )
+            }
+        )
     }
 }

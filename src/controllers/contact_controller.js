@@ -22,7 +22,9 @@ module.exports = {
         }
 
         server.send(message, function(sendError, result) {
-            if (sendError) { return next(sendError) }
+            if (sendError) {
+                return next(sendError)
+            }
 
             response.json({
                 name: request.body.name,

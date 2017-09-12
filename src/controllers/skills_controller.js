@@ -31,7 +31,7 @@ module.exports = {
 
     /** Returns a specified document from the skills collection */
     show(request, response, next) {
-        SkillModel.findOne({"_id": request.params["skill_id"]},
+        SkillModel.findOne({_id: request.params["skill_id"]},
             (error, skill) => {
                 response.json({skill})
             }
@@ -40,5 +40,16 @@ module.exports = {
 
     /** Updates a skill document with the specified attributes */
     update(request, response, next) {
+        SkillModel.updateOne({_id: request.params["skill_id"]}, request.body,
+            (error, raw) => {
+                if (error) {
+                    next(error)
+                }
+
+                SkillModel.findOne({_id: request.params["skill_id"]},
+                    (error, skill) => response.json({skill})
+                )
+            }
+        )
     }
 }

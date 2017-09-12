@@ -39,6 +39,7 @@ router.route("/projects/:project_id").patch(requireAuth, ProjectsController.upda
 // Sites routing
 router.route("/sites").get(SitesController.list)
 router.route("/sites/:title").get(SitesController.show)
+router.route("/sites/:title").patch(requireAuth, SitesController.update)
 
 // Skills routing
 router.route("/skills").get(SkillsController.list)

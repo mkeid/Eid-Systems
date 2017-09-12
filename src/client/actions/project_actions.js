@@ -68,13 +68,13 @@ const showProject = projectId => ({
 /**
 * Async action creator that updates a specified project object
 */
-const updateProject = (project) => ({
+const updateProject = (projectId, data) => ({
     type: PROJECTS_UPDATE_REQUEST,
     payload: {
         request: {
-            method: "put",
-            url: `/projects/${project._id}`,
-            data: project
+            method: "patch",
+            url: `/projects/${projectId}`,
+            data
         }
     }
 })

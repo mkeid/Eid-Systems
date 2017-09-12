@@ -5,11 +5,15 @@ module.exports = {
     create(request, response, next) {
         LinkModel.findOne(request.body,
             (findError, existingLink) => {
-                if (findError) { return next(findError) }
+                if (findError) {
+                    return next(findError)
+                }
 
                 const link = new LinkModel(request.body)
                 link.save(saveRrror => {
-                    if (saveError) { return next(saveError) }
+                    if (saveError) {
+                        return next(saveError)
+                    }
                     response.json(link)
                 })
             }
@@ -31,5 +35,16 @@ module.exports = {
 
     /** Updates a specified link document */
     update(request, response, next) {
+        LinkModel.updateOne({"_id": request.params["link_id"]}, request.body,
+            (error, raw) => {
+                if (error) {
+                    next(error)
+                }
+
+                LinkModel.findOne({"_id": request.params["link_id"]},
+                    (error, link) => response.json({link})
+                )
+            }
+        )
     }
 }

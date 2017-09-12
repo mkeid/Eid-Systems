@@ -68,13 +68,13 @@ const showSkill = skillId => ({
 /**
 * Async action creator that updates a particular skill object
 */
-const updateSkill = (skill) => ({
+const updateSkill = (skillId, data) => ({
     type: SKILLS_UPDATE_REQUEST_SUCCESS,
     payload: {
         request: {
-            method: "put",
-            url: `/skills/${skill._id}`,
-            data: skill
+            method: "patch",
+            url: `/skills/${skillId}`,
+            data
         }
     }
 })

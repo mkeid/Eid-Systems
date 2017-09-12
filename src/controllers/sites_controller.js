@@ -19,5 +19,24 @@ module.exports = {
         SiteModel.find({title: request.params.title},
             (error, site) => response.json({site})
         )
+    },
+
+    /** Updates a specified site document */
+    update(request, response, next) {
+        SiteModel.updateOne({title: request.params.title}, request.body,
+            (error, raw) => {
+                if (error) {
+                    return next(error)
+                }
+
+                SiteModel.findOne({title: request.params.title},
+                    (error, site) => response.json({
+                        site: {
+                            [request.params.title]: site.data
+                        }
+                    })
+                )
+            }
+        )
     }
 }

@@ -27,7 +27,8 @@ const AdminPages = props => (
                     <AboutFormContainer
                         about={props.sites.about}
                         showSite={props.showSite}
-                        updateAdminPage={props.updateAdminPage} />
+                        updateAdminPage={props.updateAdminPage}
+                        updateSite={props.updateSite} />
                 )} />
 
             <Route exact path="/admin/index"
@@ -35,7 +36,8 @@ const AdminPages = props => (
                     <IndexFormContainer
                         index={props.sites.index}
                         showSite={props.showSite}
-                        updateAdminPage={props.updateAdminPage} />
+                        updateAdminPage={props.updateAdminPage}
+                        updateSite={props.updateSite} />
                 )} />
 
             // Post routes

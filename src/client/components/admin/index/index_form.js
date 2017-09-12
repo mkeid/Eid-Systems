@@ -30,7 +30,16 @@ class IndexForm extends Component {
         }
     }
 
-    handleSubmit() {
+    handleSubmit(data) {
+        if (typeof(data.left.keywords) === "string") {
+            data.left.keywords = data.left.keywords.split(",")
+        }
+
+        if (typeof(data.right.keywords) === "string") {
+            data.right.keywords = data.right.keywords.split(",")
+        }
+
+        this.props.updateSite("index", {data})
     }
 
     render() {
@@ -44,26 +53,26 @@ class IndexForm extends Component {
                 </div>
                 <div className="inputs">
                     <Field
-                        name="developer[title]"
-                        title="Developer Title"
+                        name="left[title]"
+                        title="Left Title"
                         element="input"
                         type="text"
                         component={this.renderTextField} />
                     <Field
-                        name="developer[keywords]"
-                        title="Developer Keywords (delimited by ',')"
+                        name="left[keywords]"
+                        title="Left Keywords (delimited by ',')"
                         element="input"
                         type="text"
                         component={this.renderTextField} />
                     <Field
-                        name="engineer[title]"
-                        title="Engineer Title"
+                        name="right[title]"
+                        title="Right Title"
                         element="input"
                         type="text"
                         component={this.renderTextField} />
                     <Field
-                        name="engineer[keywords]"
-                        title="Engineer Keywords (delimited by ',')"
+                        name="right[keywords]"
+                        title="Right Keywords (delimited by ',')"
                         element="input"
                         type="text"
                         component={this.renderTextField} />

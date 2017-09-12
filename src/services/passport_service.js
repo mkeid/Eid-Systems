@@ -15,29 +15,39 @@ const jwtOpts = {
 
 const jwtLogin = new JwtStrategy(jwtOpts, (payload, done) => {
     // See if a user with the given ID exists
-    UserModel.findOne(payload.sub, (error, user) => {
-        if (error) { return done(error, false) }
+    UserModel.findOne({_id: payload.sub},
+        (error, user) => {
+            if (error) {
+                return done(error, false)
+            }
 
-        if (user) {
-            done(null, user)
-        } else {
-            done(null, false)
+            if (user) {
+                done(null, user)
+            } else {
+                done(null, false)
+            }
         }
-    })
+    )
 })
 
 // Create local strategy (used for signing in)
 const localLogin = new LocalStrategy((username, password, done) => {
     // Verify username and password
-    UserModel.findOne({ "username": username }, (findError, user) => {
-        if (findError || !user) { return done(null, false) }
+    UserModel.findOne({"username": username},
+        (findError, user) => {
+            if (findError || !user) {
+                return done(null, false)
+            }
 
-        AuthModel.comparePassword(password, user.password, (error, isMatch) => {
-            if (error) { return done(error) }
-            if (!isMatch) { return done(null, false) }
-            return done(null, user)
-        })
-    })
+            AuthModel.comparePassword(password, user.password,
+                (error, isMatch) => {
+                    if (error) { return done(error) }
+                    if (!isMatch) { return done(null, false) }
+                    return done(null, user)
+                }
+            )
+        }
+    )
 })
 
 // Let passport use our strategies

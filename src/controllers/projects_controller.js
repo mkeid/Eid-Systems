@@ -5,11 +5,15 @@ module.exports = {
     create(request, response, next) {
         ProjectModel.findOne(request.body,
             (findError, existingProject) => {
-                if (findError) { return next(findError) }
+                if (findError) {
+                    return next(findError)
+                }
 
                 const project = new ProjectModel(request.body)
                 project.save((saveRrror) => {
-                    if (saveError) { return next(saveError) }
+                    if (saveError) {
+                        return next(saveError)
+                    }
                     response.json({project})
                 })
             }
@@ -31,7 +35,7 @@ module.exports = {
 
     /** Returns a specified document from the projects collection */
     show(request, response, next) {
-        ProjectModel.findOne({"_id": request.params["project_id"]},
+        ProjectModel.findOne({_id: request.params["project_id"]},
             (error, project) => {
                 response.json({project})
             }
@@ -40,5 +44,16 @@ module.exports = {
 
     /** Updates a project document with the specified attributes */
     update(request, response, next) {
+        ProjectModel.updateOne({_id: request.params["project_id"]}, request.body,
+            (error, raw) => {
+                if (error) {
+                    next(error)
+                }
+
+                ProjectModel.findOne({_id: request.params["project_id"]},
+                    (error, project) => response.json({project})
+                )
+            }
+        )
     }
 }

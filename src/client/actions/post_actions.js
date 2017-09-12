@@ -68,13 +68,13 @@ const showPost = postId => ({
 /**
 * Async action creator that update sa particular post object
 */
-const updatePost = (post) => ({
+const updatePost = (postId, data) => ({
     type: POSTS_UPDATE_REQUEST,
     payload: {
         request: {
-            method: "put",
-            url: `/posts/${post._id}`,
-            data: post
+            method: "patch",
+            url: `/posts/${postId}`,
+            data
         }
     }
 })
