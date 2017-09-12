@@ -67,7 +67,7 @@ class SkillForm extends Component {
                         component={this.renderTextField} />
                     <Field
                         name="keywords"
-                        title="Keywords"
+                        title="Keywords (delimited by ',')"
                         element="input"
                         type="text"
                         component={this.renderTextField} />

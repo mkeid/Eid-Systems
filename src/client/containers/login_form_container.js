@@ -17,8 +17,8 @@ const validate = values => {
     return errors
 }
 
+// Wire up the portfolio component with redux to propagate state
 const mapStateToProps = ({ auth }) => ({ auth })
-
 const LoginFormContainer = connect(
     mapStateToProps,
     { login }

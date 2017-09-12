@@ -4,6 +4,13 @@ import ProjectForm from "../../components/admin/projects/project_form"
 // Validate the project form input content */
 const validate = values => {
     const errors = {}
+    const fieldNames = ["title", "type"]
+
+    fieldNames.forEach(fieldName => {
+        if (fieldName in values && !values[fieldName].length) {
+            errors[fieldName] = `Please fill out '${fieldName}'`
+        }
+    })
 
     return errors
 }

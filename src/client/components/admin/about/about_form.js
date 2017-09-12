@@ -11,7 +11,9 @@ import renderTextField from "../../ui/render_text_field"
 class AboutForm extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            hasSaved: false
+        }
 
         // Bind this to function
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,13 +29,6 @@ class AboutForm extends Component {
             this.props.initialize(about)
         } else {
             this.props.showSite("about")
-        }
-    }
-
-    componentDidUpdate() {
-        const about = this.props.about
-        if (about) {
-            this.props.initialize(about)
         }
     }
 

@@ -5,6 +5,13 @@ import AboutForm from "../../components/admin/about/about_form"
 const validate = values => {
     const errors = {}
 
+    const fieldNames = ["head", "detail"]
+    fieldNames.forEach(fieldName => {
+        if (fieldName in values && !values[fieldName].length) {
+            errors[fieldName] = `Please fill in '${fieldName}'!`
+        }
+    })
+
     return errors
 }
 

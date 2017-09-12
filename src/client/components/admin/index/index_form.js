@@ -30,14 +30,6 @@ class IndexForm extends Component {
         }
     }
 
-    /** If the page object was found in the store, init the redux form */
-    componentDidUpdate() {
-        const index = this.props.index
-        if (index) {
-            this.props.initialize(index)
-        }
-    }
-
     handleSubmit() {
     }
 
@@ -59,7 +51,7 @@ class IndexForm extends Component {
                         component={this.renderTextField} />
                     <Field
                         name="developer[keywords]"
-                        title="Developer Keywords"
+                        title="Developer Keywords (delimited by ',')"
                         element="input"
                         type="text"
                         component={this.renderTextField} />
@@ -71,7 +63,7 @@ class IndexForm extends Component {
                         component={this.renderTextField} />
                     <Field
                         name="engineer[keywords]"
-                        title="Engineer Keywords"
+                        title="Engineer Keywords (delimited by ',')"
                         element="input"
                         type="text"
                         component={this.renderTextField} />
