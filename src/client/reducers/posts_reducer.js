@@ -41,8 +41,9 @@ export default (state = {}, action) => {
 
         // Updated a single post document
         case POSTS_UPDATE_REQUEST_SUCCESS:
+            const updatedPost = action.payload.data.post
             return Object.assign({}, state,
-                {[action.payload.data["_id"]]: action.payload.data}
+                {[updatedPost["_id"]]: updatedPost}
             )
 
         // Only update state when the action type is specified

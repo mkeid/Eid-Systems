@@ -45,7 +45,14 @@ class ProjectForm extends Component {
         this.checkProject()
     }
 
-    handleSubmit() {
+    handleSubmit(data) {
+        // If the form is modifying an existing project update...else create it
+        const formProject = this.state.project
+        if (formProject) {
+            this.props.updateProject(formProject._id, {project: data})
+        } else {
+            this.props.createProject({project: data})
+        }
     }
 
     render() {

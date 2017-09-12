@@ -40,13 +40,10 @@ export default (state = {}, action) => {
 
         // Updated a specific skill from the payload retrieved from payload
         case SKILLS_UPDATE_REQUEST_SUCCESS:
-            const updatedSkill = action.payload.data
-            const updatedSkillHash = {[updatedSkill._id]: updatedSkill}
-
-            let skills = state.skills
-            skills.push(updatedSkillHash)
-
-            return Object.assign({}, state, skills)
+            const updatedSkill = action.payload.data.skill
+            return Object.assign({}, state,
+                {[updatedSkill["_id"]]: updatedSkill}
+            )
 
         // Only update state when the action type is specified
         default:

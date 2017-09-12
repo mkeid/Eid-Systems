@@ -89,6 +89,8 @@ export {
     POSTS_SHOW_REQUEST_SUCCESS,
     POSTS_LIST_REQUEST,
     POSTS_LIST_REQUEST_SUCCESS,
+    POSTS_UPDATE_REQUEST,
+    POSTS_UPDATE_REQUEST_SUCCESS,
     createPost,
     deletePost,
     fetchPosts,

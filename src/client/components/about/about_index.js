@@ -14,11 +14,9 @@ class AboutIndex extends Component {
         this.props.updateCurrentPage("About")
     }
 
-    /** Fetch the list of skills from the backend if missing from data store */
+    /** Fetch latest list of skills before mounting */
     componentWillMount() {
-        if (!this.props.skills.length) {
-            this.props.fetchSkills()
-        }
+        this.props.fetchSkills()
     }
 
     render() {

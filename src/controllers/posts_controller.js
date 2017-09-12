@@ -45,7 +45,8 @@ module.exports = {
 
     /** Updates a specified post document */
     update(request, response, next) {
-        PostModel.updateOne({_id: request.params["post_id"]}, request.body,
+        const query = {_id: request.params["post_id"]}
+        PostModel.updateOne(query, request.body.post,
             (error, raw) => {
                 if (error) {
                     next(error)

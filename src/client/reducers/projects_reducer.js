@@ -42,8 +42,9 @@ export default (state = {}, action) => {
 
         // Updated a single project document
         case PROJECTS_UPDATE_REQUEST_SUCCESS:
+            const updatedProject = action.payload.data.project
             return Object.assign({}, state,
-                {[action.payload.data["_id"]]: action.payload.data}
+                {[updatedProject["_id"]]: updatedProject}
             )
 
         // Only update state when the action type is specified

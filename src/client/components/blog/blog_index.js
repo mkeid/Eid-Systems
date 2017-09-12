@@ -11,11 +11,9 @@ class BlogIndex extends Component {
         this.props.updateCurrentPage("Blog")
     }
 
-    /** If a list of posts doesn't exist, fetch it */
+    /** Fetch latest list of blog posts before mounting */
     componentWillMount() {
-        if (!this.props.posts.length) {
-            this.props.fetchPosts()
-        }
+        this.props.fetchPosts()
     }
 
     render() {

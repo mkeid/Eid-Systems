@@ -11,11 +11,9 @@ class Portfolio extends Component {
         super(props)
     }
 
-    /** If a list of projects doesn't exist, fetch it */
+    /** Fetch latest list of projects before mounting */
     componentWillMount() {
-        if (!this.props.projects.length) {
-            this.props.fetchProjects()
-        }
+        this.props.fetchProjects()
     }
 
     render() {

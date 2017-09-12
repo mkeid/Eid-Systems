@@ -45,7 +45,14 @@ class SkillForm extends Component {
         this.checkSkill()
     }
 
-    handleSubmit() {
+    handleSubmit(data) {
+        // If the form is modifying an existing skill, update it. Else create it
+        const formSkill = this.state.skill
+        if (formSkill) {
+            this.props.updateSkill(formSkill._id, {skill: data})
+        } else {
+            this.props.createSkill({skill: data})
+        }
     }
 
     render() {

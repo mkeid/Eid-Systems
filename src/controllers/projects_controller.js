@@ -44,7 +44,8 @@ module.exports = {
 
     /** Updates a project document with the specified attributes */
     update(request, response, next) {
-        ProjectModel.updateOne({_id: request.params["project_id"]}, request.body,
+        const query = {_id: request.params["project_id"]}
+        ProjectModel.updateOne(query, request.body.project,
             (error, raw) => {
                 if (error) {
                     next(error)

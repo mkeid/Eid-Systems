@@ -40,7 +40,8 @@ module.exports = {
 
     /** Updates a skill document with the specified attributes */
     update(request, response, next) {
-        SkillModel.updateOne({_id: request.params["skill_id"]}, request.body,
+        const query = {_id: request.params["skill_id"]}
+        SkillModel.updateOne(query, request.body.skill,
             (error, raw) => {
                 if (error) {
                     next(error)
