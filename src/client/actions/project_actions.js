@@ -13,12 +13,12 @@ const PROJECTS_UPDATE_REQUEST_SUCCESS = "PROJECTS_UPDATE_REQUEST_SUCCESS"
 /**
 * Async action creator that creates a new project object
 */
-const createProject = (project) => ({
+const createProject = project => ({
     type: PROJECTS_CREATE_REQUEST,
     payload: {
         request: {
             method: "post",
-            url: "/projects/create",
+            url: "/projects",
             data: project
         }
     }
@@ -28,12 +28,12 @@ const createProject = (project) => ({
 /**
 * Async action creator that deletes a particular project object
 */
-const deleteProject = (project) => ({
+const deleteProject = projectId => ({
     type: PROJECTS_DESTROY_REQUEST,
     payload: {
         request: {
             method: "delete",
-            url: `/projects/${project._id}`
+            url: `/projects/${projectId}`
         }
     }
 })

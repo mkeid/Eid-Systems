@@ -3,21 +3,15 @@ const ProjectModel = require("../models/project_model")
 module.exports = {
     /** Creates a new project document with the specified attributes */
     create(request, response, next) {
-        ProjectModel.findOne(request.body,
-            (findError, existingProject) => {
-                if (findError) {
-                    return next(findError)
-                }
+        const projectData = Object.assign(request.body.project, {imgSrc: "/"})
+        const project = new ProjectModel(projectData)
 
-                const project = new ProjectModel(request.body)
-                project.save((saveRrror) => {
-                    if (saveError) {
-                        return next(saveError)
-                    }
-                    response.json({project})
-                })
+        project.save((error) => {
+            if (error) {
+                return next(error)
             }
-        )
+            response.json({project})
+        })
     },
 
     /** Deletes a specified project document */

@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import PropTypes from "prop-types"
 import { Field } from "redux-form"
 import { CancelButton, SubmitButton, SuccessButton } from "../../ui/buttons"
 import renderTextField from "../../ui/render_text_field"
@@ -15,13 +16,19 @@ class PostForm extends Component {
 
         // Bind this to functions
         this.checkPost = this.checkPost.bind(this)
+        this.createPost = this.createPost.bind(this)
+        this.deletePost = this.deletePost.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.renderTextField = renderTextField.bind(this)
+        this.updatePost = this.updatePost.bind(this)
     }
 
     /** If page object was found in store, init the redux form else fetch it */
     checkPost() {
-        if (!this.state.post && this.props.match) {
+        const match = this.props.match
+        const isEditForm = match && match.params["post_id"]
+
+        if (!this.state.post && isEditForm) {
             const postId = this.props.match.params["post_id"]
             const post = this.props.posts[postId]
 
@@ -38,6 +45,10 @@ class PostForm extends Component {
     componentDidMount() {
         this.props.updateAdminPage("Posts")
         this.checkPost()
+
+        this.props.initialize({
+            title: "", preview: "", description: ""
+        })
     }
 
     /** Check if page object is in the redux store on update */
@@ -45,14 +56,44 @@ class PostForm extends Component {
         this.checkPost()
     }
 
+    createPost(data) {
+        this.props.createPost({post: data})
+            .then(() => {
+                this.context.router.history.push("/admin/posts")
+            })
+            .catch(response => {
+
+            })
+    }
+
+    deletePost() {
+        this.props.deletePost(this.state.post._id)
+            .then(() => {
+                this.context.router.history.push("/admin/posts")
+            })
+            .catch(response => {
+
+            })
+    }
+
     handleSubmit(data) {
         // If the form is modifying an existing post, update it. Else create it
         const formPost = this.state.post
         if (formPost) {
-            this.props.updatePost(formPost._id, {post: data})
+            this.updatePost(formPost._id, data)
         } else {
-            this.props.createPost({post: data})
+            this.createPost(data)
         }
+    }
+
+    updatePost(postId, data) {
+        this.props.updatePost(postId, {post: data})
+            .then(() => {
+
+            })
+            .catch(response => {
+
+            })
     }
 
     render() {
@@ -84,5 +125,12 @@ class PostForm extends Component {
         )
     }
 }
+
+
+// Enable the router context type so that the form gains routing capability
+PostForm.contextTypes = {
+    router: PropTypes.object
+}
+
 
 export default PostForm

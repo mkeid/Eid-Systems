@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import PropTypes from "prop-types"
 import { Field } from "redux-form"
 import { CancelButton, SubmitButton, SuccessButton } from "../../ui/buttons"
 import renderTextField from "../../ui/render_text_field"
@@ -15,13 +16,19 @@ class SkillForm extends Component {
 
         // Bind this to functions
         this.checkSkill = this.checkSkill.bind(this)
+        this.createSkill = this.createSkill.bind(this)
+        this.deleteSkill = this.deleteSkill.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.renderTextField = renderTextField.bind(this)
+        this.updateSkill = this.updateSkill.bind(this)
     }
 
     /** If page object was found in store, init the redux form else fetch it */
     checkSkill() {
-        if (!this.state.skill && this.props.match) {
+        const match = this.props.match
+        const isEditForm = match && match.params["skill_id"]
+
+        if (!this.state.skill && isEditForm) {
             const skillId = this.props.match.params["skill_id"]
             const skill = this.props.skills[skillId]
 
@@ -38,6 +45,10 @@ class SkillForm extends Component {
     componentDidMount() {
         this.props.updateAdminPage("Skills")
         this.checkSkill()
+
+        this.props.initialize({
+            title: "", keywords: "", description: ""
+        })
     }
 
     /** Check if page object is in the redux store on update */
@@ -45,14 +56,44 @@ class SkillForm extends Component {
         this.checkSkill()
     }
 
+    createSkill(data) {
+        this.props.createSkill({skill: data})
+            .then(() => {
+                this.context.router.history.push("/admin/skills")
+            })
+            .catch(response => {
+
+            })
+    }
+
+    deleteSkill() {
+        this.props.deleteSkill(this.state.skill._id)
+            .then(() => {
+                this.context.router.history.push("/admin/skills")
+            })
+            .catch(response => {
+
+            })
+    }
+
     handleSubmit(data) {
         // If the form is modifying an existing skill, update it. Else create it
         const formSkill = this.state.skill
         if (formSkill) {
-            this.props.updateSkill(formSkill._id, {skill: data})
+            this.updateSkill(formSkill._id, data)
         } else {
-            this.props.createSkill({skill: data})
+            this.createSkill(data)
         }
+    }
+
+    updateSkill(skillId, data) {
+        this.props.updateSkill(skillId, {skill: data})
+            .then(() => {
+
+            })
+            .catch(response => {
+
+            })
     }
 
     render() {
@@ -89,5 +130,12 @@ class SkillForm extends Component {
         )
     }
 }
+
+
+// Enable the router context type so that the form gains routing capability
+SkillForm.contextTypes = {
+    router: PropTypes.object
+}
+
 
 export default SkillForm

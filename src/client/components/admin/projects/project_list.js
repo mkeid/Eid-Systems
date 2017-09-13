@@ -29,7 +29,7 @@ class ProjectList extends Component {
         if (this.props.projects) {
             let projects = _.map(this.props.projects, (value, key) => value)
             projects = projects.map(project => (
-                <div key={project.title} className="admin-item">
+                <div key={project._id} className="admin-item">
                     <Link to={`/admin/projects/edit/${project._id}`}>
                         <img src={project.imgSrc} />
                         <div className="content">

@@ -29,7 +29,7 @@ class PostList extends Component {
         if (this.props.posts) {
             let posts = _.map(this.props.posts, (value, key) => value)
             posts = posts.map(post => (
-                <div key={post.title} className="admin-item">
+                <div key={post._id} className="admin-item">
                     <Link to={`/admin/posts/edit/${post._id}`}>
                         <img src={post.imgSrc} />
                         <div className="content">

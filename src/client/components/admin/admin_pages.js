@@ -51,10 +51,11 @@ const AdminPages = props => (
                 )} />
 
             <Route exact path="/admin/posts/new"
-                render={() => (
+                render={routeProps => (
                     <PostFormContainer
                         createPost={props.createPost}
-                        updateAdminPage={props.updateAdminPage} />
+                        updateAdminPage={props.updateAdminPage}
+                        {...routeProps} />
                 )} />
 
             <Route exact path="/admin/posts/edit/:post_id"
@@ -78,10 +79,11 @@ const AdminPages = props => (
                 )} />
 
             <Route exact path="/admin/projects/new"
-                render={() => (
+                render={routeProps => (
                     <ProjectFormContainer
                         createProject={props.createProject}
-                        updateAdminPage={props.updateAdminPage} />
+                        updateAdminPage={props.updateAdminPage}
+                        {...routeProps} />
                 )} />
 
             <Route exact path="/admin/projects/edit/:project_id"
@@ -105,10 +107,11 @@ const AdminPages = props => (
                 )} />
 
             <Route exact path="/admin/skills/new"
-                render={() => (
+                render={routeProps => (
                     <SkillFormContainer
                         createSkill={props.createSkill}
-                        updateAdminPage={props.updateAdminPage} />
+                        updateAdminPage={props.updateAdminPage}
+                        {...routeProps} />
                 )} />
 
             <Route exact path="/admin/skills/edit/:skill_id"

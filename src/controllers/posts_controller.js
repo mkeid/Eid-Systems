@@ -3,22 +3,17 @@ const PostModel = require("../models/post_model")
 module.exports = {
     /** Creates a new post document with specified attributes */
     create(request, response, next) {
-        PostModel.findOne(request.body,
-            (findError, existingPost) => {
-                if (findError) {
-                    return next(findError)
-                }
+        const postData = Object.assign(request.body.post, {imgSrc: "/test"})
+        console.log(postData)
+        const post = new PostModel(postData)
 
-                const post = new PostModel(request.body)
-                post.save((saveRrror) => {
-                    if (saveError) {
-                        return next(saveError)
-                    }
-
-                    response.json({post})
-                })
+        post.save((error) => {
+            if (error) {
+                return next(error)
             }
-        )
+
+            response.json({post})
+        })
     },
 
     /** Deletes a specified document from the posts collection */

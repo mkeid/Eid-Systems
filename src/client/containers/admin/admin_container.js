@@ -5,12 +5,12 @@ import { logout } from "../../actions/auth_actions"
 
 // Post modules
 import {
-    fetchPosts, showPost, updatePost
+    createPost, deletePost, fetchPosts, showPost, updatePost
 } from "../../actions/post_actions"
 
 // Project modules
 import {
-    fetchProjects, showProject, updateProject
+    createProject, deleteProject, fetchProjects, showProject, updateProject
 } from "../../actions/project_actions"
 
 // Site modules
@@ -20,20 +20,26 @@ import {
 
 // Skill modules
 import {
-    fetchSkills, showSkill, updateSkill
+    createSkill, deleteSkill, fetchSkills, showSkill, updateSkill
 } from "../../actions/skill_actions"
 
 // Wire up the admin site component with redux to propagate state
 const mapStateToProps = state => state
 const mapDispatchToProps = ({
+    createPost,
+    deletePost,
     fetchPosts,
     showPost,
     updatePost,
 
+    createProject,
+    deleteProject,
     fetchProjects,
     showProject,
     updateProject,
 
+    createSkill,
+    deleteSkill,
     fetchSkills,
     showSkill,
     updateSkill,

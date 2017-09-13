@@ -29,7 +29,7 @@ class SkillList extends Component {
         if (this.props.skills) {
             let skills = _.map(this.props.skills, (value, key) => value)
             skills = skills.map(skill => (
-                <div key={skill.title} className="admin-item">
+                <div key={skill._id} className="admin-item">
                     <Link to={`/admin/skills/edit/${skill._id}`}>
                         <img src={skill.imgSrc} />
                         <div className="content">

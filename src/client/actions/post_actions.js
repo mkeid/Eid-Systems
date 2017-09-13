@@ -13,12 +13,12 @@ const POSTS_UPDATE_REQUEST_SUCCESS = "POSTS_UPDATE_REQUEST_SUCCESS"
 /**
 * Asyc action creator that creates a new post object
 */
-const createPost = (post) => ({
+const createPost = post => ({
     type: POSTS_CREATE_REQUEST,
     payload: {
         request: {
             method: "post",
-            url: `/posts/${post._id}`,
+            url: `/posts`,
             data: post
         }
     }
@@ -28,12 +28,12 @@ const createPost = (post) => ({
 /**
 * Async action creator that deletes an existing post object
 */
-const deletePost = (post) => ({
+const deletePost = postId => ({
     type: POSTS_DESTROY_REQUEST,
     payload: {
         request: {
             method: "delete",
-            url: `/posts/${post._id}`
+            url: `/posts/${postId}`
         }
     }
 })

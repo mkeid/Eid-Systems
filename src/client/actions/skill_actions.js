@@ -13,12 +13,12 @@ const SKILLS_UPDATE_REQUEST_SUCCESS = "SKILLS_UPDATE_REQUEST_SUCCESS"
 /**
 * Async action creator that creates a new skill object
 */
-const createSkill = (skill) => ({
+const createSkill = skill => ({
     type: SKILLS_CREATE_REQUEST,
     payload: {
         request: {
             method: "post",
-            url: "/skills/create",
+            url: "/skills",
             data: skill
         }
     }
@@ -28,12 +28,12 @@ const createSkill = (skill) => ({
 /**
 * Async action creator that deletes a specified skill object
 */
-const deleteSkill = (skill) => ({
-    type: SKILLS_DESTROY_REQUEST_SUCCESS,
+const deleteSkill = skillId => ({
+    type: SKILLS_DESTROY_REQUEST,
     payload: {
         request: {
             method: "delete",
-            url: `/skills/${skill._id}`
+            url: `/skills/${skillId}`
         }
     }
 })
