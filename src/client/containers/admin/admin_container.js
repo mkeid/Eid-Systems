@@ -3,6 +3,11 @@ import AdminSite from "../../components/admin/admin_site"
 import { updateAdminPage } from "../../actions/admin_actions"
 import { logout } from "../../actions/auth_actions"
 
+// Link modules
+import {
+    createLink, deleteLink, fetchLinks, showLink, updateLink
+} from "../../actions/link_actions"
+
 // Post modules
 import {
     createPost, deletePost, fetchPosts, showPost, updatePost
@@ -26,6 +31,12 @@ import {
 // Wire up the admin site component with redux to propagate state
 const mapStateToProps = state => state
 const mapDispatchToProps = ({
+    createLink,
+    deleteLink,
+    fetchLinks,
+    showLink,
+    updateLink,
+
     createPost,
     deletePost,
     fetchPosts,

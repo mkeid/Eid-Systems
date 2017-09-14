@@ -19,6 +19,7 @@ router.route("/auth/login").post(requireLogin, AuthController.login)
 
 // Links routing
 router.route("/links").get(LinksController.list)
+router.route("/links").post(requireAuth, LinksController.create)
 router.route("/links/:link_id").delete(requireAuth, LinksController.destroy)
 router.route("/links/:link_id").patch(requireAuth, LinksController.update)
 

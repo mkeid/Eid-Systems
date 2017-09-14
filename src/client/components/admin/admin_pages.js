@@ -4,6 +4,9 @@ import { Redirect, Route, Switch } from "react-router-dom"
 import AboutFormContainer from "../../containers/admin/about_form_container"
 import IndexFormContainer from "../../containers/admin/index_form_container"
 
+import LinkFormContainer from "../../containers/admin/link_form_container"
+import LinkList from "./links/link_list"
+
 import PostFormContainer from "../../containers/admin/post_form_container"
 import PostList from "./posts/post_list"
 
@@ -40,6 +43,35 @@ const AdminPages = props => (
                         updateSite={props.updateSite} />
                 )} />
 
+            // Link routes
+
+            <Route exact path="/admin/links"
+                render={() => (
+                    <LinkList
+                        fetchLinks={props.fetchLinks}
+                        links={props.links}
+                        updateAdminPage={props.updateAdminPage} />
+                )} />
+
+            <Route exact path="/admin/links/new"
+                render={routeProps => (
+                    <LinkFormContainer
+                        createLink={props.createLink}
+                        updateAdminPage={props.updateAdminPage}
+                        {...routeProps} />
+                )} />
+
+            <Route exact path="/admin/links/edit/:link_id"
+                render={routeProps => (
+                    <LinkFormContainer
+                        links={props.links}
+                        deleteLink={props.deleteLink}
+                        showLink={props.showLink}
+                        updateAdminPage={props.updateAdminPage}
+                        updateLink={props.updateLink}
+                        {...routeProps} />
+                )} />
+
             // Post routes
 
             <Route exact path="/admin/posts"
@@ -62,6 +94,7 @@ const AdminPages = props => (
                 render={routeProps => (
                     <PostFormContainer
                         posts={props.posts}
+                        deletePost={props.deletePost}
                         showPost={props.showPost}
                         updateAdminPage={props.updateAdminPage}
                         updatePost={props.updatePost}
@@ -90,6 +123,7 @@ const AdminPages = props => (
                 render={routeProps => (
                     <ProjectFormContainer
                         projects={props.projects}
+                        deleteProject={props.deleteProject}
                         showProject={props.showProject}
                         updateAdminPage={props.updateAdminPage}
                         updateProject={props.updateProject}
@@ -118,6 +152,7 @@ const AdminPages = props => (
                 render={routeProps => (
                     <SkillFormContainer
                         skills={props.skills}
+                        deleteSkill={props.deleteSkill}
                         showSkill={props.showSkill}
                         updateAdminPage={props.updateAdminPage}
                         updateSkill={props.updateSkill}

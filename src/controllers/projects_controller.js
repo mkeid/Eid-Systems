@@ -16,6 +16,15 @@ module.exports = {
 
     /** Deletes a specified project document */
     destroy(request, response, next) {
+        ProjectModel.findByIdAndRemove(request.params["project_id"],
+            (error, raw) => {
+                if (error) {
+                    return next(error)
+                }
+
+                response.json(raw)
+            }
+        )
     },
 
     /** Returns all documents from the projects collection */

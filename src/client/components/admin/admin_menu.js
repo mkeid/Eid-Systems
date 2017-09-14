@@ -21,7 +21,9 @@ class AdminMenu extends Component {
     }
 
     render() {
-        const menuList = ["Index", "About", "Posts", "Projects", "Skills"]
+        const menuList = [
+            "Index", "About", "Links", "Posts", "Projects", "Skills"
+        ]
         const menuItems = menuList.map(menuItem => (
             <div
                 key={menuItem}

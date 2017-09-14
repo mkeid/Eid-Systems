@@ -14,20 +14,41 @@ class CancelButton extends Component {
 
     render() {
         const buttonValue = this.props.value ? this.props.value : "Cancel"
-        console.log(this.context)
+
         return (
             <div
                 className="primary-button cancel-button"
-                onClick={this.context.router.history.goBack}
-                {...this.props}>
+                onClick={
+                    this.props.redirect ?
+                    this.props.redirect : this.props.onClick
+                } >
                 {buttonValue}
             </div>
         )
     }
 }
 
-CancelButton.contextTypes = {
-    router: PropTypes.object
+
+/**
+* A danger button component for making a permanent action obvious to the user
+* @extends Component
+*/
+class DangerButton extends Component {
+    shouldComponentUpdate() {
+        return false
+    }
+
+    render() {
+        const buttonValue = this.props.value ? this.props.value : "Danger"
+
+        return (
+            <div
+                className="primary-button danger-button"
+                {...this.props}>
+                {buttonValue}
+            </div>
+        )
+    }
 }
 
 
@@ -98,6 +119,7 @@ class SuccessButton extends Component {
 
 export {
     CancelButton,
+    DangerButton,
     LoadingButton,
     SubmitButton,
     SuccessButton

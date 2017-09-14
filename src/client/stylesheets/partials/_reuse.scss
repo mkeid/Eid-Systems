@@ -144,3 +144,34 @@ ul {
         position: relative;
     }
 }
+
+.modal {
+    background: white;
+    padding: 2em;
+
+    position:fixed;
+    left: 30%;
+    top: 30%;
+    right: 30%;
+
+    p {
+        font-size: 1.2em;
+        line-height: 1.5em;
+        padding-bottom: 1em;
+    }
+
+    .head {
+        border-bottom: .11em solid $borderGray;
+        font-size: 1.5em;
+        font-weight: bold;
+        padding-bottom: .5em;
+    }
+
+    .primary-button {
+        float: right;
+    }
+
+    .danger-button {
+        margin-left: 1em;
+    }
+}

@@ -1,5 +1,5 @@
 .primary-button {
-    @include box-shadow(0, .125em, .3em, 0, rgba(0, 0, 0, .1));
+    @include shadow;
     @include transition(color, .15s, ease-in);
 
     background: none;
@@ -40,11 +40,29 @@
     }
 }
 
-.success-button {
-    @include shadow;
+.cancel-button {
+    border: .1em solid grey !important;
+    color: grey;
+    width: 4.6em;
 
-    $green: rgb(60, 170, 90);
-    background: none;
+    &:hover {
+        @include transition(all, .1s, ease-in);
+        background: grey !important;
+    }
+}
+
+.danger-button {
+    border: .1em solid $red !important;
+    color: $red;
+    width: 4.6em;
+
+    &:hover {
+        @include transition(all, .1s, ease-in);
+        background: $red !important;
+    }
+}
+
+.success-button {
     border: .1em solid $green !important;
     color: $green;
     cursor: not-allowed;

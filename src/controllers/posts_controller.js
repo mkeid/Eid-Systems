@@ -18,6 +18,15 @@ module.exports = {
 
     /** Deletes a specified document from the posts collection */
     destroy(request, response, next) {
+        PostModel.findByIdAndRemove(request.params["post_id"],
+            (error, raw) => {
+                if (error) {
+                    return next(error)
+                }
+
+                response.json(raw)
+            }
+        )
     },
 
     /** Returns all documents from the posts collection */
@@ -26,7 +35,7 @@ module.exports = {
             (error, posts) => {
                 response.json({posts})
             }
-        )
+        ).sort({data: "descending"})
     },
 
     /** Returns a specified document from the posts collection */

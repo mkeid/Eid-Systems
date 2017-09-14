@@ -1,7 +1,12 @@
 import React, { Component } from "react"
-import PropTypes from "prop-types"
+import ReactModal from "react-modal"
 import { Field } from "redux-form"
-import { CancelButton, SubmitButton, SuccessButton } from "../../ui/buttons"
+import {
+    CancelButton,
+    DangerButton,
+    SubmitButton,
+    SuccessButton
+} from "../../ui/buttons"
 import renderTextField from "../../ui/render_text_field"
 
 
@@ -12,12 +17,16 @@ import renderTextField from "../../ui/render_text_field"
 class ProjectForm extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            modalIsVisible: false
+        }
 
         // Bind this to functions
         this.checkProject = this.checkProject.bind(this)
         this.createProject = this.createProject.bind(this)
         this.deleteProject = this.deleteProject.bind(this)
+        this.handleCloseModal = this.handleCloseModal.bind(this)
+        this.handleOpenModal = this.handleOpenModal.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.renderTextField = renderTextField.bind(this)
         this.updateProject = this.updateProject.bind(this)
@@ -44,11 +53,12 @@ class ProjectForm extends Component {
     /** Dispatch redux action to update page status and possibly init form */
     componentDidMount() {
         this.props.updateAdminPage("Projects")
-        this.checkProject()
-
         this.props.initialize({
-            title: "", type: "", url: ""
+            title: "",
+            type: "",
+            url: ""
         })
+        this.checkProject()
     }
 
     /** Check if page object is in the redux store on update */
@@ -59,7 +69,7 @@ class ProjectForm extends Component {
     createProject(data) {
         this.props.createProject({project: data})
             .then(() => {
-                this.context.router.history.push("/admin/projects")
+                this.props.history.push("/admin/projects")
             })
             .catch(response => {
 
@@ -69,13 +79,29 @@ class ProjectForm extends Component {
     deleteProject() {
         this.props.deleteProject(this.state.project._id)
             .then(() => {
-                this.context.router.history.push("/admin/projects")
+                this.props.history.push("/admin/projects")
             })
             .catch(response => {
 
             })
+        this.handleCloseModal()
     }
 
+    /** Update state to reflect that the delete modal is closed */
+    handleCloseModal() {
+        this.setState({
+            modalIsVisible: false
+        })
+    }
+
+    /** Update state to reflect that the delete modal is opened */
+    handleOpenModal() {
+        this.setState({
+            modalIsVisible: true
+        })
+    }
+
+    /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
         // If the form is modifying an existing project update...else create it
         const formProject = this.state.project
@@ -125,17 +151,34 @@ class ProjectForm extends Component {
                         element="input"
                         type="text"
                         component={this.renderTextField} />
+                    <DangerButton
+                        value="Delete"
+                        onClick={this.handleOpenModal} />
                     {this.state.hasSaved ? savedButton : saveButton}
+                    <CancelButton
+                        redirect={
+                            () => this.props.history.push("/admin/projects")
+                        } />
                 </div>
+                <ReactModal
+                   isOpen={this.state.modalIsVisible}
+                   contentLabel="Delete Project" >
+                   <div className="head">
+                        Delete Project
+                   </div>
+                   <p>
+                       Are you sure you want to delete this document?
+                       This cannot be undone.
+                   </p>
+                   <DangerButton
+                        value="Delete"
+                        onClick={this.deleteProject} />
+                    <CancelButton
+                         onClick={this.handleCloseModal} />
+                </ReactModal>
             </form>
         )
     }
-}
-
-
-// Enable the router context type so that the form gains routing capability
-ProjectForm.contextTypes = {
-    router: PropTypes.object
 }
 
 

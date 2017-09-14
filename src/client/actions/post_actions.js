@@ -66,7 +66,7 @@ const showPost = postId => ({
 
 
 /**
-* Async action creator that update sa particular post object
+* Async action creator that updates a particular post object
 */
 const updatePost = (postId, data) => ({
     type: POSTS_UPDATE_REQUEST,

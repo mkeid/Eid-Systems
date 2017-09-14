@@ -8,7 +8,7 @@ import axios from "axios"
 import axiosMiddleware from "redux-axios-middleware";
 import { connect } from "react-redux"
 import { createStore, applyMiddleware } from "redux"
-import { BrowserRouter, browserHistory } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 import { Provider } from "react-redux"
 import ReactGA from "react-ga"
 
@@ -62,7 +62,7 @@ class Client extends Component {
 
     render() {
         return this.props.sites.isLoading ? null : (
-            <BrowserRouter history={ browserHistory }>
+            <BrowserRouter>
                 <div onClick={this.props.menuClose}>
                     <NavBarContainer
                         currentPage={this.state.currentPage}

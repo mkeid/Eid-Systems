@@ -1,7 +1,12 @@
 import React, { Component } from "react"
-import PropTypes from "prop-types"
+import ReactModal from "react-modal"
 import { Field } from "redux-form"
-import { CancelButton, SubmitButton, SuccessButton } from "../../ui/buttons"
+import {
+    CancelButton,
+    DangerButton,
+    SubmitButton,
+    SuccessButton
+} from "../../ui/buttons"
 import renderTextField from "../../ui/render_text_field"
 
 
@@ -12,12 +17,16 @@ import renderTextField from "../../ui/render_text_field"
 class SkillForm extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            modalIsVisible: false
+        }
 
         // Bind this to functions
         this.checkSkill = this.checkSkill.bind(this)
         this.createSkill = this.createSkill.bind(this)
         this.deleteSkill = this.deleteSkill.bind(this)
+        this.handleCloseModal = this.handleCloseModal.bind(this)
+        this.handleOpenModal = this.handleOpenModal.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.renderTextField = renderTextField.bind(this)
         this.updateSkill = this.updateSkill.bind(this)
@@ -44,11 +53,12 @@ class SkillForm extends Component {
     /** Dispatch redux action to update page status and possibly init form */
     componentDidMount() {
         this.props.updateAdminPage("Skills")
-        this.checkSkill()
-
         this.props.initialize({
-            title: "", keywords: "", description: ""
+            title: "",
+            keywords: "",
+            description: ""
         })
+        this.checkSkill()
     }
 
     /** Check if page object is in the redux store on update */
@@ -59,7 +69,7 @@ class SkillForm extends Component {
     createSkill(data) {
         this.props.createSkill({skill: data})
             .then(() => {
-                this.context.router.history.push("/admin/skills")
+                this.props.history.push("/admin/skills")
             })
             .catch(response => {
 
@@ -69,13 +79,29 @@ class SkillForm extends Component {
     deleteSkill() {
         this.props.deleteSkill(this.state.skill._id)
             .then(() => {
-                this.context.router.history.push("/admin/skills")
+                this.props.history.push("/admin/skills")
             })
             .catch(response => {
 
             })
+        this.handleCloseModal()
     }
 
+    /** Update state to reflect that the delete modal is closed */
+    handleCloseModal() {
+        this.setState({
+            modalIsVisible: false
+        })
+    }
+
+    /** Update state to reflect that the delete modal is opened */
+    handleOpenModal() {
+        this.setState({
+            modalIsVisible: true
+        })
+    }
+
+    /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
         // If the form is modifying an existing skill, update it. Else create it
         const formSkill = this.state.skill
@@ -124,17 +150,35 @@ class SkillForm extends Component {
                         title="Description"
                         element="textArea"
                         component={this.renderTextField} />
+                    <DangerButton
+                        value="Delete"
+                        onClick={this.handleOpenModal} />
                     {this.state.hasSaved ? savedButton : saveButton}
+                    <CancelButton
+                        redirect={
+                            () => this.props.history.push("/admin/skills")
+                        } />
                 </div>
+                <ReactModal
+                   className="modal"
+                   isOpen={this.state.modalIsVisible}
+                   contentLabel="Delete Skill" >
+                   <div className="head">
+                       Delete Skill
+                   </div>
+                   <p>
+                       Are you sure you want to delete this document?
+                       This cannot be undone.
+                   </p>
+                   <DangerButton
+                        value="Delete"
+                        onClick={this.deleteSkill} />
+                    <CancelButton
+                         onClick={this.handleCloseModal} />
+                </ReactModal>
             </form>
         )
     }
-}
-
-
-// Enable the router context type so that the form gains routing capability
-SkillForm.contextTypes = {
-    router: PropTypes.object
 }
 
 

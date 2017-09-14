@@ -40,7 +40,7 @@ const deleteSkill = skillId => ({
 
 
 /**
-* Async actopm creator that retrieves the entire list of skills
+* Async action creator that retrieves the entire list of skills
 */
 const fetchSkills = () => ({
     type: SKILLS_LIST_REQUEST,

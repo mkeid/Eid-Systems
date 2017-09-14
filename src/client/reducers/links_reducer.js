@@ -1,7 +1,7 @@
 import _ from "lodash"
 import { LINKS_LIST_REQUEST_SUCCESS } from "../actions/link_actions"
 
-export default (state = null, action) => {
+export default (state = {}, action) => {
     switch (action.type) {
         // Retrieved a list of link documents
         case LINKS_LIST_REQUEST_SUCCESS:

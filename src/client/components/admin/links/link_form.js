@@ -11,10 +11,10 @@ import renderTextField from "../../ui/render_text_field"
 
 
 /*
-* Form component for creating new posts and updating existing ones
+* Form component for creating new links and updating existing ones
 * @extends Component
 */
-class PostForm extends Component {
+class LinkForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -22,64 +22,61 @@ class PostForm extends Component {
         }
 
         // Bind this to functions
-        this.checkPost = this.checkPost.bind(this)
-        this.createPost = this.createPost.bind(this)
-        this.deletePost = this.deletePost.bind(this)
+        this.deleteLink = this.deleteLink.bind(this)
         this.handleCloseModal = this.handleCloseModal.bind(this)
         this.handleOpenModal = this.handleOpenModal.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.renderTextField = renderTextField.bind(this)
-        this.updatePost = this.updatePost.bind(this)
+        this.updateLink = this.updateLink.bind(this)
     }
 
     /** If page object was found in store, init the redux form else fetch it */
-    checkPost() {
+    checkLink() {
         const match = this.props.match
-        const isEditForm = match && match.params["post_id"]
+        const isEditForm = match && match.params["link_id"]
 
-        if (!this.state.post && isEditForm) {
-            const postId = match.params["post_id"]
-            const post = this.props.posts[postId]
+        if (!this.state.link && isEditForm) {
+            const linkId = match.params["link_id"]
+            const link = this.props.links[linkId]
 
-            if (post) {
-                this.setState({post})
-                this.props.initialize(post)
+            if (link) {
+                this.setState({link})
+                this.props.initialize(link)
             } else {
-                this.props.showPost(postId)
+                this.props.showLink(linkId)
             }
         }
     }
 
     /** Dispatch redux action to update page status and possibly init form */
     componentDidMount() {
-        this.props.updateAdminPage("Posts")
+        this.props.updateAdminPage("Links")
         this.props.initialize({
             title: "",
-            preview: "",
-            description: ""
+            href: ""
         })
-        this.checkPost()
+        this.checkLink()
     }
 
     /** Check if page object is in the redux store on update */
     componentDidUpdate() {
-        this.checkPost()
+        this.checkLink()
     }
 
-    createPost(data) {
-        this.props.createPost({post: data})
+    createLink(data) {
+        this.props.createLink({link: data})
             .then(() => {
-                this.context.router.history.push("/admin/posts")
+                this.props.history.push("/admin/links")
             })
             .catch(response => {
 
             })
     }
 
-    deletePost() {
-        this.props.deletePost(this.state.post._id)
+    deleteLink() {
+        this.props.deleteLink(this.state.link._id)
             .then(() => {
-                this.context.router.history.push("/admin/posts")
+                this.props.history.push("/admin/links")
             })
             .catch(response => {
 
@@ -103,17 +100,17 @@ class PostForm extends Component {
 
     /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
-        // If the form is modifying an existing post, update it. Else create it
-        const formPost = this.state.post
-        if (formPost) {
-            this.updatePost(formPost._id, data)
+        // If the form is modifying an existing link, update it. Else create it
+        const formLink = this.state.link
+        if (formLink) {
+            this.updateLink(formLink._id, data)
         } else {
-            this.createPost(data)
+            this.createLink(data)
         }
     }
 
-    updatePost(postId, data) {
-        this.props.updatePost(postId, {post: data})
+    updateLink(linkId, data) {
+        this.props.updateLink(linkId, {link: data})
             .then(() => {
 
             })
@@ -123,7 +120,7 @@ class PostForm extends Component {
     }
 
     render() {
-        let head = this.state.post ? "Edit Post" : "New Post"
+        let head = this.state.link ? "Edit Link" : "New Link"
         const savedButton = <SuccessButton value="Saved!" />
         const saveButton = <SubmitButton value="Save" />
 
@@ -140,9 +137,9 @@ class PostForm extends Component {
                         type="text"
                         component={this.renderTextField} />
                     <Field
-                        name="preview"
-                        title="Preview"
-                        element="textArea"
+                        name="href"
+                        title="href"
+                        element="input"
                         type="text"
                         component={this.renderTextField} />
                     <DangerButton
@@ -151,14 +148,14 @@ class PostForm extends Component {
                     {this.state.hasSaved ? savedButton : saveButton}
                     <CancelButton
                         redirect={
-                            () => this.props.history.push("/admin/posts")
+                            () => this.props.history.push("/admin/links")
                         } />
                 </div>
                 <ReactModal
                    isOpen={this.state.modalIsVisible}
-                   contentLabel="Delete Post" >
+                   contentLabel="Delete Link" >
                    <div className="head">
-                        Delete Post
+                        Delete Link
                    </div>
                    <p>
                        Are you sure you want to delete this document?
@@ -166,7 +163,7 @@ class PostForm extends Component {
                    </p>
                    <DangerButton
                         value="Delete"
-                        onClick={this.deletePost} />
+                        onClick={this.deleteLink} />
                     <CancelButton
                          onClick={this.handleCloseModal} />
                 </ReactModal>
@@ -176,4 +173,4 @@ class PostForm extends Component {
 }
 
 
-export default PostForm
+export default LinkForm

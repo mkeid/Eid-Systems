@@ -17,6 +17,15 @@ module.exports = {
 
     /** Deletes a specified skill document */
     destroy(request, response, next) {
+        SkillModel.findByIdAndRemove(request.params["skill_id"],
+            (error, raw) => {
+                if (error) {
+                    return next(error)
+                }
+
+                response.json(raw)
+            }
+        )
     },
 
     /** Returns all documents in the skills collection */

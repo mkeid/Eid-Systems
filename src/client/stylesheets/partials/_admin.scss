@@ -5,6 +5,14 @@
 
     form {
         width: 100%;
+
+        .cancel-button {
+            margin-right: 1em;
+        }
+
+        .danger-button {
+            float: left;
+        }
     }
 
     .container {
