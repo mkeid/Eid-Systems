@@ -10,6 +10,7 @@ import {
     SubmitButton,
     SuccessButton
 } from "../../ui/buttons"
+import { getFileObject, renderFileInput } from "../../ui/render_file_input"
 import renderTextField from "../../ui/render_text_field"
 
 
@@ -46,8 +47,11 @@ class PostForm extends Component {
             const post = this.props.posts[postId]
 
             if (post) {
-                this.setState({post})
-                this.props.initialize(post)
+                getFileObject(post.imgSrc, imgFile => {
+                     post.imgFile = [imgFile]
+                     this.setState({post})
+                     this.props.initialize(post)
+                })
             } else {
                 this.props.showPost(postId)
             }
@@ -160,6 +164,10 @@ class PostForm extends Component {
                         element="textArea"
                         type="text"
                         component={this.renderTextField} />
+                    <Field
+                        name="imgFile"
+                        title="Image File"
+                        component={renderFileInput} />
                     {deleteButton}
                     {this.state.hasSaved ? savedButton : saveButton}
                     <CancelButton

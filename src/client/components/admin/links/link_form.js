@@ -10,6 +10,7 @@ import {
     SubmitButton,
     SuccessButton
 } from "../../ui/buttons"
+import { getFileObject, renderFileInput } from "../../ui/render_file_input"
 import renderTextField from "../../ui/render_text_field"
 
 
@@ -43,8 +44,11 @@ class LinkForm extends Component {
             const link = this.props.links[linkId]
 
             if (link) {
-                this.setState({link})
-                this.props.initialize(link)
+                getFileObject(link.imgSrc, imgFile => {
+                     link.imgFile = [imgFile]
+                     this.setState({link})
+                     this.props.initialize(link)
+                })
             } else {
                 this.props.showLink(linkId)
             }
@@ -67,7 +71,6 @@ class LinkForm extends Component {
     }
 
     createLink(data) {
-        console.log(this.props)
         this.props.createLink({link: data})
             .then(() => {
                 this.props.dispatch(push("/admin/links"))
@@ -157,6 +160,10 @@ class LinkForm extends Component {
                         element="input"
                         type="text"
                         component={this.renderTextField} />
+                    <Field
+                        name="imgFile"
+                        title="Image File"
+                        component={renderFileInput} />
                     {deleteButton}
                     {this.state.hasSaved ? savedButton : saveButton}
                     <CancelButton

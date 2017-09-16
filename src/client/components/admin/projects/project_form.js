@@ -10,6 +10,7 @@ import {
     SubmitButton,
     SuccessButton
 } from "../../ui/buttons"
+import { getFileObject, renderFileInput } from "../../ui/render_file_input"
 import renderTextField from "../../ui/render_text_field"
 
 
@@ -46,8 +47,11 @@ class ProjectForm extends Component {
             const project = this.props.projects[projectId]
 
             if (project) {
-                this.setState({project})
-                this.props.initialize(project)
+                getFileObject(project.imgSrc, imgFile => {
+                     project.imgFile = [imgFile]
+                     this.setState({project})
+                     this.props.initialize(project)
+                })
             } else {
                 this.props.showProject(projectId)
             }
@@ -166,6 +170,10 @@ class ProjectForm extends Component {
                         element="input"
                         type="text"
                         component={this.renderTextField} />
+                    <Field
+                        name="imgFile"
+                        title="Image File"
+                        component={renderFileInput} />
                     {deleteButton}
                     {this.state.hasSaved ? savedButton : saveButton}
                     <CancelButton

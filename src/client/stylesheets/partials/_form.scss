@@ -5,6 +5,19 @@ form {
     text-align: left;
     width: $siteWidth;
 
+    .dropzone {
+        background: rgb(245, 245, 245);
+        border: .11em dashed $borderGray;
+        border-radius: $borderRadius;
+        margin-bottom: 1.5em;
+        padding: 2em 1em;
+        text-align: center;
+
+        img {
+            max-height: 10em;
+        }
+    }
+
     .primary-button {
         float: right;
     }
@@ -56,6 +69,7 @@ form {
 
         textarea {
             height: 8.5em;
+            margin-bottom: 1.5em;
             width: 100%;
         }
 

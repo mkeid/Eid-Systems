@@ -10,6 +10,7 @@ import {
     SubmitButton,
     SuccessButton
 } from "../../ui/buttons"
+import { getFileObject, renderFileInput } from "../../ui/render_file_input"
 import renderTextField from "../../ui/render_text_field"
 
 
@@ -46,8 +47,15 @@ class SkillForm extends Component {
             const skill = this.props.skills[skillId]
 
             if (skill) {
-                this.setState({skill})
-                this.props.initialize(skill)
+                if (skill.description.constructor === Array) {
+                    skill.description = skill.description.join("\n\n")
+                }
+
+                getFileObject(skill.imgSrc, imgFile => {
+                     skill.imgFile = [imgFile]
+                     this.setState({skill})
+                     this.props.initialize(skill)
+                })
             } else {
                 this.props.showSkill(skillId)
             }
@@ -65,11 +73,18 @@ class SkillForm extends Component {
         this.checkSkill()
     }
 
+    /** Modify the description prop so it properly renders in the about page */
+    componentWillUnmount() {
+        const skill = this.state.skill
+        skill.description = skill.description.split("\n\n")
+    }
+
     /** Check if page object is in the redux store on update */
     componentDidUpdate() {
         this.checkSkill()
     }
 
+    /** Dispatch create skill action and return to skill spage on completion */
     createSkill(data) {
         this.props.createSkill({skill: data})
             .then(() => {
@@ -80,6 +95,7 @@ class SkillForm extends Component {
             })
     }
 
+    /** Dispatch delete skill action and return to skill spage on completion */
     deleteSkill() {
         this.props.deleteSkill(this.state.skill._id)
             .then(() => {
@@ -107,6 +123,14 @@ class SkillForm extends Component {
 
     /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
+        if (typeof(data.keywords) === "string") {
+            data.keywords = data.keywords.split(",")
+        }
+
+        if (typeof(data.description) === "string") {
+            data.description = data.description.split("\n\n")
+        }
+
         // If the form is modifying an existing skill, update it. Else create it
         const formSkill = this.state.skill
         if (formSkill) {
@@ -122,6 +146,7 @@ class SkillForm extends Component {
         })
     }
 
+    /** Dispatch update skill action and spawn a notification on completion */
     updateSkill(skillId, data) {
         this.props.updateSkill(skillId, {skill: data})
             .then(() => {
@@ -165,6 +190,10 @@ class SkillForm extends Component {
                         title="Description"
                         element="textArea"
                         component={this.renderTextField} />
+                    <Field
+                        name="imgFile"
+                        title="Image File"
+                        component={renderFileInput} />
                     {deleteButton}
                     {this.state.hasSaved ? savedButton : saveButton}
                     <CancelButton
