@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import ReactModal from "react-modal"
 import { Field } from "redux-form"
+import { push } from "react-router-redux"
+import { Notification } from 'react-notification'
+
 import {
     CancelButton,
     DangerButton,
@@ -29,6 +32,7 @@ class ProjectForm extends Component {
         this.handleOpenModal = this.handleOpenModal.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.renderTextField = renderTextField.bind(this)
+        this.toggleNotification = this.toggleNotification.bind(this)
         this.updateProject = this.updateProject.bind(this)
     }
 
@@ -69,17 +73,17 @@ class ProjectForm extends Component {
     createProject(data) {
         this.props.createProject({project: data})
             .then(() => {
-                this.props.history.push("/admin/projects")
+                this.props.dispatch(push("/admin/projects"))
             })
             .catch(response => {
-
+                console.log(response)
             })
     }
 
     deleteProject() {
         this.props.deleteProject(this.state.project._id)
             .then(() => {
-                this.props.history.push("/admin/projects")
+                this.props.dispatch(push("/admin/projects"))
             })
             .catch(response => {
 
@@ -106,24 +110,35 @@ class ProjectForm extends Component {
         // If the form is modifying an existing project update...else create it
         const formProject = this.state.project
         if (formProject) {
-            this.updateProject(formProjectId, data)
+            this.updateProject(formProject._id, data)
         } else {
             this.createProject(data)
         }
     }
 
+    toggleNotification() {
+        this.setState({
+          notificationIsActive: !this.state.notificationIsActive
+        })
+    }
+
     updateProject(projectId, data) {
         this.props.updateProject(projectId, {project: data})
             .then(() => {
-
+                this.toggleNotification()
             })
             .catch(response => {
-
+                console.log(response)
             })
     }
 
     render() {
         const head = this.state.project ? "Edit Project" : "New Project"
+        const deleteButton = this.state.project ? (
+            <DangerButton
+                value="Delete"
+                onClick={this.handleOpenModal} />
+        ) : null
         const savedButton = <SuccessButton value="Saved!" />
         const saveButton = <SubmitButton value="Save" />
 
@@ -151,9 +166,7 @@ class ProjectForm extends Component {
                         element="input"
                         type="text"
                         component={this.renderTextField} />
-                    <DangerButton
-                        value="Delete"
-                        onClick={this.handleOpenModal} />
+                    {deleteButton}
                     {this.state.hasSaved ? savedButton : saveButton}
                     <CancelButton
                         redirect={
@@ -161,21 +174,33 @@ class ProjectForm extends Component {
                         } />
                 </div>
                 <ReactModal
-                   isOpen={this.state.modalIsVisible}
-                   contentLabel="Delete Project" >
-                   <div className="head">
+                    className="modal"
+                    isOpen={this.state.modalIsVisible}
+                    contentLabel="Delete Project" >
+                    <div className="head">
                         Delete Project
-                   </div>
-                   <p>
+                    </div>
+                    <p>
                        Are you sure you want to delete this document?
                        This cannot be undone.
-                   </p>
-                   <DangerButton
+                    </p>
+                    <DangerButton
                         value="Delete"
                         onClick={this.deleteProject} />
                     <CancelButton
                          onClick={this.handleCloseModal} />
                 </ReactModal>
+                <Notification
+                    dismissAfter={5000}
+                    isActive={this.state.notificationIsActive}
+                    message="This project was successfully saved.."
+                    action="Dismiss"
+                    title="Success!"
+                    onDismiss={this.toggleNotification.bind(this)}
+                    onClick={() =>  this.setState({
+                        notificationIsActive: false
+                    })}
+                />
             </form>
         )
     }

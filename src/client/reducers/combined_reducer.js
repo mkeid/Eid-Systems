@@ -8,6 +8,7 @@ import LinksReducer from "./links_reducer"
 import NavReducer from "./nav_reducer"
 import PostsReducer from "./posts_reducer"
 import ProjectsReducer from "./projects_reducer"
+import { routerReducer } from "react-router-redux"
 import SitesReducer from "./sites_reducer"
 import SkillsReducer from "./skills_reducer"
 
@@ -21,6 +22,7 @@ const CombinedReducer = combineReducers({
     posts: PostsReducer,
     projects: ProjectsReducer,
     sites: SitesReducer,
+    routing: routerReducer,
     skills: SkillsReducer
 })
 

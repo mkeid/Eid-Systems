@@ -8,7 +8,9 @@ import axios from "axios"
 import axiosMiddleware from "redux-axios-middleware";
 import { connect } from "react-redux"
 import { createStore, applyMiddleware } from "redux"
+import createHistory from 'history/createBrowserHistory'
 import { BrowserRouter } from "react-router-dom"
+import { ConnectedRouter, routerMiddleware } from "react-router-redux"
 import { Provider } from "react-redux"
 import ReactGA from "react-ga"
 
@@ -33,8 +35,14 @@ const axiosClient = axios.create({
     responseType: "json"
 })
 
+// Create an enhanced history that syncs navigation with events with the store
+const history = createHistory()
+
 // Create our store which the entire application references and fetch init data
-const middleware = applyMiddleware(axiosMiddleware(axiosClient))
+const middleware = applyMiddleware(
+    routerMiddleware(history),
+    axiosMiddleware(axiosClient)
+)
 const store = createStore(CombinedReducer, middleware)
 store.dispatch(fetchSites())
 
@@ -44,7 +52,9 @@ store.dispatch(fetchSites())
 class Client extends Component {
     constructor(props) {
         super(props)
-        this.state = { currentPage: "index" }
+        this.state = {
+            currentPage: "index"
+        }
 
         // Bind this to function
         this.updateCurrentPage = this.updateCurrentPage.bind(this)
@@ -62,7 +72,7 @@ class Client extends Component {
 
     render() {
         return this.props.sites.isLoading ? null : (
-            <BrowserRouter>
+            <ConnectedRouter history={history}>
                 <div onClick={this.props.menuClose}>
                     <NavBarContainer
                         currentPage={this.state.currentPage}
@@ -71,7 +81,7 @@ class Client extends Component {
                     <Sites updateCurrentPage={this.updateCurrentPage} />
                     <Footer />
                 </div>
-            </BrowserRouter>
+            </ConnectedRouter>
         )
     }
 }

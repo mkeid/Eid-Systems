@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import ReactModal from "react-modal"
 import { Field } from "redux-form"
+import { push } from "react-router-redux"
+import { Notification } from 'react-notification'
+
 import {
     CancelButton,
     DangerButton,
@@ -64,22 +67,23 @@ class LinkForm extends Component {
     }
 
     createLink(data) {
+        console.log(this.props)
         this.props.createLink({link: data})
             .then(() => {
-                this.props.history.push("/admin/links")
+                this.props.dispatch(push("/admin/links"))
             })
             .catch(response => {
-
+                console.log(response)
             })
     }
 
     deleteLink() {
         this.props.deleteLink(this.state.link._id)
             .then(() => {
-                this.props.history.push("/admin/links")
+                this.props.dispatch(push("/admin/links"))
             })
             .catch(response => {
-
+                console.log(response)
             })
         this.handleCloseModal()
     }
@@ -109,18 +113,29 @@ class LinkForm extends Component {
         }
     }
 
+    toggleNotification() {
+        this.setState({
+          notificationIsActive: !this.state.notificationIsActive
+        })
+    }
+
     updateLink(linkId, data) {
         this.props.updateLink(linkId, {link: data})
             .then(() => {
-
+                this.toggleNotification()
             })
             .catch(response => {
-
+                console.log(response)
             })
     }
 
     render() {
         let head = this.state.link ? "Edit Link" : "New Link"
+        const deleteButton = this.state.link ? (
+            <DangerButton
+                 value="Delete"
+                 onClick={this.handleOpenModal} />
+        ) : null
         const savedButton = <SuccessButton value="Saved!" />
         const saveButton = <SubmitButton value="Save" />
 
@@ -142,9 +157,7 @@ class LinkForm extends Component {
                         element="input"
                         type="text"
                         component={this.renderTextField} />
-                    <DangerButton
-                        value="Delete"
-                        onClick={this.handleOpenModal} />
+                    {deleteButton}
                     {this.state.hasSaved ? savedButton : saveButton}
                     <CancelButton
                         redirect={
@@ -152,21 +165,33 @@ class LinkForm extends Component {
                         } />
                 </div>
                 <ReactModal
-                   isOpen={this.state.modalIsVisible}
-                   contentLabel="Delete Link" >
-                   <div className="head">
+                    className="modal"
+                    isOpen={this.state.modalIsVisible}
+                    contentLabel="Delete Link" >
+                    <div className="head">
                         Delete Link
-                   </div>
-                   <p>
+                    </div>
+                    <p>
                        Are you sure you want to delete this document?
                        This cannot be undone.
-                   </p>
-                   <DangerButton
-                        value="Delete"
-                        onClick={this.deleteLink} />
+                    </p>
+                    <DangerButton
+                         value="Delete"
+                         onClick={this.deleteLink} />
                     <CancelButton
                          onClick={this.handleCloseModal} />
                 </ReactModal>
+                <Notification
+                    dismissAfter={5000}
+                    isActive={this.state.notificationIsActive}
+                    message="This project was successfully saved.."
+                    action="Dismiss"
+                    title="Success!"
+                    onDismiss={this.toggleNotification.bind(this)}
+                    onClick={() =>  this.setState({
+                        notificationIsActive: false
+                    })}
+                />
             </form>
         )
     }

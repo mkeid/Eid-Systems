@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import ReactModal from "react-modal"
 import { Field } from "redux-form"
+import { push } from "react-router-redux"
+import { Notification } from 'react-notification'
+
 import {
     CancelButton,
     DangerButton,
@@ -29,6 +32,7 @@ class PostForm extends Component {
         this.handleOpenModal = this.handleOpenModal.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.renderTextField = renderTextField.bind(this)
+        this.toggleNotification = this.toggleNotification.bind(this)
         this.updatePost = this.updatePost.bind(this)
     }
 
@@ -69,20 +73,20 @@ class PostForm extends Component {
     createPost(data) {
         this.props.createPost({post: data})
             .then(() => {
-                this.context.router.history.push("/admin/posts")
+                this.props.dispatch(push("/admin/posts"))
             })
             .catch(response => {
-
+                console.log(response)
             })
     }
 
     deletePost() {
         this.props.deletePost(this.state.post._id)
             .then(() => {
-                this.context.router.history.push("/admin/posts")
+                this.props.dispatch(push("/admin/posts"))
             })
             .catch(response => {
-
+                console.log(response)
             })
         this.handleCloseModal()
     }
@@ -112,18 +116,29 @@ class PostForm extends Component {
         }
     }
 
+    toggleNotification() {
+        this.setState({
+          notificationIsActive: !this.state.notificationIsActive
+        })
+    }
+
     updatePost(postId, data) {
         this.props.updatePost(postId, {post: data})
             .then(() => {
-
+                this.toggleNotification()
             })
             .catch(response => {
-
+                console.log(response)
             })
     }
 
     render() {
         let head = this.state.post ? "Edit Post" : "New Post"
+        const deleteButton = this.state.post ? (
+            <DangerButton
+                 value="Delete"
+                 onClick={this.handleOpenModal} />
+        ) : null
         const savedButton = <SuccessButton value="Saved!" />
         const saveButton = <SubmitButton value="Save" />
 
@@ -145,9 +160,7 @@ class PostForm extends Component {
                         element="textArea"
                         type="text"
                         component={this.renderTextField} />
-                    <DangerButton
-                        value="Delete"
-                        onClick={this.handleOpenModal} />
+                    {deleteButton}
                     {this.state.hasSaved ? savedButton : saveButton}
                     <CancelButton
                         redirect={
@@ -155,21 +168,33 @@ class PostForm extends Component {
                         } />
                 </div>
                 <ReactModal
-                   isOpen={this.state.modalIsVisible}
-                   contentLabel="Delete Post" >
-                   <div className="head">
-                        Delete Post
-                   </div>
-                   <p>
-                       Are you sure you want to delete this document?
-                       This cannot be undone.
-                   </p>
-                   <DangerButton
-                        value="Delete"
-                        onClick={this.deletePost} />
-                    <CancelButton
-                         onClick={this.handleCloseModal} />
+                    className="modal"
+                    isOpen={this.state.modalIsVisible}
+                    contentLabel="Delete Post" >
+                <div className="head">
+                    Delete Post
+                </div>
+                <p>
+                   Are you sure you want to delete this document?
+                   This cannot be undone.
+                </p>
+                <DangerButton
+                     value="Delete"
+                     onClick={this.deletePost} />
+                <CancelButton
+                     onClick={this.handleCloseModal} />
                 </ReactModal>
+                <Notification
+                    dismissAfter={5000}
+                    isActive={this.state.notificationIsActive}
+                    message="This project was successfully saved.."
+                    action="Dismiss"
+                    title="Success!"
+                    onDismiss={this.toggleNotification.bind(this)}
+                    onClick={() =>  this.setState({
+                        notificationIsActive: false
+                    })}
+                />
             </form>
         )
     }

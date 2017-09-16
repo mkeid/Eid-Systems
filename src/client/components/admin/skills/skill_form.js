@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import ReactModal from "react-modal"
 import { Field } from "redux-form"
+import { push } from "react-router-redux"
+import { Notification } from 'react-notification'
+
 import {
     CancelButton,
     DangerButton,
@@ -29,6 +32,7 @@ class SkillForm extends Component {
         this.handleOpenModal = this.handleOpenModal.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.renderTextField = renderTextField.bind(this)
+        this.toggleNotification = this.toggleNotification.bind(this)
         this.updateSkill = this.updateSkill.bind(this)
     }
 
@@ -69,17 +73,17 @@ class SkillForm extends Component {
     createSkill(data) {
         this.props.createSkill({skill: data})
             .then(() => {
-                this.props.history.push("/admin/skills")
+                this.props.dispatch(push("/admin/skills"))
             })
             .catch(response => {
-
+                console.log(response)
             })
     }
 
     deleteSkill() {
         this.props.deleteSkill(this.state.skill._id)
             .then(() => {
-                this.props.history.push("/admin/skills")
+                this.props.dispatch(push("/admin/skills"))
             })
             .catch(response => {
 
@@ -112,18 +116,29 @@ class SkillForm extends Component {
         }
     }
 
+    toggleNotification() {
+        this.setState({
+          notificationIsActive: !this.state.notificationIsActive
+        })
+    }
+
     updateSkill(skillId, data) {
         this.props.updateSkill(skillId, {skill: data})
             .then(() => {
-
+                this.toggleNotification()
             })
             .catch(response => {
-
+                console.log(response)
             })
     }
 
     render() {
         let head = this.state.skill ? "Edit Skill" : "New Skill"
+        const deleteButton = this.state.skill ? (
+            <DangerButton
+                 value="Delete"
+                 onClick={this.handleOpenModal} />
+        ) : null
         const savedButton = <SuccessButton value="Saved!" />
         const saveButton = <SubmitButton value="Save" />
 
@@ -150,9 +165,7 @@ class SkillForm extends Component {
                         title="Description"
                         element="textArea"
                         component={this.renderTextField} />
-                    <DangerButton
-                        value="Delete"
-                        onClick={this.handleOpenModal} />
+                    {deleteButton}
                     {this.state.hasSaved ? savedButton : saveButton}
                     <CancelButton
                         redirect={
@@ -160,22 +173,33 @@ class SkillForm extends Component {
                         } />
                 </div>
                 <ReactModal
-                   className="modal"
-                   isOpen={this.state.modalIsVisible}
-                   contentLabel="Delete Skill" >
-                   <div className="head">
-                       Delete Skill
-                   </div>
-                   <p>
-                       Are you sure you want to delete this document?
-                       This cannot be undone.
-                   </p>
-                   <DangerButton
-                        value="Delete"
-                        onClick={this.deleteSkill} />
-                    <CancelButton
-                         onClick={this.handleCloseModal} />
+                className="modal"
+                isOpen={this.state.modalIsVisible}
+                contentLabel="Delete Skill" >
+                <div className="head">
+                   Delete Skill
+                </div>
+                <p>
+                   Are you sure you want to delete this document?
+                   This cannot be undone.
+                </p>
+                <DangerButton
+                     value="Delete"
+                     onClick={this.deleteSkill} />
+                <CancelButton
+                     onClick={this.handleCloseModal} />
                 </ReactModal>
+                <Notification
+                    dismissAfter={5000}
+                    isActive={this.state.notificationIsActive}
+                    message="This skill was successfully saved.."
+                    action="Dismiss"
+                    title="Success!"
+                    onDismiss={this.toggleNotification.bind(this)}
+                    onClick={() =>  this.setState({
+                        notificationIsActive: false
+                    })}
+                />
             </form>
         )
     }
