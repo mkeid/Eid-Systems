@@ -32,6 +32,7 @@ if (app.get('env') === "production") {
 
 // Add routing for api with json support
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 app.use("/api", router)
 
 // Always return the main index.html since react-router handles routing

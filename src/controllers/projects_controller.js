@@ -1,3 +1,4 @@
+const fs = require("fs")
 const ProjectModel = require("../models/project_model")
 
 module.exports = {
@@ -47,6 +48,8 @@ module.exports = {
 
     /** Updates a project document with the specified attributes */
     update(request, response, next) {
+        const { file } = request
+
         const query = {_id: request.params["project_id"]}
         ProjectModel.updateOne(query, request.body.project,
             (error, raw) => {

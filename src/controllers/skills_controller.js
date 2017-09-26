@@ -1,8 +1,10 @@
+const fs = require("fs")
 const SkillModel = require("../models/skill_model")
 
 module.exports = {
     /** Creates a new skill document with the specified attributes */
     create(request, response, next) {
+        console.log(request.body.skill)
         const skillData = Object.assign(request.body.skill, {imgSrc: "/"})
         const skill = new SkillModel(skillData)
 
@@ -48,7 +50,7 @@ module.exports = {
 
     /** Updates a skill document with the specified attributes */
     update(request, response, next) {
-        console.log(request.body.skill)
+        const { file } = request
 
         const query = {_id: request.params["skill_id"]}
         SkillModel.updateOne(query, request.body.skill,

@@ -1,3 +1,4 @@
+const fs = require("fs")
 const PostModel = require("../models/post_model")
 
 module.exports = {
@@ -49,6 +50,8 @@ module.exports = {
 
     /** Updates a specified post document */
     update(request, response, next) {
+        const { file } = request
+
         const query = {_id: request.params["post_id"]}
         PostModel.updateOne(query, request.body.post,
             (error, raw) => {

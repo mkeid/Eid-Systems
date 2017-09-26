@@ -11,6 +11,7 @@ import {
     SuccessButton
 } from "../../ui/buttons"
 import { getFileObject, renderFileInput } from "../../ui/render_file_input"
+import { convertToFormData } from "../../../helpers"
 import renderTextField from "../../ui/render_text_field"
 
 
@@ -47,8 +48,8 @@ class PostForm extends Component {
             const post = this.props.posts[postId]
 
             if (post) {
-                getFileObject(post.imgSrc, imgFile => {
-                     post.imgFile = [imgFile]
+                getFileObject(post.imgSrc, imageFile => {
+                     post.imageFile = [imageFile]
                      this.setState({post})
                      this.props.initialize(post)
                 })
@@ -74,8 +75,8 @@ class PostForm extends Component {
         this.checkPost()
     }
 
-    createPost(data) {
-        this.props.createPost({post: data})
+    createPost(formData) {
+        this.props.createPost(formData)
             .then(() => {
                 this.props.dispatch(push("/admin/posts"))
             })
@@ -111,6 +112,8 @@ class PostForm extends Component {
 
     /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
+        convertToFormData(data, "post")
+
         // If the form is modifying an existing post, update it. Else create it
         const formPost = this.state.post
         if (formPost) {
@@ -126,8 +129,8 @@ class PostForm extends Component {
         })
     }
 
-    updatePost(postId, data) {
-        this.props.updatePost(postId, {post: data})
+    updatePost(postId, formData) {
+        this.props.updatePost(postId, formData)
             .then(() => {
                 this.toggleNotification()
             })
@@ -147,7 +150,9 @@ class PostForm extends Component {
         const saveButton = <SubmitButton value="Save" />
 
         return (
-            <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
+            <form
+                encType="multipart/form-data"
+                onSubmit={this.props.handleSubmit(this.handleSubmit)}>
                 <div className="head">
                     {head}
                 </div>
@@ -165,7 +170,7 @@ class PostForm extends Component {
                         type="text"
                         component={this.renderTextField} />
                     <Field
-                        name="imgFile"
+                        name="imageFile"
                         title="Image File"
                         component={renderFileInput} />
                     {deleteButton}

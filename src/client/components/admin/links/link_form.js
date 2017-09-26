@@ -11,6 +11,7 @@ import {
     SuccessButton
 } from "../../ui/buttons"
 import { getFileObject, renderFileInput } from "../../ui/render_file_input"
+import { convertToFormData } from "../../../helpers"
 import renderTextField from "../../ui/render_text_field"
 
 
@@ -44,8 +45,8 @@ class LinkForm extends Component {
             const link = this.props.links[linkId]
 
             if (link) {
-                getFileObject(link.imgSrc, imgFile => {
-                     link.imgFile = [imgFile]
+                getFileObject(link.imgSrc, imageFile => {
+                     link.imageFile = [imageFile]
                      this.setState({link})
                      this.props.initialize(link)
                 })
@@ -70,8 +71,8 @@ class LinkForm extends Component {
         this.checkLink()
     }
 
-    createLink(data) {
-        this.props.createLink({link: data})
+    createLink(formData) {
+        this.props.createLink(formData)
             .then(() => {
                 this.props.dispatch(push("/admin/links"))
             })
@@ -107,6 +108,8 @@ class LinkForm extends Component {
 
     /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
+        convertToFormData(data, "link")
+
         // If the form is modifying an existing link, update it. Else create it
         const formLink = this.state.link
         if (formLink) {
@@ -122,8 +125,8 @@ class LinkForm extends Component {
         })
     }
 
-    updateLink(linkId, data) {
-        this.props.updateLink(linkId, {link: data})
+    updateLink(linkId, formData) {
+        this.props.updateLink(linkId, formData)
             .then(() => {
                 this.toggleNotification()
             })
@@ -143,7 +146,9 @@ class LinkForm extends Component {
         const saveButton = <SubmitButton value="Save" />
 
         return (
-            <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
+            <form
+                encType="multipart/form-data"
+                onSubmit={this.props.handleSubmit(this.handleSubmit)}>
                 <div className="head">
                     {head}
                 </div>
@@ -161,7 +166,7 @@ class LinkForm extends Component {
                         type="text"
                         component={this.renderTextField} />
                     <Field
-                        name="imgFile"
+                        name="imageFile"
                         title="Image File"
                         component={renderFileInput} />
                     {deleteButton}

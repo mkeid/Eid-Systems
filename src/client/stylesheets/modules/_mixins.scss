@@ -33,6 +33,13 @@
     box-shadow: $hlen $vlen $blur $spread $color;
 }
 
+@mixin filter($filter) {
+    -moz-filter: $filter;
+    -o-filter: $filter;
+    -webkit-filter: $filter;
+    filter: $filter;
+}
+
 @mixin mobile-contact-button {
     @include mobile {
         font-size: 2.3em !important;

@@ -1,3 +1,4 @@
+const fs = require("fs")
 const LinkModel = require("../models/link_model")
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
             if (error) {
                 return next(error)
             }
-            
+
             response.json(link)
         })
     },
@@ -37,6 +38,8 @@ module.exports = {
 
     /** Updates a specified link document */
     update(request, response, next) {
+        const { file } = request
+
         LinkModel.updateOne({"_id": request.params["link_id"]}, request.body,
             (error, raw) => {
                 if (error) {

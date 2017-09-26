@@ -11,6 +11,7 @@ import {
     SuccessButton
 } from "../../ui/buttons"
 import { getFileObject, renderFileInput } from "../../ui/render_file_input"
+import { convertToFormData } from "../../../helpers"
 import renderTextField from "../../ui/render_text_field"
 
 
@@ -47,8 +48,8 @@ class ProjectForm extends Component {
             const project = this.props.projects[projectId]
 
             if (project) {
-                getFileObject(project.imgSrc, imgFile => {
-                     project.imgFile = [imgFile]
+                getFileObject(project.imgSrc, imageFile => {
+                     project.imageFile = [imageFile]
                      this.setState({project})
                      this.props.initialize(project)
                 })
@@ -74,8 +75,8 @@ class ProjectForm extends Component {
         this.checkProject()
     }
 
-    createProject(data) {
-        this.props.createProject({project: data})
+    createProject(formData) {
+        this.props.createProject({project: formData})
             .then(() => {
                 this.props.dispatch(push("/admin/projects"))
             })
@@ -111,12 +112,14 @@ class ProjectForm extends Component {
 
     /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
+        const formData = convertToFormData(data, "project")
+
         // If the form is modifying an existing project update...else create it
         const formProject = this.state.project
         if (formProject) {
-            this.updateProject(formProject._id, data)
+            this.updateProject(formProject._id, formData)
         } else {
-            this.createProject(data)
+            this.createProject(formData)
         }
     }
 
@@ -126,8 +129,8 @@ class ProjectForm extends Component {
         })
     }
 
-    updateProject(projectId, data) {
-        this.props.updateProject(projectId, {project: data})
+    updateProject(projectId, formData) {
+        this.props.updateProject(projectId, formData)
             .then(() => {
                 this.toggleNotification()
             })
@@ -147,7 +150,9 @@ class ProjectForm extends Component {
         const saveButton = <SubmitButton value="Save" />
 
         return (
-            <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
+            <form
+                encType="multipart/form-data"
+                onSubmit={this.props.handleSubmit(this.handleSubmit)}>
                 <div className="head">
                     {head}
                 </div>
@@ -171,7 +176,7 @@ class ProjectForm extends Component {
                         type="text"
                         component={this.renderTextField} />
                     <Field
-                        name="imgFile"
+                        name="imageFile"
                         title="Image File"
                         component={renderFileInput} />
                     {deleteButton}

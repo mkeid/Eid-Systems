@@ -11,6 +11,7 @@ import {
     SuccessButton
 } from "../../ui/buttons"
 import { getFileObject, renderFileInput } from "../../ui/render_file_input"
+import { convertToFormData } from "../../../helpers"
 import renderTextField from "../../ui/render_text_field"
 
 
@@ -51,8 +52,8 @@ class SkillForm extends Component {
                     skill.description = skill.description.join("\n\n")
                 }
 
-                getFileObject(skill.imgSrc, imgFile => {
-                     skill.imgFile = [imgFile]
+                getFileObject(skill.imgSrc, imageFile => {
+                     skill.imageFile = [imageFile]
                      this.setState({skill})
                      this.props.initialize(skill)
                 })
@@ -76,7 +77,9 @@ class SkillForm extends Component {
     /** Modify the description prop so it properly renders in the about page */
     componentWillUnmount() {
         const skill = this.state.skill
-        skill.description = skill.description.split("\n\n")
+        if (skill) {
+            skill.description = skill.description.split("\n\n")
+        }
     }
 
     /** Check if page object is in the redux store on update */
@@ -85,8 +88,8 @@ class SkillForm extends Component {
     }
 
     /** Dispatch create skill action and return to skill spage on completion */
-    createSkill(data) {
-        this.props.createSkill({skill: data})
+    createSkill(formData) {
+        this.props.createSkill(formData)
             .then(() => {
                 this.props.dispatch(push("/admin/skills"))
             })
@@ -131,12 +134,14 @@ class SkillForm extends Component {
             data.description = data.description.split("\n\n")
         }
 
+        const formData = convertToFormData(data, "skill")
+
         // If the form is modifying an existing skill, update it. Else create it
         const formSkill = this.state.skill
         if (formSkill) {
-            this.updateSkill(formSkill._id, data)
+            this.updateSkill(formSkill._id, formData)
         } else {
-            this.createSkill(data)
+            this.createSkill(formData)
         }
     }
 
@@ -147,8 +152,8 @@ class SkillForm extends Component {
     }
 
     /** Dispatch update skill action and spawn a notification on completion */
-    updateSkill(skillId, data) {
-        this.props.updateSkill(skillId, {skill: data})
+    updateSkill(skillId, formData) {
+        this.props.updateSkill(skillId, formData)
             .then(() => {
                 this.toggleNotification()
             })
@@ -168,7 +173,9 @@ class SkillForm extends Component {
         const saveButton = <SubmitButton value="Save" />
 
         return (
-            <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
+            <form
+                encType="multipart/form-data"
+                onSubmit={this.props.handleSubmit(this.handleSubmit)}>
                 <div className="head">
                     {head}
                 </div>
@@ -191,7 +198,7 @@ class SkillForm extends Component {
                         element="textArea"
                         component={this.renderTextField} />
                     <Field
-                        name="imgFile"
+                        name="imageFile"
                         title="Image File"
                         component={renderFileInput} />
                     {deleteButton}

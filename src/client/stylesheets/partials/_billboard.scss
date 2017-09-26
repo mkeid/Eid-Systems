@@ -59,7 +59,7 @@
             width: $siteWidth;
 
             a {
-                @include transition(color, .2s, ease-in);
+                @include transition(color, .12s, ease-in);
 
                 color: rgb(84, 172, 190);
                 font-size: 1.3em;
@@ -69,7 +69,7 @@
                 text-decoration: none;
 
                 &:hover {
-                    @include transition(all, .2s, ease-in);
+                    @include transition(all, .12s, ease-in);
                     color: $color3;
                 }
 

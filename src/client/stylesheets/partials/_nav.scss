@@ -218,7 +218,7 @@
             height: 100%;
             position: fixed;
                 left: -100%;
-                top: 6.7em;
+                top: 6.66em;
             width: 50%;
             z-index: 100;
 
@@ -230,7 +230,7 @@
             .nav-item {
                 display: block;
                 border-top: .03em solid rgba(240, 240, 255, .1);
-                font-size: 2.8em;
+                font-size: 2.5em;
                 height: 2em;
                 line-height: 2em;
                 padding-left: 2.5%;
@@ -271,8 +271,6 @@
             }
 
             &:checked ~ .hamburger {
-                @include animation(rotate-rt, .25s, ease-out)
-                transform-origin: center;
                 span {
                     background: $color3 !important;
                 }
@@ -280,7 +278,6 @@
         }
 
         .hamburger {
-            @include animation(fadein, .5s, forwards);
             @include user-select(none);
             display: inline-block;
             position: fixed;
