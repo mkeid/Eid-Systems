@@ -46,9 +46,9 @@ class LinkForm extends Component {
 
             if (link) {
                 getFileObject(link.imgSrc, imageFile => {
-                     link.imageFile = [imageFile]
-                     this.setState({link})
-                     this.props.initialize(link)
+                    link.imageFile = [imageFile]
+                    this.setState({link})
+                    this.props.initialize(link)
                 })
             } else {
                 this.props.showLink(linkId)
@@ -108,14 +108,14 @@ class LinkForm extends Component {
 
     /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
-        convertToFormData(data, "link")
+        const formData = convertToFormData(data, "link")
 
         // If the form is modifying an existing link, update it. Else create it
         const formLink = this.state.link
         if (formLink) {
-            this.updateLink(formLink._id, data)
+            this.updateLink(formLink._id, formData)
         } else {
-            this.createLink(data)
+            this.createLink(formData)
         }
     }
 

@@ -49,9 +49,9 @@ class PostForm extends Component {
 
             if (post) {
                 getFileObject(post.imgSrc, imageFile => {
-                     post.imageFile = [imageFile]
-                     this.setState({post})
-                     this.props.initialize(post)
+                    post.imageFile = [imageFile]
+                    this.setState({post})
+                    this.props.initialize(post)
                 })
             } else {
                 this.props.showPost(postId)
@@ -112,14 +112,14 @@ class PostForm extends Component {
 
     /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
-        convertToFormData(data, "post")
+        const formData = convertToFormData(data, "post")
 
         // If the form is modifying an existing post, update it. Else create it
         const formPost = this.state.post
         if (formPost) {
-            this.updatePost(formPost._id, data)
+            this.updatePost(formPost._id, formData)
         } else {
-            this.createPost(data)
+            this.createPost(formData)
         }
     }
 

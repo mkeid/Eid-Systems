@@ -1,19 +1,32 @@
 const fs = require("fs")
+const path = require("path")
 const PostModel = require("../models/post_model")
+const appDir = path.dirname(require.main.filename)
 
 module.exports = {
     /** Creates a new post document with specified attributes */
     create(request, response, next) {
-        const postData = Object.assign(request.body.post, {imgSrc: "/test"})
-        console.log(postData)
-        const post = new PostModel(postData)
+        const { file, params } = request
+        const publicPath = "/images/posts/" + file.originalname
+        const savePath = path.resolve(appDir + "/../public" + publicPath)
 
-        post.save((error) => {
+        // Attempt to save the document's image file
+        fs.writeFile(savePath, file.buffer, error => {
             if (error) {
-                return next(error)
+                next(error)
             }
 
-            response.json({post})
+            const postData = JSON.parse(request.body.post)
+            postData.imgSrc = publicPath
+            const post = new PostModel(postData)
+
+            post.save((error) => {
+                if (error) {
+                    return next(error)
+                }
+
+                response.json({post})
+            })
         })
     },
 
@@ -50,21 +63,33 @@ module.exports = {
 
     /** Updates a specified post document */
     update(request, response, next) {
-        const { file } = request
+        const { file, params } = request
+        const publicPath = "/images/posts/" + file.originalname
+        const savePath = path.resolve(appDir + "/../public" + publicPath)
 
-        const query = {_id: request.params["post_id"]}
-        PostModel.updateOne(query, request.body.post,
-            (error, raw) => {
-                if (error) {
-                    next(error)
-                }
-
-                PostModel.findOne({_id: request.params["post_id"]},
-                    (error, post) => {
-                        response.json({post})
-                    }
-                )
+        // Attempt to save the document's image file
+        fs.writeFile(savePath, file.buffer, error => {
+            if (error) {
+                next(error)
             }
-        )
+
+            const post = JSON.parse(request.body.post)
+            post.imgSrc = publicPath
+            const query = {_id: request.params["post_id"]}
+
+            PostModel.updateOne(query, post,
+                (error, raw) => {
+                    if (error) {
+                        next(error)
+                    }
+
+                    PostModel.findOne({_id: request.params["post_id"]},
+                        (error, post) => {
+                            response.json({post})
+                        }
+                    )
+                }
+            )
+        })
     }
 }

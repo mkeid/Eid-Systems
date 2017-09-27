@@ -1,4 +1,8 @@
 .contact-index {
+    textarea {
+        margin-bottom: 0 !important;
+    }
+
     .billboard {
         @include animation(fadein, 1s, forwards);
         background: url('/images/contact/contact-billboard.svg');

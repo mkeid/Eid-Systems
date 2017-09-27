@@ -49,9 +49,9 @@ class ProjectForm extends Component {
 
             if (project) {
                 getFileObject(project.imgSrc, imageFile => {
-                     project.imageFile = [imageFile]
-                     this.setState({project})
-                     this.props.initialize(project)
+                    project.imageFile = [imageFile]
+                    this.setState({project})
+                    this.props.initialize(project)
                 })
             } else {
                 this.props.showProject(projectId)

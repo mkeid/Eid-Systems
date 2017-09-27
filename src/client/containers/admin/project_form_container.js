@@ -12,7 +12,7 @@ const validate = values => {
         }
     })
 
-    errors.imgFile = !values.imgFile ? "Please upload 'image file'" : null
+    errors.imageFile = !values.imageFile ? "Please upload 'image file'" : null
 
     return errors
 }

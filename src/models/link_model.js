@@ -9,7 +9,7 @@ const linkSchema = mongoose.Schema({
     },
     imgSrc: {
         type: String,
-        required: false
+        required: true
     },
     href: {
         type: String,

@@ -4,3 +4,6 @@ server.js
 app.js
 *.log
 config.js
+public/images/*
+!public/images/logo.svg
+!public/images/404.svg

@@ -53,9 +53,9 @@ class SkillForm extends Component {
                 }
 
                 getFileObject(skill.imgSrc, imageFile => {
-                     skill.imageFile = [imageFile]
-                     this.setState({skill})
-                     this.props.initialize(skill)
+                    skill.imageFile = [imageFile]
+                    this.setState({skill})
+                    this.props.initialize(skill)
                 })
             } else {
                 this.props.showSkill(skillId)

@@ -14,6 +14,10 @@ const skillSchema = mongoose.Schema({
     keywords: {
         type: Array,
         default: []
+    },
+    imgSrc: {
+        type: String,
+        required: true
     }
 })
 

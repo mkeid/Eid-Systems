@@ -1,19 +1,32 @@
 const fs = require("fs")
+const path = require("path")
 const SkillModel = require("../models/skill_model")
+const appDir = path.dirname(require.main.filename)
 
 module.exports = {
     /** Creates a new skill document with the specified attributes */
     create(request, response, next) {
-        console.log(request.body.skill)
-        const skillData = Object.assign(request.body.skill, {imgSrc: "/"})
-        const skill = new SkillModel(skillData)
+        const { file, params } = request
+        const publicPath = "/images/about/" + file.originalname
+        const savePath = path.resolve(appDir + "/../public" + publicPath)
 
-        skill.save((error) => {
+        // Attempt to save the document's image file
+        fs.writeFile(savePath, file.buffer, error => {
             if (error) {
-                return next(error)
+                next(error)
             }
 
-            response.json(skill)
+            const skillData = JSON.parse(request.body.skill)
+            skillData.imgSrc = publicPath
+            const skill = new SkillModel(skillData)
+
+            skill.save((error) => {
+                if (error) {
+                    return next(error)
+                }
+
+                response.json(skill)
+            })
         })
     },
 
@@ -50,19 +63,35 @@ module.exports = {
 
     /** Updates a skill document with the specified attributes */
     update(request, response, next) {
-        const { file } = request
+        const { file, params } = request
+        const publicPath = "/images/about/" + file.originalname
+        const savePath = path.resolve(appDir + "/../public" + publicPath)
 
-        const query = {_id: request.params["skill_id"]}
-        SkillModel.updateOne(query, request.body.skill,
-            (error, raw) => {
-                if (error) {
-                    next(error)
-                }
-
-                SkillModel.findOne({_id: request.params["skill_id"]},
-                    (error, skill) => response.json({skill})
-                )
+        // Attempt to save the document's image file
+        fs.writeFile(savePath, file.buffer, error => {
+            if (error) {
+                next(error)
             }
-        )
+
+            // Parse the json object and assign its image path
+            const skill = JSON.parse(request.body.skill)
+            skill.imgSrc = publicPath
+
+            const query = {_id: params["skill_id"]}
+            SkillModel.updateOne(query, skill,
+                (error, raw) => {
+                    if (error) {
+                        next(error)
+                    }
+
+                    SkillModel.findOne({_id: params["skill_id"]},
+                        (error, skill) => {
+                            console.log(skill)
+                            response.json({skill})
+                        }
+                    )
+                }
+            )
+        })
     }
 }
