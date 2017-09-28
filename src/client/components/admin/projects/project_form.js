@@ -112,7 +112,9 @@ class ProjectForm extends Component {
 
     /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
-        const formData = convertToFormData(data, "project")
+        // Make copy of data so the form doesn't update on the proceeding edits
+        const projectData = Object.assign({}, data)
+        const formData = convertToFormData(projectData, "project")
 
         // If the form is modifying an existing project update...else create it
         const formProject = this.state.project

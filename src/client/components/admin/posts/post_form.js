@@ -112,7 +112,9 @@ class PostForm extends Component {
 
     /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
-        const formData = convertToFormData(data, "post")
+        // Make copy of data so the form doesn't update on the proceeding edits
+        const postData = Object.assign({}, data)
+        const formData = convertToFormData(postData, "post")
 
         // If the form is modifying an existing post, update it. Else create it
         const formPost = this.state.post

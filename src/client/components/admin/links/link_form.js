@@ -108,7 +108,9 @@ class LinkForm extends Component {
 
     /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
-        const formData = convertToFormData(data, "link")
+        // Make copy of data so the form doesn't update on the proceeding edits
+        const linkData = Object.assign({}, data)
+        const formData = convertToFormData(linkData, "link")
 
         // If the form is modifying an existing link, update it. Else create it
         const formLink = this.state.link

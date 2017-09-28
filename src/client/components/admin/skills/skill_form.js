@@ -126,15 +126,18 @@ class SkillForm extends Component {
 
     /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
-        if (typeof(data.keywords) === "string") {
-            data.keywords = data.keywords.split(",")
+        // Make copy of data so the form doesn't update on the proceeding edits
+        const skillData = Object.assign({}, data)
+
+        if (typeof(skillData.keywords) === "string") {
+            skillData.keywords = data.keywords.split(",")
         }
 
-        if (typeof(data.description) === "string") {
-            data.description = data.description.split("\n\n")
+        if (typeof(skillData.description) === "string") {
+            skillData.description = data.description.split("\n\n")
         }
 
-        const formData = convertToFormData(data, "skill")
+        const formData = convertToFormData(skillData, "skill")
 
         // If the form is modifying an existing skill, update it. Else create it
         const formSkill = this.state.skill
