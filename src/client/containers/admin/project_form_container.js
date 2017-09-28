@@ -20,7 +20,6 @@ const validate = values => {
 // Wire up the ProjectForm component with redux to propagate state
 const ProjectFormContainer = reduxForm({
     form: "ProjectForm",
-    multipartForm: true,
     validate
 })(ProjectForm)
 

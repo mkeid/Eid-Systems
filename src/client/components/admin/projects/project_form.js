@@ -76,7 +76,7 @@ class ProjectForm extends Component {
     }
 
     createProject(formData) {
-        this.props.createProject({project: formData})
+        this.props.createProject(formData)
             .then(() => {
                 this.props.dispatch(push("/admin/projects"))
             })

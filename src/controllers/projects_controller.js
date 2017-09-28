@@ -6,6 +6,8 @@ const appDir = path.dirname(require.main.filename)
 module.exports = {
     /** Creates a new project document with the specified attributes */
     create(request, response, next) {
+        console.log(request.headers)
+
         const { file, params } = request
         const publicPath = "/images/projects/" + file.originalname
         const savePath = path.resolve(appDir + "/../public" + publicPath)
