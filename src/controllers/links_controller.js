@@ -57,17 +57,12 @@ module.exports = {
         const { file, params } = request
         const publicPath = "/images/" + file.originalname
         const savePath = path.resolve(appDir + "/../public" + publicPath)
+        const link = JSON.parse(request.body.link)
 
-        // Attempt to save the document's image file
-        fs.writeFile(savePath, file.buffer, error => {
-            if (error) {
-                next(error)
-            }
+        const updateLink = () => {
+            const query = {"_id": request.params["link_id"]}
 
-            const link = JSON.parse(request.body.link)
-            link.imgSrc = publicPath
-
-            LinkModel.updateOne({"_id": request.params["link_id"]}, link,
+            LinkModel.updateOne(query, link,
                 (error, raw) => {
                     if (error) {
                         next(error)
@@ -78,6 +73,21 @@ module.exports = {
                     )
                 }
             )
-        })
+        }
+
+        // Do not try to save the image file if it is already exists
+        if (file.originalname === "blob") {
+            updateLink()
+        } else {
+            // Attempt to save the document's image file
+            fs.writeFile(savePath, file.buffer, error => {
+                if (error) {
+                    next(error)
+                }
+
+                link.imgSrc = publicPath
+                updateLink()
+            })
+        }
     }
 }

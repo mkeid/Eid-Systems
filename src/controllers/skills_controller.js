@@ -66,18 +66,11 @@ module.exports = {
         const { file, params } = request
         const publicPath = "/images/about/" + file.originalname
         const savePath = path.resolve(appDir + "/../public" + publicPath)
+        const skill = JSON.parse(request.body.skill)
 
-        // Attempt to save the document's image file
-        fs.writeFile(savePath, file.buffer, error => {
-            if (error) {
-                next(error)
-            }
-
-            // Parse the json object and assign its image path
-            const skill = JSON.parse(request.body.skill)
-            skill.imgSrc = publicPath
-
+        const updateSkill = () => {
             const query = {_id: params["skill_id"]}
+
             SkillModel.updateOne(query, skill,
                 (error, raw) => {
                     if (error) {
@@ -92,6 +85,21 @@ module.exports = {
                     )
                 }
             )
-        })
+        }
+
+        // Do not try to save the image file if it is already exists
+        if (file.originalname === "blob") {
+            updateSkill()
+        } else {
+            // Attempt to save the document's image file
+            fs.writeFile(savePath, file.buffer, error => {
+                if (error) {
+                    next(error)
+                }
+
+                skill.imgSrc = publicPath
+                updateSkill()
+            })
+        }
     }
 }

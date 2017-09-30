@@ -49,7 +49,7 @@ module.exports = {
             (error, posts) => {
                 response.json({posts})
             }
-        ).sort({data: "descending"})
+        ).sort({date: "descending"})
     },
 
     /** Returns a specified document from the posts collection */
@@ -66,15 +66,9 @@ module.exports = {
         const { file, params } = request
         const publicPath = "/images/posts/" + file.originalname
         const savePath = path.resolve(appDir + "/../public" + publicPath)
+        const post = JSON.parse(request.body.post)
 
-        // Attempt to save the document's image file
-        fs.writeFile(savePath, file.buffer, error => {
-            if (error) {
-                next(error)
-            }
-
-            const post = JSON.parse(request.body.post)
-            post.imgSrc = publicPath
+        const updatePost = () => {
             const query = {_id: request.params["post_id"]}
 
             PostModel.updateOne(query, post,
@@ -90,6 +84,21 @@ module.exports = {
                     )
                 }
             )
-        })
+        }
+
+        // Do not try to save the image file if it is already exists
+        if(file.originalname === "blob") {
+            updatePost()
+        } else {
+            // Attempt to save the document's image file
+            fs.writeFile(savePath, file.buffer, error => {
+                if (error) {
+                    next(error)
+                }
+
+                post.imgSrc = publicPath
+                updatePost()
+            })
+        }
     }
 }

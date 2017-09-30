@@ -67,15 +67,9 @@ module.exports = {
         const { file, params } = request
         const publicPath = "/images/projects/" + file.originalname
         const savePath = path.resolve(appDir + "/../public" + publicPath)
+        const project = JSON.parse(request.body.project)
 
-        // Attempt to save the document's image file
-        fs.writeFile(savePath, file.buffer, error => {
-            if (error) {
-                next(error)
-            }
-
-            const project = JSON.parse(request.body.project)
-            project.imgSrc = publicPath
+        const updateProject = () => {
             const query = {_id: request.params["project_id"]}
 
             ProjectModel.updateOne(query, project,
@@ -89,6 +83,21 @@ module.exports = {
                     )
                 }
             )
-        })
+        }
+
+        // Do not try to save the image file if it is already exists
+        if (file.originalname === "blob") {
+            updateProject()
+        } else {
+            // Attempt to save the document's image file
+            fs.writeFile(savePath, file.buffer, error => {
+                if (error) {
+                    next(error)
+                }
+
+                project.imgSrc = publicPath
+                updateProject()
+            })
+        }
     }
 }
