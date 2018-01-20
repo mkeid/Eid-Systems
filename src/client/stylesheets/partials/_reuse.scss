@@ -125,8 +125,9 @@ ul {
     color: $color4;
     font-size: 1.188em;
     height: 10em;
-    margin-top: -.1em;
     padding-top: 10em;
+    position: relative;
+    top: -.1em;
     width: 100%;
     z-index: -1;
 
