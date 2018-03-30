@@ -1,7 +1,7 @@
-import React, { Component } from "react"
-import AdminMenu from "./admin_menu"
-import AdminPages from "./admin_pages"
-import requireAuth from "../auth/require_auth"
+import React, { Component } from "react";
+import AdminMenu from "./admin_menu";
+import AdminPages from "./admin_pages";
+import requireAuth from "../auth/require_auth";
 
 
 /*
@@ -19,9 +19,9 @@ class AdminSite extends Component {
                     <AdminPages {...this.props} />
                 </div>
             </div>
-        )
+        );
     }
 }
 
 
-export default requireAuth(AdminSite)
+export default requireAuth(AdminSite);

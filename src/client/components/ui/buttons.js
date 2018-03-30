@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { ScaleLoader } from 'react-spinners';
 
 
@@ -9,11 +9,11 @@ import { ScaleLoader } from 'react-spinners';
 */
 class CancelButton extends Component {
     shouldComponentUpdate() {
-        return false
+        return false;
     }
 
     render() {
-        const buttonValue = this.props.value ? this.props.value : "Cancel"
+        const buttonValue = this.props.value ? this.props.value : "Cancel";
 
         return (
             <div
@@ -24,7 +24,7 @@ class CancelButton extends Component {
                 } >
                 {buttonValue}
             </div>
-        )
+        );
     }
 }
 
@@ -35,11 +35,11 @@ class CancelButton extends Component {
 */
 class DangerButton extends Component {
     shouldComponentUpdate() {
-        return false
+        return false;
     }
 
     render() {
-        const buttonValue = this.props.value ? this.props.value : "Danger"
+        const buttonValue = this.props.value ? this.props.value : "Danger";
 
         return (
             <div
@@ -47,7 +47,7 @@ class DangerButton extends Component {
                 {...this.props}>
                 {buttonValue}
             </div>
-        )
+        );
     }
 }
 
@@ -58,7 +58,7 @@ class DangerButton extends Component {
 */
 class LoadingButton extends Component {
     shouldComponentUpdate() {
-        return false
+        return false;
     }
 
     render() {
@@ -66,7 +66,7 @@ class LoadingButton extends Component {
             <div className="primary-button loading">
                 <ScaleLoader height={12} margin={1} color="white" />
             </div>
-        )
+        );
     }
 }
 
@@ -77,7 +77,7 @@ class LoadingButton extends Component {
 */
 class SubmitButton extends Component {
     shouldComponentUpdate() {
-        return false
+        return false;
     }
 
     render() {
@@ -89,7 +89,7 @@ class SubmitButton extends Component {
                 className="primary-button"
                 value={buttonValue}
                 {...this.props} />
-        )
+        );
     }
 }
 
@@ -100,11 +100,11 @@ class SubmitButton extends Component {
 */
 class SuccessButton extends Component {
     shouldComponentUpdate() {
-        return false
+        return false;
     }
 
     render() {
-        const buttonValue = this.props.value ? this.props.value : "Success"
+        const buttonValue = this.props.value ? this.props.value : "Success";
 
         return (
             <div
@@ -112,7 +112,7 @@ class SuccessButton extends Component {
                 {...this.props}>
                 {buttonValue}
             </div>
-        )
+        );
     }
 }
 
@@ -123,4 +123,4 @@ export {
     LoadingButton,
     SubmitButton,
     SuccessButton
-}
+};

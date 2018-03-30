@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 
 
 /**
@@ -7,10 +7,10 @@ import React, { Component } from "react"
 */
 class ContactBillboard extends Component {
     render() {
-        const link = this.props.links.find(link => link.title === "LinkedIn")
+        const link = this.props.links.find(link => link.title === "LinkedIn");
 
         if (!link) {
-            return null
+            return null;
         }
 
         return (
@@ -22,8 +22,8 @@ class ContactBillboard extends Component {
                     </a>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default ContactBillboard
+export default ContactBillboard;

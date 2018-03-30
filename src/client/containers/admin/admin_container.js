@@ -1,35 +1,35 @@
-import { connect } from "react-redux"
-import AdminSite from "../../components/admin/admin_site"
-import { updateAdminPage } from "../../actions/admin_actions"
-import { logout } from "../../actions/auth_actions"
+import { connect } from "react-redux";
+import AdminSite from "../../components/admin/admin_site";
+import { updateAdminPage } from "../../actions/admin_actions";
+import { logout } from "../../actions/auth_actions";
 
 // Link modules
 import {
     createLink, deleteLink, fetchLinks, showLink, updateLink
-} from "../../actions/link_actions"
+} from "../../actions/link_actions";
 
 // Post modules
 import {
     createPost, deletePost, fetchPosts, showPost, updatePost
-} from "../../actions/post_actions"
+} from "../../actions/post_actions";
 
 // Project modules
 import {
     createProject, deleteProject, fetchProjects, showProject, updateProject
-} from "../../actions/project_actions"
+} from "../../actions/project_actions";
 
 // Site modules
 import {
     showSite, updateSite
-} from "../../actions/site_actions"
+} from "../../actions/site_actions";
 
 // Skill modules
 import {
     createSkill, deleteSkill, fetchSkills, showSkill, updateSkill
-} from "../../actions/skill_actions"
+} from "../../actions/skill_actions";
 
 // Wire up the admin site component with redux to propagate state
-const mapStateToProps = state => state
+const mapStateToProps = state => state;
 const mapDispatchToProps = ({
     createLink,
     deleteLink,
@@ -60,11 +60,11 @@ const mapDispatchToProps = ({
 
     logout,
     updateAdminPage
-})
+});
 
 const AdminContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(AdminSite)
+)(AdminSite);
 
-export default AdminContainer
+export default AdminContainer;

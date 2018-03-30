@@ -1,13 +1,13 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 
 
 /** Return an input element object for redux form's Field component */
 const renderTextField = function(field) {
     const warning = field.meta.touched && field.meta.error ? (
         <div className="warning">{field.meta.error}</div>
-    ) : null
+    ) : null;
 
-    const fieldAttribute = `${field.title.toLowerCase()}Input`
+    const fieldAttribute = `${field.title.toLowerCase()}Input`;
     const element = React.createElement(
         field.element,
         Object.assign(
@@ -15,7 +15,7 @@ const renderTextField = function(field) {
             {type: field.type},
             {ref: input => { this[fieldAttribute] = input }}
         )
-    )
+    );
 
     return (
         <div className="input">
@@ -25,8 +25,8 @@ const renderTextField = function(field) {
             {warning}
             {element}
         </div>
-    )
+    );
 }
 
 
-export default renderTextField
+export default renderTextField;

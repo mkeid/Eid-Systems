@@ -1,7 +1,7 @@
-const LOGIN_REQUEST = "LOGIN_REQUEST"
-const LOGIN_REQUEST_FAIL = "LOGIN_REQUEST_FAIL"
-const LOGIN_REQUEST_SUCCESS = "LOGIN_REQUEST_SUCCESS"
-const LOGOUT = "LOGOUT"
+const LOGIN_REQUEST = "LOGIN_REQUEST";
+const LOGIN_REQUEST_FAIL = "LOGIN_REQUEST_FAIL";
+const LOGIN_REQUEST_SUCCESS = "LOGIN_REQUEST_SUCCESS";
+const LOGOUT = "LOGOUT";
 
 
 /**
@@ -16,7 +16,7 @@ const login = (credentials) => ({
             data: credentials
         }
     }
-})
+});
 
 
 /**
@@ -24,7 +24,7 @@ const login = (credentials) => ({
 */
 const logout = () => ({
     type: LOGOUT
-})
+});
 
 
 export {
@@ -34,4 +34,4 @@ export {
     LOGOUT,
     login,
     logout
-}
+};

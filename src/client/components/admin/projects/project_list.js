@@ -1,6 +1,6 @@
-import _ from "lodash"
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import _ from "lodash";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 
 /*
@@ -10,8 +10,8 @@ import { Link } from "react-router-dom"
 class ProjectList extends Component {
     /** Dispatch redux action to update page status and fetch latest projects */
     componentDidMount() {
-        this.props.updateAdminPage("Projects")
-        this.props.fetchProjects()
+        this.props.updateAdminPage("Projects");
+        this.props.fetchProjects();
     }
 
     render() {
@@ -23,11 +23,11 @@ class ProjectList extends Component {
                     </div>
                 </Link>
             </div>
-        )]
+        )];
 
         // If a list of projects exists in the redux store, append them to items
         if (this.props.projects) {
-            let projects = _.map(this.props.projects, (value, key) => value)
+            let projects = _.map(this.props.projects, (value, key) => value);
             projects = projects.map(project => (
                 <div key={project._id} className="admin-item">
                     <Link to={`/admin/projects/edit/${project._id}`}>
@@ -42,9 +42,9 @@ class ProjectList extends Component {
                         </div>
                     </Link>
                 </div>
-            ))
+            ));
 
-            items = [...items, ...projects]
+            items = [...items, ...projects];
         }
 
 
@@ -53,8 +53,8 @@ class ProjectList extends Component {
             <div className="admin-list">
                 {items}
             </div>
-        )
+        );
     }
 }
 
-export default ProjectList
+export default ProjectList;

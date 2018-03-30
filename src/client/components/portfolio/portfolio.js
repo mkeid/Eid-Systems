@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import Project from "./project"
+import React, { Component } from "react";
+import Project from "./project";
 
 
 /**
@@ -8,27 +8,28 @@ import Project from "./project"
 */
 class Portfolio extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     /** Fetch latest list of projects before mounting */
     componentWillMount() {
-        this.props.fetchProjects()
+        this.props.fetchProjects();
     }
 
     render() {
-        const appearDelay = 150
+        const appearDelay = 150;
         const projects = this.props.indexOnly ?
             this.props.projects.filter(project => project.forIndex).slice(0, 3)
-            : this.props.projects
+            : this.props.projects;
         const projectElements = projects.map(
-            (item, index) =>
-            <Project
-                key={item.title}
-                delay={index * appearDelay}
-                focus={this.focusOnItem}
-                {...item} />
-        )
+            (item, index) => (
+                <Project
+                    key={item.title}
+                    delay={index * appearDelay}
+                    focus={this.focusOnItem}
+                    {...item} />
+            )
+        );
 
         return (
             <ul className="portfolio">
@@ -36,9 +37,9 @@ class Portfolio extends Component {
                     {projectElements}
                 </div>
             </ul>
-        )
+        );
     }
 }
 
 
-export default Portfolio
+export default Portfolio;

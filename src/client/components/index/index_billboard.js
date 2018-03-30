@@ -1,8 +1,8 @@
-import React, { Component } from "react"
-import Particles from "react-particles-js"
-import { Link } from "react-router-dom"
-import Portfolio from "../../containers/portfolio_container"
-import indexParticlesConfig from "../../config/index_particles"
+import React, { Component } from "react";
+import Particles from "react-particles-js";
+import { Link } from "react-router-dom";
+import Portfolio from "../../containers/portfolio_container";
+import indexParticlesConfig from "../../config/index_particles";
 
 
 /**
@@ -14,7 +14,7 @@ const InfoContainer = (props) => (
         <div className="details">{props.data}</div>
         <Link to="/about">Learn more</Link>
     </div>
-)
+);
 
 
 /**
@@ -34,7 +34,7 @@ class InfoContainers extends Component{
                     title={this.props.rightTitle}
                     data={this.props.rightKeywords} />
             </div>
-        )
+        );
     }
 }
 
@@ -46,16 +46,16 @@ class InfoContainers extends Component{
 class IndexBillboard extends Component {
     render() {
         // Data for the left-side component
-        const leftData = this.props.data.left
+        const leftData = this.props.data.left;
         const leftKeywords = leftData.keywords.map(
             data => <span key={data}>{data}</span>
-        )
+        );
 
         // Data for the right-side component
-        const rightData = this.props.data.right
+        const rightData = this.props.data.right;
         const rightKeywords= rightData.keywords.map(
             data => (<span key={data}>{data}</span>)
-        )
+        );
 
         return (
             <div className="billboard">
@@ -69,9 +69,9 @@ class IndexBillboard extends Component {
                     <img src="/images/index/me-art.svg" />
                 </div>
             </div>
-        )
+        );
     }
 }
 
 
-export default IndexBillboard
+export default IndexBillboard;

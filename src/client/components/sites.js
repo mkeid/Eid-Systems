@@ -1,12 +1,12 @@
-import React, { Component } from "react"
-import { Redirect, Route, Switch } from "react-router-dom"
-import AboutContainer from "../containers/about_container"
-import AdminContainer from "../containers/admin/admin_container"
-import AuthIndex from "./auth/auth_index"
-import BlogContainer from "../containers/blog_container"
-import ContactIndex from "./contact/contact_index"
-import IndexContainer from "../containers/index_container"
-import PortfolioIndex from "./portfolio/portfolio_index"
+import React, { Component } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
+import AboutContainer from "../containers/about_container";
+import AdminContainer from "../containers/admin/admin_container";
+import AuthIndex from "./auth/auth_index";
+import BlogContainer from "../containers/blog_container";
+import ContactIndex from "./contact/contact_index";
+import IndexContainer from "../containers/index_container";
+import PortfolioIndex from "./portfolio/portfolio_index";
 
 /**
 * 404 page component function
@@ -15,7 +15,7 @@ const NotFound = () => (
     <div className="not-found-site">
         <div className="billboard" />
     </div>
-)
+);
 
 /**
 * Site conglomeration component comprised of a multitude of site through routing
@@ -41,6 +41,6 @@ const Sites = props => (
             <Redirect to="/404" />
         </Switch>
     </div>
-)
+);
 
-export default Sites
+export default Sites;

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 
 const linkSchema = mongoose.Schema({
@@ -15,7 +15,7 @@ const linkSchema = mongoose.Schema({
         type: String,
         required: true
     },
-})
+});
 
 
-module.exports = mongoose.model("Link", linkSchema)
+module.exports = mongoose.model("Link", linkSchema);

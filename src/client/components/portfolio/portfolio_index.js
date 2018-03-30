@@ -1,6 +1,6 @@
-import React, { Component } from "react"
-import Body from "../ui/body"
-import PortfolioContainer from "../../containers/portfolio_container"
+import React, { Component } from "react";
+import Body from "../ui/body";
+import PortfolioContainer from "../../containers/portfolio_container";
 
 
 /**
@@ -10,7 +10,7 @@ import PortfolioContainer from "../../containers/portfolio_container"
 class PortfolioIndex extends Component {
     /** Dispatch redux action to update status of current page */
     componentDidMount() {
-        this.props.updateCurrentPage("Portfolio")
+        this.props.updateCurrentPage("Portfolio");
     }
 
     render() {
@@ -21,9 +21,9 @@ class PortfolioIndex extends Component {
                         projects={this.props.projects} />
                 </Body>
             </div>
-        )
+        );
     }
 }
 
 
-export default PortfolioIndex
+export default PortfolioIndex;

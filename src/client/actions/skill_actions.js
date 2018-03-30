@@ -1,13 +1,13 @@
-const SKILLS_CREATE_REQUEST = "SKILLS_CREATE_REQUEST"
-const SKILLS_CREATE_REQUEST_SUCCESS = "SKILLS_CREATE_REQUEST_SUCCESS"
-const SKILLS_DESTROY_REQUEST = "SKILLS_DESTROY_REQUEST"
-const SKILLS_DESTROY_REQUEST_SUCCESS = "SKILLS_DESTROY_REQUEST_SUCCESS"
-const SKILLS_LIST_REQUEST = "SKILLS_LIST_REQUEST"
-const SKILLS_LIST_REQUEST_SUCCESS = "SKILLS_LIST_REQUEST_SUCCESS"
-const SKILLS_SHOW_REQUEST = "SKILLS_SHOW_REQUEST"
-const SKILLS_SHOW_REQUEST_SUCCESS = "SKILLS_SHOW_REQUEST_SUCCESS"
-const SKILLS_UPDATE_REQUEST = "SKILLS_UPDATE_REQUEST"
-const SKILLS_UPDATE_REQUEST_SUCCESS = "SKILLS_UPDATE_REQUEST_SUCCESS"
+const SKILLS_CREATE_REQUEST = "SKILLS_CREATE_REQUEST";
+const SKILLS_CREATE_REQUEST_SUCCESS = "SKILLS_CREATE_REQUEST_SUCCESS";
+const SKILLS_DESTROY_REQUEST = "SKILLS_DESTROY_REQUEST";
+const SKILLS_DESTROY_REQUEST_SUCCESS = "SKILLS_DESTROY_REQUEST_SUCCESS";
+const SKILLS_LIST_REQUEST = "SKILLS_LIST_REQUEST";
+const SKILLS_LIST_REQUEST_SUCCESS = "SKILLS_LIST_REQUEST_SUCCESS";
+const SKILLS_SHOW_REQUEST = "SKILLS_SHOW_REQUEST";
+const SKILLS_SHOW_REQUEST_SUCCESS = "SKILLS_SHOW_REQUEST_SUCCESS";
+const SKILLS_UPDATE_REQUEST = "SKILLS_UPDATE_REQUEST";
+const SKILLS_UPDATE_REQUEST_SUCCESS = "SKILLS_UPDATE_REQUEST_SUCCESS";
 
 
 /**
@@ -22,7 +22,7 @@ const createSkill = skill => ({
             data: skill
         }
     }
-})
+});
 
 
 /**
@@ -36,7 +36,7 @@ const deleteSkill = skillId => ({
             url: `/skills/${skillId}`
         }
     }
-})
+});
 
 
 /**
@@ -49,7 +49,7 @@ const fetchSkills = () => ({
             url: "/skills"
         }
     }
-})
+});
 
 
 /**
@@ -62,7 +62,7 @@ const showSkill = skillId => ({
             url: `/skills/${skillId}`
         }
     }
-})
+});
 
 
 /**
@@ -77,7 +77,7 @@ const updateSkill = (skillId, data) => ({
             data
         }
     }
-})
+});
 
 
 export {
@@ -96,4 +96,4 @@ export {
     fetchSkills,
     showSkill,
     updateSkill
-}
+};

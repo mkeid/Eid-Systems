@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 
 /**
 * A single-project component
@@ -6,31 +6,31 @@ import React, { Component } from "react"
 */
 class Project extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             delay: props.delay,
             isVisible: false
-        }
+        };
 
         // Bind this to functions
-        this.makeVisible = this.makeVisible.bind(this)
+        this.makeVisible = this.makeVisible.bind(this);
     }
 
     componentDidMount() {
-        this.appearTimeout = setTimeout(this.makeVisible, this.state.delay)
+        this.appearTimeout = setTimeout(this.makeVisible, this.state.delay);
     }
 
     componentWillUnmount() {
-        this.appearTimeout && clearTimeout(this.appearTimeout)
+        this.appearTimeout && clearTimeout(this.appearTimeout);
     }
 
     makeVisible() {
-        this.setState({isVisible: true})
+        this.setState({isVisible: true});
     }
 
     render() {
-        const visibleClass = this.state.isVisible ? "visible" : ""
-        const className = `project ${visibleClass}`
+        const visibleClass = this.state.isVisible ? "visible" : "";
+        const className = `project ${visibleClass}`;
 
         return (
             <li className="project-container">
@@ -49,9 +49,9 @@ class Project extends Component {
                     </a>
                 </div>
             </li>
-        )
+        );
     }
 }
 
 
-export default Project
+export default Project;

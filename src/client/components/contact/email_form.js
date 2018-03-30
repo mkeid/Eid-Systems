@@ -1,8 +1,8 @@
-import React, { Component } from "react"
-import { Field } from "redux-form"
-import { Shake } from "reshake"
-import { LoadingButton, SubmitButton, SuccessButton } from "../ui/buttons"
-import renderTextField from "../ui/render_text_field"
+import React, { Component } from "react";
+import { Field } from "redux-form";
+import { Shake } from "reshake";
+import { LoadingButton, SubmitButton, SuccessButton } from "../ui/buttons";
+import renderTextField from "../ui/render_text_field";
 
 
 /**
@@ -11,61 +11,61 @@ import renderTextField from "../ui/render_text_field"
 */
 class EmailForm extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             isShaking: false,
             makingRequest: false
-        }
+        };
 
         // Bind this to methods
-        this.handleSendClick = this.handleSendClick.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.renderSendButton = this.renderSendButton.bind(this)
-        this.renderTextField = renderTextField.bind(this)
-        this.stopShaking = this.stopShaking.bind(this)
+        this.handleSendClick = this.handleSendClick.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderSendButton = this.renderSendButton.bind(this);
+        this.renderTextField = renderTextField.bind(this);
+        this.stopShaking = this.stopShaking.bind(this);
     }
 
     /** If the user comes back to the form, re-fill in the inputs */
     componentDidMount() {
         if (this.props.contacted) {
-            this.nameInput.value = this.props.name
-            this.emailInput.value = this.props.email
-            this.messageInput.value = this.props.message
+            this.nameInput.value = this.props.name;
+            this.emailInput.value = this.props.email;
+            this.messageInput.value = this.props.message;
         }
     }
 
     /** After an update, stop the send button from shaking if it is */
     componentDidUpdate() {
         if (this.state.isShaking) {
-            this.shakeTimeout = setTimeout(this.stopShaking, 500)
+            this.shakeTimeout = setTimeout(this.stopShaking, 500);
         }
     }
 
     /** Clear timeout so component doesn't try to set state while unmounted */
     componentWillUnmount() {
-        this.shakeTimeout && clearTimeout(this.shakeTimeout)
+        this.shakeTimeout && clearTimeout(this.shakeTimeout);
     }
 
     /** Handle click events from the send button */
     handleSendClick() {
         if (!this.props.valid) {
-            this.setState({ isShaking: true })
-            this.nameInput.focus()
-            this.emailInput.focus()
-            this.messageInput.focus()
-            this.messageInput.blur()
+            this.setState({ isShaking: true });
+            this.nameInput.focus();
+            this.emailInput.focus();
+            this.messageInput.focus();
+            this.messageInput.blur();
         }
     }
 
     /** If the form is appropriate, send an API POST request to send en email */
     handleSubmit(data) {
-        this.props.sendEmail(data.name, data.email, data.message)
-        this.setState({makingRequest: true})
+        this.props.sendEmail(data.name, data.email, data.message);
+        this.setState({makingRequest: true});
     }
 
     /** Stop the send button from shaking after a form error */
     stopShaking() {
-        this.setState({isShaking: false})
+        this.setState({isShaking: false});
     }
 
     /** Render the shaking error button component */
@@ -75,26 +75,26 @@ class EmailForm extends Component {
                 fixed={true} fixedStop={false} freez={false}>
                 <div className="primary-button err">Send</div>
             </Shake>
-        )
+        );
     }
 
     /** Render the submit button component */
     renderSendButton() {
-        const loadingButton = <LoadingButton />
+        const loadingButton = <LoadingButton />;
         const sendButton = (
             <SubmitButton
                 value="Send"
                 onClick={this.handleSendClick} />
-        )
+        );
 
-        return this.state.makingRequest ? loadingButton : sendButton
+        return this.state.makingRequest ? loadingButton : sendButton;
     }
 
     render() {
         // Form submission button components
         const sendButton = this.state.isShaking ?
-            this.renderShakingButton() : this.renderSendButton()
-        const sentButton = <SuccessButton value="Sent!" />
+            this.renderShakingButton() : this.renderSendButton();
+        const sentButton = <SuccessButton value="Sent!" />;
 
         return (
             <fieldset disabled={this.props.contacted ? "disabled" : ""}>
@@ -129,9 +129,9 @@ class EmailForm extends Component {
                     {this.props.contacted ? sentButton : sendButton}
                 </form>
             </fieldset>
-        )
+        );
     }
 }
 
 
-export default EmailForm
+export default EmailForm;

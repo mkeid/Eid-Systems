@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 
 /*
@@ -8,22 +8,22 @@ import { Link } from "react-router-dom"
 */
 class AdminMenu extends Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         // Bind this to functions
-        this.handleLogout = this.handleLogout.bind(this)
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     /** Dispatch redux action to handle logging out */
     handleLogout(event) {
-        event.preventDefault()
-        this.props.logout()
+        event.preventDefault();
+        this.props.logout();
     }
 
     render() {
         const menuList = [
             "Index", "About", "Links", "Posts", "Projects", "Skills"
-        ]
+        ];
         const menuItems = menuList.map(menuItem => (
             <div
                 key={menuItem}
@@ -34,23 +34,23 @@ class AdminMenu extends Component {
                     {menuItem}
                 </Link>
             </div>
-        ))
+        ));
         const logoutItem = (
             <div key="logout" className="menu-item">
                 <a href="#" onClick={this.handleLogout}>
                     Logout
                 </a>
             </div>
-        )
+        );
 
         return (
             <div className="admin-menu">
                 {menuItems}
                 {logoutItem}
             </div>
-        )
+        );
     }
 }
 
 
-export default AdminMenu
+export default AdminMenu;

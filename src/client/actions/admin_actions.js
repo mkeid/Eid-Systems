@@ -1,4 +1,4 @@
-const UPDATE_ADMIN_PAGE = "UPDATE_ADMIN_PAGE"
+const UPDATE_ADMIN_PAGE = "UPDATE_ADMIN_PAGE";
 
 
 /**
@@ -9,10 +9,10 @@ const updateAdminPage = currentPage => ({
     payload: {
         currentPage
     }
-})
+});
 
 
 export {
     UPDATE_ADMIN_PAGE,
     updateAdminPage
-}
+};

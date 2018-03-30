@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 
 
 /**
@@ -7,7 +7,7 @@ import React, { Component } from "react"
 */
 class AboutBillboardWindow extends Component {
     shouldComponentUpdate() {
-        return false
+        return false;
     }
 
     render() {
@@ -32,7 +32,7 @@ class AboutBillboardWindow extends Component {
 */
 class AboutBillboard extends Component {
     shouldComponentUpdate() {
-        return false
+        return false;
     }
 
     render() {
@@ -45,9 +45,9 @@ class AboutBillboard extends Component {
                         detail={this.props.about.detail} />
                 </div>
             </div>
-        )
+        );
     }
 }
 
 
-export default AboutBillboard
+export default AboutBillboard;

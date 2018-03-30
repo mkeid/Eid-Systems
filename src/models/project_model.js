@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 
 const projectSchema = mongoose.Schema({
@@ -23,7 +23,7 @@ const projectSchema = mongoose.Schema({
         type: Boolean,
         default: false
     }
-})
+});
 
 
-module.exports = mongoose.model("Project", projectSchema)
+module.exports = mongoose.model("Project", projectSchema);

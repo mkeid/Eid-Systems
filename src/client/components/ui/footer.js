@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 
 
 /**
@@ -7,7 +7,7 @@ import React, { Component } from "react"
 */
 class Footer extends Component {
     shouldComponentUpdate() {
-        return false
+        return false;
     }
 
     render() {
@@ -17,9 +17,9 @@ class Footer extends Component {
                     © Copyright 2017 | Mohamed K. Eid
                 </div>
             </div>
-        )
+        );
     }
 }
 
 
-export default Footer
+export default Footer;

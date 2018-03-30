@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 
 /**
@@ -8,14 +8,14 @@ import { Link } from "react-router-dom"
 */
 class Post extends Component {
     render() {
-        const date = new Date(this.props.date)
+        const date = new Date(this.props.date);
         const dateString = date.toLocaleDateString('en-US', {
             day : 'numeric',
             month : 'short',
             year : 'numeric'
-        })
-        const dateText = `By Mohamed Eid on ${dateString}`
-        const postUrl = `/blog/${this.props.title}`
+        });
+        const dateText = `By Mohamed Eid on ${dateString}`;
+        const postUrl = `/blog/${this.props.title}`;
 
         return (
             <div className="post">
@@ -29,9 +29,9 @@ class Post extends Component {
                     </Link>
                 ) : null}
             </div>
-        )
+        );
     }
 }
 
 
-export default Post
+export default Post;

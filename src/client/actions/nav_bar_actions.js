@@ -1,5 +1,5 @@
-const MENU_CLOSE = "MENU_CLOSE"
-const MENU_OPEN = "MENU_OPEN"
+const MENU_CLOSE = "MENU_CLOSE";
+const MENU_OPEN = "MENU_OPEN";
 
 
 /**
@@ -7,7 +7,7 @@ const MENU_OPEN = "MENU_OPEN"
 */
 const menuClose = () => ({
     type: MENU_CLOSE
-})
+});
 
 
 /**
@@ -15,7 +15,7 @@ const menuClose = () => ({
 */
 const menuOpen = () => ({
     type: MENU_OPEN
-})
+});
 
 
 export {
@@ -23,4 +23,4 @@ export {
     MENU_OPEN,
     menuClose,
     menuOpen
-}
+};

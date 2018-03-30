@@ -1,13 +1,13 @@
-const POSTS_CREATE_REQUEST = "POSTS_CREATE_REQUEST"
-const POSTS_CREATE_REQUEST_SUCCESS = "POSTS_CREATE_REQUEST_SUCCESS"
-const POSTS_DESTROY_REQUEST = "POSTS_DESTROY_REQUEST"
-const POSTS_DESTROY_REQUEST_SUCCESS = "POSTS_DESTROY_REQUEST_SUCCESS"
-const POSTS_SHOW_REQUEST = "POSTS_SHOW_REQUEST"
-const POSTS_SHOW_REQUEST_SUCCESS = "POSTS_SHOW_REQUEST_SUCCESS"
-const POSTS_LIST_REQUEST = "POSTS_LIST_REQUEST"
-const POSTS_LIST_REQUEST_SUCCESS = "POSTS_LIST_REQUEST_SUCCESS"
-const POSTS_UPDATE_REQUEST = "POSTS_UPDATE_REQUEST"
-const POSTS_UPDATE_REQUEST_SUCCESS = "POSTS_UPDATE_REQUEST_SUCCESS"
+const POSTS_CREATE_REQUEST = "POSTS_CREATE_REQUEST";
+const POSTS_CREATE_REQUEST_SUCCESS = "POSTS_CREATE_REQUEST_SUCCESS";
+const POSTS_DESTROY_REQUEST = "POSTS_DESTROY_REQUEST";
+const POSTS_DESTROY_REQUEST_SUCCESS = "POSTS_DESTROY_REQUEST_SUCCESS";
+const POSTS_SHOW_REQUEST = "POSTS_SHOW_REQUEST";
+const POSTS_SHOW_REQUEST_SUCCESS = "POSTS_SHOW_REQUEST_SUCCESS";
+const POSTS_LIST_REQUEST = "POSTS_LIST_REQUEST";
+const POSTS_LIST_REQUEST_SUCCESS = "POSTS_LIST_REQUEST_SUCCESS";
+const POSTS_UPDATE_REQUEST = "POSTS_UPDATE_REQUEST";
+const POSTS_UPDATE_REQUEST_SUCCESS = "POSTS_UPDATE_REQUEST_SUCCESS";
 
 
 /**
@@ -22,7 +22,7 @@ const createPost = post => ({
             data: post
         }
     }
-})
+});
 
 
 /**
@@ -36,7 +36,7 @@ const deletePost = postId => ({
             url: `/posts/${postId}`
         }
     }
-})
+});
 
 
 /**
@@ -49,7 +49,7 @@ const fetchPosts = () => ({
             url: "/posts"
         }
     }
-})
+});
 
 
 /**
@@ -62,7 +62,7 @@ const showPost = postId => ({
             url: `/posts/${postId}`
         }
     }
-})
+});
 
 
 /**
@@ -77,7 +77,7 @@ const updatePost = (postId, data) => ({
             data
         }
     }
-})
+});
 
 
 export {
@@ -96,4 +96,4 @@ export {
     fetchPosts,
     showPost,
     updatePost
-}
+};

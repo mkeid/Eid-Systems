@@ -1,18 +1,18 @@
-import React, { Component } from "react"
-import ReactModal from "react-modal"
-import { Field } from "redux-form"
-import { push } from "react-router-redux"
-import { Notification } from 'react-notification'
+import React, { Component } from "react";
+import ReactModal from "react-modal";
+import { Field } from "redux-form";
+import { push } from "react-router-redux";
+import { Notification } from 'react-notification';
 
 import {
     CancelButton,
     DangerButton,
     SubmitButton,
     SuccessButton
-} from "../../ui/buttons"
-import { getFileObject, renderFileInput } from "../../ui/render_file_input"
-import { convertToFormData } from "../../../helpers"
-import renderTextField from "../../ui/render_text_field"
+} from "../../ui/buttons";
+import { getFileObject, renderFileInput } from "../../ui/render_file_input";
+import { convertToFormData } from "../../../helpers";
+import renderTextField from "../../ui/render_text_field";
 
 
 /*
@@ -21,131 +21,131 @@ import renderTextField from "../../ui/render_text_field"
 */
 class LinkForm extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             modalIsVisible: false
-        }
+        };
 
         // Bind this to functions
-        this.deleteLink = this.deleteLink.bind(this)
-        this.handleCloseModal = this.handleCloseModal.bind(this)
-        this.handleOpenModal = this.handleOpenModal.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.renderTextField = renderTextField.bind(this)
-        this.updateLink = this.updateLink.bind(this)
+        this.deleteLink = this.deleteLink.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
+        this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderTextField = renderTextField.bind(this);
+        this.updateLink = this.updateLink.bind(this);
     }
 
     /** If page object was found in store, init the redux form else fetch it */
     checkLink() {
-        const match = this.props.match
-        const isEditForm = match && match.params["link_id"]
+        const match = this.props.match;
+        const isEditForm = match && match.params.link_id;
 
         if (!this.state.link && isEditForm) {
-            const linkId = match.params["link_id"]
-            const link = this.props.links[linkId]
+            const linkId = match.params.link_id;
+            const link = this.props.links[linkId];
 
             if (link) {
                 getFileObject(link.imgSrc, imageFile => {
-                    link.imageFile = [imageFile]
-                    this.setState({link})
-                    this.props.initialize(link)
+                    link.imageFile = [imageFile];
+                    this.setState({link});
+                    this.props.initialize(link);
                 })
             } else {
-                this.props.showLink(linkId)
+                this.props.showLink(linkId);
             }
         }
     }
 
     /** Dispatch redux action to update page status and possibly init form */
     componentDidMount() {
-        this.props.updateAdminPage("Links")
+        this.props.updateAdminPage("Links");
         this.props.initialize({
             title: "",
             href: ""
-        })
-        this.checkLink()
+        });
+        this.checkLink();
     }
 
     /** Check if page object is in the redux store on update */
     componentDidUpdate() {
-        this.checkLink()
+        this.checkLink();
     }
 
     createLink(formData) {
         this.props.createLink(formData)
             .then(() => {
-                this.props.dispatch(push("/admin/links"))
+                this.props.dispatch(push("/admin/links"));
             })
             .catch(response => {
-                console.log(response)
-            })
+                console.log(response);
+            });
     }
 
     deleteLink() {
         this.props.deleteLink(this.state.link._id)
             .then(() => {
-                this.props.dispatch(push("/admin/links"))
+                this.props.dispatch(push("/admin/links"));
             })
             .catch(response => {
-                console.log(response)
-            })
-        this.handleCloseModal()
+                console.log(response);
+            });
+        this.handleCloseModal();
     }
 
     /** Update state to reflect that the delete modal is closed */
     handleCloseModal() {
         this.setState({
             modalIsVisible: false
-        })
+        });
     }
 
     /** Update state to reflect that the delete modal is opened */
     handleOpenModal() {
         this.setState({
             modalIsVisible: true
-        })
+        });
     }
 
     /** Handle a validated redux form submission of the form */
     handleSubmit(data) {
         // Make copy of data so the form doesn't update on the proceeding edits
-        const linkData = Object.assign({}, data)
-        const formData = convertToFormData(linkData, "link")
+        const linkData = Object.assign({}, data);
+        const formData = convertToFormData(linkData, "link");
 
         // If the form is modifying an existing link, update it. Else create it
-        const formLink = this.state.link
+        const formLink = this.state.link;
         if (formLink) {
-            this.updateLink(formLink._id, formData)
+            this.updateLink(formLink._id, formData);
         } else {
-            this.createLink(formData)
+            this.createLink(formData);
         }
     }
 
     toggleNotification() {
         this.setState({
           notificationIsActive: !this.state.notificationIsActive
-        })
+        });
     }
 
     updateLink(linkId, formData) {
         this.props.updateLink(linkId, formData)
             .then(() => {
-                this.toggleNotification()
+                this.toggleNotification();
             })
             .catch(response => {
-                console.log(response)
-            })
+                console.log(response);
+            });
     }
 
     render() {
-        let head = this.state.link ? "Edit Link" : "New Link"
+        let head = this.state.link ? "Edit Link" : "New Link";
         const deleteButton = this.state.link ? (
             <DangerButton
                  value="Delete"
                  onClick={this.handleOpenModal} />
-        ) : null
-        const savedButton = <SuccessButton value="Saved!" />
-        const saveButton = <SubmitButton value="Save" />
+        ) : null;
+        const savedButton = <SuccessButton value="Saved!" />;
+        const saveButton = <SubmitButton value="Save" />;
 
         return (
             <form
@@ -207,9 +207,9 @@ class LinkForm extends Component {
                     })}
                 />
             </form>
-        )
+        );
     }
 }
 
 
-export default LinkForm
+export default LinkForm;

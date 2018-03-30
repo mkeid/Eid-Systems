@@ -1,17 +1,17 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 
 /**
 * A single nav item component representing a title / link to another page
 */
 function NavItem(props) {
-    const className = `nav-item ${props.selected ? "selected" : null}`
+    const className = `nav-item ${props.selected ? "selected" : null}`;
     return (
         <Link to={props.href} className={className}>
             {props.title}
         </Link>
-    )
+    );
 }
 
 
@@ -21,8 +21,8 @@ function NavItem(props) {
 */
 class NavItemList extends Component {
     constructor(props) {
-        super(props)
-        this.titles = ["About", "Blog", "Contact", "Portfolio"]
+        super(props);
+        this.titles = ["About", "Blog", "Contact", "Portfolio"];
     }
 
     render() {
@@ -32,7 +32,7 @@ class NavItemList extends Component {
                 title="HOME"
                 href="/"
                 selected={"Home" == this.props.currentPage} />
-        )
+        );
 
         const navItems = this.titles.map(item =>
             <NavItem
@@ -40,7 +40,7 @@ class NavItemList extends Component {
                 title={item.toUpperCase()}
                 href={"/" + item.toLowerCase()}
                 selected={item === this.props.currentPage} />
-        )
+        );
 
         return (
             <div className="nav-item-list-parent">
@@ -48,9 +48,9 @@ class NavItemList extends Component {
                     {[homeItem, ...navItems]}
                 </div>
             </div>
-        )
+        );
     }
 }
 
 
-export default NavItemList
+export default NavItemList;

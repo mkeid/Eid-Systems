@@ -1,6 +1,6 @@
-import _ from "lodash"
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import _ from "lodash";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 
 /*
@@ -10,8 +10,8 @@ import { Link } from "react-router-dom"
 class LinkList extends Component {
     /** Dispatch redux action to update page status and fetch latest posts */
     componentDidMount() {
-        this.props.updateAdminPage("Links")
-        this.props.fetchLinks()
+        this.props.updateAdminPage("Links");
+        this.props.fetchLinks();
     }
 
     render() {

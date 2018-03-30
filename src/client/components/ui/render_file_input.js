@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import Dropzone from "react-dropzone"
+import React, { Component } from "react";
+import Dropzone from "react-dropzone";
 
 
 const getFileBlob = (url, cb) => {
@@ -16,7 +16,7 @@ const getFileBlob = (url, cb) => {
 const blobToFile = (blob, name) => {
     blob.lastModifiedDate = new Date();
     blob.name = name;
-    blob.preview = name
+    blob.preview = name;
     return blob;
 };
 
@@ -30,11 +30,11 @@ const getFileObject = (filePathOrUrl, callback) => {
 
 const renderFileInput = field => {
     const files = field.input.value;
-    const fileIsInDropzone = files && Array.isArray(files)
+    const fileIsInDropzone = files && Array.isArray(files);
 
     const warning = field.meta.touched && field.meta.error ? (
         <div className="warning">{field.meta.error}</div>
-    ) : null
+    ) : null;
     const element = (
         <Dropzone
             className="dropzone"
@@ -47,7 +47,7 @@ const renderFileInput = field => {
             ) : "Drop a file here to upload."}
 
         </Dropzone>
-    )
+    );
 
     return (
         <div className="input">
@@ -63,4 +63,4 @@ const renderFileInput = field => {
 export {
     getFileObject,
     renderFileInput
-}
+};

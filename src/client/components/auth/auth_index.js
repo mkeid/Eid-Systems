@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import LoginFormContainer from "../../containers/login_form_container"
+import React, { Component } from "react";
+import LoginFormContainer from "../../containers/login_form_container";
 
 
 /*
@@ -8,11 +8,11 @@ import LoginFormContainer from "../../containers/login_form_container"
 */
 class AuthIndex extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     shouldComponentUpdate() {
-        return false
+        return false;
     }
 
     render() {
@@ -22,9 +22,9 @@ class AuthIndex extends Component {
                     <LoginFormContainer />
                 </div>
             </div>
-        )
+        );
     }
 }
 
 
-export default AuthIndex
+export default AuthIndex;

@@ -1,6 +1,6 @@
-import React, { Component } from "react"
-import VisibilitySensor from "react-visibility-sensor"
-import Keyword from "./keyword"
+import React, { Component } from "react";
+import VisibilitySensor from "react-visibility-sensor";
+import Keyword from "./keyword";
 
 
 /**
@@ -9,25 +9,25 @@ import Keyword from "./keyword"
 */
 class Skill extends Component {
     constructor(props) {
-        super(props)
-        this.state = { keywordsAreVisible: false }
+        super(props);
+        this.state = { keywordsAreVisible: false };
 
         // Bind this to function
-        this.showKeywords = this.showKeywords.bind(this)
+        this.showKeywords = this.showKeywords.bind(this);
     }
 
     /** Set the set of keywords to visible so each word invokes its action */
     showKeywords(isVisible) {
         if (!this.state.keywordsAreVisible && isVisible) {
-            this.setState({ keywordsAreVisible: true })
+            this.setState({ keywordsAreVisible: true });
         }
     }
 
     render() {
         // Split the description array into a list of paragraph components
         const descriptions = this.props.description.map(
-            (paragraph, index) => <p key={ index }>{ paragraph }</p>
-        )
+            (paragraph, index) => (<p key={ index }>{ paragraph }</p>)
+        );
 
         // Create a list of keyword components for each tag
         const keywords = this.props.keywords.sort().map(
@@ -38,7 +38,7 @@ class Skill extends Component {
                     setIsVisible={this.state.keywordsAreVisible}
                     word={ keyword } />
             )
-        )
+        );
 
         return (
             <div className="skill">
@@ -58,9 +58,9 @@ class Skill extends Component {
                     </VisibilitySensor>
                 </div>
             </div>
-        )
+        );
     }
 }
 
 
-export default Skill
+export default Skill;

@@ -1,7 +1,7 @@
-import React, { Component } from "react"
-import { Field } from "redux-form"
-import PropTypes from "prop-types"
-import renderTextField from "../ui/render_text_field"
+import React, { Component } from "react";
+import { Field } from "redux-form";
+import PropTypes from "prop-types";
+import renderTextField from "../ui/render_text_field";
 
 
 /*
@@ -10,21 +10,21 @@ import renderTextField from "../ui/render_text_field"
 */
 class LoginForm extends Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         // Bind this to functions
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.renderTextField = renderTextField.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderTextField = renderTextField.bind(this);
     }
 
     componentDidUpdate() {
         if (this.props.auth.isAuthenticated) {
-            this.context.router.history.push("/admin/index")
+            this.context.router.history.push("/admin/index");
         }
     }
 
     handleSubmit(credentials) {
-        this.props.login(credentials)
+        this.props.login(credentials);
     }
 
     render() {
@@ -32,7 +32,7 @@ class LoginForm extends Component {
             <div className="warning">
                 {this.props.auth.error}
             </div>
-        ) : null
+        ) : null;
 
         return (
             <form
@@ -61,14 +61,14 @@ class LoginForm extends Component {
                         value="Login" />
                 </div>
             </form>
-        )
+        );
     }
 }
 
 // Enable the router context type so that the form gains routing capability
 LoginForm.contextTypes = {
     router: PropTypes.object
-}
+};
 
 
-export default LoginForm
+export default LoginForm;

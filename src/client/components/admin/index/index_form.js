@@ -1,9 +1,9 @@
-import React, { Component } from "react"
-import { Field } from "redux-form"
-import { Notification } from 'react-notification'
+import React, { Component } from "react";
+import { Field } from "redux-form";
+import { Notification } from 'react-notification';
 
-import { CancelButton, SubmitButton, SuccessButton } from "../../ui/buttons"
-import renderTextField from "../../ui/render_text_field"
+import { CancelButton, SubmitButton, SuccessButton } from "../../ui/buttons";
+import renderTextField from "../../ui/render_text_field";
 
 
 /*
@@ -12,49 +12,49 @@ import renderTextField from "../../ui/render_text_field"
 */
 class IndexForm extends Component {
     constructor(props) {
-        super(props)
-        this.state = {}
+        super(props);
+        this.state = {};
 
         // Bind this to functions
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.renderTextField = renderTextField.bind(this)
-        this.toggleNotification = this.toggleNotification.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderTextField = renderTextField.bind(this);
+        this.toggleNotification = this.toggleNotification.bind(this);
     }
 
     /** Dispatch redux action to update page status and possibly init form */
     componentDidMount() {
-        this.props.updateAdminPage("Index")
+        this.props.updateAdminPage("Index");
 
-        const index = this.props.index
+        const index = this.props.index;
         if (index) {
-            this.props.initialize(index)
+            this.props.initialize(index);
         } else {
-            this.props.showSite("index")
+            this.props.showSite("index");
         }
     }
 
     handleSubmit(data) {
         if (typeof(data.left.keywords) === "string") {
-            data.left.keywords = data.left.keywords.split(",")
+            data.left.keywords = data.left.keywords.split(",");
         }
 
         if (typeof(data.right.keywords) === "string") {
-            data.right.keywords = data.right.keywords.split(",")
+            data.right.keywords = data.right.keywords.split(",");
         }
 
         this.props.updateSite("index", {data})
             .then(() => {
-                this.toggleNotification()
+                this.toggleNotification();
             })
             .catch(response => {
-                console.log(response)
-            })
+                console.log(response);
+            });
     }
 
     toggleNotification() {
         this.setState({
           notificationIsActive: !this.state.notificationIsActive
-        })
+        });
     }
 
     render() {
@@ -105,8 +105,8 @@ class IndexForm extends Component {
                     })}
                 />
             </form>
-        )
+        );
     }
 }
 
-export default IndexForm
+export default IndexForm;

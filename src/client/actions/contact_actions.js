@@ -1,5 +1,5 @@
-const SEND_EMAIL_REQUEST = "SEND_EMAIL_REQUEST"
-const SEND_EMAIL_REQUEST_SUCCESS = "SEND_EMAIL_REQUEST_SUCCESS"
+const SEND_EMAIL_REQUEST = "SEND_EMAIL_REQUEST";
+const SEND_EMAIL_REQUEST_SUCCESS = "SEND_EMAIL_REQUEST_SUCCESS";
 
 
 /**
@@ -14,11 +14,11 @@ const sendEmail = (name, email, message) => ({
             data: {name, email, message}
         }
     }
-})
+});
 
 
 export {
     SEND_EMAIL_REQUEST,
     SEND_EMAIL_REQUEST_SUCCESS,
     sendEmail
-}
+};

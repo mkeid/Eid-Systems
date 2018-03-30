@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 
 const siteSchema = mongoose.Schema({
@@ -11,7 +11,7 @@ const siteSchema = mongoose.Schema({
         type: Object,
         required: true
     }
-})
+});
 
 
-module.exports = mongoose.model("Site", siteSchema)
+module.exports = mongoose.model("Site", siteSchema);

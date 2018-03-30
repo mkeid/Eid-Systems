@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 
 
 /**
@@ -15,11 +15,11 @@ class NavSocialList extends Component {
                     <img src={link.imgSrc} />
                 </a>
             )
-        )
+        );
 
-        return <div className="nav-social-list">{navSocials}</div>
+        return <div className="nav-social-list">{navSocials}</div>;
     }
 }
 
 
-export default NavSocialList
+export default NavSocialList;

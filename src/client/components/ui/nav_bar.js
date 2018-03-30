@@ -1,7 +1,7 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import NavItemList from "./nav_item_list"
-import NavSocialList from "./nav_social_list"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import NavItemList from "./nav_item_list";
+import NavSocialList from "./nav_social_list";
 
 
 /**
@@ -13,7 +13,7 @@ const Logo = (props) => (
             <img src={props.imgSrc} />
         </Link>
     </div>
-)
+);
 
 
 /**
@@ -25,7 +25,7 @@ const Hamburger = () => (
         <span></span>
         <span></span>
     </div>
-)
+);
 
 
 /**
@@ -34,28 +34,28 @@ const Hamburger = () => (
 */
 class NavBar extends Component {
     constructor(props) {
-        super(props)
-        this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+        super(props);
+        this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     }
 
     componentWillMount() {
         if (!this.props.links.length) {
-            this.props.fetchLinks()
+            this.props.fetchLinks();
         }
     }
 
     // Toggle menu visibility
     handleCheckboxChange() {
         if (this.props.menuOpened) {
-            this.props.menuClose()
+            this.props.menuClose();
         } else {
-            this.props.menuOpen()
+            this.props.menuOpen();
         }
     }
 
     render() {
-        const logo = (<Logo imgSrc="/images/logo.svg" />)
-        const navItemList = (<NavItemList {...this.props} />)
+        const logo = (<Logo imgSrc="/images/logo.svg" />);
+        const navItemList = (<NavItemList {...this.props} />);
 
         return (
             <div>
@@ -76,9 +76,9 @@ class NavBar extends Component {
                     <div className="black-cover" />
                 </div>
             </div>
-        )
+        );
     }
 }
 
 
-export default NavBar
+export default NavBar;

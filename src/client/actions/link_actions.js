@@ -1,13 +1,13 @@
-const LINKS_CREATE_REQUEST = "LINKS_CREATE_REQUEST"
-const LINKS_CREATE_REQUEST_SUCCESS = "LINKS_CREATE_REQUEST_SUCCESS"
-const LINKS_DESTROY_REQUEST = "LINKS_DESTROY_REQUEST"
-const LINKS_DESTROY_REQUEST_SUCCESS = "LINKS_DESTROY_REQUEST_SUCCESS"
-const LINKS_LIST_REQUEST = "LINKS_LIST_REQUEST"
-const LINKS_LIST_REQUEST_SUCCESS = "LINKS_LIST_REQUEST_SUCCESS"
-const LINKS_SHOW_REQUEST = "LINKS_SHOW_REQUEST"
-const LINKS_SHOW_REQUEST_SUCCESS = "LINKS_SHOW_REQUEST_SUCCESS"
-const LINKS_UPDATE_REQUEST = "LINKS_UPDATE_REQUEST"
-const LINKS_UPDATE_REQUEST_SUCCESS = "LINKS_UPDATE_REQUEST_SUCCESS"
+const LINKS_CREATE_REQUEST = "LINKS_CREATE_REQUEST";
+const LINKS_CREATE_REQUEST_SUCCESS = "LINKS_CREATE_REQUEST_SUCCESS";
+const LINKS_DESTROY_REQUEST = "LINKS_DESTROY_REQUEST";
+const LINKS_DESTROY_REQUEST_SUCCESS = "LINKS_DESTROY_REQUEST_SUCCESS";
+const LINKS_LIST_REQUEST = "LINKS_LIST_REQUEST";
+const LINKS_LIST_REQUEST_SUCCESS = "LINKS_LIST_REQUEST_SUCCESS";
+const LINKS_SHOW_REQUEST = "LINKS_SHOW_REQUEST";
+const LINKS_SHOW_REQUEST_SUCCESS = "LINKS_SHOW_REQUEST_SUCCESS";
+const LINKS_UPDATE_REQUEST = "LINKS_UPDATE_REQUEST";
+const LINKS_UPDATE_REQUEST_SUCCESS = "LINKS_UPDATE_REQUEST_SUCCESS";
 
 
 /**
@@ -22,7 +22,7 @@ const createLink = link => ({
             data: link
         }
     }
-})
+});
 
 
 /**
@@ -36,7 +36,7 @@ const deleteLink = linkId => ({
             url: `/links/${linkId}`
         }
     }
-})
+});
 
 
 /**
@@ -49,7 +49,7 @@ const fetchLinks = () => ({
             url: "/links"
         }
     }
-})
+});
 
 
 /**
@@ -62,7 +62,7 @@ const showLink = linkId => ({
             url: `/links/${linkId}`
         }
     }
-})
+});
 
 
 /**
@@ -77,7 +77,7 @@ const updateLink = (linkId, data) => ({
             data
         }
     }
-})
+});
 
 
 export {
@@ -95,5 +95,5 @@ export {
     deleteLink,
     fetchLinks,
     showLink,
-    updateLink,
-}
+    updateLink
+};

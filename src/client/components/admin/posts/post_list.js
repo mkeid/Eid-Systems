@@ -1,6 +1,6 @@
-import _ from "lodash"
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import _ from "lodash";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 
 /*
@@ -10,8 +10,8 @@ import { Link } from "react-router-dom"
 class PostList extends Component {
     /** Dispatch redux action to update page status and fetch latest posts */
     componentDidMount() {
-        this.props.updateAdminPage("Posts")
-        this.props.fetchPosts()
+        this.props.updateAdminPage("Posts");
+        this.props.fetchPosts();
     }
 
     render() {
@@ -23,11 +23,11 @@ class PostList extends Component {
                     </div>
                 </Link>
             </div>
-        )]
+        )];
 
         // If a list of posts exists in the redux store, append them to items
         if (this.props.posts) {
-            let posts = _.map(this.props.posts, (value, key) => value)
+            let posts = _.map(this.props.posts, (value, key) => value);
             posts = posts.map(post => (
                 <div key={post._id} className="admin-item">
                     <Link to={`/admin/posts/edit/${post._id}`}>
@@ -39,9 +39,9 @@ class PostList extends Component {
                         </div>
                     </Link>
                 </div>
-            ))
+            ));
 
-            items = [...items, ...posts]
+            items = [...items, ...posts];
         }
 
 
@@ -49,8 +49,8 @@ class PostList extends Component {
             <div className="admin-list">
                 {items}
             </div>
-        )
+        );
     }
 }
 
-export default PostList
+export default PostList;

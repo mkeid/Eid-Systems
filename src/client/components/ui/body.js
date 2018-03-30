@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 
 
 /**
@@ -20,9 +20,9 @@ class Body extends Component {
                 </div>
                 {this.props.children}
             </div>
-        )
+        );
     }
 }
 
 
-export default Body
+export default Body;

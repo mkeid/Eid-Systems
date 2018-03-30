@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import Post from "./post"
+import React, { Component } from "react";
+import Post from "./post";
 
 
 /**
@@ -8,26 +8,26 @@ import Post from "./post"
 */
 class BlogIndex extends Component {
     componentDidMount() {
-        this.props.updateCurrentPage("Blog")
+        this.props.updateCurrentPage("Blog");
     }
 
     /** Fetch latest list of blog posts before mounting */
     componentWillMount() {
-        this.props.fetchPosts()
+        this.props.fetchPosts();
     }
 
     render() {
         const posts = this.props.posts.map(
-            post => <Post key={post.title} {...post} />
-        )
+            post => (<Post key={post.title} {...post} />)
+        );
 
         return (
             <div className="blog-index">
                 <div className="container">{posts}</div>
             </div>
-        )
+        );
     }
 }
 
 
-export default BlogIndex
+export default BlogIndex;

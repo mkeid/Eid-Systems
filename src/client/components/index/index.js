@@ -1,8 +1,8 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import Body from "../ui/body"
-import IndexBillboard from "./index_billboard"
-import PortfolioContainer from "../../containers/portfolio_container"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Body from "../ui/body";
+import IndexBillboard from "./index_billboard";
+import PortfolioContainer from "../../containers/portfolio_container";
 
 
 /**
@@ -12,7 +12,7 @@ import PortfolioContainer from "../../containers/portfolio_container"
 class Index extends Component {
     /** Dispatch redux action to update status of current page */
     componentDidMount() {
-        this.props.updateCurrentPage("Home")
+        this.props.updateCurrentPage("Home");
     }
 
     render() {
@@ -26,9 +26,9 @@ class Index extends Component {
                     </Link>
                 </Body>
             </div>
-        )
+        );
     }
 }
 
 
-export default Index
+export default Index;

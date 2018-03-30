@@ -1,9 +1,9 @@
-import React, { Component } from "react"
-import { Field } from "redux-form"
-import { Notification } from 'react-notification'
+import React, { Component } from "react";
+import { Field } from "redux-form";
+import { Notification } from 'react-notification';
 
-import { CancelButton, SubmitButton, SuccessButton } from "../../ui/buttons"
-import renderTextField from "../../ui/render_text_field"
+import { CancelButton, SubmitButton, SuccessButton } from "../../ui/buttons";
+import renderTextField from "../../ui/render_text_field";
 
 
 /*
@@ -12,48 +12,48 @@ import renderTextField from "../../ui/render_text_field"
 */
 class AboutForm extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             hasSaved: false
-        }
+        };
 
         // Bind this to functions
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.renderTextField = renderTextField.bind(this)
-        this.toggleNotification = this.toggleNotification.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderTextField = renderTextField.bind(this);
+        this.toggleNotification = this.toggleNotification.bind(this);
     }
 
     /** Dispatch redux action to update page status and possibly init form */
     componentDidMount() {
-        this.props.updateAdminPage("About")
+        this.props.updateAdminPage("About");
 
-        const about = this.props.about
+        const about = this.props.about;
         if (about) {
-            this.props.initialize(about)
+            this.props.initialize(about);
         } else {
-            this.props.showSite("about")
+            this.props.showSite("about");
         }
     }
 
     handleSubmit(data) {
         this.props.updateSite("about", {data})
             .then(() => {
-                this.toggleNotification()
+                this.toggleNotification();
             })
             .catch(response => {
-                console.log(response)
-            })
+                console.log(response);
+            });
     }
 
     toggleNotification() {
         this.setState({
           notificationIsActive: !this.state.notificationIsActive
-        })
+        });
     }
 
     render() {
-        const savedButton = <SuccessButton value="Saved!" />
-        const saveButton = <SubmitButton value="Save" />
+        const savedButton = <SuccessButton value="Saved!" />;
+        const saveButton = <SubmitButton value="Save" />;
 
         return (
             <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
@@ -87,8 +87,8 @@ class AboutForm extends Component {
                     })}
                 />
             </form>
-        )
+        );
     }
 }
 
-export default AboutForm
+export default AboutForm;

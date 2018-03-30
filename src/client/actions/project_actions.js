@@ -1,13 +1,13 @@
-const PROJECTS_CREATE_REQUEST = "PROJECTS_CREATE_REQUEST"
-const PROJECTS_CREATE_REQUEST_SUCCESS = "PROJECTS_CREATE_REQUEST_SUCCESS"
-const PROJECTS_DESTROY_REQUEST = "PROJECTS_DESTROY_REQUEST"
-const PROJECTS_DESTROY_REQUEST_SUCCESS = "PROJECTS_DESTROY_REQUEST_SUCCESS"
-const PROJECTS_LIST_REQUEST = "PROJECTS_LIST_REQUEST"
-const PROJECTS_LIST_REQUEST_SUCCESS = "PROJECTS_LIST_REQUEST_SUCCESS"
-const PROJECTS_SHOW_REQUEST = "PROJECTS_SHOW_REQUEST"
-const PROJECTS_SHOW_REQUEST_SUCCESS = "PROJECTS_SHOW_REQUEST_SUCCESS"
-const PROJECTS_UPDATE_REQUEST = "PROJECTS_UPDATE_REQUEST"
-const PROJECTS_UPDATE_REQUEST_SUCCESS = "PROJECTS_UPDATE_REQUEST_SUCCESS"
+const PROJECTS_CREATE_REQUEST = "PROJECTS_CREATE_REQUEST";
+const PROJECTS_CREATE_REQUEST_SUCCESS = "PROJECTS_CREATE_REQUEST_SUCCESS";
+const PROJECTS_DESTROY_REQUEST = "PROJECTS_DESTROY_REQUEST";
+const PROJECTS_DESTROY_REQUEST_SUCCESS = "PROJECTS_DESTROY_REQUEST_SUCCESS";
+const PROJECTS_LIST_REQUEST = "PROJECTS_LIST_REQUEST";
+const PROJECTS_LIST_REQUEST_SUCCESS = "PROJECTS_LIST_REQUEST_SUCCESS";
+const PROJECTS_SHOW_REQUEST = "PROJECTS_SHOW_REQUEST";
+const PROJECTS_SHOW_REQUEST_SUCCESS = "PROJECTS_SHOW_REQUEST_SUCCESS";
+const PROJECTS_UPDATE_REQUEST = "PROJECTS_UPDATE_REQUEST";
+const PROJECTS_UPDATE_REQUEST_SUCCESS = "PROJECTS_UPDATE_REQUEST_SUCCESS";
 
 
 /**
@@ -22,7 +22,7 @@ const createProject = project => ({
             data: project
         }
     }
-})
+});
 
 
 /**
@@ -36,7 +36,7 @@ const deleteProject = projectId => ({
             url: `/projects/${projectId}`
         }
     }
-})
+});
 
 
 /**
@@ -49,7 +49,7 @@ const fetchProjects = () => ({
             url: "/projects"
         }
     }
-})
+});
 
 
 /**
@@ -62,7 +62,7 @@ const showProject = projectId => ({
             url: `/projects/${projectId}`
         }
     }
-})
+});
 
 
 /**
@@ -77,7 +77,7 @@ const updateProject = (projectId, data) => ({
             data
         }
     }
-})
+});
 
 
 export {
@@ -96,4 +96,4 @@ export {
     fetchProjects,
     showProject,
     updateProject
-}
+};

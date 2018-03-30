@@ -1,20 +1,20 @@
-import React, { Component } from "react"
-import { Redirect, Route, Switch } from "react-router-dom"
+import React, { Component } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 
-import AboutFormContainer from "../../containers/admin/about_form_container"
-import IndexFormContainer from "../../containers/admin/index_form_container"
+import AboutFormContainer from "../../containers/admin/about_form_container";
+import IndexFormContainer from "../../containers/admin/index_form_container";
 
-import LinkFormContainer from "../../containers/admin/link_form_container"
-import LinkList from "./links/link_list"
+import LinkFormContainer from "../../containers/admin/link_form_container";
+import LinkList from "./links/link_list";
 
-import PostFormContainer from "../../containers/admin/post_form_container"
-import PostList from "./posts/post_list"
+import PostFormContainer from "../../containers/admin/post_form_container";
+import PostList from "./posts/post_list";
 
-import ProjectFormContainer from "../../containers/admin/project_form_container"
-import ProjectList from "./projects/project_list"
+import ProjectFormContainer from "../../containers/admin/project_form_container";
+import ProjectList from "./projects/project_list";
 
-import SkillFormContainer from "../../containers/admin/skill_form_container"
-import SkillList from "./skills/skill_list"
+import SkillFormContainer from "../../containers/admin/skill_form_container";
+import SkillList from "./skills/skill_list";
 
 
 /*
@@ -161,6 +161,6 @@ const AdminPages = props => (
             />
         </Switch>
     </div>
-)
+);
 
-export default AdminPages
+export default AdminPages;
