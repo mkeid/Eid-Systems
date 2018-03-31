@@ -42,7 +42,7 @@ const history = createHistory();
 const middleware = applyMiddleware(
     routerMiddleware(history),
     axiosMiddleware(axiosClient)
-)
+);
 const store = createStore(CombinedReducer, middleware);
 store.dispatch(fetchSites());
 
