@@ -1,31 +1,29 @@
 import React, { Component } from "react";
 import { Field } from "redux-form";
 import { Shake } from "reshake";
+
 import { LoadingButton, SubmitButton, SuccessButton } from "../ui/buttons";
 import renderTextField from "../ui/render_text_field";
 
-
 /**
-* A form component storing input states with API calling functionality
+* A form component storing input states with API calling functionality.
 * @extends Component
 */
 class EmailForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isShaking: false,
-            makingRequest: false
-        };
-
-        // Bind this to methods
         this.handleSendClick = this.handleSendClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderSendButton = this.renderSendButton.bind(this);
         this.renderTextField = renderTextField.bind(this);
         this.stopShaking = this.stopShaking.bind(this);
+        this.state = {
+            isShaking: false,
+            makingRequest: false
+        };        
     }
 
-    /** If the user comes back to the form, re-fill in the inputs */
+    /** If the user comes back to the form, re-fill in the inputs. */
     componentDidMount() {
         if (this.props.contacted) {
             this.nameInput.value = this.props.name;
@@ -34,14 +32,14 @@ class EmailForm extends Component {
         }
     }
 
-    /** After an update, stop the send button from shaking if it is */
+    /** After an update, stop the send button from shaking if it is. */
     componentDidUpdate() {
         if (this.state.isShaking) {
             this.shakeTimeout = setTimeout(this.stopShaking, 500);
         }
     }
 
-    /** Clear timeout so component doesn't try to set state while unmounted */
+    /** Clear timeout so component doesn't try to set state while unmounted. */
     componentWillUnmount() {
         this.shakeTimeout && clearTimeout(this.shakeTimeout);
     }
@@ -57,18 +55,18 @@ class EmailForm extends Component {
         }
     }
 
-    /** If the form is appropriate, send an API POST request to send en email */
+    /** If the form is appropriate, send an API POST request to send en email. */
     handleSubmit(data) {
         this.props.sendEmail(data.name, data.email, data.message);
         this.setState({makingRequest: true});
     }
 
-    /** Stop the send button from shaking after a form error */
+    /** Stop the send button from shaking after a form error. */
     stopShaking() {
         this.setState({isShaking: false});
     }
 
-    /** Render the shaking error button component */
+    /** Render the shaking error button component. */
     renderShakingButton() {
         return (
             <Shake h={3} v={5} r={0} dur={42} max={100}
@@ -78,7 +76,7 @@ class EmailForm extends Component {
         );
     }
 
-    /** Render the submit button component */
+    /** Render the submit button component. */
     renderSendButton() {
         const loadingButton = <LoadingButton />;
         const sendButton = (
@@ -132,6 +130,5 @@ class EmailForm extends Component {
         );
     }
 }
-
 
 export default EmailForm;

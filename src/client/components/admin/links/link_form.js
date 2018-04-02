@@ -14,9 +14,8 @@ import { getFileObject, renderFileInput } from "../../ui/render_file_input";
 import { convertToFormData } from "../../../helpers";
 import renderTextField from "../../ui/render_text_field";
 
-
-/*
-* Form component for creating new links and updating existing ones
+/**
+* Form component for creating new links and updating existing ones.
 * @extends Component
 */
 class LinkForm extends Component {
@@ -210,6 +209,5 @@ class LinkForm extends Component {
         );
     }
 }
-
 
 export default LinkForm;

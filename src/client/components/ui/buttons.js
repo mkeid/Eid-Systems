@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { ScaleLoader } from 'react-spinners';
 
-
 /**
-* A cancel button component that automatically redirects a user back a page
+* A cancel button component that automatically redirects a user back a page.
 * @extends Component
 */
 class CancelButton extends Component {
@@ -28,9 +27,8 @@ class CancelButton extends Component {
     }
 }
 
-
 /**
-* A danger button component for making a permanent action obvious to the user
+* A danger button component for making a permanent action obvious to the user.
 * @extends Component
 */
 class DangerButton extends Component {
@@ -51,9 +49,8 @@ class DangerButton extends Component {
     }
 }
 
-
 /**
-* A component that plays a loading animation indicating a procedure is occurring
+* A component that plays a loading animation indicating a procedure is occurring.
 * @extends Component
 */
 class LoadingButton extends Component {
@@ -69,7 +66,6 @@ class LoadingButton extends Component {
         );
     }
 }
-
 
 /**
 * A submit button component that will submit whatever form it is placed in
@@ -93,9 +89,8 @@ class SubmitButton extends Component {
     }
 }
 
-
 /**
-* A static success "button" component indicating a successful submission
+* A static success "button" component indicating a successful submission.
 * @extends Component
 */
 class SuccessButton extends Component {
@@ -115,7 +110,6 @@ class SuccessButton extends Component {
         );
     }
 }
-
 
 export {
     CancelButton,

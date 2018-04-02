@@ -5,8 +5,7 @@ import { Notification } from 'react-notification';
 import { CancelButton, SubmitButton, SuccessButton } from "../../ui/buttons";
 import renderTextField from "../../ui/render_text_field";
 
-
-/*
+/**
 * Form component for updating information in the "home" or "index" page
 * @extends Component
 */
@@ -21,7 +20,7 @@ class IndexForm extends Component {
         this.toggleNotification = this.toggleNotification.bind(this);
     }
 
-    /** Dispatch redux action to update page status and possibly init form */
+    /** Dispatch redux action to update page status and possibly init form. */
     componentDidMount() {
         this.props.updateAdminPage("Index");
 

@@ -14,7 +14,6 @@ import { getFileObject, renderFileInput } from "../../ui/render_file_input";
 import { convertToFormData } from "../../../helpers";
 import renderTextField from "../../ui/render_text_field";
 
-
 /**
 * Form component for creating new skills and updating existing ones
 * @extends Component
@@ -241,6 +240,5 @@ class SkillForm extends Component {
         );
     }
 }
-
 
 export default SkillForm;

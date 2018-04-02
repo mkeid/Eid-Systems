@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-
 /**
-* A single nav item component representing a title / link to another page
+* A single nav item component representing a title / link to another page.
 */
 function NavItem(props) {
     const className = `nav-item ${props.selected ? "selected" : null}`;
@@ -14,9 +13,8 @@ function NavItem(props) {
     );
 }
 
-
 /**
-* A component set of title components that are used for navigation by the bar
+* A component set of title components that are used for navigation by the bar.
 * @extends Component
 */
 class NavItemList extends Component {
@@ -51,6 +49,5 @@ class NavItemList extends Component {
         );
     }
 }
-
 
 export default NavItemList;

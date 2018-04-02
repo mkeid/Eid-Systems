@@ -1,9 +1,9 @@
 import React, { Component } from "react";
+
 import Project from "./project";
 
-
 /**
-* Component list of project components
+* Component list of project components.
 * @extends Component
 */
 class Portfolio extends Component {
@@ -11,7 +11,7 @@ class Portfolio extends Component {
         super(props);
     }
 
-    /** Fetch latest list of projects before mounting */
+    /** Fetch latest list of projects before mounting. */
     componentWillMount() {
         this.props.fetchProjects();
     }
@@ -40,6 +40,5 @@ class Portfolio extends Component {
         );
     }
 }
-
 
 export default Portfolio;

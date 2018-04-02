@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-
-/*
+/**
 * Component that renders a menu of items linking to various admin pages
 * @extends Component
 */
 class AdminMenu extends Component {
     constructor(props) {
         super(props);
-
-        // Bind this to functions
         this.handleLogout = this.handleLogout.bind(this);
     }
 
@@ -51,6 +48,5 @@ class AdminMenu extends Component {
         );
     }
 }
-
 
 export default AdminMenu;

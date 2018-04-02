@@ -7,12 +7,13 @@ const AuthModel = require("../models/auth_model");
 const UserModel = require("../models/user_model");
 const { secret } = require("../../config");
 
-// Create JWT strategy (used for verifying an auth token)
+/**
+ * Create JWT strategy (used for verifying an auth token).
+ */
 const jwtOpts = {
     jwtFromRequest: ExtractJwt.fromHeader("authorization"),
     secretOrKey: secret
 };
-
 const jwtLogin = new JwtStrategy(jwtOpts, (payload, done) => {
     // See if a user with the given ID exists
     UserModel.findOne({_id: payload.sub},
@@ -30,7 +31,9 @@ const jwtLogin = new JwtStrategy(jwtOpts, (payload, done) => {
     );
 });
 
-// Create local strategy (used for signing in)
+/**
+ * Create local strategy (used for signing in).
+ */
 const localLogin = new LocalStrategy((username, password, done) => {
     // Verify username and password
     UserModel.findOne({"username": username},
@@ -54,6 +57,8 @@ const localLogin = new LocalStrategy((username, password, done) => {
     )
 })
 
-// Let passport use our strategies
+/**
+ * Let passport use our strategies.
+ */
 passport.use(jwtLogin);
 passport.use(localLogin);

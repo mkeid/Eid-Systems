@@ -2,9 +2,8 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-
-/*
-* Component that renders list of lists where each item links to an edit form
+/**
+* Component that renders list of lists where each item links to an edit form.
 * @extends Component
 */
 class LinkList extends Component {
@@ -51,6 +50,5 @@ class LinkList extends Component {
         )
     }
 }
-
 
 export default LinkList

@@ -10,13 +10,14 @@ import Keyword from "./keyword";
 class Skill extends Component {
     constructor(props) {
         super(props);
-        this.state = { keywordsAreVisible: false };
-
-        // Bind this to function
         this.showKeywords = this.showKeywords.bind(this);
+        this.state = { keywordsAreVisible: false };
     }
 
-    /** Set the set of keywords to visible so each word invokes its action */
+    /**
+     * Set the set of keywords to visible so each word invokes its action.
+     * @param {*} isVisible 
+     */
     showKeywords(isVisible) {
         if (!this.state.keywordsAreVisible && isVisible) {
             this.setState({ keywordsAreVisible: true });
@@ -61,6 +62,5 @@ class Skill extends Component {
         );
     }
 }
-
 
 export default Skill;

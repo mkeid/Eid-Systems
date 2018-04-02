@@ -1,19 +1,17 @@
 import React, { Component } from "react";
 
 /**
-* A single-project component
+* A single-project component.
 * @extends Component
 */
 class Project extends Component {
     constructor(props) {
         super(props);
+        this.makeVisible = this.makeVisible.bind(this);
         this.state = {
             delay: props.delay,
             isVisible: false
         };
-
-        // Bind this to functions
-        this.makeVisible = this.makeVisible.bind(this);
     }
 
     componentDidMount() {
@@ -52,6 +50,5 @@ class Project extends Component {
         );
     }
 }
-
 
 export default Project;

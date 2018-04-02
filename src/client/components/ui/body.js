@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 
-
 /**
-* A general component function used for rendering sub components under a title
+* A general component function used for rendering sub components under a title.
 * @extends Component
 */
 class Body extends Component {
@@ -23,6 +22,5 @@ class Body extends Component {
         );
     }
 }
-
 
 export default Body;

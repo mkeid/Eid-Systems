@@ -3,7 +3,6 @@ import AboutBillboard from "./about_billboard";
 import Body from "../ui/body";
 import Skill from "./skill";
 
-
 /**
 * Component used by react router to render the "About" page
 * @extends Component
@@ -35,6 +34,5 @@ class AboutIndex extends Component {
         );
     }
 }
-
 
 export default AboutIndex;

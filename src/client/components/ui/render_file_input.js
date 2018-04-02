@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Dropzone from "react-dropzone";
 
-
 const getFileBlob = (url, cb) => {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", url);
@@ -12,7 +11,11 @@ const getFileBlob = (url, cb) => {
     xhr.send();
 };
 
-
+/**
+ * Add important attributes to blob object for file conversion.
+ * @param {*} blob 
+ * @param {*} name 
+ */
 const blobToFile = (blob, name) => {
     blob.lastModifiedDate = new Date();
     blob.name = name;
@@ -20,14 +23,21 @@ const blobToFile = (blob, name) => {
     return blob;
 };
 
-
+/**
+ * Get the file object from the blob.
+ * @param {*} filePathOrUrl 
+ * @param {*} callback 
+ */
 const getFileObject = (filePathOrUrl, callback) => {
     getFileBlob(filePathOrUrl, blob => {
         callback(blobToFile(blob, filePathOrUrl));
     });
 };
 
-
+/**
+ * Render a file input with a dropzone component for file dropping.
+ * @param {*} field 
+ */
 const renderFileInput = field => {
     const files = field.input.value;
     const fileIsInDropzone = files && Array.isArray(files);

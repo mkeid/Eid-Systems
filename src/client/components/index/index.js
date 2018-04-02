@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 import Body from "../ui/body";
 import IndexBillboard from "./index_billboard";
 import PortfolioContainer from "../../containers/portfolio_container";
 
-
 /**
-* Component used by react router to render the "Index" page
+* Component used by react router to render the "Index" page.
 * @extends Component
 */
 class Index extends Component {
-    /** Dispatch redux action to update status of current page */
+    /** Dispatch redux action to update status of current page. */
     componentDidMount() {
         this.props.updateCurrentPage("Home");
     }
@@ -29,6 +29,5 @@ class Index extends Component {
         );
     }
 }
-
 
 export default Index;

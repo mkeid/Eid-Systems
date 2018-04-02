@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Field } from "redux-form";
 import PropTypes from "prop-types";
+
 import renderTextField from "../ui/render_text_field";
 
-
-/*
+/**
 * Component that renders a form used by redux to authenticate a user
 * @extends Component
 */
@@ -65,10 +65,11 @@ class LoginForm extends Component {
     }
 }
 
-// Enable the router context type so that the form gains routing capability
+/**
+ * Enable the router context type so that the form gains routing capability.
+ */
 LoginForm.contextTypes = {
     router: PropTypes.object
 };
-
 
 export default LoginForm;

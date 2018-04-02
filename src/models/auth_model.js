@@ -2,9 +2,13 @@ const bcrypt = require("bcrypt-nodejs");
 const jwt = require("jwt-simple");
 const config = require("../../config");
 
-
 class AuthModel {
-    /** Encrypt a password and compare it with the encryped one in the db */
+    /**
+     * Encrypt a password and compare it with the encryped one in the db.
+     * @param {*} candidate 
+     * @param {*} password 
+     * @param {*} callback 
+     */
     static comparePassword(candidate, password, callback) {
         bcrypt.compare(candidate, password, (error, isMatch) => {
             if (error) {
@@ -14,12 +18,14 @@ class AuthModel {
         });
     }
 
-    /** Generate a token based on a given user's id */
+    /**
+     * Generate a token based on a given user's id.
+     * @param {*} user 
+     */
     static generateToken(user) {
         const timestamp = new Date().getTime();
         return jwt.encode({ sub: user.id, iat: timestamp }, config.secret);
     }
 }
-
 
 module.exports = AuthModel;

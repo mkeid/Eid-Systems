@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Post from "./post";
 
+import Post from "./post";
 
 /**
 * Component used by react router to render the "Blog" page
@@ -28,6 +28,5 @@ class BlogIndex extends Component {
         );
     }
 }
-
 
 export default BlogIndex;

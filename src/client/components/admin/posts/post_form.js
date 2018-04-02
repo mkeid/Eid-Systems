@@ -14,7 +14,6 @@ import { getFileObject, renderFileInput } from "../../ui/render_file_input";
 import { convertToFormData } from "../../../helpers";
 import renderTextField from "../../ui/render_text_field";
 
-
 /*
 * Form component for creating new posts and updating existing ones
 * @extends Component
@@ -26,7 +25,7 @@ class PostForm extends Component {
             modalIsVisible: false
         };
 
-        // Bind this to functions
+        // Bind this
         this.checkPost = this.checkPost.bind(this);
         this.createPost = this.createPost.bind(this);
         this.deletePost = this.deletePost.bind(this);

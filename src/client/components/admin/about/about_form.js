@@ -5,9 +5,8 @@ import { Notification } from 'react-notification';
 import { CancelButton, SubmitButton, SuccessButton } from "../../ui/buttons";
 import renderTextField from "../../ui/render_text_field";
 
-
-/*
-* Form component for updating information in the "about" page
+/**
+* Form component for updating information in the "about" page.
 * @extends Component
 */
 class AboutForm extends Component {

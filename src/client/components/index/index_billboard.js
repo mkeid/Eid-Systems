@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Particles from "react-particles-js";
 import { Link } from "react-router-dom";
+
 import Portfolio from "../../containers/portfolio_container";
 import indexParticlesConfig from "../../config/index_particles";
 
-
 /**
-* Component function appearing within the index billboard that lists skills
+* Component function appearing within the index billboard that lists skills.
 */
 const InfoContainer = (props) => (
     <div className={props.type + "-container"}>
@@ -16,9 +16,8 @@ const InfoContainer = (props) => (
     </div>
 );
 
-
 /**
-* Set of components that make up the left and right billboard containers
+* Set of components that make up the left and right billboard containers.
 * @extends Component
 */
 class InfoContainers extends Component{
@@ -38,9 +37,8 @@ class InfoContainers extends Component{
     }
 }
 
-
 /**
-* Main head compnent at the top of the "Index" page
+* Main head compnent at the top of the "Index" page.
 * @extends Component
 */
 class IndexBillboard extends Component {
@@ -72,6 +70,5 @@ class IndexBillboard extends Component {
         );
     }
 }
-
 
 export default IndexBillboard;

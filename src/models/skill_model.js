@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-
 const skillSchema = mongoose.Schema({
     title: {
         type: String,
@@ -20,6 +19,5 @@ const skillSchema = mongoose.Schema({
         required: true
     }
 });
-
 
 module.exports = mongoose.model("Skill", skillSchema);

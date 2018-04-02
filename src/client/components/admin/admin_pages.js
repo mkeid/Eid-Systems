@@ -16,8 +16,7 @@ import ProjectList from "./projects/project_list";
 import SkillFormContainer from "../../containers/admin/skill_form_container";
 import SkillList from "./skills/skill_list";
 
-
-/*
+/**
 * Component that renders list of admin-specific routes
 * @extends Component
 */

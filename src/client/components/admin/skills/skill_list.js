@@ -2,8 +2,7 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-
-/*
+/**
 * Component that renders list of skills where each item links to an edit form
 * @extends Component
 */

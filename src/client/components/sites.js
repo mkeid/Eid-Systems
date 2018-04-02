@@ -9,8 +9,8 @@ import IndexContainer from "../containers/index_container";
 import PortfolioIndex from "./portfolio/portfolio_index";
 
 /**
-* 404 page component function
-*/
+ * 404 page component function.
+ */
 const NotFound = () => (
     <div className="not-found-site">
         <div className="billboard" />
@@ -18,8 +18,9 @@ const NotFound = () => (
 );
 
 /**
-* Site conglomeration component comprised of a multitude of site through routing
-*/
+ * Site conglomeration component comprised of a multitude of site through routing.
+ * @param {*} props 
+ */
 const Sites = props => (
     <div className="sites">
         <Switch>
